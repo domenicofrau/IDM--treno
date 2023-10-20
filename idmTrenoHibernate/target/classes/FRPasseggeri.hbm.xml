@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.idm.trenohibernate.FR.FRPasseggeri"
+		table="PASSEGGERI">
+
+		<id name="id" type="int" column="ID">
+			<generator class="sequence" />
+		</id>
+
+		<property name="peso" column="PESO" type="int" />
+		<property name="lunghezza" column="LUNGHEZZA" type="int" />
+		<property name="posti" column="POSTI" type="int" />
+
+		<many-to-one name="vagone"
+			class="com.idm.trenohibernate.Vagone" column="VAGONE_ID" />
+
+	</class>
+</hibernate-mapping>
