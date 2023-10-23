@@ -4,7 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.idm.trenohibernate.Vagone" table="VAGONE">
+	<class name="com.idm.trenohibernate.Vagone" table="VAGONE" >
 
 		<id name="id" type="int" column="ID">
 			<generator class="sequence" />
@@ -17,27 +17,6 @@
 		<many-to-one name="treno"
 			class="com.idm.trenohibernate.Treno" column="TRENO_ID" />
 
-		<set name="cargo" table="CARGO" inverse="true" lazy="true"
-			fetch="select">
-			<key>
-				<column name="VAGONE_ID" not-null="true" />
-			</key>
-			<one-to-many class="com.idm.trenohibernate.TN.TNCargo" />
-		</set>
-
-		<set name="passeggeri" table="PASSEGGERI" inverse="true"
-			lazy="true" fetch="select">
-			<key>
-				<column name="VAGONE_ID" not-null="true" />
-			</key>
-			<one-to-many
-				class="com.idm.trenohibernate.TN.TNPasseggeri" />
-		</set>
-
-		<one-to-one name="locomotiva"
-			class="com.idm.trenohibernate.TN.TNLocomotiva" />
-		<one-to-one name="ristorante"
-			class="com.idm.trenohibernate.TN.TNRistorante" />
 
 	</class>
 </hibernate-mapping>

@@ -1,13 +1,13 @@
 package com.idm.trenohibernate.dao;
 
-import org.hibernate.Criteria;
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.mapping.List;
+import org.hibernate.query.Query;
 
 import com.idm.trenohibernate.Treno;
 
@@ -78,6 +78,38 @@ public abstract class BaseDAO {
 			session.close();
 		}
 	}
+//	  protected void deleteById(Integer id){
+//	      Session session = factory.openSession();
+//	      Transaction tx = null;   
+//	      try {
+//	    	 Bean b = session.get(com.idm.trenohibernate.Treno.class, id);
+//	         tx = session.beginTransaction();
+//	         session.delete(b); 
+//	         tx.commit();
+//	      } catch (HibernateException e) {
+//	         if (tx!=null) tx.rollback();
+//	         e.printStackTrace(); 
+//	      } finally {
+//	         session.close(); 
+//	      }
+//	   }
+	    protected void deleteById(Object object) {
+	        Session session = factory.openSession();
+	        Transaction tx = null;
+
+	        try {
+	        	
+	            tx = session.beginTransaction();
+	            session.delete(object);
+	            tx.commit();
+	        } catch (HibernateException e) {
+	            if (tx != null)
+	                tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            session.close();
+	        }
+	    }
 
 	protected Bean find(Class classe, Integer id) {
 		Session session = factory.openSession();
@@ -99,5 +131,23 @@ public abstract class BaseDAO {
 		}
 		return bean;
 	}
-
+	public List<Treno> findAll() {
+         Session session = factory.openSession();
+	      Transaction tx = null;
+	      List<Treno> trenoList = null; 
+	      try {
+	         tx = session.beginTransaction();
+	         String hql = "from " + com.idm.trenohibernate.Treno.class.getName();
+	         Query<Treno> query = (Query<Treno>) session.createQuery(hql);
+  
+	         trenoList = query.list();
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      } finally {
+	         session.close(); 
+	      }
+	      return trenoList;
+	   } 
 }
