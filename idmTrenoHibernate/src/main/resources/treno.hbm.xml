@@ -12,12 +12,11 @@
 
 		<property name="marca" column="MARCA" length="20"
 			type="string" />
-
-		<list name="vagoni" cascade="all">
+			
+		<list name="vagoni" cascade="all" lazy="false">
 			<key column="TRENO_ID" />
-			<index column="type"></index>
+			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
-
 	</class>
 </hibernate-mapping>

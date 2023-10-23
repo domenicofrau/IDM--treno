@@ -1,5 +1,8 @@
 package com.idm.trenohibernate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ConcreteBuilder extends TrenoBuilder {
 
 	private VagoneFactory factory;

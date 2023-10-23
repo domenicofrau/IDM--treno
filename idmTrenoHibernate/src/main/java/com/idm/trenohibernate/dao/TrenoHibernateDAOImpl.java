@@ -15,13 +15,34 @@ public class TrenoHibernateDAOImpl extends BaseDAO implements TrenoHibernateDAO 
 		return super.create(bean);
 	}
 
-//	public void update(Treno bean) {
-//		super.update(bean);
-//	}
-//
+	public void update(Treno bean) {
+		super.update(bean);
+	}
+
 //	public void delete(Treno bean) {
 //		// bean.setValidity(false);
-//		super.update(bean);
+//		super.delete(bean);
 //	}
+	
+	public Treno find(Integer id) {
+		Treno treno = (Treno) find(Treno.class, id);
+			return treno;
+		}
+	
+	
+    public void deleteById(Integer id) {
+        Treno treno = (Treno) find(Treno.class, id);
+        if (treno != null) {
+            delete(treno);
+        } else {
+            System.out.println("Il treno con l'ID " + id + " non è stato trovato.");
+        }
+    }
 
+	public List<Treno> findAll() {
+		// TODO Auto-generated method stub
+		return super.findAll();
+	}
+	
+	
 }

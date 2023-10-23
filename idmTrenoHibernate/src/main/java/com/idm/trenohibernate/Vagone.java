@@ -5,7 +5,7 @@ import java.util.Set;
 import com.idm.trenohibernate.TN.TNCargo;
 import com.idm.trenohibernate.TN.TNPasseggeri;
 
-public abstract class Vagone {
+public class Vagone {
 
 	private int id;
 	private int posti;
@@ -16,11 +16,14 @@ public abstract class Vagone {
 	private Ristorante ristorante;
 	private Set<TNCargo> cargo;
 	private Set<TNPasseggeri> passeggeri;
-
+	private Treno treno;
+	
+	public Vagone() {}
 	public Vagone(int posti, int lunghezza, int peso) {
 		this.posti = posti;
 		this.lunghezza = lunghezza;
 		this.peso = peso;
+		
 	}
 
 	@Override
@@ -29,7 +32,7 @@ public abstract class Vagone {
 				peso);
 	}
 
-	private Treno treno;
+
 
 	public int getId() {
 		return this.id;
