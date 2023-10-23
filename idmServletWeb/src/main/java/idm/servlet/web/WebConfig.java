@@ -12,8 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration // qui si creano i bean per Spring core
 @EnableWebMvc // indica che è una applicazioen web
-@ComponentScan(basePackages = { "idm.servlet.web.controller" })
-
+@ComponentScan(basePackages = { "idm.servlet.web.controller", "com.idm.trenohibernate", "com.idm.trenohibernate.FR", "com.idm.trenohibernate.TN"})
 
 public class WebConfig implements WebMvcConfigurer {
 

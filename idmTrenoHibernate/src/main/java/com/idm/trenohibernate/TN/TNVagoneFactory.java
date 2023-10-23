@@ -1,8 +1,11 @@
 package com.idm.trenohibernate.TN;
 
+import org.springframework.stereotype.Component;
+
 import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 
+@Component
 public class TNVagoneFactory implements VagoneFactory {
 
 	public Vagone costruisciLocomotiva() {
