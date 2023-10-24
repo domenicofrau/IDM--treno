@@ -39,8 +39,10 @@ public class TrenoController {
 	@GetMapping("/seleziona-factory")
 	public String selezionaFactory(String factory, Model model) {
 	    model.addAttribute("selectedFactory", factory);
+	    
 	    return "creaTreno";
 	}
+	
 	
 	@PostMapping("/crea-treno-fr")
 	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno, Model model) {
@@ -51,7 +53,6 @@ public class TrenoController {
         } catch (LocomotivaException | VagoniIncompatibiliException | RistoranteException e) {
             e.printStackTrace();
         }
-		
 		
 		model.addAttribute("siglaTreno", siglaTreno.getSigla()); 
 		return "viewTreno";
@@ -66,7 +67,6 @@ public class TrenoController {
         } catch (LocomotivaException | VagoniIncompatibiliException | RistoranteException e) {
             e.printStackTrace();
         }
-		
 		
 		model.addAttribute("siglaTreno", siglaTreno.getSigla()); 
 		return "viewTreno";

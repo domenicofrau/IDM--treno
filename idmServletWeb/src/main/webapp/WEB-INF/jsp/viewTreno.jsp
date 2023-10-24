@@ -9,6 +9,5 @@
 <body>
 Ecco il tuo treno! 
 
-	${siglaTreno} 
 </body>
 </html>

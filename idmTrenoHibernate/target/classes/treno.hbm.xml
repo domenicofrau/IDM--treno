@@ -7,6 +7,7 @@
 	<class name="com.idm.trenohibernate.Treno" table="TRENO">
 
 		<id name="id" type="int" column="ID">
+<!-- 			<generator class="native" /> -->
 			<generator class="sequence" />
 		</id>
 

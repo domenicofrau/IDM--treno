@@ -12,7 +12,7 @@ public abstract class TrenoBuilder {
 		// locomotiva obbligatoria
 		if (!sigla.contains("H")) {
 			
-			throw new LocomotivaException("La locomotiva è obbligatoria", sigla);
+			throw new LocomotivaException("La locomotiva è obbligatoria", sigla);		
 		}
 		// locomotiva in testa
 		if (sigla.charAt(0) != 'H')
