@@ -1,5 +1,6 @@
 package com.idm.trenohibernate.TN;
 
+import com.idm.trenohibernate.Locomotiva;
 import com.idm.trenohibernate.Passeggeri;
 import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.Vagone;

@@ -111,7 +111,7 @@ public abstract class BaseDAO {
 	        }
 	    }
 
-	protected Bean find(Class<?> classe, Integer id) {
+	protected Bean find(Class classe, Integer id) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Bean bean = null;
@@ -138,8 +138,7 @@ public abstract class BaseDAO {
 	      try {
 	         tx = session.beginTransaction();
 	         String hql = "from " + com.idm.trenohibernate.Treno.class.getName();
-	         @SuppressWarnings("unchecked")
-			Query<Treno> query = (Query<Treno>) session.createQuery(hql);
+	         Query<Treno> query = (Query<Treno>) session.createQuery(hql);
   
 	         trenoList = query.list();
 	         tx.commit();

@@ -1,6 +1,5 @@
 package com.idm.trenohibernate.exceptions;
 
-@SuppressWarnings("serial")
 public class TrenoException extends Exception{
 	
 	private String sigla;
