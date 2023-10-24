@@ -2,6 +2,7 @@ package test;
 
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.FR.*;
+import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
 import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
 import com.idm.trenohibernate.exceptions.LocomotivaException;

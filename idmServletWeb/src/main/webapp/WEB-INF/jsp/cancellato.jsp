@@ -9,15 +9,9 @@
 </head>
 <body>
 
-<h1> Cancella un treno</h1>
+<h1>Operazione riuscita!</h1>
 
-<h3>Inserisci l'id del treno che vuoi cancellare</h3>
-
-<form action="cancellato" method="GET">
-	<input type="number" name="trainID" placeholder="Inserisci qui l'ID"><br>
-	<input type="submit" value="Cancella">
-</form>
-
+<h3>Hai eliminato con successo il treno con id ${id} </h3>
 
 </body>
 </html>

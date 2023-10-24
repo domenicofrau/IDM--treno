@@ -11,6 +11,10 @@ import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
 public class ConcreteBuilder extends TrenoBuilder {
 
 	private VagoneFactory factory;
+	
+	public ConcreteBuilder(@Qualifier("FRVagoneFactory") VagoneFactory factory) {
+		this.factory = factory;						
+	}
     
     public ConcreteBuilder(@Qualifier("FRVagoneFactory") VagoneFactory factory) {
 		this.factory= factory;

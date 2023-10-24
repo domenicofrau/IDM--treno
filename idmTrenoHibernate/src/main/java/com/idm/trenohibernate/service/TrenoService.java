@@ -8,6 +8,12 @@ import com.idm.trenohibernate.dao.*;
 
 @Component
 public class TrenoService {
+	
+
+public TrenoService() {
+		super();
+	}
+
 
 	private TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
 
