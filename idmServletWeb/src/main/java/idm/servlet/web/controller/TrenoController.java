@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,6 +36,18 @@ public class TrenoController {
 	TrenoService trenoService;
 	@Autowired
 	ConcreteBuilder concreteBuilder;
+	
+	@GetMapping("/cancella")
+	public String cancellaTreno() {
+		return "cancellaTreno";
+	}
+	
+	@GetMapping("/cancellato")
+	public String trenoCAncellato(@RequestParam("trainID") int id) {
+		System.out.println("ID treno da cancellare: " + id);
+		trenoService.delete(id);
+		return "cancellato";
+	}
 	
 	@GetMapping("/seleziona-factory")
 	public String selezionaFactory(String factory, Model model) {
