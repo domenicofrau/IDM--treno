@@ -1,5 +1,6 @@
 idmTrenoHibernate/target/classes/META-INF/maven/idm/hibernate/pom.properties
 idmServletWeb/target/m2e-wtp/web-resources/META-INF/maven/idmServletWeb/idmServletWeb/pom.properties
+idmTrenoHibernate/target/classes/META-INF/MANIFEST.MF
 
 # Compiled class file
 *.class
