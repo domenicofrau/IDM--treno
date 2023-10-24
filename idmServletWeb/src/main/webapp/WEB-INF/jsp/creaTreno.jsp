@@ -1,50 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Crea Treno</title>
 </head>
 <body>
 
-	Scegli la factory del treno:
+Scegli la factory del treno:
 
-	<!-- selettore -->
+<!-- selettore -->
 
-	<form action="seleziona-factory" method="get">
-		<input type="radio" name="factory" value="fr"> FR <input
-			type="radio" name="factory" value="tn"> TN 
-	</form>
+<form id="factoryForm">
+    <input type="radio" name="factory" value="fr" id="fr" onchange="showForm()"> FR
+    <input type="radio" name="factory" value="tn" id="tn" onchange="showForm()"> TN
+</form>
 
-	<c:choose>
-		<c:when test="${selectedFactory == 'fr'}">
-			<!-- Form per FR -->
-			<form:form method="POST" action="viewTreno"
-				modelAttribute="siglaTreno">
-				<table>
-					<form:input path="sigla" />
-					<input type="submit" value="Invia">
-				</table>
-			</form:form>
-		</c:when>
-		<c:when test="${selectedFactory == 'tn'}">
-			<!-- Form per TN -->
-			<form:form method="POST" action="viewTreno"
-				modelAttribute="siglaTreno">
-				<table>
-					<form:input path="sigla" />
-					<input type="submit" value="Invia">
-				</table>
-			</form:form>
-		</c:when>
-		<c:otherwise>
-			<!-- Nessun form selezionato -->
-			<p>Seleziona una factory per iniziare.</p>
-		</c:otherwise>
-	</c:choose>
+<div id="frForm" style="display: none;">
+    <!-- Form per FR -->
+    <form method="POST" action="crea-treno-fr">
+        <table>
+            <tr>
+                <td>Sigla:</td>
+                <td><input type="text" name="sigla"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Invia"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="tnForm" style="display: none;">
+    <!-- Form per TN -->
+    <form method="POST" action="crea-treno-tn">
+        <table>
+            <tr>
+                <td>Sigla:</td>
+                <td><input type="text" name="sigla"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Invia"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script>
+function showForm() {
+    var fr = document.getElementById('fr');
+    var tn = document.getElementById('tn');
+    var frForm = document.getElementById('frForm');
+    var tnForm = document.getElementById('tnForm');
+
+    if (fr.checked) {
+        frForm.style.display = 'block';
+        tnForm.style.display = 'none';
+    } else if (tn.checked) {
+        frForm.style.display = 'none';
+        tnForm.style.display = 'block';
+    }
+}
+</script>
 
 </body>
 </html>

@@ -43,7 +43,6 @@ public class TrenoController {
 	    return "creaTreno";
 	}
 	
-	
 	@PostMapping("/crea-treno-fr")
 	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla()); 

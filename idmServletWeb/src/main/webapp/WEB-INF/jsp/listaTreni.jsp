@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Ecco il tuo treno! 
-
- ${siglaTreno}
 
 </body>
 </html>
