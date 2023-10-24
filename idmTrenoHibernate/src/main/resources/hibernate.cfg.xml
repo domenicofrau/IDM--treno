@@ -20,8 +20,8 @@
 <!-- 		<property name="connection.password">root</property> -->
 <!-- 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
 
-		<property name="show_sql">true</property>
-		<property name="format_sql">true</property>
+	<!-- <property name="show_sql">true</property> -->
+	<!-- <property name="format_sql">true</property> -->
 
 		<!-- Impostazione per la creazione automatica delle tabelle -->
 		<property name="hibernate.hbm2ddl.auto">update</property>

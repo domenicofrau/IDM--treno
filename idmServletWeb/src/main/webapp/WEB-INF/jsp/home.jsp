@@ -10,20 +10,6 @@
 questa è la home
 
 
-<a href= "insert" > inserisci Treno </a>  
-<form action="insert" method="GET">
-  <input type="text" id="sigla" name="sigla" value="" placeholder="inserisci la sigla del treno"><br>
-  <input type="submit" value="Submit">
-</form> 
-
-
-<% 
-     for (int i = 0; i<10; i++ ) {
-%>
-   <p> paragrafo generato da codice java <%=i%> </p>
- <%    
-     }
-%>
 
 
 </body>
