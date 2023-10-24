@@ -2,26 +2,35 @@ package com.idm.trenohibernate.TN;
 
 import org.springframework.stereotype.Component;
 
+import com.idm.trenohibernate.Locomotiva;
+import com.idm.trenohibernate.Passeggeri;
+import com.idm.trenohibernate.Ristorante;
+import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.Vagone;
+import com.idm.trenohibernate.Cargo;
 import com.idm.trenohibernate.VagoneFactory;
+import com.idm.trenohibernate.FR.FRCargo;
+import com.idm.trenohibernate.FR.FRLocomotiva;
+import com.idm.trenohibernate.FR.FRPasseggeri;
+import com.idm.trenohibernate.FR.FRRistorante;
 
 @Component
 public class TNVagoneFactory implements VagoneFactory {
 
-	public Vagone costruisciLocomotiva() {
-		return new TNLocomotiva(50, 100, 300);
+	public Locomotiva costruisciLocomotiva() {
+		return new FRLocomotiva(50, 100, 300, TipoVagone.LOCOMOTIVA);
 	}
 
-	public Vagone costruisciPasseggeri() {
-		return new TNPasseggeri(50, 100, 300);
+	public Passeggeri costruisciPasseggeri() {
+		return new FRPasseggeri(50, 100, 300, TipoVagone.PASSEGGERI);
 	}
 
-	public Vagone costruisciRistorante() {
-		return new TNRistorante(50, 100, 300);
+	public Ristorante costruisciRistorante() {
+		return new FRRistorante(50, 100, 300, TipoVagone.RISTORANTE);
 	}
 
-	public Vagone costruisciCargo() {
-		return new TNCargo(50, 100, 300);
+	public Cargo costruisciCargo() {
+		return new FRCargo(50, 100, 300, TipoVagone.CARGO);
 	}
 
 }

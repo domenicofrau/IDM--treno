@@ -13,7 +13,8 @@
 		<property name="posti" column="POSTI" type="int" />
 		<property name="lunghezza" column="LUNGHEZZA" type="int" />
 		<property name="peso" column="PESO" type="int" />
-
+		<property name="tipo" column="TIPO" type="int" />
+    		
 		<many-to-one name="treno"
 			class="com.idm.trenohibernate.Treno" column="TRENO_ID" />
 

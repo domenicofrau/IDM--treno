@@ -1,27 +1,34 @@
 package com.idm.trenohibernate.FR;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import com.idm.trenohibernate.Cargo;
+import com.idm.trenohibernate.Locomotiva;
+import com.idm.trenohibernate.Passeggeri;
+import com.idm.trenohibernate.Ristorante;
+import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 
 @Component
+@Primary
 public class FRVagoneFactory implements VagoneFactory {
 
-	public Vagone costruisciLocomotiva() {
-		return new FRLocomotiva(50, 100, 300);
+	public Locomotiva costruisciLocomotiva() {
+		return new FRLocomotiva(50, 100, 300, TipoVagone.LOCOMOTIVA);
 	}
 
-	public Vagone costruisciPasseggeri() {
-		return new FRPasseggeri(50, 100, 300);
+	public Passeggeri costruisciPasseggeri() {
+		return new FRPasseggeri(50, 100, 300, TipoVagone.PASSEGGERI);
 	}
 
-	public Vagone costruisciRistorante() {
-		return new FRRistorante(50, 100, 300);
+	public Ristorante costruisciRistorante() {
+		return new FRRistorante(50, 100, 300, TipoVagone.RISTORANTE);
 	}
 
-	public Vagone costruisciCargo() {
-		return new FRCargo(50, 100, 300);
+	public Cargo costruisciCargo() {
+		return new FRCargo(50, 100, 300, TipoVagone.CARGO);
 	}
 
 }

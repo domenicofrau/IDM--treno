@@ -1,5 +1,7 @@
 package idm.servlet.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idm.trenohibernate.ConcreteBuilder;
+import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.TrenoBuilder;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
@@ -38,13 +41,16 @@ public class TrenoController {
 	ConcreteBuilder concreteBuilder;
 	
 	@GetMapping("/cancella")
-	public String cancellaTreno() {
+	public String cancellaTreno(Model model) {
+		List<Treno> listaTreni = trenoService.findAll();
+		model.addAttribute("treni", listaTreni);
 		return "cancellaTreno";
 	}
 	
 	@GetMapping("/cancellato")
-	public String trenoCAncellato(@RequestParam("trainID") int id) {
+	public String trenoCAncellato(@RequestParam("trainID") int id, Model model) {
 		System.out.println("ID treno da cancellare: " + id);
+		model.addAttribute("id", id);
 		trenoService.delete(id);
 		return "cancellato";
 	}

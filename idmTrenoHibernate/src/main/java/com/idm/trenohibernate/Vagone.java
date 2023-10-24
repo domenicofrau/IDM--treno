@@ -11,24 +11,21 @@ public class Vagone {
 	private int posti;
 	private int lunghezza;
 	private int peso;
+	private TipoVagone tipo;
 
-	private Locomotiva locomotiva;
-	private Ristorante ristorante;
-	private Set<TNCargo> cargo;
-	private Set<TNPasseggeri> passeggeri;
 	private Treno treno;
 	
 	public Vagone() {}
-	public Vagone(int posti, int lunghezza, int peso) {
+	public Vagone(int posti, int lunghezza, int peso, TipoVagone tipo) {
 		this.posti = posti;
 		this.lunghezza = lunghezza;
 		this.peso = peso;
-		
+		this.tipo = tipo;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%-10s\t[posti=%d, lunghezza=%d, peso=%d]", getClass().getSimpleName(), posti, lunghezza,
+		return String.format("%-10s\t[posti=%d, lunghezza=%d, peso=%d]", tipo, posti, lunghezza,
 				peso);
 	}
 
@@ -73,37 +70,15 @@ public class Vagone {
 	public void setTreno(Treno treno) {
 		this.treno = treno;
 	}
-
-	public Set<TNCargo> getCargo() {
-		return cargo;
+	public TipoVagone getTipo() {
+		return tipo;
 	}
-
-	public void setCargo(Set<TNCargo> cargo) {
-		this.cargo = cargo;
+	public void setTipo(TipoVagone tipo) {
+		this.tipo = tipo;
 	}
+	
+	
 
-	public Set<TNPasseggeri> getPasseggeri() {
-		return passeggeri;
-	}
-
-	public void setPasseggeri(Set<TNPasseggeri> passeggeri) {
-		this.passeggeri = passeggeri;
-	}
-
-	public Locomotiva getLocomotiva() {
-		return locomotiva;
-	}
-
-	public void setLocomotiva(Locomotiva locomotiva) {
-		this.locomotiva = locomotiva;
-	}
-
-	public Ristorante getRistorante() {
-		return ristorante;
-	}
-
-	public void setRistorante(Ristorante ristorante) {
-		this.ristorante = ristorante;
-	}
+	
 
 }

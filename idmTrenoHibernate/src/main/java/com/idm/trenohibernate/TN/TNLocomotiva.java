@@ -1,6 +1,7 @@
 package com.idm.trenohibernate.TN;
 
 import com.idm.trenohibernate.Locomotiva;
+import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.Vagone;
 
 public class TNLocomotiva extends Locomotiva {
@@ -14,8 +15,8 @@ public class TNLocomotiva extends Locomotiva {
 		this.vagone = vagone;
 	}
 
-	public TNLocomotiva(int posti, int lunghezza, int peso) {
-		super(posti, lunghezza, peso);
+	public TNLocomotiva(int posti, int lunghezza, int peso, TipoVagone tipo) {
+		super(posti, lunghezza, peso, tipo);
 	}
 
 }

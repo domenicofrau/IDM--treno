@@ -2,6 +2,7 @@ package test;
 
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.FR.*;
+import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
 import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
@@ -21,20 +22,25 @@ public class Main {
 		String sigla = "HppprppH";
 		sigla = sigla.toUpperCase();
 		
-		VagoneFactory f = new FRVagoneFactory();
-		TrenoBuilder b = new ConcreteBuilder();
+		TNVagoneFactory f = new TNVagoneFactory();
+		TrenoBuilder b = new ConcreteBuilder(f);
 		
-		Treno t = b.costruisciTreno(sigla);
-		
-		System.out.println(t);
+		Treno t1 = b.costruisciTreno(sigla);
+		Treno t2 = b.costruisciTreno(sigla);
+		Treno t3 = b.costruisciTreno(sigla);
+		Treno t4 = b.costruisciTreno(sigla);
+		Treno t5 = b.costruisciTreno(sigla);
 		
 
 		TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
 		
-		dao.create(t);
+		TrenoService tService = new TrenoService();
 		
-		
-//		TrenoService tService = new TrenoService();
+		tService.crea(t1);
+		tService.crea(t2);
+//		tService.crea(t3);
+//		tService.crea(t4);
+//		tService.crea(t5);
 //		tService.findAll();
 //		tService.delete(113);
 //		tService.find(113);
