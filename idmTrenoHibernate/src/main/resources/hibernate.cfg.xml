@@ -6,15 +6,22 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<!-- Configurazione del Database -->
+		<!-- Configurazione del Database POSTGRES -->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/trenohibernate</property>
 		<property name="connection.username">postgres</property>
 		<property name="connection.password">root</property>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		
+		<!-- Configurazione del Database MYSQL -->
+<!-- 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
+<!-- 		<property name="connection.url">jdbc:mysql://localhost:3306/trenohibernate</property> -->
+<!-- 		<property name="connection.username">root</property> -->
+<!-- 		<property name="connection.password">root</property> -->
+<!-- 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
 
-		<property name="show_sql">true</property>
-		<property name="format_sql">true</property>
+	<!-- <property name="show_sql">true</property> -->
+	<!-- <property name="format_sql">true</property> -->
 
 		<!-- Impostazione per la creazione automatica delle tabelle -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
