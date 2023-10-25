@@ -1,15 +1,15 @@
 package test;
 
+import com.idm.trenohibernate.service.*;
+import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.FR.*;
-import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
 import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
 import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
 import com.idm.trenohibernate.utils.HibernateUtil;
-import com.idm.trenohibernate.service.*;
 import org.hibernate.SessionFactory;
 
 public class Main {
@@ -32,7 +32,7 @@ public class Main {
 		System.out.println(t);
 
 		TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
-//
+
 		dao.create(t);
 
 //		TrenoService tService = new TrenoService();
