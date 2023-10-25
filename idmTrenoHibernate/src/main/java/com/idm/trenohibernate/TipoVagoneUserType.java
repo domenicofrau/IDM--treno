@@ -16,7 +16,7 @@ public class TipoVagoneUserType implements UserType {
 		return new int[] { Types.VARCHAR };
 	}
 
-	public Class<TipoVagone> returnedClass() {
+	public Class returnedClass() {
 		return TipoVagone.class;
 	}
 

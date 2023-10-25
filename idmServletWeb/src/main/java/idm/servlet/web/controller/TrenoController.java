@@ -8,13 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idm.trenohibernate.ConcreteBuilder;
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Vagone;
-import com.idm.trenohibernate.TrenoBuilder;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
@@ -39,14 +38,13 @@ public class TrenoController {
 	@Autowired
 	ConcreteBuilder concreteBuilder;
 
-	
 	@GetMapping("/cancella")
 	public String cancellaTreno(Model model) {
 		List<Treno> listaTreni = trenoService.findAll();
 		model.addAttribute("treni", listaTreni);
 		return "cancellaTreno";
 	}
-	
+
 	@GetMapping("/cancellato")
 	public String trenoCAncellato(@RequestParam("trainID") int id, Model model) {
 		System.out.println("ID treno da cancellare: " + id);
@@ -54,7 +52,7 @@ public class TrenoController {
 		trenoService.delete(id);
 		return "cancellato";
 	}
-	
+
 	@GetMapping("/seleziona-factory")
 	public String selezionaFactory(String factory, Model model) {
 		model.addAttribute("selectedFactory", factory);

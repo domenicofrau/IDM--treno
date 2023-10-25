@@ -3,17 +3,16 @@ package com.idm.trenohibernate.service;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.dao.*;
 
 @Component
 public class TrenoService {
-	
 
-public TrenoService() {
+	public TrenoService() {
 		super();
 	}
-
 
 	private TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
 

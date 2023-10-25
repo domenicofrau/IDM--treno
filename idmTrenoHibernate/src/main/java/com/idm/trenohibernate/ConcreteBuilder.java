@@ -11,20 +11,17 @@ import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
 public class ConcreteBuilder extends TrenoBuilder {
 
 	private VagoneFactory factory;
-	
+
 	public ConcreteBuilder(@Qualifier("FRVagoneFactory") VagoneFactory factory) {
-		this.factory = factory;						
-	}
-    
-    public ConcreteBuilder(@Qualifier("FRVagoneFactory") VagoneFactory factory) {
-		this.factory= factory;
+		this.factory = factory;
 	}
 
-	public Treno costruisciTreno(String sigla, VagoneFactory factory) throws LocomotivaException, VagoniIncompatibiliException, RistoranteException {
-        this.factory = factory;
-        return super.costruisciTreno(sigla);
-    }
-	
+	public Treno costruisciTreno(String sigla, VagoneFactory factory)
+			throws LocomotivaException, VagoniIncompatibiliException, RistoranteException {
+		this.factory = factory;
+		return super.costruisciTreno(sigla);
+	}
+
 	@Override
 	protected Locomotiva costruisciLocomotiva() {
 		return factory.costruisciLocomotiva();

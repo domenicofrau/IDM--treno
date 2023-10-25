@@ -1,7 +1,6 @@
 package com.idm.trenohibernate.dao;
 
 import java.util.List;
-
 import com.idm.trenohibernate.Treno;
 
 public class TrenoHibernateDAOImpl extends BaseDAO implements TrenoHibernateDAO {
@@ -29,6 +28,7 @@ public class TrenoHibernateDAOImpl extends BaseDAO implements TrenoHibernateDAO 
 	}
 
 	public List<Treno> findAll() {
+		// TODO Auto-generated method stub
 		return super.findAll();
 	}
 

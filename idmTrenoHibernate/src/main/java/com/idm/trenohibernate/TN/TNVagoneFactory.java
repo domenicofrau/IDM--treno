@@ -8,10 +8,6 @@ import com.idm.trenohibernate.Passeggeri;
 import com.idm.trenohibernate.Ristorante;
 import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.VagoneFactory;
-import com.idm.trenohibernate.FR.FRCargo;
-import com.idm.trenohibernate.FR.FRLocomotiva;
-import com.idm.trenohibernate.FR.FRPasseggeri;
-import com.idm.trenohibernate.FR.FRRistorante;
 
 @Component
 public class TNVagoneFactory implements VagoneFactory {
