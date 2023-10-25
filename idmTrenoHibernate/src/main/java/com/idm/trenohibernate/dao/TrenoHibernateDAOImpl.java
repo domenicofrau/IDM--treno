@@ -28,7 +28,6 @@ public class TrenoHibernateDAOImpl extends BaseDAO implements TrenoHibernateDAO 
 	}
 
 	public List<Treno> findAll() {
-		// TODO Auto-generated method stub
 		return super.findAll();
 	}
 
