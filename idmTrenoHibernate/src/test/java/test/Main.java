@@ -15,6 +15,8 @@ import org.hibernate.SessionFactory;
 public class Main {
 	public static void main(String[] args)
 			throws LocomotivaException, VagoniIncompatibiliException, RistoranteException {
+		
+		
 
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
