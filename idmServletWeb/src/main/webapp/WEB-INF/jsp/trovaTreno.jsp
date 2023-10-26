@@ -33,7 +33,7 @@
         <p>Posti: ${vagone.posti}</p>
         <p>Lunghezza: ${vagone.lunghezza}</p>
         <p>Peso: ${vagone.peso}</p>
-        <p>Tipo: ${controller.tipoVagone(vagone)}</p>
+        <p>Tipo: ${vagone.tipo}</p>
     </div>
 </c:forEach>
     </div>

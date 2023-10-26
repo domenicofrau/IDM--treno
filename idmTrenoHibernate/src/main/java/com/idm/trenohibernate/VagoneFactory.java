@@ -5,7 +5,9 @@ public interface VagoneFactory {
 	public Locomotiva costruisciLocomotiva();
 
 	public Passeggeri costruisciPasseggeri();
-
+	
+	public PasseggeriBusiness costruisciPasseggeriBusiness()
+;
 	public Ristorante costruisciRistorante();
 
 	public Cargo costruisciCargo();

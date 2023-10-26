@@ -15,8 +15,10 @@ public class TNLocomotiva extends Locomotiva {
 		this.vagone = vagone;
 	}
 
-	public TNLocomotiva(int posti, int lunghezza, int peso, TipoVagone tipo) {
-		super(posti, lunghezza, peso, tipo);
+	public TNLocomotiva(int lunghezza, int peso, int prezzo, int pesoTrainabile) {
+		super(lunghezza, peso, prezzo, pesoTrainabile);
 	}
+
+	
 
 }

@@ -15,8 +15,11 @@ public class FRPasseggeri extends Passeggeri {
 		this.vagone = vagone;
 	}
 
-	public FRPasseggeri(int posti, int lunghezza, int peso, TipoVagone tipo) {
-		super(posti, lunghezza, peso, tipo);
+	public FRPasseggeri(int lunghezza, int peso, int prezzo, int postiNormali, int postiDisabili, boolean servizi) {
+		super(lunghezza, peso, prezzo, postiNormali, postiDisabili, servizi);
+		// TODO Auto-generated constructor stub
 	}
+
+	
 
 }

@@ -105,7 +105,4 @@ public class TrenoController {
 		return "trovaTreno";
 	}
 
-	public String tipoVagone(Vagone vagone) {
-		return vagone.getTipo().toString();
-	}
 }

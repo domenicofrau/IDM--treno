@@ -1,7 +1,6 @@
 package com.idm.trenohibernate.FR;
 
 import com.idm.trenohibernate.Locomotiva;
-import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.Vagone;
 
 public class FRLocomotiva extends Locomotiva {
@@ -15,8 +14,11 @@ public class FRLocomotiva extends Locomotiva {
 		this.vagone = vagone;
 	}
 
-	public FRLocomotiva(int posti, int lunghezza, int peso, TipoVagone tipo) {
-		super(posti, lunghezza, peso, tipo);
+	public FRLocomotiva(int lunghezza, int peso, int prezzo, int pesoTrainabile) {
+		super(lunghezza, peso, prezzo, pesoTrainabile);
+		// TODO Auto-generated constructor stub
 	}
+
+	
 
 }

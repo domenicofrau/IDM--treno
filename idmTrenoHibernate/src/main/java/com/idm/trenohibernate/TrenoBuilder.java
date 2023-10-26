@@ -70,6 +70,9 @@ public abstract class TrenoBuilder {
 			case 'C':
 				t.getVagoni().add(costruisciCargo());
 				break;
+			case 'B':
+				t.getVagoni().add(costruisciPasseggeriBusiness());
+				break;
 			}
 		}
 
@@ -83,6 +86,8 @@ public abstract class TrenoBuilder {
 	protected abstract Locomotiva costruisciLocomotiva();
 
 	protected abstract Passeggeri costruisciPasseggeri();
+	
+	protected abstract PasseggeriBusiness costruisciPasseggeriBusiness();
 
 	protected abstract Ristorante costruisciRistorante();
 
