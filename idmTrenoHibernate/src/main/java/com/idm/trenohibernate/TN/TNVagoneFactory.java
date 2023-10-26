@@ -5,27 +5,38 @@ import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Cargo;
 import com.idm.trenohibernate.Locomotiva;
 import com.idm.trenohibernate.Passeggeri;
+import com.idm.trenohibernate.PasseggeriBusiness;
 import com.idm.trenohibernate.Ristorante;
+import com.idm.trenohibernate.TipoMerce;
 import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.VagoneFactory;
+import com.idm.trenohibernate.FR.FRCargo;
+import com.idm.trenohibernate.FR.FRLocomotiva;
+import com.idm.trenohibernate.FR.FRPasseggeri;
+import com.idm.trenohibernate.FR.FRPasseggeriBusiness;
+import com.idm.trenohibernate.FR.FRRistorante;
 
 @Component
 public class TNVagoneFactory implements VagoneFactory {
 
 	public Locomotiva costruisciLocomotiva() {
-		return new TNLocomotiva(50, 100, 300, TipoVagone.LOCOMOTIVA);
+		return new TNLocomotiva(10, 20, 150, 1000);
 	}
 
 	public Passeggeri costruisciPasseggeri() {
-		return new TNPasseggeri(50, 100, 300, TipoVagone.PASSEGGERI);
+		return new TNPasseggeri(18, 15, 40, 40, 4, false);
+	}
+	
+	public PasseggeriBusiness costruisciPasseggeriBusiness() {
+		return new TNPasseggeriBusiness(18, 15, 60, 24, 2, true);
 	}
 
 	public Ristorante costruisciRistorante() {
-		return new TNRistorante(50, 100, 300, TipoVagone.RISTORANTE);
+		return new TNRistorante(16, 12, 120, 10, false);
 	}
 
 	public Cargo costruisciCargo() {
-		return new TNCargo(50, 100, 300, TipoVagone.CARGO);
+		return new TNCargo(16, 8, 30, TipoMerce.MERCE_INDUSTRIALE, 17);
 	}
 
 }

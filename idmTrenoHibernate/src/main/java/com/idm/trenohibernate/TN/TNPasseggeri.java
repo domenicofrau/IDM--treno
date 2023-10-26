@@ -15,8 +15,11 @@ public class TNPasseggeri extends Passeggeri {
 		this.vagone = vagone;
 	}
 
-	public TNPasseggeri(int posti, int lunghezza, int peso, TipoVagone tipo) {
-		super(posti, lunghezza, peso, tipo);
+	public TNPasseggeri(int lunghezza, int peso, int prezzo, int postiNormali, int postiDisabili, boolean servizi) {
+		super(lunghezza, peso, prezzo, postiNormali, postiDisabili, servizi);
+		// TODO Auto-generated constructor stub
 	}
+
+	
 
 }

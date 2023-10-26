@@ -8,8 +8,5 @@ public enum TipoVagone {
 	private TipoVagone(int value) {
 		this.value = value;
 	}
-
-	public int getValue() {
-		return value;
-	}
+	
 }

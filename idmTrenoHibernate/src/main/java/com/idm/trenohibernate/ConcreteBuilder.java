@@ -46,4 +46,9 @@ public class ConcreteBuilder extends TrenoBuilder {
 	protected String impostaMarca() {
 		return factory.getClass().getSimpleName();
 	}
+
+	@Override
+	protected PasseggeriBusiness costruisciPasseggeriBusiness() {
+		return factory.costruisciPasseggeriBusiness();
+	}
 }
