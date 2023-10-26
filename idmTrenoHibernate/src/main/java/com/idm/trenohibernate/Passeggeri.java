@@ -7,6 +7,53 @@ public class Passeggeri extends Vagone {
 	private int postiTotali;
 	private boolean servizi;
 	
+	
+	
+
+	public int getPostiNormali() {
+		return postiNormali;
+	}
+
+
+	public void setPostiNormali(int postiNormali) {
+		this.postiNormali = postiNormali;
+	}
+
+
+	public int getPostiDisabili() {
+		return postiDisabili;
+	}
+
+
+	public void setPostiDisabili(int postiDisabili) {
+		this.postiDisabili = postiDisabili;
+	}
+
+
+	public int getPostiTotali() {
+		return postiTotali;
+	}
+
+
+	public void setPostiTotali(int postiTotali) {
+		this.postiTotali = postiTotali;
+	}
+
+
+	public boolean isServizi() {
+		return servizi;
+	}
+
+
+	public void setServizi(boolean servizi) {
+		this.servizi = servizi;
+	}
+
+
+	public Passeggeri() {
+		super();
+	}
+
 
 	public Passeggeri(int lunghezza, int peso, int prezzo, int postiNormali, int postiDisabili, boolean servizi) {
 		super(lunghezza, peso, prezzo);

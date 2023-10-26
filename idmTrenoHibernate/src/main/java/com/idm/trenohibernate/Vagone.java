@@ -1,10 +1,10 @@
 package com.idm.trenohibernate;
 
-public abstract class Vagone {
+public class Vagone {
 
 	private int id;
 	private int lunghezza;
-	protected int peso;
+	private int peso;
 	private int prezzo;
 	private Treno treno;
 	

@@ -9,6 +9,20 @@ public class Locomotiva extends Vagone {
 		this.pesoTrainabile = pesoTrainabile;
 	}
 
+	public Locomotiva() {
+		super();
+	}
+	
+	
+
+	public int getPesoTrainabile() {
+		return pesoTrainabile;
+	}
+
+	public void setPesoTrainabile(int pesoTrainabile) {
+		this.pesoTrainabile = pesoTrainabile;
+	}
+
 	@Override
 	public String toString() {
 		return "Locomotiva [pesoTrainabile=" + pesoTrainabile + ", " + super.toString() + "]";

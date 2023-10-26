@@ -7,6 +7,8 @@ public class PasseggeriBusiness extends Passeggeri{
 		super(lunghezza, peso, prezzo, postiNormali, postiDisabili, servizi);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public PasseggeriBusiness() {}
 
 	@Override
 	public String toString() {

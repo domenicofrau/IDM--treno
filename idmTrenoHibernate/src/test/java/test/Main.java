@@ -29,9 +29,9 @@ public class Main {
 
 		System.out.println(t);
 
-	//	TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
+		TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
 
-//		dao.create(t);
+		dao.create(t);
 
 //		TrenoService tService = new TrenoService();
 //		tService.findAll();

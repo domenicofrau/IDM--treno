@@ -12,7 +12,7 @@
 		<property name="prezzo" column="PREZZO" type="int" />
 		<property name="pesoTotale" column="PESO_TOTALE" type="int" />
 		<property name="pesoMerce" column="PESO_MERCE" type="int" />
-		<property name="tipoMerce" type="com.idm.trenohibernate.TipoVagoneUserType" column="TIPO_MERCE" />
+		<property name="tipoMerce" type="com.idm.trenohibernate.TipoMerceUserType" column="TIPO_MERCE" />
 		<many-to-one name="treno"
 			class="com.idm.trenohibernate.Treno" column="TRENO_ID" />
 	</class>

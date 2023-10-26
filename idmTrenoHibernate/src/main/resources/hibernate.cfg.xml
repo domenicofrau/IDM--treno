@@ -28,6 +28,7 @@
 
 		<!-- File di Mappatura -->
 		<mapping resource="treno.hbm.xml" />
+		<mapping resource="vagone.hbm.xml" />
 		<mapping resource="locomotiva.hbm.xml" />
 		<mapping resource="passeggeri.hbm.xml" />
 		<mapping resource="passeggeri_business.hbm.xml" />

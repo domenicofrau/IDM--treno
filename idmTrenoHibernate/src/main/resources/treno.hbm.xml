@@ -16,11 +16,7 @@
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="TRENO_ID" />
 			<index column="posizione"></index>
-			<one-to-many class="com.idm.trenohibernate.Cargo" />
-			<one-to-many class="com.idm.trenohibernate.Locomotiva" />
-			<one-to-many class="com.idm.trenohibernate.Passeggeri" />
-			<one-to-many class="com.idm.trenohibernate.PasseggeriBusiness" />
-			<one-to-many class="com.idm.trenohibernate.Ristorante" />
+			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
 	</class>
 </hibernate-mapping>
