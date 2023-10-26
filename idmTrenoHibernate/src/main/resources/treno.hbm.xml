@@ -7,7 +7,7 @@
 	<class name="com.idm.trenohibernate.Treno" table="TRENO">
 
 		<id name="id" type="int" column="ID">
-		<generator class="native" />
+			<generator class="native" />
 		</id>
 
 		<property name="marca" column="MARCA" length="20"
@@ -16,7 +16,11 @@
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="TRENO_ID" />
 			<index column="posizione"></index>
-			<one-to-many class="com.idm.trenohibernate.Vagone" />
+			<one-to-many class="com.idm.trenohibernate.Cargo" />
+			<one-to-many class="com.idm.trenohibernate.Locomotiva" />
+			<one-to-many class="com.idm.trenohibernate.Passeggeri" />
+			<one-to-many class="com.idm.trenohibernate.PasseggeriBusiness" />
+			<one-to-many class="com.idm.trenohibernate.Ristorante" />
 		</list>
 	</class>
 </hibernate-mapping>

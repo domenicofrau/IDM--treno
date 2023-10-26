@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.idm.trenohibernate.Ristorante" table="RISTORANTI">
+	
+		<id name="id" type="int" column="ID">
+			<generator class="native" />
+		</id>
+		
+		<property name="lunghezza" column="LUNGHEZZA" type="int" />
+		<property name="peso" column="PESO" type="int" />
+		<property name="prezzo" column="PREZZO" type="int" />
+		<property name="tavoli" column="TAVOLI" type="int" />
+		<property name="posti" column="POSTI" type="int" />
+		<property name="servizi" column="SERVIZI" type="boolean" />
+		<many-to-one name="treno"
+			class="com.idm.trenohibernate.Treno" column="TRENO_ID" />
+	</class>
+</hibernate-mapping>

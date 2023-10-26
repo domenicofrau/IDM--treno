@@ -1,38 +1,30 @@
 package com.idm.trenohibernate;
 
-public class Vagone {
+public abstract class Vagone {
 
 	private int id;
-	private int posti;
 	private int lunghezza;
-	private int peso;
-	private TipoVagone tipo;
-
-	public TipoVagone getTipo() {
-		return tipo;
-	}
-	public void setTipo(TipoVagone tipo) {
-		this.tipo = tipo;
-	}
-
+	protected int peso;
+	private int prezzo;
 	private Treno treno;
 	
+//	private TipoVagone tipo;
+//
+//	public TipoVagone getTipo() {
+//		return tipo;
+//	}
+//	public void setTipo(TipoVagone tipo) {
+//		this.tipo = tipo;
+//	}
+	
+
 	public Vagone() {}
-	public Vagone(int posti, int lunghezza, int peso, TipoVagone tipo) {
-		this.posti = posti;
+	
+	public Vagone(int lunghezza, int peso, int prezzo) {
 		this.lunghezza = lunghezza;
 		this.peso = peso;
-		this.tipo = tipo;
-		
+		this.prezzo = prezzo;
 	}
-
-	@Override
-	public String toString() {
-		return String.format("%-10s\t[posti=%d, lunghezza=%d, peso=%d]", getTipo(), posti, lunghezza,
-				peso);
-	}
-
-
 
 	public int getId() {
 		return this.id;
@@ -40,14 +32,6 @@ public class Vagone {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getPosti() {
-		return posti;
-	}
-
-	public void setPosti(int posti) {
-		this.posti = posti;
 	}
 
 	public int getLunghezza() {
@@ -73,5 +57,20 @@ public class Vagone {
 	public void setTreno(Treno treno) {
 		this.treno = treno;
 	}
+
+	public int getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(int prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	@Override
+	public String toString() {
+		return "lunghezza=" + lunghezza + ", peso=" + peso + ", prezzo=" + prezzo;
+	}
+	
+	
 
 }

@@ -1,7 +1,5 @@
 package test;
 
-import com.idm.trenohibernate.service.*;
-import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.FR.*;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
@@ -21,7 +19,7 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-		String sigla = "HppprppH";
+		String sigla = "HppbbprppH";
 		sigla = sigla.toUpperCase();
 
 		VagoneFactory f = new FRVagoneFactory();
@@ -31,9 +29,9 @@ public class Main {
 
 		System.out.println(t);
 
-		TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
+	//	TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
 
-		dao.create(t);
+//		dao.create(t);
 
 //		TrenoService tService = new TrenoService();
 //		tService.findAll();
