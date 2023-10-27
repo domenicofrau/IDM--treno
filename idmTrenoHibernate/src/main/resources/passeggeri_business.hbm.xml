@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="com.idm.trenohibernate.PasseggeriBusiness" table="PASSEGGERI_BUSINESS">
-	
-		<id name="id" type="int" column="ID">
-			<generator class="native" />
-		</id>
+	<joined-subclass
+		name="com.idm.trenohibernate.PasseggeriBusiness"
+		extends="com.idm.trenohibernate.Vagone" table="PASSEGGERI_BUSINESS">
+
+		<key column="ID" />
 		
 		<property name="lunghezza" column="LUNGHEZZA" type="int" />
 		<property name="peso" column="PESO" type="int" />
@@ -14,7 +14,6 @@
 		<property name="postiDisabili" column="P_DISABILI" type="int" />
 		<property name="postiTotali" column="P_TOTALI" type="int" />
 		<property name="servizi" column="SERVIZI" type="boolean" />
-		<many-to-one name="treno"
-			class="com.idm.trenohibernate.Treno" column="TRENO_ID" />
-	</class>
+
+	</joined-subclass>
 </hibernate-mapping>

@@ -4,19 +4,17 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.idm.trenohibernate.Vagone" table="VAGONE" >
+	<class name="com.idm.trenohibernate.Vagone" table="VAGONE"
+		abstract="true">
 
 		<id name="id" type="int" column="ID">
 			<generator class="native" />
 		</id>
+		
+		<discriminator column="TIPO" type="string" />
 
 		<property name="lunghezza" column="LUNGHEZZA" type="int" />
 		<property name="peso" column="PESO" type="int" />
 		<property name="prezzo" column="PREZZO" type="int" />
-
-		<many-to-one name="treno"
-			class="com.idm.trenohibernate.Treno" column="TRENO_ID" />
-
-
 	</class>
 </hibernate-mapping>
