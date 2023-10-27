@@ -6,7 +6,7 @@ import com.idm.trenohibernate.exceptions.*;
 
 public abstract class TrenoBuilder {
 
-	public Treno costruisciTreno(String sigla) throws TrenoException {
+	public Treno costruisciTreno(String sigla, String nomeTreno) throws TrenoException {
 
 		// locomotiva obbligatoria
 		if (!sigla.contains("H")) {
@@ -95,7 +95,7 @@ public abstract class TrenoBuilder {
 				prezzoTotale+=costruisciPasseggeriBusiness().getPrezzo();
 				break;
 			}
-		t.setPrezzoTotaleVagoni(prezzoTotale);
+	
 
 		}
 		int pesoDaTogliere = peso - pesoMassimo;
@@ -109,6 +109,7 @@ public abstract class TrenoBuilder {
 
 		t.setMarca(impostaMarca());
 		t.setPrezzoTotaleVagoni(prezzoTotale);
+		t.setNomeTreno(nomeTreno);
 
 		return t;
 	}

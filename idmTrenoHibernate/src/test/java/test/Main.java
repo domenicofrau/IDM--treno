@@ -8,9 +8,9 @@ import com.idm.trenohibernate.exceptions.LocomotivaException;
 import com.idm.trenohibernate.exceptions.MaxWeightException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
 import com.idm.trenohibernate.exceptions.TrenoException;
-import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
 import com.idm.trenohibernate.utils.HibernateUtil;
 import org.hibernate.SessionFactory;
+
 
 public class Main {
 	public static void main(String[] args)
@@ -21,11 +21,12 @@ public class Main {
 
 		String sigla = "HppprpppppbbbbbppbbbpppbpbpbbpbbbbbbpH";
 		sigla = sigla.toUpperCase();
+		String nomeTreno = "Pippo";
 
 		VagoneFactory f = new FRVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
 
-		Treno t = b.costruisciTreno(sigla);
+		Treno t = b.costruisciTreno(sigla,nomeTreno);
 
 		System.out.println(t);
 

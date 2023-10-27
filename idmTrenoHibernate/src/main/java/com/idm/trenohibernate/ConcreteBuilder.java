@@ -14,10 +14,10 @@ public class ConcreteBuilder extends TrenoBuilder {
 		this.factory = factory;
 	}
 
-	public Treno costruisciTreno(String sigla, VagoneFactory factory)
+	public Treno costruisciTreno(String sigla,String nome,  VagoneFactory factory)
 			throws TrenoException {
 		this.factory = factory;
-		return super.costruisciTreno(sigla);
+		return super.costruisciTreno(sigla, nome);
 	}
 
 	@Override

@@ -20,5 +20,7 @@
 		</list>
 		<property name="prezzoTotaleVagoni" column="PREZZO_TOTALE_TRENO" type="int">
 		</property>
+		<property name="nomeTreno" column="NOMETRENO" length="20"
+			type="string" />
 	</class>
 </hibernate-mapping>
