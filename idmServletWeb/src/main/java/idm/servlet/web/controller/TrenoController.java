@@ -32,6 +32,7 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
+	
 	@Autowired
 	ConcreteBuilder concreteBuilder;
 
@@ -53,7 +54,6 @@ public class TrenoController {
 	@GetMapping("/seleziona-factory")
 	public String selezionaFactory(String factory, Model model) {
 		model.addAttribute("selectedFactory", factory);
-
 		return "creaTreno";
 	}
 
@@ -100,6 +100,31 @@ public class TrenoController {
 		}
 		model.addAttribute("controller", this);
 		return "trovaTreno";
+	}
+
+	@GetMapping("/01-welcome")
+	public String welcome(Model model) {
+		return "01-welcome";
+	}
+
+	@GetMapping("/02-login")
+	public String login(Model model) {
+		return "02-login";
+	}
+
+	@GetMapping("/03-home")
+	public String home(Model model) {
+		return "03-home";
+	}
+	
+	@GetMapping("/04-profile")
+	public String profile(Model model) {
+		return "04-profile";
+	}
+	
+	@GetMapping("/05-train-detail")
+	public String trainDetail(Model model) {
+		return "05-train-detail";
 	}
 
 }

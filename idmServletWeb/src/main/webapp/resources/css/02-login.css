@@ -1,0 +1,36 @@
+.form-container {
+	margin: 20px auto;
+	text-align: left;
+	max-width: 400px;
+}
+
+.input-group {
+	margin-bottom: 20px;
+}
+
+.input-group label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.input-group input {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.input-group button {
+	background-color: #007BFF;
+	color: #FFF;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.input-group button:hover {
+	background-color: #0056b3;
+}

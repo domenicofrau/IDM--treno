@@ -30,10 +30,8 @@
         <h4>Vagoni:</h4>
 <c:forEach var="vagone" items="${treno.vagoni}">
     <div>
-        <p>Posti: ${vagone.posti}</p>
         <p>Lunghezza: ${vagone.lunghezza}</p>
         <p>Peso: ${vagone.peso}</p>
-        <p>Tipo: ${vagone.tipo}</p>
     </div>
 </c:forEach>
     </div>
