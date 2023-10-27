@@ -1,18 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
 	<joined-subclass
-		name="com.idm.trenohibernate.Cargo"
-		extends="com.idm.trenohibernate.Vagone" table="CARGO">
+		name="com.idm.trenohibernate.FR.FRCargo"
+		extends="com.idm.trenohibernate.Cargo" table="FR_CARGO">
 
 		<key column="ID" />
-		
+
 		<property name="lunghezza" column="LUNGHEZZA" type="int" />
 		<property name="peso" column="PESO" type="int" />
 		<property name="prezzo" column="PREZZO" type="int" />
 		<property name="pesoTotale" column="PESO_TOTALE" type="int" />
 		<property name="pesoMerce" column="PESO_MERCE" type="int" />
-		<property name="tipoMerce" type="com.idm.trenohibernate.TipoMerceUserType" column="TIPO_MERCE" />
+		<property name="tipoMerce"
+			type="com.idm.trenohibernate.TipoMerceUserType" column="TIPO_MERCE" />
 
 	</joined-subclass>
+
 </hibernate-mapping>

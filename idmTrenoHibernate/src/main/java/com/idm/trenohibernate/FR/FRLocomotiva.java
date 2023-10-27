@@ -19,6 +19,4 @@ public class FRLocomotiva extends Locomotiva {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 }
