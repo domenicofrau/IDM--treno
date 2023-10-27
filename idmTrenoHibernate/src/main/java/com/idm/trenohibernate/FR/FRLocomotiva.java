@@ -4,7 +4,14 @@ import com.idm.trenohibernate.Locomotiva;
 import com.idm.trenohibernate.Vagone;
 
 public class FRLocomotiva extends Locomotiva {
+	
 	private Vagone vagone;
+	
+	public FRLocomotiva() {}
+	
+	public FRLocomotiva(int lunghezza, int peso, int prezzo, int pesoTrainabile) {
+		super(lunghezza, peso, prezzo, pesoTrainabile);
+	}
 
 	public Vagone getVagone() {
 		return vagone;
@@ -14,9 +21,6 @@ public class FRLocomotiva extends Locomotiva {
 		this.vagone = vagone;
 	}
 
-	public FRLocomotiva(int lunghezza, int peso, int prezzo, int pesoTrainabile) {
-		super(lunghezza, peso, prezzo, pesoTrainabile);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 }

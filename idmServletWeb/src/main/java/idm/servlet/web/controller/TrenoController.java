@@ -35,6 +35,7 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
+	
 	@Autowired
 	ConcreteBuilder concreteBuilder;
 
@@ -56,7 +57,6 @@ public class TrenoController {
 	@GetMapping("/seleziona-factory")
 	public String selezionaFactory(String factory, Model model) {
 		model.addAttribute("selectedFactory", factory);
-
 		return "creaTreno";
 	}
 

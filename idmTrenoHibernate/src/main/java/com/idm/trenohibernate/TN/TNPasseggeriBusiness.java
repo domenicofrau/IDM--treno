@@ -7,10 +7,11 @@ public class TNPasseggeriBusiness extends PasseggeriBusiness {
 	
 	private Vagone vagone;
 
+	public TNPasseggeriBusiness() {}
+	
 	public TNPasseggeriBusiness(int lunghezza, int peso, int prezzo, int postiNormali, int postiDisabili,
 			boolean servizi) {
 		super(lunghezza, peso, prezzo, postiNormali, postiDisabili, servizi);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Vagone getVagone() {
