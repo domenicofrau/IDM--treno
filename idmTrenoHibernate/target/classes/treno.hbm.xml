@@ -18,5 +18,7 @@
 			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
+		<property name="prezzoTotaleVagoni" column="PREZZO_TOTALE_TRENO" type="int">
+		</property>
 	</class>
 </hibernate-mapping>

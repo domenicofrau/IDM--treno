@@ -3,9 +3,7 @@ package com.idm.trenohibernate;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.idm.trenohibernate.exceptions.LocomotivaException;
-import com.idm.trenohibernate.exceptions.RistoranteException;
-import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
+import com.idm.trenohibernate.exceptions.TrenoException;
 
 @Component
 public class ConcreteBuilder extends TrenoBuilder {
@@ -17,7 +15,7 @@ public class ConcreteBuilder extends TrenoBuilder {
 	}
 
 	public Treno costruisciTreno(String sigla, VagoneFactory factory)
-			throws LocomotivaException, VagoniIncompatibiliException, RistoranteException {
+			throws TrenoException {
 		this.factory = factory;
 		return super.costruisciTreno(sigla);
 	}

@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idm.trenohibernate.ConcreteBuilder;
 import com.idm.trenohibernate.Treno;
-import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
-import com.idm.trenohibernate.exceptions.LocomotivaException;
-import com.idm.trenohibernate.exceptions.RistoranteException;
-import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
+import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.service.TrenoService;
 
 import idm.servlet.bean.SiglaTreno;
@@ -66,7 +63,7 @@ public class TrenoController {
 
 		try {
 			trenoService.crea(concreteBuilder.costruisciTreno(siglaTreno.getSigla(), frFactory));
-		} catch (LocomotivaException | VagoniIncompatibiliException | RistoranteException e) {
+		} catch (TrenoException  e) {
 			e.printStackTrace();
 		}
 
@@ -80,7 +77,7 @@ public class TrenoController {
 
 		try {
 			trenoService.crea(concreteBuilder.costruisciTreno(siglaTreno.getSigla(), tnFactory));
-		} catch (LocomotivaException | VagoniIncompatibiliException | RistoranteException e) {
+		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
 

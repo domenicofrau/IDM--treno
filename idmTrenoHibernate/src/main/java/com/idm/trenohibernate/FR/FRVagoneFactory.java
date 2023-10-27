@@ -16,7 +16,7 @@ import com.idm.trenohibernate.VagoneFactory;
 public class FRVagoneFactory implements VagoneFactory {
 
 	public Locomotiva costruisciLocomotiva() {
-		return new FRLocomotiva(10, 20, 150, 1000);
+		return new FRLocomotiva(10, 20, 150, 700);
 	}
 
 	public Passeggeri costruisciPasseggeri() {

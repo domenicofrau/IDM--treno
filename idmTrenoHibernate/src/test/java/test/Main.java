@@ -5,21 +5,21 @@ import com.idm.trenohibernate.FR.*;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
 import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
+import com.idm.trenohibernate.exceptions.MaxWeightException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
+import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;
 import com.idm.trenohibernate.utils.HibernateUtil;
 import org.hibernate.SessionFactory;
 
 public class Main {
 	public static void main(String[] args)
-			throws LocomotivaException, VagoniIncompatibiliException, RistoranteException {
+			throws TrenoException{
 		
-		
-
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-		String sigla = "HppbbprppH";
+		String sigla = "HppprpppppbbbbbppbbbpppbpbpbbpbbbbbbpH";
 		sigla = sigla.toUpperCase();
 
 		VagoneFactory f = new FRVagoneFactory();

@@ -1,6 +1,6 @@
 package com.idm.trenohibernate;
 
-public class Vagone {
+public abstract class Vagone {
 
 	private int id;
 	private int lunghezza;
@@ -12,7 +12,7 @@ public class Vagone {
 //
 //	public TipoVagone getTipo() {
 //		return tipo;
-//	}
+//	}e
 //	public void setTipo(TipoVagone tipo) {
 //		this.tipo = tipo;
 //	}

@@ -20,7 +20,7 @@ import com.idm.trenohibernate.FR.FRRistorante;
 public class TNVagoneFactory implements VagoneFactory {
 
 	public Locomotiva costruisciLocomotiva() {
-		return new TNLocomotiva(10, 20, 150, 1000);
+		return new TNLocomotiva(10, 20, 150, 700);
 	}
 
 	public Passeggeri costruisciPasseggeri() {
