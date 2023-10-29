@@ -7,9 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import com.idm.trenohibernate.Treno;
 
-public abstract class BaseDAO {
+public abstract class BaseDAO<T> {
 	protected static SessionFactory factory;
 
 	static {
@@ -21,20 +20,19 @@ public abstract class BaseDAO {
 		}
 	}
 
-	protected Integer create(Bean bean) {
+	protected Integer create(T bean) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer ID = null;
 
 		try {
 			tx = session.beginTransaction();
-
 			ID = (Integer) session.save(bean);
-
 			tx.commit();
 		} catch (HibernateException e) {
-			if (tx != null)
+			if (tx != null) {
 				tx.rollback();
+			}
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -42,7 +40,7 @@ public abstract class BaseDAO {
 		return ID;
 	}
 
-	protected void update(Bean bean) {
+	protected void update(T bean) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 
@@ -51,15 +49,16 @@ public abstract class BaseDAO {
 			session.update(bean);
 			tx.commit();
 		} catch (HibernateException e) {
-			if (tx != null)
+			if (tx != null) {
 				tx.rollback();
+			}
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
 	}
 
-	protected void delete(Object obj) {
+	protected void delete(T obj) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 
@@ -76,7 +75,7 @@ public abstract class BaseDAO {
 		}
 	}
 
-	protected void deleteById(Object object) {
+	protected void deleteById(T object) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 
@@ -115,17 +114,15 @@ public abstract class BaseDAO {
 		return bean;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Treno> findAll() {
+	public List<T> findAll(Class<T> clazz) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<Treno> trenoList = null;
+		List<T> list = null;
 		try {
 			tx = session.beginTransaction();
-			String hql = "from " + com.idm.trenohibernate.Treno.class.getName();
-			Query<Treno> query = (Query<Treno>) session.createQuery(hql);
-
-			trenoList = query.list();
+			String hql = "from " + clazz.getName();
+			Query<T> query = session.createQuery(hql, clazz);
+			list = query.list();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -134,7 +131,7 @@ public abstract class BaseDAO {
 		} finally {
 			session.close();
 		}
-		return trenoList;
+		return list;
 	}
 
 }

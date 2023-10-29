@@ -9,6 +9,7 @@ public class Treno implements Bean {
 	private int id;
 	private String marca;
 	private List<Vagone> vagoni = new ArrayList<Vagone>();
+	private Utente utente;
 
 	public Treno() {
 	}
@@ -29,6 +30,22 @@ public class Treno implements Bean {
 		this.marca = marca;
 	}
 
+	public List<Vagone> getVagoni() {
+		return vagoni;
+	}
+
+	public void setVagoni(List<Vagone> vagoni) {
+		this.vagoni = vagoni;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -40,14 +57,6 @@ public class Treno implements Bean {
 		}
 
 		return sb.toString();
-	}
-
-	public List<Vagone> getVagoni() {
-		return vagoni;
-	}
-
-	public void setVagoni(List<Vagone> vagoni) {
-		this.vagoni = vagoni;
 	}
 
 }

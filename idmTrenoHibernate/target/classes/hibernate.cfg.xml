@@ -19,6 +19,7 @@
 		<!-- File di Mappatura -->
 		<mapping resource="treno.hbm.xml" />
 		<mapping resource="vagone.hbm.xml" />
+		<mapping resource="utente.hbm.xml" />
 
 		<!-- Configurazione del Database MYSQL -->
 		<!-- <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property> -->

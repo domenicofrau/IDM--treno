@@ -16,6 +16,8 @@
 			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
+		<many-to-one name="utente"
+         class="com.idm.trenohibernate.Utente" column="utente_id" cascade="save-update" />
 
 	</class>
 

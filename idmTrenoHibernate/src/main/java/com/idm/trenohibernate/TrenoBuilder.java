@@ -72,7 +72,6 @@ public abstract class TrenoBuilder {
 		}
 
 		t.setMarca(impostaMarca());
-
 		return t;
 	}
 

@@ -3,6 +3,7 @@ package com.idm.trenohibernate.service;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.dao.*;
 
 @Component
@@ -16,7 +17,12 @@ public class TrenoService {
 
 	public void crea(Treno treno) {
 		Integer id = dao.create(treno);
-		System.out.println("Creato il treno con id: " + id);
+		Utente utente = treno.getUtente(); // Ottieni l'utente associato al treno
+		if (utente != null) {
+			System.out.println("Creato il treno con id: " + id + " assegnato all'utente " + utente.getId());
+		} else {
+			System.out.println("Creato il treno con id: " + id + ", ma non è stato assegnato nessun utente.");
+		}
 	}
 
 	public void update(Treno treno) {
