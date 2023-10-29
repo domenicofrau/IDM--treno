@@ -4,17 +4,131 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.idm.trenohibernate.Vagone" table="VAGONE"
-		abstract="true">
-
-		<id name="id" type="int" column="ID">
+	<class name="com.idm.trenohibernate.Vagone" table="vagone">
+		<id name="id" column="id" type="integer">
 			<generator class="native" />
 		</id>
-		
-		<discriminator column="TIPO" type="string" />
 
-		<property name="lunghezza" column="LUNGHEZZA" type="int" />
-		<property name="peso" column="PESO" type="int" />
-		<property name="prezzo" column="PREZZO" type="int" />
+		<!-- Proprietà comuni a tutti i vagoni -->
+		<property name="lunghezza" column="lunghezza" type="int" />
+		<property name="peso" column="peso" type="int" />
+		<property name="prezzo" column="prezzo" type="int" />
+		<property name="tipo" column="tipologia"
+			type="com.idm.trenohibernate.TipoVagoneUserType" />
+
+		<!-- Relazione con Treno -->
+		<many-to-one name="treno"
+			class="com.idm.trenohibernate.Treno" column="treno_id" />
+
+		<!-- Mappatura delle sottoclassi -->
+
+		<!-- Cargo -->
+		<joined-subclass name="com.idm.trenohibernate.Cargo"
+			table="cargo">
+			<key column="vagone_id" />
+			<property name="pesoMerce" column="peso_merce" type="int" />
+			<property name="tipoMerce"
+				type="com.idm.trenohibernate.TipoMerceUserType" column="tipo_merce" />
+
+			<!-- FRCargo -->
+			<joined-subclass
+				name="com.idm.trenohibernate.FR.FRCargo" table="fr_cargo">
+				<key column="cargo_id" />
+			</joined-subclass>
+
+			<!-- TNCargo -->
+			<joined-subclass
+				name="com.idm.trenohibernate.TN.TNCargo" table="tn_cargo">
+				<key column="cargo_id" />
+			</joined-subclass>
+		</joined-subclass>
+
+		<!-- Ristorante -->
+		<joined-subclass
+			name="com.idm.trenohibernate.Ristorante" table="ristorante">
+			<key column="vagone_id" />
+			<property name="tavoli" column="tavoli" type="int" />
+			<property name="servizi" column="servizi" type="boolean" />
+
+			<!-- FRRistorante -->
+			<joined-subclass
+				name="com.idm.trenohibernate.FR.FRRistorante" table="fr_ristorante">
+				<key column="ristorante_id" />
+			</joined-subclass>
+
+			<!-- TNRistorante -->
+			<joined-subclass
+				name="com.idm.trenohibernate.TN.TNRistorante" table="tn_ristorante">
+				<key column="ristorante_id" />
+			</joined-subclass>
+		</joined-subclass>
+
+		<!-- Locomotiva -->
+		<joined-subclass
+			name="com.idm.trenohibernate.Locomotiva" table="locomotiva">
+			<key column="vagone_id" />
+			<!-- Proprietà specifiche di Locomotiva -->
+			<property name="pesoTrainabile" column="peso_trainabile"
+				type="int" />
+
+			<!-- FRLocomotiva -->
+			<joined-subclass
+				name="com.idm.trenohibernate.FR.FRLocomotiva" table="fr_locomotiva">
+				<key column="locomotiva_id" />
+			</joined-subclass>
+
+			<!-- TNLocomotiva -->
+			<joined-subclass
+				name="com.idm.trenohibernate.TN.TNLocomotiva" table="tn_locomotiva">
+				<key column="locomotiva_id" />
+			</joined-subclass>
+		</joined-subclass>
+
+		<!-- Passeggeri -->
+		<joined-subclass
+			name="com.idm.trenohibernate.Passeggeri" table="passeggeri">
+			<key column="vagone_id" />
+			<!-- Proprietà specifiche di Passeggeri -->
+			<property name="postiNormali" column="posti_normali"
+				type="int" />
+			<property name="postiDisabili" column="posti_disabili"
+				type="int" />
+			<property name="servizi" column="servizi" type="boolean" />
+
+			<!-- PasseggeriBusiness -->
+			<joined-subclass
+				name="com.idm.trenohibernate.PasseggeriBusiness"
+				table="passeggeri_business">
+				<key column="passeggeri_id" />
+
+				<!-- FRPasseggeriBusiness -->
+				<joined-subclass
+					name="com.idm.trenohibernate.FR.FRPasseggeriBusiness"
+					table="fr_passeggeri_business">
+					<key column="passeggeri_business_id" />
+				</joined-subclass>
+
+				<!-- TNPasseggeriBusiness -->
+				<joined-subclass
+					name="com.idm.trenohibernate.TN.TNPasseggeriBusiness"
+					table="tn_passeggeri_business">
+					<key column="passeggeri_business_id" />
+				</joined-subclass>
+
+			</joined-subclass>
+
+			<!-- FRPasseggeri -->
+			<joined-subclass
+				name="com.idm.trenohibernate.FR.FRPasseggeri" table="fr_passeggeri">
+				<key column="passeggeri_id" />
+			</joined-subclass>
+
+			<!-- TNPasseggeri -->
+			<joined-subclass
+				name="com.idm.trenohibernate.TN.TNPasseggeri" table="tn_passeggeri">
+				<key column="passeggeri_id" />
+			</joined-subclass>
+
+		</joined-subclass>
 	</class>
 </hibernate-mapping>

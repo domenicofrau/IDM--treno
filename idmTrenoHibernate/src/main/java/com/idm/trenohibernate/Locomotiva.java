@@ -4,8 +4,8 @@ public class Locomotiva extends Vagone {
 	
 	private int pesoTrainabile;
 
-	public Locomotiva(int lunghezza, int peso, int prezzo, int pesoTrainabile) {
-		super(lunghezza, peso, prezzo);
+	public Locomotiva(int lunghezza, int peso, int prezzo, int pesoTrainabile, TipoVagone tipo) {
+		super(lunghezza, peso, prezzo, tipo);
 		this.pesoTrainabile = pesoTrainabile;
 	}
 

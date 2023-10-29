@@ -62,21 +62,21 @@ public abstract class BaseDAO {
 		}
 	}
 
-	protected void delete(Bean bean) {
-		Session session = factory.openSession();
-		Transaction tx = null;
+	protected void delete(Object obj) {
+	    Session session = factory.openSession();
+	    Transaction tx = null;
 
-		try {
-			tx = session.beginTransaction();
-			session.delete(bean);
-			tx.commit();
-		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
+	    try {
+	        tx = session.beginTransaction();
+	        session.delete(obj);  // corrected line
+	        tx.commit();
+	    } catch (HibernateException e) {
+	        if (tx != null)
+	            tx.rollback();
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
 	}
 
 	protected void deleteById(Object object) {

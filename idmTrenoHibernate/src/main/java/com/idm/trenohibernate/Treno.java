@@ -1,16 +1,15 @@
 package com.idm.trenohibernate;
 
+import com.idm.trenohibernate.dao.Bean;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.idm.trenohibernate.dao.Bean;
-
 public class Treno implements Bean {
-
-	private List<Vagone> vagoni = new ArrayList<Vagone>();
 
 	private int id;
 	private String marca;
+	private List<Vagone> vagoni = new ArrayList<Vagone>();
 
 	public Treno() {
 	}

@@ -2,6 +2,7 @@ package test;
 
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.FR.*;
+import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
 import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
@@ -19,10 +20,10 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-		String sigla = "HppbbprppH";
+		String sigla = "HccccccccccH";
 		sigla = sigla.toUpperCase();
 
-		VagoneFactory f = new FRVagoneFactory();
+		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
 
 		Treno t = b.costruisciTreno(sigla);

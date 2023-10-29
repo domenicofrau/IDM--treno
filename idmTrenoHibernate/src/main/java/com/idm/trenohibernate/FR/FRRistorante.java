@@ -5,20 +5,13 @@ import com.idm.trenohibernate.TipoVagone;
 import com.idm.trenohibernate.Vagone;
 
 public class FRRistorante extends Ristorante {
-	
-	private Vagone vagone;
-	
-	public FRRistorante() {}
+
+	public FRRistorante() {
+		super();
+		this.setTipo(TipoVagone.RISTORANTE);
+	}
 
 	public FRRistorante(int lunghezza, int peso, int prezzo, int tavoli, boolean servizi) {
-		super(lunghezza, peso, prezzo, tavoli, servizi);
-	}
-
-	public Vagone getVagone() {
-		return vagone;
-	}
-
-	public void setVagone(Vagone vagone) {
-		this.vagone = vagone;
+		super(lunghezza, peso, prezzo, tavoli, servizi, TipoVagone.RISTORANTE);
 	}
 }
