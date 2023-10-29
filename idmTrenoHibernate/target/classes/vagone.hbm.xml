@@ -4,6 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
+
 	<class name="com.idm.trenohibernate.Vagone" table="vagone">
 		<id name="id" column="id" type="integer">
 			<generator class="native" />
@@ -130,5 +131,7 @@
 			</joined-subclass>
 
 		</joined-subclass>
+
 	</class>
+
 </hibernate-mapping>

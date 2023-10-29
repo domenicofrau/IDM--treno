@@ -1,7 +1,6 @@
 package com.idm.trenohibernate;
 
 import com.idm.trenohibernate.dao.Bean;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,4 +49,5 @@ public class Treno implements Bean {
 	public void setVagoni(List<Vagone> vagoni) {
 		this.vagoni = vagoni;
 	}
+
 }

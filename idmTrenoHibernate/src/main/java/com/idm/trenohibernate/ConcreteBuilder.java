@@ -1,7 +1,6 @@
 package com.idm.trenohibernate;
 
 import org.springframework.stereotype.Component;
-
 import com.idm.trenohibernate.exceptions.LocomotivaException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
 import com.idm.trenohibernate.exceptions.VagoniIncompatibiliException;

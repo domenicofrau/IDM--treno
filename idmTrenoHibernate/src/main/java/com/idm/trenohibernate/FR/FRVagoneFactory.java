@@ -1,7 +1,6 @@
 package com.idm.trenohibernate.FR;
 
 import org.springframework.stereotype.Component;
-
 import com.idm.trenohibernate.Cargo;
 import com.idm.trenohibernate.Locomotiva;
 import com.idm.trenohibernate.Passeggeri;
@@ -33,4 +32,5 @@ public class FRVagoneFactory implements VagoneFactory {
 	public Cargo costruisciCargo(TipoVagone tipo) {
 		return new FRCargo(16, 8, 35, TipoMerce.MERCE_ALIMENTARE, 17);
 	}
+
 }

@@ -1,7 +1,6 @@
 package test;
 
 import com.idm.trenohibernate.*;
-import com.idm.trenohibernate.FR.*;
 import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.dao.TrenoHibernateDAO;
 import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
@@ -14,8 +13,6 @@ import org.hibernate.SessionFactory;
 public class Main {
 	public static void main(String[] args)
 			throws LocomotivaException, VagoniIncompatibiliException, RistoranteException {
-		
-		
 
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");

@@ -2,7 +2,6 @@ package com.idm.trenohibernate.FR;
 
 import com.idm.trenohibernate.Passeggeri;
 import com.idm.trenohibernate.TipoVagone;
-import com.idm.trenohibernate.Vagone;
 
 public class FRPasseggeri extends Passeggeri {
 

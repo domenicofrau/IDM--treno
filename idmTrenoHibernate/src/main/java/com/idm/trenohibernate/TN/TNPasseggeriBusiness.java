@@ -2,7 +2,6 @@ package com.idm.trenohibernate.TN;
 
 import com.idm.trenohibernate.PasseggeriBusiness;
 import com.idm.trenohibernate.TipoVagone;
-import com.idm.trenohibernate.Vagone;
 
 public class TNPasseggeriBusiness extends PasseggeriBusiness {
 
@@ -15,4 +14,5 @@ public class TNPasseggeriBusiness extends PasseggeriBusiness {
 			boolean servizi) {
 		super(lunghezza, peso, prezzo, postiNormali, postiDisabili, servizi, TipoVagone.PASSEGGERI_BUSINESS);
 	}
+
 }

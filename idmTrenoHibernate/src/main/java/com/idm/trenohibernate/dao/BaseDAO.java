@@ -1,14 +1,12 @@
 package com.idm.trenohibernate.dao;
 
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-
 import com.idm.trenohibernate.Treno;
 
 public abstract class BaseDAO {
@@ -26,12 +24,12 @@ public abstract class BaseDAO {
 	protected Integer create(Bean bean) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer employeeID = null;
+		Integer ID = null;
 
 		try {
 			tx = session.beginTransaction();
 
-			employeeID = (Integer) session.save(bean);
+			ID = (Integer) session.save(bean);
 
 			tx.commit();
 		} catch (HibernateException e) {
@@ -41,10 +39,9 @@ public abstract class BaseDAO {
 		} finally {
 			session.close();
 		}
-		return employeeID;
+		return ID;
 	}
 
-	/* Method to UPDATE salary for an employee */
 	protected void update(Bean bean) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -63,20 +60,20 @@ public abstract class BaseDAO {
 	}
 
 	protected void delete(Object obj) {
-	    Session session = factory.openSession();
-	    Transaction tx = null;
+		Session session = factory.openSession();
+		Transaction tx = null;
 
-	    try {
-	        tx = session.beginTransaction();
-	        session.delete(obj);  // corrected line
-	        tx.commit();
-	    } catch (HibernateException e) {
-	        if (tx != null)
-	            tx.rollback();
-	        e.printStackTrace();
-	    } finally {
-	        session.close();
-	    }
+		try {
+			tx = session.beginTransaction();
+			session.delete(obj); // corrected line
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 
 	protected void deleteById(Object object) {
@@ -139,4 +136,5 @@ public abstract class BaseDAO {
 		}
 		return trenoList;
 	}
+
 }

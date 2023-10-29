@@ -1,9 +1,7 @@
 package com.idm.trenohibernate.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.dao.*;
 
@@ -49,4 +47,5 @@ public class TrenoService {
 		dao.deleteById(id);
 		System.out.println("Eliminato il treno con id: " + id);
 	}
+
 }

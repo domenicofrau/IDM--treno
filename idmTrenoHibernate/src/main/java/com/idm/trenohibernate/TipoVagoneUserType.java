@@ -3,7 +3,6 @@ package com.idm.trenohibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
-
 import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,4 +61,5 @@ public class TipoVagoneUserType implements UserType {
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;
 	}
+
 }

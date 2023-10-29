@@ -71,4 +71,5 @@ public class Vagone {
 	public String toString() {
 		return "lunghezza=" + lunghezza + ", peso=" + peso + ", prezzo=" + prezzo;
 	}
+
 }

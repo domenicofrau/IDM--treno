@@ -14,4 +14,5 @@ public class FRCargo extends Cargo {
 	public FRCargo(int lunghezza, int peso, int prezzo, TipoMerce tipoMerce, int pesoMerce) {
 		super(lunghezza, peso, prezzo, tipoMerce, pesoMerce, TipoVagone.CARGO);
 	}
+
 }
