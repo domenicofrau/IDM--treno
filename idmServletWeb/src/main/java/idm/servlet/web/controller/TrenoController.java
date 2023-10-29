@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idm.trenohibernate.ConcreteBuilder;
 import com.idm.trenohibernate.Treno;
-import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
@@ -35,7 +34,7 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
-	
+
 	@Autowired
 	ConcreteBuilder concreteBuilder;
 
@@ -119,12 +118,12 @@ public class TrenoController {
 	public String home(Model model) {
 		return "03-home";
 	}
-	
+
 	@GetMapping("/04-profile")
 	public String profile(Model model) {
 		return "04-profile";
 	}
-	
+
 	@GetMapping("/05-train-detail")
 	public String trainDetail(Model model) {
 		return "05-train-detail";
