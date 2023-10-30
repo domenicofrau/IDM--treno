@@ -76,7 +76,9 @@ public class Treno implements Bean {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
+		sb.append("Nome treno: ").append(nome).append("\n");
 		sb.append("Treno Marca: ").append(marca).append("\n");
+		sb.append("Utente").append(utente);
 		sb.append("Vagoni: \n");
 		
 		for (Vagone v : vagoni) {

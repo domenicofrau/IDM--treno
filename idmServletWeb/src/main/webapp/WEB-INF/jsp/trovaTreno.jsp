@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Trova Treno</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
 
@@ -23,20 +26,158 @@
 </c:if>
 
 <c:if test="${not empty treno}">
-    <div>
-        <h3>Treno trovato!</h3>
-        <p>ID: ${treno.id}</p>
-        <p>Marca: ${treno.marca}</p>
-       <img alt="immagine_treno" src="${treno.immagine}">
-        <h4>Vagoni:</h4>
-<c:forEach var="vagone" items="${treno.vagoni}">
-    <div>
-        <p>Lunghezza: ${vagone.lunghezza}</p>
-        <p>Peso: ${vagone.peso}</p>
-    </div>
-</c:forEach>
-    </div>
+
+	<h3>Ecco il treno richiesto</h3>
+
+	<div class="row">
+	
+		<div class="col"></div>
+
+		<div class="col-12 col-md-6">
+	
+			<div class="card mb-3">
+  			<img src="<c:url value='/resources/img/train.jpg'/>" class="img-fluid mb-3">
+  				<div class="card-body">
+    				<h3 class="card-title">${ treno.nome }</h3>
+    				<p class="card-text">${ treno.marca }</p>
+    				<p class="card-text">AUTORE: ${ treno.utente.nome } ${ treno.utente.cognome }</p>
+    				<p class="card-text">PREZZO TOTALE: prezzo</p>
+    				<p class="card-text">STRUTTURA DEL TRENO</p>
+  				</div>
+  				<div class="card-body">
+    				<h3 class="card-title">Dettaglio vagoni:</h3>
+    				
+    				<div class="row">
+    				
+    				<div class="col-12">
+    				<p class="card-text">LOCOMOTIVE:</p>
+    				</div>
+    				
+    				
+    				<c:forEach var="locomotiva" items="${ locomotive }">
+        	 	
+        	 			<div class="col-12 col-md-6">
+							<div class="card mb-4">
+								<div class="card-body">
+									<p>${ locomotiva.peso }</p>
+									<p>${ locomotiva.prezzo }</p>
+									<p>${ locomotiva.lunghezza }</p>
+									<p>${ locomotiva.pesoTrainabile }</p>
+								</div>
+							</div>
+						</div>
+				
+    		  		</c:forEach>
+    		  		
+    		  		<div class="col-12">
+    				<p class="card-text">VAGONI PASSEGGERI:</p>
+    				</div>
+    		  		
+    		  		
+    		  		<c:forEach var="passeggeri" items="${ passeggeri }">
+        	 	
+        	 			<div class="col-12 col-md-6">
+							<div class="card mb-4">
+								<div class="card-body">
+									<p>${ passeggeri.peso }</p>
+									<p>${ passeggeri.prezzo }</p>
+									<p>${ passeggeri.lunghezza }</p>
+									<p>${ passeggeri.postiNormali }</p>
+									<p>${ passeggeri.postiDisabili }</p>
+									<p>${ passeggeri.servizi }</p>
+								</div>
+							</div>
+						</div>
+				
+    		  		</c:forEach>
+    		  		
+    		  		<div class="col-12">
+    				<p class="card-text">VAGONI PASSEGGERI BUSINESS:</p>
+    				</div>
+    		  		
+    		  		<c:forEach var="passeggeriB" items="${ passeggeriB }">
+        	 	
+        	 			<div class="col-12 col-md-6">
+							<div class="card mb-4">
+								<div class="card-body">
+									<p>${ passeggeriB.peso }</p>
+									<p>${ passeggeriB.prezzo }</p>
+									<p>${ passeggeriB.lunghezza }</p>
+									<p>${ passeggeriB.postiNormali }</p>
+									<p>${ passeggeriB.postiDisabili }</p>
+									<p>${ passeggeriB.servizi }</p>
+								</div>
+							</div>
+						</div>
+				
+    		  		</c:forEach>
+    		  		
+    		  		<div class="col-12">
+    				<p class="card-text">VAGONI RISTORANTE:</p>
+    				</div>
+    		  		
+    		  		<c:forEach var="ristorante" items="${ ristoranti }">
+        	 	
+        	 			<div class="col-12 col-md-6">
+							<div class="card mb-4">
+								<div class="card-body">
+									<p>${ ristorante.peso }</p>
+									<p>${ ristorante.prezzo }</p>
+									<p>${ ristorante.lunghezza }</p>
+									<p>${ ristorante.tavoli }</p>
+								</div>
+							</div>
+						</div>
+				
+    		  		</c:forEach>
+    		  		
+    		  		<div class="col-12">
+    				<p class="card-text">VAGONI CARGO:</p>
+    				</div>
+    				
+    				<c:choose>
+    				
+  						<c:when test="${ empty cargo }">
+    						<p>Non ci sono vagoni cargo su questo treno</p>
+  						</c:when>
+  						
+ 						 <c:when test="${not empty cargo}">
+ 						 
+ 						 	<c:forEach var="cargo" items="${ cargo }">
+        	 	
+        	 					<div class="col-12 col-md-6">
+									<div class="card mb-4">
+										<div class="card-body">
+											<p>${ cargo.peso }</p>
+											<p>${ cargo.prezzo }</p>
+											<p>${ cargo.lunghezza }</p>
+											<p>${ cargo.tipoMerce }</p>
+										</div>
+									</div>
+								</div>
+				
+    		  				</c:forEach>
+    
+ 						 </c:when>
+ 						 
+						</c:choose>
+    				
+    				</div>
+
+  				</div>
+			</div>
+	
+		</div>
+		
+		<div class="col"></div>
+	
+	</div>
+
 </c:if>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>
 

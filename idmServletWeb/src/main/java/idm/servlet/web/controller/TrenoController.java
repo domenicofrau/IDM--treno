@@ -1,5 +1,6 @@
 package idm.servlet.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.idm.trenohibernate.Cargo;
 import com.idm.trenohibernate.ConcreteBuilder;
+import com.idm.trenohibernate.Locomotiva;
+import com.idm.trenohibernate.Passeggeri;
+import com.idm.trenohibernate.PasseggeriBusiness;
+import com.idm.trenohibernate.Ristorante;
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.service.TrenoService;
@@ -96,6 +103,42 @@ public class TrenoController {
 			Treno treno = trenoService.find(idTreno);
 			if (treno != null) {
 				model.addAttribute("treno", treno);
+				
+				List<Vagone> vagoni = treno.getVagoni();
+				
+				List<Cargo> cargoV = new ArrayList<>();
+				List<Ristorante> ristoranteV = new ArrayList<>();
+				List<Locomotiva> locomotivaV = new ArrayList<>();
+				List<Passeggeri> passeggeriV = new ArrayList<>();
+				List<Passeggeri> passeggeriVBusiness = new ArrayList<>();
+				for (Vagone vagone : treno.getVagoni()) {
+				    if (vagone instanceof Cargo) {
+				        Cargo cargo = (Cargo) vagone;
+				        cargoV.add(cargo);
+				    } 
+				    if (vagone instanceof Ristorante) {
+				        Ristorante ristorante = (Ristorante) vagone;
+				        ristoranteV.add(ristorante);
+				    }
+				    if (vagone instanceof Locomotiva) {
+				    	Locomotiva locomotiva = (Locomotiva) vagone;
+				    	locomotivaV.add(locomotiva);
+				    }
+				    if (vagone instanceof Passeggeri) {
+				    	Passeggeri passeggeri = (Passeggeri) vagone;
+				    	passeggeriV.add(passeggeri);
+				    }
+				    if (vagone instanceof PasseggeriBusiness) {
+				    	PasseggeriBusiness passeggeriBusiness = (PasseggeriBusiness) vagone;
+				    	passeggeriVBusiness.add(passeggeriBusiness);
+				    }
+				    model.addAttribute("cargo", cargoV);
+				    model.addAttribute("locomotive", locomotivaV);
+				    model.addAttribute("ristoranti", ristoranteV);
+				    model.addAttribute("passeggeri", passeggeriV);
+				    model.addAttribute("passeggeriB", passeggeriVBusiness);
+				}
+
 			} else {
 				model.addAttribute("errore", "Nessun treno trovato con l'ID specificato.");
 			}
@@ -118,6 +161,12 @@ public class TrenoController {
 
 	@GetMapping("/03-home")
 	public String home(Model model) {
+		List<Treno> treni = trenoService.findAll();
+		if (treni.size() != 0) {
+			model.addAttribute("treni", treni);
+		} else {
+			model.addAttribute("errore", "Al momento non ci sono treni da vedere... creane uno tu!");
+		}
 		return "03-home";
 	}
 
