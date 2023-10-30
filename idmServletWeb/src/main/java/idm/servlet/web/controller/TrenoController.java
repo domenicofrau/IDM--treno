@@ -18,7 +18,8 @@ import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.service.TrenoService;
 
 import idm.servlet.bean.SiglaTreno;
-
+import idm.servlet.bean.NomeTreno;
+import idm.servlet.bean.UrlImmagine;
 @Controller
 public class TrenoController {
 
@@ -52,32 +53,39 @@ public class TrenoController {
 	}
 
 	@PostMapping("/crea-treno-fr")
-	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno, Model model) {
+	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno,@ModelAttribute("urlImmagine") UrlImmagine urlImmagine, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla = siglaTreno.getSigla();
-
+		String sigla=siglaTreno.getSigla();
+		String nome= nomeTreno.getNomeTreno();
+		String immagine = urlImmagine.getUrlImmagine();
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(sigla, frFactory));
-		} catch (TrenoException e) {
+			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome, immagine, frFactory));
+		} catch (TrenoException  e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla());
+		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
+		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
 		return "viewTreno";
 	}
 
 	@PostMapping("/crea-treno-tn")
-	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno, Model model) {
+	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno,@ModelAttribute("urlImmagine") UrlImmagine urlImmagine, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla = siglaTreno.getSigla();
+		String sigla=siglaTreno.getSigla();
+		String nome= nomeTreno.getNomeTreno();
+		String url = urlImmagine.getUrlImmagine();
 
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(sigla, tnFactory));
+			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome,url, tnFactory));
 		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla());
+		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
+		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
 		return "viewTreno";
 	}
 

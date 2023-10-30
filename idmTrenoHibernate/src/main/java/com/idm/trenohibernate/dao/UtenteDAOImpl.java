@@ -19,6 +19,10 @@ public class UtenteDAOImpl extends BaseDAO<Utente> implements UtenteDAO {
     public Utente find(Integer id) {
         return (Utente) super.find(Utente.class, id);
     }
+    @Override
+    public Utente findByEmail(String email) {
+        return (Utente) super.findByEmail(Utente.class, email);
+    }
 
     @Override
     public void deleteById(Integer id) {
@@ -34,4 +38,9 @@ public class UtenteDAOImpl extends BaseDAO<Utente> implements UtenteDAO {
     public List<Utente> findAll() {
         return super.findAll(Utente.class);
     }
+
+	@Override
+	public Utente findByName(String name) {
+		return (Utente) super.findByName(Utente.class, name);
+	}
 }

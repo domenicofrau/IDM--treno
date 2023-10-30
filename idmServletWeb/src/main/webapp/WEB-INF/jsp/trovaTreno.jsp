@@ -27,6 +27,7 @@
         <h3>Treno trovato!</h3>
         <p>ID: ${treno.id}</p>
         <p>Marca: ${treno.marca}</p>
+       <img alt="immagine_treno" src="${treno.immagine}">
         <h4>Vagoni:</h4>
 <c:forEach var="vagone" items="${treno.vagoni}">
     <div>
@@ -36,7 +37,6 @@
 </c:forEach>
     </div>
 </c:if>
-
 </body>
 </html>
 

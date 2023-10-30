@@ -14,7 +14,7 @@
 		<property name="cognome" column="cognome" type="string" />
 		<property name="email" column="email" type="string" />
 		<property name="password" column="password" type="string" />
-
+		<property name="bitTrain" column="bitTrain" type="int" />
 		<!-- Relazione con Treno -->
 		<!-- <many-to-one name="treno" -->
 		<!-- class="com.idm.trenohibernate.Treno" column="treno_id" -->

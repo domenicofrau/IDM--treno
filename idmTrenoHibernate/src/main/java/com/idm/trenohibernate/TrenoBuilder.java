@@ -2,10 +2,10 @@ package com.idm.trenohibernate;
 
 import java.util.function.IntPredicate;
 import com.idm.trenohibernate.exceptions.*;
-
+import com.idm.trenohibernate.service.TrenoService;
 public abstract class TrenoBuilder {
-
-	public Treno costruisciTreno(String sigla) throws TrenoException {
+	TrenoService tService = new TrenoService();
+	public Treno costruisciTreno(String sigla, String nome, String immagine) throws TrenoException {
 
 		if (!sigla.contains("H")) {
 
@@ -32,6 +32,11 @@ public abstract class TrenoBuilder {
 			throw new RistoranteException("Se è presente un vagone passeggeri, è obbligatorio un vagone ristorante",
 					sigla);
 		}
+		if (sigla.contains("B") && !sigla.contains("R")) {
+			throw new RistoranteException("Se è presente un vagone passeggeri business, è obbligatorio un vagone ristorante",
+					sigla);
+		}
+
 
 		if (sigla.contains("C") && sigla.contains("P")) {
 			throw new VagoniIncompatibiliException(
@@ -43,6 +48,9 @@ public abstract class TrenoBuilder {
 			throw new VagoniIncompatibiliException(
 					"I vagoni sono incompatibili Presenza di Cargo e Ristorante insieme.", sigla, sigla.indexOf('R'),
 					sigla.indexOf('C'));
+		}
+		if(tService.findByName(nome)!=null) {
+			throw new TrenoNameException("Nome del treno già esistente", nome);
 		}
 
 		Treno t = new Treno();
@@ -96,11 +104,14 @@ public abstract class TrenoBuilder {
 		String consiglio = generaConsiglio(countPasseggeri, countVagoniBusiness, countRistorante, countCargo,
 				pesoDaTogliere);
 		if (peso > pesoMassimo) {
+			
 			throw new MaxWeightException("Peso massimo raggiunto, elimina qualche vagone. Il peso massimo è "
 					+ pesoMassimo + ", " + "il tuo peso corrente è " + peso + "." + consiglio, sigla);
 		}
 
 		t.setMarca(impostaMarca());
+		t.setNome(nome);
+		t.setImmagine(immagine);
 
 		return t;
 	}

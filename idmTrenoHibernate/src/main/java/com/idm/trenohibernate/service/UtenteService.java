@@ -28,6 +28,22 @@ public class UtenteService {
 		}
 		return u;
 	}
+	public Utente findByEmail(String email) {
+		Utente u = dao.findByEmail(email);
+		if (u != null) {
+			System.out.println("Trovato l'utente con email: " + email);
+			System.out.println(u);
+		}
+		return u;
+	}
+	public Utente findByName(String name) {
+		Utente u = dao.findByName(name);
+		if (u != null) {
+			System.out.println("Trovato l'utente con name: " + name);
+			System.out.println(u);
+		}
+		return u;
+	}
 
 	public List<Utente> findAll() {
 		List<Utente> lista = dao.findAll();
