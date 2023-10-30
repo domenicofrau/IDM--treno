@@ -31,4 +31,11 @@ public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibern
 		return super.findAll(Treno.class);
 	}
 
+	@Override
+	public Treno findByNome(String nome) {
+		return  (Treno) super.findByName(Treno.class,nome);
+	}
+
+
+
 }

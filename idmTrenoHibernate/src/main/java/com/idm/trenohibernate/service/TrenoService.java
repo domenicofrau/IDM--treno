@@ -27,7 +27,7 @@ public class TrenoService {
 
 	public void update(Treno treno) {
 		dao.update(treno);
-		System.out.println("modificato l'impiegato con id: " + treno.getId());
+		System.out.println("modificato il treno con id: " + treno.getId());
 	}
 
 	public Treno find(Integer id) {
@@ -39,6 +39,15 @@ public class TrenoService {
 		return t;
 	}
 
+	public Treno findByName(String nome) {
+		Treno t = dao.findByNome(nome);
+		if (t != null) {
+			System.out.println("Trovato il treno con nome: " + nome);
+			System.out.println(t);
+		}
+		return t;
+	}
+	
 	public List<Treno> findAll() {
 		List<Treno> lista = dao.findAll();
 		System.out.println("Ho trovato i seguenti treni:");

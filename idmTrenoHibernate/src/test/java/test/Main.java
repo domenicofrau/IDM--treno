@@ -3,6 +3,7 @@ package test;
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.exceptions.TrenoException;
+import com.idm.trenohibernate.exceptions.UtenteException;
 import com.idm.trenohibernate.utils.HibernateUtil;
 import com.idm.trenohibernate.service.*;
 import org.hibernate.SessionFactory;
@@ -10,40 +11,40 @@ import org.hibernate.SessionFactory;
 
 public class Main {
 	public static void main(String[] args)
-			throws TrenoException{
+			throws TrenoException, UtenteException{
 		
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-		String sigla = "HppprpppppbbbbbppbbbpppbpbpbbppbpbpbpbpbpbpbpbpbbpbppbpbpbpH";
+		String sigla = "HbbrbbbppbpbpbpbpbpbppbpbpbpbpbpbpbpbpbpbH";
 		sigla = sigla.toUpperCase();
-		String nomeTreno = "Pippo";
+		String nomeTreno = "dsaodska";
 
 		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
-		Treno t = b.costruisciTreno(sigla);
-
 		UtenteBuilder u = new UtenteBuilder();
-		Utente utente = u.creaUtente("Mario", "Rossi", "mario.rossi@email.com", "password123");
-
-		t.setUtente(utente);
-
-//		UtenteService us = new UtenteService();
-//		Utente utenteTrovato = us.find(1561);
-//		t.setUtente(utenteTrovato);
-
+		UtenteService uService = new UtenteService();
 		TrenoService tService = new TrenoService();
-		tService.crea(t);
-//		tService.findAll();
-//		tService.delete(113);
-//		tService.find(214);
+//		Utente utenteTrovato1 = uService.findByEmail("sonogianni@daje.com");
+		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
+		String immagine="https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
+//		Treno t =tService.find(2);
+		
+		
+		Treno t = b.costruisciTreno(sigla, nomeTreno, immagine);
+//		Utente utente = u.creaUtente("Compratore", "Collezionista", "ilCollezionista@nonlascionulla.com", "password123");	
+		
 
-//		UtenteService uService = new UtenteService();
 //		uService.crea(utente);
-//		uService.findAll();
-//		uService.delete();
-//		uService.find();
-
+//		t.setUtente(t, utenteTrovato);
+		
+//		Treno t =tService.findByName("B");
+//		t.vendiTreno(t, utenteTrovato1, utenteTrovato2);
+		t.setUtente(t, utenteTrovato2);
+		tService.crea(t);
+//		tService.update(t);
+//		uService.update(utenteTrovato1);
+		uService.update(utenteTrovato2);
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
 		}

@@ -12,6 +12,10 @@ public interface UtenteDAO {
 	public void deleteById(Integer id);
 
 	public Utente find(Integer id);
+	
+	public Utente findByEmail(String email);
+	
+	public Utente findByName(String name);
 
 	public List<Utente> findAll();
 

@@ -113,7 +113,48 @@ public abstract class BaseDAO<T> {
 		}
 		return bean;
 	}
+	protected Bean findByEmail(Class<?> clazz, String email) {
+	    Session session = factory.openSession();
+	    Transaction tx = null;
+	    Bean bean = null;
 
+	    try {
+	        tx = session.beginTransaction();
+	        String hql = "from " + clazz.getName() + " where email = :email";
+	        Query<?> query = session.createQuery(hql);
+	        query.setParameter("email", email);
+	        bean = (Bean) query.uniqueResult();
+	        tx.commit();
+	    } catch (HibernateException e) {
+	        if (tx != null)
+	            tx.rollback();
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
+	    return bean;
+	}
+	protected Bean findByName(Class<?> clazz, String nome) {
+	    Session session = factory.openSession();
+	    Transaction tx = null;
+	    Bean bean = null;
+
+	    try {
+	        tx = session.beginTransaction();
+	        String hql = "from " + clazz.getName() + " where nome = :nome";
+	        Query<?> query = session.createQuery(hql);
+	        query.setParameter("nome", nome);
+	        bean = (Bean) query.uniqueResult();
+	        tx.commit();
+	    } catch (HibernateException e) {
+	        if (tx != null)
+	            tx.rollback();
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
+	    return bean;
+	}
 	public List<T> findAll(Class<T> clazz) {
 		Session session = factory.openSession();
 		Transaction tx = null;

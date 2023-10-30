@@ -12,6 +12,7 @@ public class Utente implements Bean {
 	private String cognome;
 	private String email;
 	private String password;
+	private int bitTrain;
 	private Set<Treno> treni = new HashSet<Treno>();
 
 	public Utente(int id, String nome, String cognome, String email, String password) {
@@ -78,6 +79,14 @@ public class Utente implements Bean {
 	public String toString() {
 		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password="
 				+ password + ", treno=" + treni + "]";
+	}
+
+	public int getbitTrain() {
+		return bitTrain;
+	}
+
+	public void setbitTrain(int bitTrain) {
+		this.bitTrain = bitTrain;
 	}
 
 }
