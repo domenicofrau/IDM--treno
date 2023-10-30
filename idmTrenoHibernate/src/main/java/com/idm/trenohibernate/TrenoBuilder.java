@@ -5,7 +5,7 @@ import com.idm.trenohibernate.exceptions.*;
 
 public abstract class TrenoBuilder {
 
-	public Treno costruisciTreno(String sigla, String nomeTreno) throws TrenoException {
+	public Treno costruisciTreno(String sigla) throws TrenoException {
 
 		if (!sigla.contains("H")) {
 
@@ -103,9 +103,7 @@ public abstract class TrenoBuilder {
 		}
 
 		t.setMarca(impostaMarca());
-		t.setPrezzoTotaleVagoni(prezzoTotale);
-		t.setNomeTreno(nomeTreno);
-		t.setPesoTotale(peso);
+
 
 		return t;
 	}

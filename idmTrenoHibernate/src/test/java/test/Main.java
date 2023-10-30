@@ -2,11 +2,9 @@ package test;
 
 import com.idm.trenohibernate.*;
 import com.idm.trenohibernate.TN.TNVagoneFactory;
-import com.idm.trenohibernate.exceptions.LocomotivaException;
-import com.idm.trenohibernate.exceptions.MaxWeightException;
-import com.idm.trenohibernate.exceptions.RistoranteException;
 import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.utils.HibernateUtil;
+import com.idm.trenohibernate.service.*;
 import org.hibernate.SessionFactory;
 
 
@@ -17,7 +15,7 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-		String sigla = "HppprpppppbbbbbppbbbpppbpbpbbpbbbbbbpH";
+		String sigla = "HppprpppppbbbbbppbbbpppbpbpbbppbpbpbpbpbpbpbpbpbbpbppbpbpbpH";
 		sigla = sigla.toUpperCase();
 		String nomeTreno = "Pippo";
 
