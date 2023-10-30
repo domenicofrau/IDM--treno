@@ -24,6 +24,10 @@ Scegli la factory del treno:
                 <td><input type="text" name="sigla"></td>
             </tr>
             <tr>
+                <td>Nome Treno:</td>
+                <td><input type="text" name="nomeTreno"></td>
+            </tr>
+            <tr>
                 <td><input type="submit" value="Invia"></td>
             </tr>
         </table>
@@ -37,6 +41,10 @@ Scegli la factory del treno:
             <tr>
                 <td>Sigla:</td>
                 <td><input type="text" name="sigla"></td>
+            </tr>
+            <tr>
+                <td>Nome Treno:</td>
+                <td><input type="text" name="nomeTreno"></td>
             </tr>
             <tr>
                 <td><input type="submit" value="Invia"></td>

@@ -18,6 +18,7 @@ import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.service.TrenoService;
 
 import idm.servlet.bean.SiglaTreno;
+import idm.servlet.bean.NomeTreno;
 
 @Controller
 public class TrenoController {
@@ -58,30 +59,34 @@ public class TrenoController {
 	}
 
 	@PostMapping("/crea-treno-fr")
-	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno, Model model) {
+	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-
+		String sigla=siglaTreno.getSigla();
+		String nome= nomeTreno.getNomeTreno();
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(siglaTreno.getSigla(), frFactory));
+			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome, frFactory));
 		} catch (TrenoException  e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla());
+		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		return "viewTreno";
 	}
 
 	@PostMapping("/crea-treno-tn")
-	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno, Model model) {
+	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-
+		String sigla=siglaTreno.getSigla();
+		String nome= nomeTreno.getNomeTreno();
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(siglaTreno.getSigla(), tnFactory));
+			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome, tnFactory));
 		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla());
+		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		return "viewTreno";
 	}
 

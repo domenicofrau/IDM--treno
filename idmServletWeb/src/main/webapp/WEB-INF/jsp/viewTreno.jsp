@@ -10,6 +10,7 @@
 Ecco il tuo treno! 
 
  ${siglaTreno}
+  ${nomeTreno}
 
 </body>
 </html>

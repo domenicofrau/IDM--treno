@@ -13,6 +13,7 @@ public class Treno implements Bean {
 	private String marca;
 	private int prezzoTotaleVagoni;
 	private String nomeTreno;
+	private int pesoTotale;
 	public Treno() {
 	}
 
@@ -68,6 +69,14 @@ public class Treno implements Bean {
 
 	public void setNomeTreno(String nomeTreno) {
 		this.nomeTreno = nomeTreno;
+	}
+
+	public int getPesoTotale() {
+		return pesoTotale;
+	}
+
+	public void setPesoTotale(int pesoTotale) {
+		this.pesoTotale = pesoTotale;
 	}
 
 

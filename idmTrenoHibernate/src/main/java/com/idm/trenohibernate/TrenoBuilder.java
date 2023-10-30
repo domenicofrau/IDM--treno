@@ -13,6 +13,7 @@ public abstract class TrenoBuilder {
 
 			throw new LocomotivaException("La locomotiva è obbligatoria", sigla);
 		}
+		
 		// locomotiva in testa
 		if (sigla.charAt(0) != 'H')
 			throw new LocomotivaException("Locomotiva non in testa", sigla);
@@ -110,6 +111,7 @@ public abstract class TrenoBuilder {
 		t.setMarca(impostaMarca());
 		t.setPrezzoTotaleVagoni(prezzoTotale);
 		t.setNomeTreno(nomeTreno);
+		t.setPesoTotale(peso);
 
 		return t;
 	}

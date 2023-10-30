@@ -12,15 +12,17 @@
 
 		<property name="marca" column="MARCA" length="20"
 			type="string" />
-			
+
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="TRENO_ID" />
 			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
-		<property name="prezzoTotaleVagoni" column="PREZZO_TOTALE_TRENO" type="int">
+		<property name="prezzoTotaleVagoni"
+			column="PREZZO_TOTALE_TRENO" type="int">
 		</property>
-		<property name="nomeTreno" column="NOMETRENO" length="20"
+		<property name="nomeTreno" column="NOME_TRENO" length="20"
 			type="string" />
+		<property name="pesoTotale" column="PESO_TOTALE" type="int"></property>
 	</class>
 </hibernate-mapping>
