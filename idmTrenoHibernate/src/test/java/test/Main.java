@@ -27,7 +27,10 @@ public class Main {
 		Utente utente = u.creaUtente("Mario", "Rossi", "mario.rossi@email.com", "password123");
 
 		t.setUtente(utente);
-		utente.setTreno(t);
+
+//		UtenteService us = new UtenteService();
+//		Utente utenteTrovato = us.find(1561);
+//		t.setUtente(utenteTrovato);
 
 		TrenoService tService = new TrenoService();
 		tService.crea(t);

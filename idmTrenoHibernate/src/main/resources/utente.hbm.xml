@@ -16,9 +16,14 @@
 		<property name="password" column="password" type="string" />
 
 		<!-- Relazione con Treno -->
-		<many-to-one name="treno"
-			class="com.idm.trenohibernate.Treno" column="treno_id"
-			cascade="save-update" />
+		<!-- <many-to-one name="treno" -->
+		<!-- class="com.idm.trenohibernate.Treno" column="treno_id" -->
+		<!-- cascade="save-update" /> -->
+
+		<!-- <set name="treni" cascade="all" lazy="false"> -->
+		<!-- <key column="treno_id" /> -->
+		<!-- <one-to-many class="com.idm.trenohibernate.Vagone" /> -->
+		<!-- </set> -->
 
 	</class>
 

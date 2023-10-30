@@ -1,13 +1,18 @@
 package com.idm.trenohibernate;
 
-public class Utente {
+import java.util.HashSet;
+import java.util.Set;
+
+import com.idm.trenohibernate.dao.Bean;
+
+public class Utente implements Bean {
 
 	private int id;
 	private String nome;
 	private String cognome;
 	private String email;
 	private String password;
-	private Treno treno;
+	private Set<Treno> treni = new HashSet<Treno>();
 
 	public Utente(int id, String nome, String cognome, String email, String password) {
 		super();
@@ -61,18 +66,18 @@ public class Utente {
 		this.password = password;
 	}
 
-	public Treno getTreno() {
-		return treno;
+	public Set<Treno> getTreni() {
+		return treni;
 	}
 
-	public void setTreno(Treno treno) {
-		this.treno = treno;
+	public void setTreni(Set<Treno> treni) {
+		this.treni = treni;
 	}
 
 	@Override
 	public String toString() {
 		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password="
-				+ password + ", treno=" + treno + "]";
+				+ password + ", treno=" + treni + "]";
 	}
 
 }
