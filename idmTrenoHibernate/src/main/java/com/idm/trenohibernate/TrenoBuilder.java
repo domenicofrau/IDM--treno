@@ -11,7 +11,7 @@ public abstract class TrenoBuilder {
 
 			throw new LocomotivaException("La locomotiva è obbligatoria", sigla);
 		}
-		
+
 		if (sigla.charAt(0) != 'H')
 			throw new LocomotivaException("Locomotiva non in testa", sigla);
 
@@ -52,7 +52,7 @@ public abstract class TrenoBuilder {
 		int countVagoniBusiness = 0;
 		int countRistorante = 0;
 		int countCargo = 0;
-		int prezzoTotale=0;
+		int prezzoTotale = 0;
 		for (int i = 0; i < sigla.length(); i++) {
 
 			char c = sigla.charAt(i);
@@ -63,7 +63,7 @@ public abstract class TrenoBuilder {
 				t.getVagoni().add(costruisciLocomotiva());
 				pesoMassimo = costruisciLocomotiva().getPesoTrainabile();
 				peso += 20;
-					prezzoTotale+=costruisciLocomotiva().getPrezzo();
+				prezzoTotale += costruisciLocomotiva().getPrezzo();
 				break;
 			case 'P':
 				t.getVagoni().add(costruisciPasseggeri());
@@ -74,23 +74,22 @@ public abstract class TrenoBuilder {
 				t.getVagoni().add(costruisciRistorante());
 				peso += 12;
 				countRistorante++;
-				prezzoTotale+=costruisciRistorante().getPrezzo();
+				prezzoTotale += costruisciRistorante().getPrezzo();
 				break;
 			case 'C':
 				t.getVagoni().add(costruisciCargo());
 				int pesoMerce = costruisciCargo().getPesoTotale();
 				peso += pesoMerce;
 				countCargo++;
-				prezzoTotale+=costruisciCargo().getPrezzo();
+				prezzoTotale += costruisciCargo().getPrezzo();
 				break;
 			case 'B':
 				t.getVagoni().add(costruisciPasseggeriBusiness());
 				peso += 15;
 				countVagoniBusiness++;
-				prezzoTotale+=costruisciPasseggeriBusiness().getPrezzo();
+				prezzoTotale += costruisciPasseggeriBusiness().getPrezzo();
 				break;
 			}
-	
 
 		}
 		int pesoDaTogliere = peso - pesoMassimo;
@@ -98,12 +97,10 @@ public abstract class TrenoBuilder {
 				pesoDaTogliere);
 		if (peso > pesoMassimo) {
 			throw new MaxWeightException("Peso massimo raggiunto, elimina qualche vagone. Il peso massimo è "
-					+ pesoMassimo + ", " + "il tuo peso corrente è " + peso
-					+ "." + consiglio, sigla);
+					+ pesoMassimo + ", " + "il tuo peso corrente è " + peso + "." + consiglio, sigla);
 		}
 
 		t.setMarca(impostaMarca());
-
 
 		return t;
 	}
@@ -112,15 +109,15 @@ public abstract class TrenoBuilder {
 			int pesoDaTogliere) {
 		int contaVagoniPasseggeri = 0;
 		int contaVagoniBusiness = 0;
-		int contoP= countPasseggeri;
-		int contoPB= countVagoniBusiness;
-		
+		int contoP = countPasseggeri;
+		int contoPB = countVagoniBusiness;
+
 		int contaCargo = countCargo;
-		int pesoDaLevare= pesoDaTogliere;
+		int pesoDaLevare = pesoDaTogliere;
 		String message = null;
 		if (countCargo > 0) {
-			contaCargo=pesoDaLevare/(countCargo*17);
-			
+			contaCargo = pesoDaLevare / (countCargo * 17);
+
 			message = "prova a levare " + contaCargo + " vagoni cargo ";
 		} else
 			while (pesoDaLevare > 0) {
@@ -128,26 +125,25 @@ public abstract class TrenoBuilder {
 					pesoDaLevare -= 18;
 					contaVagoniPasseggeri++;
 					contoP--;
-					}
-				
-				else if (contoPB > contoP) {
-						pesoDaLevare -= 18;
-						contaVagoniBusiness++;
-						contoPB--;
-					}else {
-						pesoDaLevare -= 18;
-						contaVagoniPasseggeri++;
-						contoP--;
-						pesoDaLevare -= 18;
-						contaVagoniBusiness++;
-						contoPB--;
-					}
-				message = " Prova a levare " + contaVagoniPasseggeri + " vagoni passeggeri " + "e " + contaVagoniBusiness
-						+ " Vagoni business";
 				}
-		return message;
+
+				else if (contoPB > contoP) {
+					pesoDaLevare -= 18;
+					contaVagoniBusiness++;
+					contoPB--;
+				} else {
+					pesoDaLevare -= 18;
+					contaVagoniPasseggeri++;
+					contoP--;
+					pesoDaLevare -= 18;
+					contaVagoniBusiness++;
+					contoPB--;
+				}
+				message = " Prova a levare " + contaVagoniPasseggeri + " vagoni passeggeri " + "e "
+						+ contaVagoniBusiness + " Vagoni business";
 			}
-		
+		return message;
+	}
 
 	protected abstract String impostaMarca();
 

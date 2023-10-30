@@ -21,43 +21,36 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="01-welcome">
-        <img src="logo.png" alt="" height="30" style="vertical-align: middle; margin: 0 10px;"> TrainBook
-    </a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="01-welcome"> <img src="logo.png"
+			alt="" height="30" style="vertical-align: middle; margin: 0 10px;">
+			TrainBook
+		</a>
 
-    <!-- Menu al centro -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="01-welcome">Welcome</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="02-login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="03-home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="04-profile">Profilo</a>
-            </li>
-                        <li class="nav-item">
-                <a class="nav-link" href="seleziona-factory">Crea Treno</a>
-            </li>
-                        <li class="nav-item">
-                <a class="nav-link" href="cancella">Cancella Treno</a>
-            </li>
-                        <li class="nav-item">
-                <a class="nav-link" href="cerca-treno">Cerca Treno</a>
-        </ul>
-    </div>
+		<!-- Menu al centro -->
+		<div class="collapse navbar-collapse justify-content-center"
+			id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link"
+					href="01-welcome">Welcome</a></li>
+				<li class="nav-item"><a class="nav-link" href="02-login">Login</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="03-home">Home</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="06-crea-treno">Crea
+						Treno</a></li>
+				<li class="nav-item"><a class="nav-link" href="cancella">Cancella
+						Treno</a></li>
+				<li class="nav-item"><a class="nav-link" href="cerca-treno">Cerca
+						Treno</a>
+			</ul>
+		</div>
 
-    <!-- Link a destra -->
-    <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link" href="#">PROFILE</a>
-        <a class="nav-item nav-link" href="#">LOGOUT</a>
-    </div>
-</nav>
+		<!-- Link a destra -->
+		<div class="navbar-nav ml-auto">
+			<a class="nav-item nav-link" href="04-profile">PROFILO</a>
+		</div>
+	</nav>
 
 	<div class="container mt-5">
 		<div class="row justify-content-center">
