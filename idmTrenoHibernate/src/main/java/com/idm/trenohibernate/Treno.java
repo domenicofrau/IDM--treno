@@ -1,19 +1,16 @@
 package com.idm.trenohibernate;
 
+import com.idm.trenohibernate.dao.Bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.idm.trenohibernate.dao.Bean;
-
 public class Treno implements Bean {
-
-	private List<Vagone> vagoni = new ArrayList<Vagone>();
 
 	private int id;
 	private String marca;
-	private int prezzoTotaleVagoni;
-	private String nomeTreno;
-	private int pesoTotale;
+	private List<Vagone> vagoni = new ArrayList<Vagone>();
+	private Utente utente;
+
 	public Treno() {
 	}
 
@@ -33,6 +30,22 @@ public class Treno implements Bean {
 		this.marca = marca;
 	}
 
+	public List<Vagone> getVagoni() {
+		return vagoni;
+	}
+
+	public void setVagoni(List<Vagone> vagoni) {
+		this.vagoni = vagoni;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -46,39 +59,5 @@ public class Treno implements Bean {
 		sb.append("Prezzo totale treno: "+	prezzoTotaleVagoni);
 		return sb.toString();
 	}
-
-	public List<Vagone> getVagoni() {
-		return vagoni;
-	}
-
-	public void setVagoni(List<Vagone> vagoni) {
-		this.vagoni = vagoni;
-	}
-
-	public int getPrezzoTotaleVagoni() {
-		return prezzoTotaleVagoni;
-	}
-
-	public void setPrezzoTotaleVagoni(int prezzoTotaleVagoni) {
-		this.prezzoTotaleVagoni = prezzoTotaleVagoni;
-	}
-
-	public String getNomeTreno() {
-		return nomeTreno;
-	}
-
-	public void setNomeTreno(String nomeTreno) {
-		this.nomeTreno = nomeTreno;
-	}
-
-	public int getPesoTotale() {
-		return pesoTotale;
-	}
-
-	public void setPesoTotale(int pesoTotale) {
-		this.pesoTotale = pesoTotale;
-	}
-
-
 
 }

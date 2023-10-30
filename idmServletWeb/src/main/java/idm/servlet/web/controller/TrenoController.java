@@ -33,7 +33,7 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
-	
+
 	@Autowired
 	ConcreteBuilder concreteBuilder;
 
@@ -121,12 +121,12 @@ public class TrenoController {
 	public String home(Model model) {
 		return "03-home";
 	}
-	
+
 	@GetMapping("/04-profile")
 	public String profile(Model model) {
 		return "04-profile";
 	}
-	
+
 	@GetMapping("/05-train-detail")
 	public String trainDetail(Model model) {
 		return "05-train-detail";

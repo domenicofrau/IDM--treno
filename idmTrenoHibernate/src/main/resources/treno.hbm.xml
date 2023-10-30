@@ -4,25 +4,21 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.idm.trenohibernate.Treno" table="TRENO">
 
-		<id name="id" type="int" column="ID">
+	<class name="com.idm.trenohibernate.Treno" table="treno">
+
+		<id name="id" column="id" type="integer">
 			<generator class="native" />
 		</id>
-
-		<property name="marca" column="MARCA" length="20"
-			type="string" />
-
+		<property name="marca" column="marca" type="string" />
 		<list name="vagoni" cascade="all" lazy="false">
-			<key column="TRENO_ID" />
+			<key column="treno_id" />
 			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
-		<property name="prezzoTotaleVagoni"
-			column="PREZZO_TOTALE_TRENO" type="int">
-		</property>
-		<property name="nomeTreno" column="NOME_TRENO" length="20"
-			type="string" />
-		<property name="pesoTotale" column="PESO_TOTALE" type="int"></property>
+		<many-to-one name="utente"
+         class="com.idm.trenohibernate.Utente" column="utente_id" cascade="save-update" />
+
 	</class>
+
 </hibernate-mapping>

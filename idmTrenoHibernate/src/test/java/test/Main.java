@@ -1,9 +1,7 @@
 package test;
 
 import com.idm.trenohibernate.*;
-import com.idm.trenohibernate.FR.*;
-import com.idm.trenohibernate.dao.TrenoHibernateDAO;
-import com.idm.trenohibernate.dao.TrenoHibernateDAOImpl;
+import com.idm.trenohibernate.TN.TNVagoneFactory;
 import com.idm.trenohibernate.exceptions.LocomotivaException;
 import com.idm.trenohibernate.exceptions.MaxWeightException;
 import com.idm.trenohibernate.exceptions.RistoranteException;
@@ -23,21 +21,30 @@ public class Main {
 		sigla = sigla.toUpperCase();
 		String nomeTreno = "Pippo";
 
-		VagoneFactory f = new FRVagoneFactory();
+		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
+		Treno t = b.costruisciTreno(sigla);
 
-		Treno t = b.costruisciTreno(sigla,nomeTreno);
+		UtenteBuilder u = new UtenteBuilder();
+		Utente utente = u.creaUtente("Mario", "Rossi", "mario.rossi@email.com", "password123");
 
-		System.out.println(t);
+		t.setUtente(utente);
 
-		TrenoHibernateDAO dao = new TrenoHibernateDAOImpl();
+//		UtenteService us = new UtenteService();
+//		Utente utenteTrovato = us.find(1561);
+//		t.setUtente(utenteTrovato);
 
-		dao.create(t);
-
-//		TrenoService tService = new TrenoService();
+		TrenoService tService = new TrenoService();
+		tService.crea(t);
 //		tService.findAll();
 //		tService.delete(113);
 //		tService.find(214);
+
+//		UtenteService uService = new UtenteService();
+//		uService.crea(utente);
+//		uService.findAll();
+//		uService.delete();
+//		uService.find();
 
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();

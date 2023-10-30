@@ -1,22 +1,20 @@
 package com.idm.trenohibernate;
 
 public class Cargo extends Vagone {
-	
+
 	private int pesoTotale;
 	private int pesoMerce;
 	private TipoMerce tipoMerce;
 
-	public Cargo(int lunghezza, int peso, int prezzo, TipoMerce tipoMerce, int pesoMerce) {
-		super(lunghezza, peso, prezzo);
+	public Cargo(int lunghezza, int peso, int prezzo, TipoMerce tipoMerce, int pesoMerce, TipoVagone tipo) {
+		super(lunghezza, peso, prezzo, tipo);
 		this.pesoTotale = peso + pesoMerce;
 		this.tipoMerce = tipoMerce;
 	}
-	
+
 	public Cargo() {
 		super();
 	}
-	
-	
 
 	public int getPesoTotale() {
 		return pesoTotale;
@@ -45,8 +43,7 @@ public class Cargo extends Vagone {
 	@Override
 	public String toString() {
 		return "Cargo [pesoTotale=" + pesoTotale + ", pesoMerce=" + pesoMerce + ", tipoMerce=" + tipoMerce
-				 + super.toString() + "]";
+				+ super.toString() + "]";
 	}
 
-	
 }

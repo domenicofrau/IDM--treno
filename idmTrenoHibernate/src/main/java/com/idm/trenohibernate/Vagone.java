@@ -7,23 +7,16 @@ public abstract class Vagone {
 	private int peso;
 	private int prezzo;
 	private Treno treno;
-	
-//	private TipoVagone tipo;
-//
-//	public TipoVagone getTipo() {
-//		return tipo;
-//	}e
-//	public void setTipo(TipoVagone tipo) {
-//		this.tipo = tipo;
-//	}
-	
+	private TipoVagone tipo;
 
-	public Vagone() {}
-	
-	public Vagone(int lunghezza, int peso, int prezzo) {
+	public Vagone() {
+	}
+
+	public Vagone(int lunghezza, int peso, int prezzo, TipoVagone tipo) {
 		this.lunghezza = lunghezza;
 		this.peso = peso;
 		this.prezzo = prezzo;
+		this.tipo = tipo;
 	}
 
 	public int getId() {
@@ -66,11 +59,17 @@ public abstract class Vagone {
 		this.prezzo = prezzo;
 	}
 
+	public TipoVagone getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoVagone tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public String toString() {
 		return "lunghezza=" + lunghezza + ", peso=" + peso + ", prezzo=" + prezzo;
 	}
-	
-	
 
 }
