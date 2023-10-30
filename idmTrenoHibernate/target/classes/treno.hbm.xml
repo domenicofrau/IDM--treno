@@ -10,6 +10,7 @@
 		<id name="id" column="id" type="integer">
 			<generator class="native" />
 		</id>
+		<property name="nome" column="nome" type="string" />
 		<property name="marca" column="marca" type="string" />
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="treno_id" />
@@ -17,7 +18,7 @@
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
 		<many-to-one name="utente"
-         class="com.idm.trenohibernate.Utente" column="utente_id" cascade="save-update" />
+         class="com.idm.trenohibernate.Utente" column="utente_id" cascade="save-update" lazy="false"/>
 
 	</class>
 

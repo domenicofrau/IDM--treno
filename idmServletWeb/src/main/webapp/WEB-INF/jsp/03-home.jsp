@@ -71,37 +71,41 @@
 					<button type="submit" class="btn btn-primary">Aggiungi</button>
 				</div>
 			</div>
+			
+			<h2 class="my-3 text-center font-weight-bold">Treni caricati da altri utenti</h2>
+			
 			<div class="train-cards row mt-4">
-				<div class="col-md-6">
+			
+			<c:forEach var="treni" items="${ treni }">
+        	 	
+        	 	<div class="col-md-6">
 					<div class="card mb-4">
 						<div class="card-body">
-							<img src="/resources/img/train-placeholder.jpg"
-								class="img-fluid mb-3">
-							<h5>NOME</h5>
-							<p>MARCA</p>
-							<p>PESO TOTALE</p>
+							<img src="<c:url value='/resources/img/train.jpg'/>" class="img-fluid mb-3">
+							<h4 class="font-weight-bold">NOME TRENO</h4>
+							<p>${ treni.marca }</p>
+							<p>PESO TOTALE DEL TRENO</p>
+							<p>AUTORE: ${treni.utente.nome } ${treni.utente.cognome }</p>
+							<c:set var="trenoID" value="${ treni.id }" />
+							
+							<button class="btn btn-primary mt-4">Aggiungi</button>
+							<a href="cerca-treno?idTrenoStr=${ treni.id }" class="btn btn-primary stretched-link mt-4">Dettagli</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="card mb-4">
-						<div class="card-body">
-							<img src="/resources/img/train-placeholder.jpg"
-								class="img-fluid mb-3">
-							<h5>NOME</h5>
-							<p>MARCA</p>
-							<p>PESO TOTALE</p>
-						</div>
-					</div>
-				</div>
+				
+    		  </c:forEach>
+				
 			</div>
+			
 			<button class="btn btn-secondary btn-lg btn-block mt-4">LOAD
 				MORE...</button>
+				
 		</div>
 	</div>
+	
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
