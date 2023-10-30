@@ -9,14 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class TipoMerceUserType implements UserType {
+public class TipoVagoneUserType implements UserType {
 
 	public int[] sqlTypes() {
 		return new int[] { Types.VARCHAR };
 	}
 
-	public Class<TipoMerce> returnedClass() {
-		return TipoMerce.class;
+	public Class<TipoVagone> returnedClass() {
+		return TipoVagone.class;
 	}
 
 	public boolean equals(Object x, Object y) throws HibernateException {
@@ -30,7 +30,7 @@ public class TipoMerceUserType implements UserType {
 	public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		String name = rs.getString(names[0]);
-		return name == null ? null : TipoMerce.valueOf(name);
+		return name == null ? null : TipoVagone.valueOf(name);
 	}
 
 	public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session)
@@ -38,7 +38,7 @@ public class TipoMerceUserType implements UserType {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
-			st.setString(index, ((TipoMerce) value).name());
+			st.setString(index, ((TipoVagone) value).name());
 		}
 	}
 

@@ -40,6 +40,7 @@ public class VagoneHibernateDAO {
 		}
 		return employeeID;
 	}
+
 //	public Integer delete(Vagone bean) {
 //		Session session = factory.openSession();
 //		Transaction tx = null;

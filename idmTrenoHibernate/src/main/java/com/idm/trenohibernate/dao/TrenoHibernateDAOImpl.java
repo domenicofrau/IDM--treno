@@ -3,7 +3,7 @@ package com.idm.trenohibernate.dao;
 import java.util.List;
 import com.idm.trenohibernate.Treno;
 
-public class TrenoHibernateDAOImpl extends BaseDAO implements TrenoHibernateDAO {
+public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibernateDAO {
 
 	public Integer create(Treno bean) {
 		return super.create(bean);
@@ -28,7 +28,7 @@ public class TrenoHibernateDAOImpl extends BaseDAO implements TrenoHibernateDAO 
 	}
 
 	public List<Treno> findAll() {
-		return super.findAll();
+		return super.findAll(Treno.class);
 	}
 
 }

@@ -2,14 +2,14 @@ package com.idm.trenohibernate;
 
 public interface VagoneFactory {
 
-	public Locomotiva costruisciLocomotiva();
+	public Locomotiva costruisciLocomotiva(TipoVagone tipo);
 
-	public Passeggeri costruisciPasseggeri();
-	
-	public PasseggeriBusiness costruisciPasseggeriBusiness()
-;
-	public Ristorante costruisciRistorante();
+	public Passeggeri costruisciPasseggeri(TipoVagone tipo);
 
-	public Cargo costruisciCargo();
+	public PasseggeriBusiness costruisciPasseggeriBusiness(TipoVagone tipo);
+
+	public Ristorante costruisciRistorante(TipoVagone tipo);
+
+	public Cargo costruisciCargo(TipoVagone tipo);
 
 }
