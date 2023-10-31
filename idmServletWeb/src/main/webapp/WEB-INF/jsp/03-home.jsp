@@ -14,8 +14,6 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/feed-style.css'/>">
-<link rel="stylesheet" type="text/css"
 	href="<c:url value='/resources/css/01-welcome.css'/>">
 </head>
 <body>
@@ -70,22 +68,7 @@
 
 	<div class="container mt-5">
 		<div class="feed-section">
-			<h1>FEED</h1>
-			<div class="create-train">
-				<h3>Crea il tuo treno</h3>
-				<div class="train-form">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="NOME">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="MARCA">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="PESO TOTALE">
-					</div>
-					<button type="submit" class="btn btn-primary">Aggiungi</button>
-				</div>
-			</div>
+			
 
 			<h2 class="my-3 text-center font-weight-bold">Treni caricati da
 				altri utenti</h2>
@@ -93,21 +76,29 @@
 			<div class="train-cards row mt-4">
 
 				<c:forEach var="treni" items="${ treni }">
+				
+				<c:set var="sommaPesi" value="0" />			
+                <c:forEach var="vagone" items="${treni.vagoni}">
+                    <c:set var="sommaPesi" value="${sommaPesi + vagone.peso}" />
+                </c:forEach>
 
 					<div class="col-md-6">
 						<div class="card mb-4">
 							<div class="card-body">
-								<img src="<c:url value='/resources/img/train.jpg'/>"
-									class="img-fluid mb-3">
-								<h4 class="font-weight-bold">NOME TRENO</h4>
-								<p>${ treni.marca }</p>
-								<p>PESO TOTALE DEL TRENO</p>
+								<c:if test="${ empty treni.immagine }">
+									<img src="<c:url value='/resources/img/train.jpg'/>"
+									alt="Immagine Treno placeholder" class="img-fluid mb-3">
+								</c:if>
+								<img src="${ treni.immagine }" class="img-fluid mb-3">
+								<h4 class="font-weight-bold">NOME: ${ treni.nome }</h4>
+								<p>MARCA: ${ treni.marca }</p>
+								<p>PESO TOTALE DEL TRENO: ${ sommaPesi } tonnellate</p>
 								<p>AUTORE: ${treni.utente.nome } ${treni.utente.cognome }</p>
 								<c:set var="trenoID" value="${ treni.id }" />
-
-								<button class="btn btn-primary mt-4">Aggiungi</button>
-								<a href="cerca-treno?idTrenoStr=${ treni.id }"
-									class="btn btn-primary stretched-link mt-4">Dettagli</a>
+								
+								<a href="cerca-treno?idTrenoStr=${ treni.id }" class="btn btn-dark mt-4">Dettagli</a>
+								<button class="btn btn-outline-dark mt-4">Aggiungi</button>
+								
 							</div>
 						</div>
 					</div>
@@ -116,17 +107,12 @@
 
 			</div>
 
-			<button class="btn btn-secondary btn-lg btn-block mt-4">LOAD
-				MORE...</button>
-
 		</div>
-		<button class="btn btn-secondary btn-lg btn-block mt-4">LOAD
-			MORE...</button>
+
 	</div>
 
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="<c:url value='/resources/js/find.js'/>"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

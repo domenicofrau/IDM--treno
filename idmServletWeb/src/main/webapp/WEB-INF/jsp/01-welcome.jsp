@@ -61,12 +61,12 @@
 		<div class="row">
 			<div class="col-12 col-md-6 p-3">
 				<h1 class="mainTitle">Benvenuto su TrainBook!</h1>
-				<p class="mainPara">TrainSocial � il primo social network
-					dedicato agli appassionati di treni. Qui puoi creare il tuo treno
-					personalizzato e condividerlo con il resto del mondo. Esplora le
-					creazioni degli altri utenti e lasciati ispirare!</p>
-				<a href="02-login" class="btn btn-dark stretched-link mt-4">Login</a>
-				<a href="02-login" class="btn btn-outline-dark stretched-link mt-4">Registrati</a>
+				<p class="mainPara">TrainSocial � il primo social network dedicato agli
+				appassionati di treni. Qui puoi creare il tuo treno personalizzato e
+				condividerlo con il resto del mondo. Esplora le creazioni degli altri
+				utenti e lasciati ispirare!</p>
+				<a href="02-login" class="btn btn-dark mt-4">Login</a>
+				<a href="02-login" class="btn btn-outline-dark mt-4">Registrati</a>
 			</div>
 
 			<div class="col-12 col-md-6 my-3">

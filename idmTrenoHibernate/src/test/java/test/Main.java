@@ -43,9 +43,9 @@ public class Main {
 		
 		UtenteBuilder u = new UtenteBuilder();
 		UtenteService uService = new UtenteService();
-//		Utente utenteTrovato1 = uService.findByEmail("pastella@ciaociao.com");
-//		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
-//		String immagine="https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
+//		Utente utenteTrovato1 = uService.findByEmail("sonogianni@daje.com");
+		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
+		String immagine="https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
 //		Treno t =tService.find(2);
 		
 		

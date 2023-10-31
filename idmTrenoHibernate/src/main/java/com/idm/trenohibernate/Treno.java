@@ -88,7 +88,6 @@ public class Treno implements Bean {
 		for (Vagone v : vagoni) {
 			sb.append("\t").append(v).append("\t").append("\n");
 		}
-		sb.append("Nome treno: ").append(nome).append("\n");
 		sb.append("Url immagine: ").append(immagine).append("\n");
 		return sb.toString();
 	}
