@@ -35,9 +35,9 @@
 		<div class="collapse navbar-collapse justify-content-center"
 			id="navbarNav">
 			<ul class="navbar-nav align-items-center">
-				<li class="nav-item active"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link"
 					href="01-welcome">Welcome</a></li>
-				<li class="nav-item"><a class="nav-link" href="02-login">Login</a>
+				<li class="nav-item active"><a class="nav-link" href="02-login">Login</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="03-home">Home</a>
 				</li>

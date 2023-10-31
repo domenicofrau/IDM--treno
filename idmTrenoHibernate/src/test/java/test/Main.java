@@ -32,7 +32,7 @@ public class Main {
 //		Treno t =tService.find(2);
 		
 		
-		Treno t = b.costruisciTreno(sigla, nomeTreno, immagine);
+//		Treno t = b.costruisciTreno(sigla, nomeTreno, immagine);
 //		Utente utente = u.creaUtente("Compratore", "Collezionista", "ilCollezionista@nonlascionulla.com", "password123");	
 		
 
@@ -42,10 +42,14 @@ public class Main {
 //		Treno t =tService.findByName("B");
 //		t.vendiTreno(t, utenteTrovato1, utenteTrovato2);
 //		t.setUtente(t, utenteTrovato2);
-		tService.crea(t);
+//		tService.crea(t);
 //		tService.update(t);
 //		uService.update(utenteTrovato1);
-		uService.update(utenteTrovato2);
+//		uService.update(utenteTrovato2);
+		
+//		*************************************** RICERCA TRENI **********************************
+		
+		Treno t1 = tService.findByName(nomeTreno);
 		
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();

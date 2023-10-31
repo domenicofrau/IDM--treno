@@ -58,9 +58,9 @@
 
 		<!-- Link a destra -->
 		<div class="navbar-nav ml-auto">
-			<a href="02-login" class="btn btn-dark stretched-link mx-3">Login/Registrati</a>
-			<a href="02-login" class="btn btn-outline-dark stretched-link mx-3">Profilo</a>
-			<a href="02-login" class="btn btn-danger stretched-link mx-3">Logout</a>
+			<a href="02-login" class="btn btn-dark mx-3">Login/Registrati</a>
+			<a href="02-login" class="btn btn-outline-dark mx-3">Profilo</a>
+			<a href="#" class="btn btn-danger mx-3">Logout</a>
 			
 		</div>
 	</nav>
@@ -69,12 +69,12 @@
 		<div class="row">
 			<div class="col-12 col-md-6 p-3">
 				<h1 class="mainTitle">Benvenuto su TrainBook!</h1>
-				<p class="mainPara">TrainSocial ï¿½ il primo social network dedicato agli
+				<p class="mainPara">TrainSocial è il primo social network dedicato agli
 				appassionati di treni. Qui puoi creare il tuo treno personalizzato e
 				condividerlo con il resto del mondo. Esplora le creazioni degli altri
 				utenti e lasciati ispirare!</p>
-				<a href="02-login" class="btn btn-dark stretched-link mt-4">Login</a>
-				<a href="02-login" class="btn btn-outline-dark stretched-link mt-4">Registrati</a>
+				<a href="02-login" class="btn btn-dark mt-4">Login</a>
+				<a href="02-login" class="btn btn-outline-dark mt-4">Registrati</a>
 			</div>
 			
 			<div class="col-12 col-md-6 my-3">
