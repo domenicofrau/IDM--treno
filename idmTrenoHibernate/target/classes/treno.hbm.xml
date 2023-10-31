@@ -12,15 +12,15 @@
 		</id>
 		<property name="nome" column="nome" type="string" />
 		<property name="marca" column="marca" type="string" />
-		<property name="nome" column="nome" type="string" />
-		<property name="immagine" column="immagine" type="string"/>
+		<property name="immagine" column="immagine" type="string" />
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="treno_id" />
 			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
 		<many-to-one name="utente"
-         class="com.idm.trenohibernate.Utente" column="utente_id" cascade="save-update" lazy="false"/>
+			class="com.idm.trenohibernate.Utente" column="utente_id"
+			cascade="save-update" lazy="false" />
 
 	</class>
 

@@ -1,12 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    background-image: url('../img/wallpaper-test.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
 }
 
 .navbar {
@@ -51,4 +49,13 @@ body {
 .main-content p {
     font-size: 1.2em;
     line-height: 1.5;
+}
+
+.mainTitle{
+	font-weight: 800;
+	font-size: 5rem;
+}
+
+.mainPara{
+	font-size: 1.6rem;
 }
