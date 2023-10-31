@@ -1,7 +1,12 @@
 package com.idm.trenohibernate.dao;
 
 import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.utils.HibernateUtil;
 
 public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibernateDAO {
 
@@ -35,7 +40,14 @@ public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibern
 	public Treno findByNome(String nome) {
 		return  (Treno) super.findByName(Treno.class,nome);
 	}
-
-
-
+	
+    @Override
+    public List<Treno> findByUtenteId(Integer utenteId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Treno> query = session.createQuery("FROM Treno WHERE utente.id = :utenteId", Treno.class);
+        query.setParameter("utenteId", utenteId);
+        List<Treno> treni = query.getResultList();
+        session.close();
+        return treni;
+    }
 }

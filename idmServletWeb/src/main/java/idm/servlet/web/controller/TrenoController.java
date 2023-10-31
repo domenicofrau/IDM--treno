@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idm.trenohibernate.Cargo;
@@ -19,14 +20,17 @@ import com.idm.trenohibernate.Passeggeri;
 import com.idm.trenohibernate.PasseggeriBusiness;
 import com.idm.trenohibernate.Ristorante;
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.service.TrenoService;
+import com.idm.trenohibernate.service.UtenteService;
 
 import idm.servlet.bean.SiglaTreno;
 import idm.servlet.bean.NomeTreno;
 import idm.servlet.bean.UrlImmagine;
+
 @Controller
 public class TrenoController {
 
@@ -40,6 +44,9 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
+
+	@Autowired
+	UtenteService utenteService;
 
 	@Autowired
 	ConcreteBuilder concreteBuilder;
@@ -60,14 +67,16 @@ public class TrenoController {
 	}
 
 	@PostMapping("/crea-treno-fr")
-	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno,@ModelAttribute("urlImmagine") UrlImmagine urlImmagine, Model model) {
+	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,
+			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
+			Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla=siglaTreno.getSigla().toUpperCase();
-		String nome= nomeTreno.getNomeTreno();
+		String sigla = siglaTreno.getSigla().toUpperCase();
+		String nome = nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
 		try {
 			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome, immagine, frFactory));
-		} catch (TrenoException  e) {
+		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
 
@@ -78,14 +87,16 @@ public class TrenoController {
 	}
 
 	@PostMapping("/crea-treno-tn")
-	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno,@ModelAttribute("urlImmagine") UrlImmagine urlImmagine, Model model) {
+	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,
+			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
+			Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla=siglaTreno.getSigla();
-		String nome= nomeTreno.getNomeTreno();
+		String sigla = siglaTreno.getSigla();
+		String nome = nomeTreno.getNomeTreno();
 		String url = urlImmagine.getUrlImmagine();
 
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome,url, tnFactory));
+			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome, url, tnFactory));
 		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
@@ -103,40 +114,40 @@ public class TrenoController {
 			Treno treno = trenoService.find(idTreno);
 			if (treno != null) {
 				model.addAttribute("treno", treno);
-				
+
 				List<Vagone> vagoni = treno.getVagoni();
-				
+
 				List<Cargo> cargoV = new ArrayList<>();
 				List<Ristorante> ristoranteV = new ArrayList<>();
 				List<Locomotiva> locomotivaV = new ArrayList<>();
 				List<Passeggeri> passeggeriV = new ArrayList<>();
 				List<Passeggeri> passeggeriVBusiness = new ArrayList<>();
 				for (Vagone vagone : treno.getVagoni()) {
-				    if (vagone instanceof Cargo) {
-				        Cargo cargo = (Cargo) vagone;
-				        cargoV.add(cargo);
-				    } 
-				    if (vagone instanceof Ristorante) {
-				        Ristorante ristorante = (Ristorante) vagone;
-				        ristoranteV.add(ristorante);
-				    }
-				    if (vagone instanceof Locomotiva) {
-				    	Locomotiva locomotiva = (Locomotiva) vagone;
-				    	locomotivaV.add(locomotiva);
-				    }
-				    if (vagone instanceof Passeggeri) {
-				    	Passeggeri passeggeri = (Passeggeri) vagone;
-				    	passeggeriV.add(passeggeri);
-				    }
-				    if (vagone instanceof PasseggeriBusiness) {
-				    	PasseggeriBusiness passeggeriBusiness = (PasseggeriBusiness) vagone;
-				    	passeggeriVBusiness.add(passeggeriBusiness);
-				    }
-				    model.addAttribute("cargo", cargoV);
-				    model.addAttribute("locomotive", locomotivaV);
-				    model.addAttribute("ristoranti", ristoranteV);
-				    model.addAttribute("passeggeri", passeggeriV);
-				    model.addAttribute("passeggeriB", passeggeriVBusiness);
+					if (vagone instanceof Cargo) {
+						Cargo cargo = (Cargo) vagone;
+						cargoV.add(cargo);
+					}
+					if (vagone instanceof Ristorante) {
+						Ristorante ristorante = (Ristorante) vagone;
+						ristoranteV.add(ristorante);
+					}
+					if (vagone instanceof Locomotiva) {
+						Locomotiva locomotiva = (Locomotiva) vagone;
+						locomotivaV.add(locomotiva);
+					}
+					if (vagone instanceof Passeggeri) {
+						Passeggeri passeggeri = (Passeggeri) vagone;
+						passeggeriV.add(passeggeri);
+					}
+					if (vagone instanceof PasseggeriBusiness) {
+						PasseggeriBusiness passeggeriBusiness = (PasseggeriBusiness) vagone;
+						passeggeriVBusiness.add(passeggeriBusiness);
+					}
+					model.addAttribute("cargo", cargoV);
+					model.addAttribute("locomotive", locomotivaV);
+					model.addAttribute("ristoranti", ristoranteV);
+					model.addAttribute("passeggeri", passeggeriV);
+					model.addAttribute("passeggeriB", passeggeriVBusiness);
 				}
 
 			} else {
@@ -199,6 +210,10 @@ public class TrenoController {
 		}
 		model.addAttribute("controller", this);
 		return "trovaTreno";
+	@RequestMapping("/eliminaTreno")
+	public String eliminaTreno(@RequestParam("id") Integer id) {
+	    trenoService.delete(id);
+	    return "04-profile";
 	}
 
 	@GetMapping("/01-welcome")
@@ -224,6 +239,18 @@ public class TrenoController {
 
 	@GetMapping("/04-profile")
 	public String profile(Model model) {
+		Utente utente = utenteService.find(2096);
+
+		model.addAttribute("utente", utente);
+
+		List<Treno> treni = trenoService.findByUtenteId(2096);
+
+		if (treni.size() != 0) {
+			model.addAttribute("treni", treni);
+		} else {
+			model.addAttribute("errore", "Al momento non ci sono treni da vedere... creane uno!");
+		}
+
 		return "04-profile";
 	}
 

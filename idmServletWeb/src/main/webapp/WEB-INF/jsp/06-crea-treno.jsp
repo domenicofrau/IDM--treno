@@ -22,42 +22,48 @@
 
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="01-welcome"> <img
-			src="<c:url value='/resources/img/logo_nav.png'/>" alt="" height="30"
-			style="vertical-align: middle; margin: 0 10px;">
-		</a>
+		<div class="container">
+			<a class="navbar-brand" href="01-welcome"
+				style="padding-right: 50px;"> <img
+				src="<c:url value='/resources/img/logo_nav.png'/>" alt=""
+				height="30" style="vertical-align: middle; margin: 0 10px;">
+			</a>
 
-		<!-- Menu al centro -->
-		<div class="collapse navbar-collapse justify-content-center"
-			id="navbarNav">
-			<ul class="navbar-nav align-items-center">
-				<li class="nav-item active"><a class="nav-link"
-					href="01-welcome">Welcome</a></li>
-				<li class="nav-item"><a class="nav-link" href="02-login">Login</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="03-home">Home</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="06-crea-treno">Crea
-						Treno</a></li>
-				<li class="nav-item">
-					<div class="input-group" style="width: 180px; position: relative;">
-						<input type="text" class="form-control" placeholder="Cerca treno"
-							aria-label="Cerca treno"
-							style="height: 25px; border-radius: 15px; padding-left: 25px;">
-						<div class="input-group-append"
-							style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;">
+			<!-- Menu al centro -->
+			<div class="collapse navbar-collapse justify-content-center"
+				id="navbarNav">
+				<ul class="navbar-nav align-items-center">
+					<li class="nav-item active mr-3"><a class="nav-link"
+						href="01-welcome">Welcome</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
+					<li class="nav-item mr-3"><a class="nav-link"
+						href="06-crea-treno">Crea Treno</a></li>
+					<li class="nav-item">
+						<div class="input-group" style="width: 180px; position: relative;">
+							<input type="text" class="form-control" placeholder="Cerca treno"
+								aria-label="Cerca treno"
+								style="height: 25px; border-radius: 15px; padding-left: 25px;">
+							<div class="input-group-append"
+								style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;"></div>
+							<i class="ms-3 bi bi-search text-secondary"
+								style="margin-left: 5px; align-self: center;"></i>
 						</div>
-						<i class="ms-3 bi bi-search text-secondary"
-							style="margin-left: 5px; align-self: center;"></i>
-					</div>
-				</li>
-			</ul>
-		</div>
+					</li>
+				</ul>
+			</div>
 
-
-		<!-- Link a destra -->
-		<div class="navbar-nav ml-auto">
-			<a class="nav-item nav-link" href="04-profile">PROFILO</a>
+			<!-- Link a destra -->
+			<div class="navbar-nav ml-auto" style="padding-left: 50px;">
+				<div class="nav-item d-flex align-items-center">
+					<a class="nav-link d-inline mr-1" href="04-profile">${utente.nome}
+						${utente.cognome}</a> <a href="04-profile"> <img
+						src="<c:url value='/resources/img/profile-test.jpg'/>"
+						alt="profilo" class="rounded-circle"
+						style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
+					</a>
+				</div>
+			</div>
 		</div>
 	</nav>
 
@@ -142,8 +148,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="urlSelect_fr">Cambia l'immagine di default:</label>
-									<select class="form-control" id="urlSelect_fr" name="url"
-										onchange="updatePreview()">
+									<select class="form-control" id="urlSelect_fr"
+										name="urlImmagine" onchange="updatePreview()">
 										<option
 											value="https://upload.wikimedia.org/wikipedia/commons/f/f8/Frecciarossa_1000_nuova_livrea.jpg">
 											default</option>
@@ -182,7 +188,7 @@
 								<div class="form-group">
 									<label for="urlImage_fr">Url dell'immagine:</label> <input
 										type="text" class="form-control" id="urlImage_fr"
-										name="urlImage_fr"
+										name="urlImmagine"
 										placeholder="inserire qui l'url dell'immagine che si vuole usare"
 										oninput="updateCustomPreview('fr')">
 								</div>
@@ -262,8 +268,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="urlSelect_tn">Cambia l'immagine di default:</label>
-									<select class="form-control" id="urlSelect_tn" name="url"
-										onchange="updatePreview()">
+									<select class="form-control" id="urlSelect_tn"
+										name="urlImmagine" onchange="updatePreview()">
 										<option
 											value="https://upload.wikimedia.org/wikipedia/commons/2/2c/Treno_TSR_livrea_Trenord.JPG">
 											default</option>
@@ -302,7 +308,7 @@
 								<div class="form-group">
 									<label for="urlImage_tn">Url dell'immagine:</label> <input
 										type="text" class="form-control" id="urlImage_tn"
-										name="urlImage_tn"
+										name="urlImmagine"
 										placeholder="inserire qui l'url dell'immagine che si vuole usare"
 										oninput="updateCustomPreview('tn')">
 								</div>
@@ -398,6 +404,8 @@
 			var preview = document.getElementById('preview_custom_' + formId);
 			preview.innerHTML = '';
 			var img = document.createElement('img');
+			document.getElementById('urlSelect_fr').value = '';
+			document.getElementById('urlSelect_tn').value = '';
 			img.src = url;
 			img.style.maxHeight = '100px';
 			img.style.maxWidth = '100%';

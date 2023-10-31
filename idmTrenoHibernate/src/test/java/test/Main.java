@@ -10,15 +10,11 @@ import org.hibernate.SessionFactory;
 
 
 public class Main {
-	public static void main(String[] args)
-			throws TrenoException, UtenteException{
-		
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		System.out.println("run.....");
+    public static void main(String[] args)
+            throws TrenoException, UtenteException {
 
-		String sigla = "HbbrbbbppbpbpbpbpbpbppbpbpbpbpbpbpbpbpbpbH";
-		sigla = sigla.toUpperCase();
-		String nomeTreno = "dsaodska";
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        System.out.println("run.....");
 
 		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
