@@ -62,7 +62,7 @@ public class TrenoController {
 	@PostMapping("/crea-treno-fr")
 	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,@ModelAttribute("nomeTreno") NomeTreno nomeTreno,@ModelAttribute("urlImmagine") UrlImmagine urlImmagine, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla=siglaTreno.getSigla();
+		String sigla=siglaTreno.getSigla().toUpperCase();
 		String nome= nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
 		try {
@@ -71,7 +71,7 @@ public class TrenoController {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("siglaTreno", siglaTreno.getSigla());
+		model.addAttribute("siglaTreno", siglaTreno.getSigla().toUpperCase());
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
 		return "viewTreno";

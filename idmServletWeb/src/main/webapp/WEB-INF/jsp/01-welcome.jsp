@@ -6,10 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>TrainBook</title>
+<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>" type="image/x-icon">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 <!-- Custom CSS -->
 <link rel="stylesheet" type="text/css"
@@ -18,30 +21,40 @@
 </head>
 <body>
 
+	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="01-welcome"> <img src="logo.png"
-			alt="" height="30" style="vertical-align: middle; margin: 0 10px;">
-			TrainBook
+		<a class="navbar-brand" href="01-welcome"> <img
+			src="<c:url value='/resources/img/logo_nav.png'/>" alt="" height="30"
+			style="vertical-align: middle; margin: 0 10px;">
 		</a>
 
 		<!-- Menu al centro -->
 		<div class="collapse navbar-collapse justify-content-center"
 			id="navbarNav">
-			<ul class="navbar-nav">
+			<ul class="navbar-nav align-items-center">
 				<li class="nav-item active"><a class="nav-link"
 					href="01-welcome">Welcome</a></li>
 				<li class="nav-item"><a class="nav-link" href="02-login">Login</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="03-home">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
-					href="06-crea-treno">Crea Treno</a></li>
-				<li class="nav-item"><a class="nav-link" href="cancella">Cancella
+				<li class="nav-item"><a class="nav-link" href="06-crea-treno">Crea
 						Treno</a></li>
-				<li class="nav-item"><a class="nav-link" href="cerca-treno">Cerca
-						Treno</a>
+				<li class="nav-item">
+					<div class="input-group" style="width: 180px; position: relative;">
+						<input type="text" class="form-control" placeholder="Cerca treno"
+							aria-label="Cerca treno"
+							style="height: 25px; border-radius: 15px; padding-left: 25px;">
+						<div class="input-group-append"
+							style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;">
+						</div>
+						<i class="ms-3 bi bi-search text-secondary"
+							style="margin-left: 5px; align-self: center;"></i>
+					</div>
+				</li>
 			</ul>
 		</div>
+
 
 		<!-- Link a destra -->
 		<div class="navbar-nav ml-auto">
