@@ -32,3 +32,4 @@ replay_pid*
 target/
 
 .DS_Store
+idmTrenoHibernate/src/main/resources/hibernate.cfg.xml
