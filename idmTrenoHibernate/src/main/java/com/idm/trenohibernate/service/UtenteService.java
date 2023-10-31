@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.dao.*;
+import com.idm.trenohibernate.exceptions.UtenteException;
 
 @Component
 public class UtenteService {
@@ -28,6 +29,7 @@ public class UtenteService {
 		}
 		return u;
 	}
+	
 	public Utente findByEmail(String email) {
 		Utente u = dao.findByEmail(email);
 		if (u != null) {
@@ -58,5 +60,9 @@ public class UtenteService {
 		dao.deleteById(id);
 		System.out.println("Eliminato l'utente con id: " + id);
 	}
-
+	
+	public Boolean login(String email, String password) throws UtenteException {
+		return dao.login(email, password);
+	}
+	
 }

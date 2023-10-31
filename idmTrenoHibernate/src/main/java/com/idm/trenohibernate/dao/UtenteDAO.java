@@ -3,6 +3,7 @@ package com.idm.trenohibernate.dao;
 import java.util.List;
 
 import com.idm.trenohibernate.Utente;
+import com.idm.trenohibernate.exceptions.UtenteException;
 
 public interface UtenteDAO {
 	public Integer create(Utente bean);
@@ -19,4 +20,6 @@ public interface UtenteDAO {
 
 	public List<Utente> findAll();
 
+	Boolean login(String email, String password) throws UtenteException;
+			 
 }

@@ -52,23 +52,27 @@ public class Treno implements Bean {
 
 	public void setUtente(Treno treno, Utente utente)throws  SaldoNonSufficenteException{
 		List<Vagone> listaVagoni= treno.getVagoni();
-		int prezzoTreno =0;
+		 int prezzo =0;
 			for(Vagone vagone:listaVagoni) {
-				prezzoTreno+=vagone.getPrezzo();
+				prezzo+=vagone.getPrezzo();
+				
 			}
-			if(utente.getbitTrain()-prezzoTreno <0) {
-				throw new SaldoNonSufficenteException("Saldo non ufficente, il  tuo saldo è: "+utente.getbitTrain()+", sono necessari: ", prezzoTreno);
+			if(utente.getbitTrain()-prezzo <0) {
+				throw new SaldoNonSufficenteException("Saldo non ufficente, il  tuo saldo è: "+utente.getbitTrain()+", sono necessari: " +prezzo );
 			}
-	utente.setbitTrain(utente.getbitTrain()-prezzoTreno);
+	utente.setbitTrain(utente.getbitTrain()-prezzo);
 	this.utente = utente;
 }
-	public void vendiTreno(Treno treno, Utente venditore, Utente compratore) {
+	public void vendiTreno(Treno treno, Utente venditore, Utente compratore)throws  SaldoNonSufficenteException {
 		List<Vagone> listaVagoni= treno.getVagoni();
 		int prezzoTreno =0;
 			for(Vagone vagone:listaVagoni) {
 				prezzoTreno+=vagone.getPrezzo();
 			}
-			
+			if(compratore.getbitTrain()-prezzoTreno<0) {
+				throw new SaldoNonSufficenteException("Saldo non ufficente, il  tuo saldo è: "+compratore.getbitTrain()+", sono necessari: " +prezzoTreno );
+
+			}
 	compratore.setbitTrain(compratore.getbitTrain()-prezzoTreno);
 	venditore.setbitTrain(venditore.getbitTrain()+prezzoTreno);
 	this.utente = compratore;
@@ -104,5 +108,21 @@ public class Treno implements Bean {
 	public void setImmagine(String immagine) {
 		this.immagine = immagine;
 	}
-
-}
+	
+	public int getPeso() {
+		List<Vagone> vagoni = getVagoni();
+		int pesoTotale=0;
+		for(Vagone vagone: vagoni ) {
+			pesoTotale+=vagone.getPeso();
+		}
+		return pesoTotale;
+	}
+	
+	public int getLunghezzaTreno() {
+		List<Vagone> lunghezza= getVagoni();
+		return lunghezza.size();
+		
+	}
+	
+	
+	}
