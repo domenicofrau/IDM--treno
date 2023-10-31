@@ -2,6 +2,9 @@ package com.idm.trenohibernate.dao;
 
 import java.util.List;
 import com.idm.trenohibernate.Utente;
+import com.idm.trenohibernate.exceptions.EmailErrataException;
+import com.idm.trenohibernate.exceptions.PasswordErrataException;
+import com.idm.trenohibernate.exceptions.UtenteException;
 
 public class UtenteDAOImpl extends BaseDAO<Utente> implements UtenteDAO {
 
@@ -42,5 +45,17 @@ public class UtenteDAOImpl extends BaseDAO<Utente> implements UtenteDAO {
 	@Override
 	public Utente findByName(String name) {
 		return (Utente) super.findByName(Utente.class, name);
+	}
+	@Override
+	public Boolean login(String email, String password)throws UtenteException {
+		if(super.findByEmail(Utente.class, email)!=null) {
+			Utente utente = (Utente) super.findByEmail(Utente.class, email);
+			System.out.println(utente.getEmail()) ;
+			System.out.println(utente.getPassword());
+			System.out.println(email+password);
+			if(utente.getPassword().equals(password)) {
+				return true;
+			}else throw new PasswordErrataException("Password Errata!!");
+		}throw new EmailErrataException("Email errata!!");
 	}
 }

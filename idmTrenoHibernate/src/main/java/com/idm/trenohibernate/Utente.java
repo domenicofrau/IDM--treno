@@ -13,15 +13,17 @@ public class Utente implements Bean {
 	private String email;
 	private String password;
 	private int bitTrain;
+	private String immagineProfilo;
 	private Set<Treno> treni = new HashSet<Treno>();
 
-	public Utente(int id, String nome, String cognome, String email, String password) {
+	public Utente(int id, String nome, String cognome, String email, String password, String immagineUtente) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
 		this.password = password;
+		this.immagineProfilo=immagineUtente;
 	}
 
 	public Utente() {
@@ -88,5 +90,14 @@ public class Utente implements Bean {
 	public void setbitTrain(int bitTrain) {
 		this.bitTrain = bitTrain;
 	}
+
+	public String getImmagineProfilo() {
+		return immagineProfilo;
+	}
+
+	public void setImmagineProfilo(String immagineProfilo) {
+		this.immagineProfilo = immagineProfilo;
+	}
+
 
 }

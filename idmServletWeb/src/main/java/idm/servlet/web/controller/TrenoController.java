@@ -19,13 +19,18 @@ import com.idm.trenohibernate.Passeggeri;
 import com.idm.trenohibernate.PasseggeriBusiness;
 import com.idm.trenohibernate.Ristorante;
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.TrenoException;
+import com.idm.trenohibernate.exceptions.UtenteException;
 import com.idm.trenohibernate.service.TrenoService;
+import com.idm.trenohibernate.service.UtenteService;
 
 import idm.servlet.bean.SiglaTreno;
+import idm.servlet.bean.Email;
 import idm.servlet.bean.NomeTreno;
+import idm.servlet.bean.Password;
 import idm.servlet.bean.UrlImmagine;
 @Controller
 public class TrenoController {
@@ -40,6 +45,9 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
+	
+	@Autowired
+	UtenteService utenteService;
 
 	@Autowired
 	ConcreteBuilder concreteBuilder;
@@ -65,13 +73,20 @@ public class TrenoController {
 		String sigla=siglaTreno.getSigla().toUpperCase();
 		String nome= nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
+		List<Utente> listaUtenti= utenteService.findAll();
+		
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome, immagine, frFactory));
+			
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
+			Utente u=(listaUtenti.get(0));
+			t.setUtente(u);
+			trenoService.crea(t);
 		} catch (TrenoException  e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla().toUpperCase());
+	//	model.addAttribute("siglaTreno", "HPHPROVA");
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
 		return "viewTreno";
@@ -82,17 +97,26 @@ public class TrenoController {
 		System.out.println("creata:" + siglaTreno.getSigla());
 		String sigla=siglaTreno.getSigla();
 		String nome= nomeTreno.getNomeTreno();
-		String url = urlImmagine.getUrlImmagine();
-
+		String immagine = urlImmagine.getUrlImmagine();
+		
+		List<Utente> listaUtenti= utenteService.findAll();
 		try {
-			trenoService.crea(concreteBuilder.costruisciTreno(sigla, nome,url, tnFactory));
-		} catch (TrenoException e) {
+			
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
+			Utente u=(listaUtenti.get(0));
+			t.setUtente(u);
+			trenoService.crea(t);
+		} catch (TrenoException  e) {
 			e.printStackTrace();
 		}
+		
+		
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla());
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
+		
+		
 		return "viewTreno";
 	}
 
@@ -158,6 +182,18 @@ public class TrenoController {
 	public String login(Model model) {
 		return "02-login";
 	}
+																		//CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
+	@GetMapping("/10-log-in")
+	public String login(@ModelAttribute("email") Email email ,@ModelAttribute("password") Password password,Model model) {
+		
+		try {
+			utenteService.login(email.getEmail(), password.getPassword());
+		} catch (UtenteException e) {
+			e.printStackTrace();
+		}
+		return "10-login";
+	}
+																				//FINE CONTROLLER LOGINN
 
 	@GetMapping("/03-home")
 	public String home(Model model) {
@@ -174,6 +210,8 @@ public class TrenoController {
 	public String profile(Model model) {
 		return "04-profile";
 	}
+	
+	
 
 	@GetMapping("/05-train-detail")
 	public String trainDetail(Model model) {

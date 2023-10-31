@@ -142,7 +142,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="urlSelect_fr">Cambia l'immagine di default:</label>
-									<select class="form-control" id="urlSelect_fr" name="url"
+									<select class="form-control" id="urlSelect_fr" name="urlImmagine"
 										onchange="updatePreview()">
 										<option
 											value="https://upload.wikimedia.org/wikipedia/commons/f/f8/Frecciarossa_1000_nuova_livrea.jpg">
@@ -182,7 +182,7 @@
 								<div class="form-group">
 									<label for="urlImage_fr">Url dell'immagine:</label> <input
 										type="text" class="form-control" id="urlImage_fr"
-										name="urlImage_fr"
+										name="urlImmagine"
 										placeholder="inserire qui l'url dell'immagine che si vuole usare"
 										oninput="updateCustomPreview('fr')">
 								</div>
@@ -262,7 +262,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="urlSelect_tn">Cambia l'immagine di default:</label>
-									<select class="form-control" id="urlSelect_tn" name="url"
+									<select class="form-control" id="urlSelect_tn" name="urlImmagine"
 										onchange="updatePreview()">
 										<option
 											value="https://upload.wikimedia.org/wikipedia/commons/2/2c/Treno_TSR_livrea_Trenord.JPG">
@@ -302,7 +302,7 @@
 								<div class="form-group">
 									<label for="urlImage_tn">Url dell'immagine:</label> <input
 										type="text" class="form-control" id="urlImage_tn"
-										name="urlImage_tn"
+										name="urlImmagine"
 										placeholder="inserire qui l'url dell'immagine che si vuole usare"
 										oninput="updateCustomPreview('tn')">
 								</div>
@@ -398,6 +398,8 @@
 			var preview = document.getElementById('preview_custom_' + formId);
 			preview.innerHTML = '';
 			var img = document.createElement('img');
+			document.getElementById('urlSelect_fr').value = '';
+			document.getElementById('urlSelect_tn').value = '';
 			img.src = url;
 			img.style.maxHeight = '100px';
 			img.style.maxWidth = '100%';
