@@ -16,6 +16,7 @@ public interface TrenoHibernateDAO {
 	public Treno find(Integer id);
 
 	public List<Treno> findAll();
+	public List<Treno> findByUtenteId(Integer utenteId);
 
 //	public void delete(Treno bean );
 //	public List<Treno> findByName(String name);

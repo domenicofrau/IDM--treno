@@ -36,7 +36,7 @@
 		<div class="col-12 col-md-6">
 	
 			<div class="card mb-3">
-  			<img src="<c:url value='/resources/img/train.jpg'/>" class="img-fluid mb-3">
+  			<img src="${ treno.immagine }" class="img-fluid mb-3">
   				<div class="card-body">
     				<h3 class="card-title">${ treno.nome }</h3>
     				<p class="card-text">${ treno.marca }</p>

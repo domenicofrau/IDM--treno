@@ -62,5 +62,9 @@ public class TrenoService {
 		dao.deleteById(id);
 		System.out.println("Eliminato il treno con id: " + id);
 	}
+	
+    public List<Treno> findByUtenteId(Integer utenteId) {
+        return dao.findByUtenteId(utenteId);
+    }
 
 }
