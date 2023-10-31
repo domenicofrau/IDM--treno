@@ -33,7 +33,7 @@
 				<li class="nav-item"><a class="nav-link" href="03-home">Home</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="seleziona-factory">Crea Treno</a></li>
+					href="06-crea-treno">Crea Treno</a></li>
 				<li class="nav-item"><a class="nav-link" href="cancella">Cancella
 						Treno</a></li>
 				<li class="nav-item"><a class="nav-link" href="cerca-treno">Cerca

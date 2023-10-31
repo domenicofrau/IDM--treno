@@ -12,7 +12,6 @@
 		</id>
 		<property name="nome" column="nome" type="string" />
 		<property name="marca" column="marca" type="string" />
-		<property name="nome" column="nome" type="string" />
 		<property name="immagine" column="immagine" type="string"/>
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="treno_id" />
