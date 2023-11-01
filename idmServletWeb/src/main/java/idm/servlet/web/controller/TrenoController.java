@@ -47,9 +47,6 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
-	
-	@Autowired
-	UtenteService utenteService;
 
 	@Autowired
 	UtenteService utenteService;
@@ -80,20 +77,20 @@ public class TrenoController {
 		String sigla = siglaTreno.getSigla().toUpperCase();
 		String nome = nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
-		List<Utente> listaUtenti= utenteService.findAll();
-		
+		List<Utente> listaUtenti = utenteService.findAll();
+
 		try {
-			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
-			Utente u=(listaUtenti.get(0));
+
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, tnFactory);
+			Utente u = (listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
-		} catch (TrenoException  e) {
+		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla().toUpperCase());
-	//	model.addAttribute("siglaTreno", "HPHPROVA");
+		// model.addAttribute("siglaTreno", "HPHPROVA");
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
 		return "viewTreno";
@@ -104,28 +101,25 @@ public class TrenoController {
 			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
 			Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla=siglaTreno.getSigla();
-		String nome= nomeTreno.getNomeTreno();
+		String sigla = siglaTreno.getSigla();
+		String nome = nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
-		
-		List<Utente> listaUtenti= utenteService.findAll();
+
+		List<Utente> listaUtenti = utenteService.findAll();
 		try {
-			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
-			Utente u=(listaUtenti.get(0));
+
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, tnFactory);
+			Utente u = (listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
-		} catch (TrenoException  e) {
+		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
-		
-		
 
 		model.addAttribute("siglaTreno", siglaTreno.getSigla());
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
-		
-		
+
 		return "viewTreno";
 	}
 
@@ -181,47 +175,47 @@ public class TrenoController {
 		model.addAttribute("controller", this);
 		return "trovaTreno";
 	}
-	
+
 	@GetMapping("/cerca-treno-nome")
 	public String cercaTrenoByName(String nome, Model model) {
 		try {
 			Treno treno = trenoService.findByName(nome);
 			if (treno != null) {
 				model.addAttribute("treno", treno);
-				
+
 				List<Vagone> vagoni = treno.getVagoni();
-				
+
 				List<Cargo> cargoV = new ArrayList<>();
 				List<Ristorante> ristoranteV = new ArrayList<>();
 				List<Locomotiva> locomotivaV = new ArrayList<>();
 				List<Passeggeri> passeggeriV = new ArrayList<>();
 				List<Passeggeri> passeggeriVBusiness = new ArrayList<>();
 				for (Vagone vagone : treno.getVagoni()) {
-				    if (vagone instanceof Cargo) {
-				        Cargo cargo = (Cargo) vagone;
-				        cargoV.add(cargo);
-				    } 
-				    if (vagone instanceof Ristorante) {
-				        Ristorante ristorante = (Ristorante) vagone;
-				        ristoranteV.add(ristorante);
-				    }
-				    if (vagone instanceof Locomotiva) {
-				    	Locomotiva locomotiva = (Locomotiva) vagone;
-				    	locomotivaV.add(locomotiva);
-				    }
-				    if (vagone instanceof Passeggeri) {
-				    	Passeggeri passeggeri = (Passeggeri) vagone;
-				    	passeggeriV.add(passeggeri);
-				    }
-				    if (vagone instanceof PasseggeriBusiness) {
-				    	PasseggeriBusiness passeggeriBusiness = (PasseggeriBusiness) vagone;
-				    	passeggeriVBusiness.add(passeggeriBusiness);
-				    }
-				    model.addAttribute("cargo", cargoV);
-				    model.addAttribute("locomotive", locomotivaV);
-				    model.addAttribute("ristoranti", ristoranteV);
-				    model.addAttribute("passeggeri", passeggeriV);
-				    model.addAttribute("passeggeriB", passeggeriVBusiness);
+					if (vagone instanceof Cargo) {
+						Cargo cargo = (Cargo) vagone;
+						cargoV.add(cargo);
+					}
+					if (vagone instanceof Ristorante) {
+						Ristorante ristorante = (Ristorante) vagone;
+						ristoranteV.add(ristorante);
+					}
+					if (vagone instanceof Locomotiva) {
+						Locomotiva locomotiva = (Locomotiva) vagone;
+						locomotivaV.add(locomotiva);
+					}
+					if (vagone instanceof Passeggeri) {
+						Passeggeri passeggeri = (Passeggeri) vagone;
+						passeggeriV.add(passeggeri);
+					}
+					if (vagone instanceof PasseggeriBusiness) {
+						PasseggeriBusiness passeggeriBusiness = (PasseggeriBusiness) vagone;
+						passeggeriVBusiness.add(passeggeriBusiness);
+					}
+					model.addAttribute("cargo", cargoV);
+					model.addAttribute("locomotive", locomotivaV);
+					model.addAttribute("ristoranti", ristoranteV);
+					model.addAttribute("passeggeri", passeggeriV);
+					model.addAttribute("passeggeriB", passeggeriVBusiness);
 				}
 
 			} else {
@@ -232,10 +226,12 @@ public class TrenoController {
 		}
 		model.addAttribute("controller", this);
 		return "trovaTreno";
+	}
+
 	@RequestMapping("/eliminaTreno")
 	public String eliminaTreno(@RequestParam("id") Integer id) {
-	    trenoService.delete(id);
-	    return "04-profile";
+		trenoService.delete(id);
+		return "04-profile";
 	}
 
 	@GetMapping("/01-welcome")
@@ -247,10 +243,12 @@ public class TrenoController {
 	public String login(Model model) {
 		return "02-login";
 	}
-																		//CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
+
+	// CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
 	@GetMapping("/10-log-in")
-	public String login(@ModelAttribute("email") Email email ,@ModelAttribute("password") Password password,Model model) {
-		
+	public String login(@ModelAttribute("email") Email email, @ModelAttribute("password") Password password,
+			Model model) {
+
 		try {
 			utenteService.login(email.getEmail(), password.getPassword());
 		} catch (UtenteException e) {
@@ -258,7 +256,7 @@ public class TrenoController {
 		}
 		return "10-login";
 	}
-																				//FINE CONTROLLER LOGINN
+	// FINE CONTROLLER LOGINN
 
 	@GetMapping("/03-home")
 	public String home(Model model) {
@@ -287,8 +285,6 @@ public class TrenoController {
 
 		return "04-profile";
 	}
-	
-	
 
 	@GetMapping("/05-train-detail")
 	public String trainDetail(Model model) {
