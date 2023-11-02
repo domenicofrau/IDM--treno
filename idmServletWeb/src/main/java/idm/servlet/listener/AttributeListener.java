@@ -12,7 +12,7 @@ public class AttributeListener implements ServletRequestAttributeListener {
 
 	public void attributeAdded(ServletRequestAttributeEvent srae) {
 
-		System.out.println("attributo: " + srae.getName() + " " + srae.getValue());
+//		System.out.println("attributo: " + srae.getName() + " " + srae.getValue());
 
 	}
 

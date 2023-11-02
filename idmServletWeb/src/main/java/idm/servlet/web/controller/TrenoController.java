@@ -1,6 +1,7 @@
 package idm.servlet.web.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idm.trenohibernate.Cargo;
@@ -32,6 +32,7 @@ import idm.servlet.bean.SiglaTreno;
 import idm.servlet.bean.Email;
 import idm.servlet.bean.NomeTreno;
 import idm.servlet.bean.Password;
+import idm.servlet.bean.Regione;
 import idm.servlet.bean.UrlImmagine;
 
 @Controller
@@ -72,19 +73,26 @@ public class TrenoController {
 	@PostMapping("/crea-treno-fr")
 	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,
 			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
-			Model model) {
+			@ModelAttribute("regione") Regione regione, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
 		String sigla = siglaTreno.getSigla().toUpperCase();
 		String nome = nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
+		String regioneTreno = regione.getRegione();
 		List<Utente> listaUtenti = utenteService.findAll();
 
 		try {
 
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, tnFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regioneTreno, frFactory);
 			Utente u = (listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
+
+			int bitTrain = u.getbitTrain();
+			int prezzoTotale = t.getPrezzoTotale();
+			u.setbitTrain(bitTrain - prezzoTotale);
+			utenteService.update(u);
+
 		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
@@ -93,25 +101,31 @@ public class TrenoController {
 		// model.addAttribute("siglaTreno", "HPHPROVA");
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
-		return "viewTreno";
+		return "redirect:/03-home";
 	}
 
 	@PostMapping("/crea-treno-tn")
 	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,
 			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
-			Model model) {
+			@ModelAttribute("regione") Regione regione, Model model) {
 		System.out.println("creata:" + siglaTreno.getSigla());
 		String sigla = siglaTreno.getSigla();
 		String nome = nomeTreno.getNomeTreno();
 		String immagine = urlImmagine.getUrlImmagine();
-
+		String regioneTreno = regione.getRegione();
 		List<Utente> listaUtenti = utenteService.findAll();
 		try {
 
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, tnFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regioneTreno, tnFactory);
 			Utente u = (listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
+
+			int bitTrain = u.getbitTrain();
+			int prezzoTotale = t.getPrezzoTotale();
+			u.setbitTrain(bitTrain - prezzoTotale);
+			utenteService.update(u);
+
 		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
@@ -120,7 +134,7 @@ public class TrenoController {
 		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
 		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
 
-		return "viewTreno";
+		return "redirect:/03-home";
 	}
 
 	@GetMapping("/cerca-treno")
@@ -228,10 +242,27 @@ public class TrenoController {
 		return "trovaTreno";
 	}
 
-	@RequestMapping("/eliminaTreno")
-	public String eliminaTreno(@RequestParam("id") Integer id) {
+	@PostMapping("/eliminaTreno")
+	public String eliminaTreno(@RequestParam("id") int id, Model model) {
+		model.addAttribute("id", id);
+		Treno treno = trenoService.find(id);
+		int prezzoTotale = treno.getPrezzoTotale();
+
 		trenoService.delete(id);
-		return "04-profile";
+
+		Utente utente = utenteService.find(2096);
+		int bitTrain = utente.getbitTrain();
+		utente.setbitTrain(bitTrain + prezzoTotale);
+		utenteService.update(utente);
+
+		model.addAttribute("utente", utente);
+		List<Treno> treni = trenoService.findByUtenteId(2096);
+
+		Collections.reverse(treni);
+
+		model.addAttribute("treni", treni);
+
+		return "redirect:/04-profile";
 	}
 
 	@GetMapping("/01-welcome")
@@ -272,16 +303,12 @@ public class TrenoController {
 	@GetMapping("/04-profile")
 	public String profile(Model model) {
 		Utente utente = utenteService.find(2096);
-
 		model.addAttribute("utente", utente);
-
 		List<Treno> treni = trenoService.findByUtenteId(2096);
 
-		if (treni.size() != 0) {
-			model.addAttribute("treni", treni);
-		} else {
-			model.addAttribute("errore", "Al momento non ci sono treni da vedere... creane uno!");
-		}
+		Collections.reverse(treni);
+
+		model.addAttribute("treni", treni);
 
 		return "04-profile";
 	}

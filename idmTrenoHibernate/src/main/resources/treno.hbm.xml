@@ -13,6 +13,9 @@
 		<property name="nome" column="nome" type="string" />
 		<property name="marca" column="marca" type="string" />
 		<property name="immagine" column="immagine" type="string" />
+		<property name="regione" column="regione" type="string" />
+		<property name="prezzoTotale" column="prezzo" type="integer" />
+		
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="treno_id" />
 			<index column="posizione"></index>
