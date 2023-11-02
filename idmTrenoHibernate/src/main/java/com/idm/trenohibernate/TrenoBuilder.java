@@ -76,6 +76,7 @@ public abstract class TrenoBuilder {
 			case 'P':
 				t.getVagoni().add(costruisciPasseggeri());
 				peso += 18;
+				prezzoTotale += costruisciPasseggeri().getPrezzo();
 				countPasseggeri++;
 				break;
 			case 'R':
