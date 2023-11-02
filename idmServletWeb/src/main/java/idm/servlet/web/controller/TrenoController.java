@@ -26,9 +26,11 @@ import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.exceptions.UtenteException;
 import com.idm.trenohibernate.service.TrenoService;
+import com.idm.trenohibernate.service.TrenoServiceCriteria;
 import com.idm.trenohibernate.service.UtenteService;
 
 import idm.servlet.bean.SiglaTreno;
+import idm.servlet.bean.TrenoBean;
 import idm.servlet.bean.Email;
 import idm.servlet.bean.NomeTreno;
 import idm.servlet.bean.Password;
@@ -52,10 +54,8 @@ public class TrenoController {
 	UtenteService utenteService;
 
 	@Autowired
-	UtenteService utenteService;
-
-	@Autowired
 	ConcreteBuilder concreteBuilder;
+	
 
 	@GetMapping("/cancella")
 	public String cancellaTreno(Model model) {
@@ -73,18 +73,15 @@ public class TrenoController {
 	}
 
 	@PostMapping("/crea-treno-fr")
-	public String addFR(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,
-			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
-			Model model) {
-		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla = siglaTreno.getSigla().toUpperCase();
-		String nome = nomeTreno.getNomeTreno();
-		String immagine = urlImmagine.getUrlImmagine();
+	public String addFR(@ModelAttribute("treno") TrenoBean treno, Model model) {
+		System.out.println("creata:" + treno.getSigla());
+		String sigla = treno.getSigla();
+		String nome = treno.getNomeTreno();
+		String immagine = treno.getUrlImmagine();
 		List<Utente> listaUtenti= utenteService.findAll();
 		
-		try {
-			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
+		try {		
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, frFactory);
 			Utente u=(listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
@@ -92,25 +89,21 @@ public class TrenoController {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("siglaTreno", siglaTreno.getSigla().toUpperCase());
-	//	model.addAttribute("siglaTreno", "HPHPROVA");
-		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
-		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
+		model.addAttribute("siglaTreno", treno.getSigla());
+		model.addAttribute("nomeTreno", treno.getNomeTreno());
+		model.addAttribute("urlImmagine", treno.getUrlImmagine());
 		return "viewTreno";
 	}
 
 	@PostMapping("/crea-treno-tn")
-	public String addTN(@ModelAttribute("siglaTreno") SiglaTreno siglaTreno,
-			@ModelAttribute("nomeTreno") NomeTreno nomeTreno, @ModelAttribute("urlImmagine") UrlImmagine urlImmagine,
-			Model model) {
-		System.out.println("creata:" + siglaTreno.getSigla());
-		String sigla=siglaTreno.getSigla();
-		String nome= nomeTreno.getNomeTreno();
-		String immagine = urlImmagine.getUrlImmagine();
+	public String addTN(@ModelAttribute("treno") TrenoBean treno, Model model) {
+		System.out.println("creata:" + treno.getSigla());
+		String sigla=treno.getSigla();
+		String nome= treno.getNomeTreno();
+		String immagine = treno.getUrlImmagine();
 		
 		List<Utente> listaUtenti= utenteService.findAll();
-		try {
-			
+		try {			
 			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
 			Utente u=(listaUtenti.get(0));
 			t.setUtente(u);
@@ -119,13 +112,9 @@ public class TrenoController {
 			e.printStackTrace();
 		}
 		
-		
-
-		model.addAttribute("siglaTreno", siglaTreno.getSigla());
-		model.addAttribute("nomeTreno", nomeTreno.getNomeTreno());
-		model.addAttribute("urlImmagine", urlImmagine.getUrlImmagine());
-		
-		
+		model.addAttribute("siglaTreno", treno.getSigla());
+		model.addAttribute("nomeTreno", treno.getNomeTreno());
+		model.addAttribute("urlImmagine", treno.getUrlImmagine());		
 		return "viewTreno";
 	}
 
@@ -232,6 +221,8 @@ public class TrenoController {
 		}
 		model.addAttribute("controller", this);
 		return "trovaTreno";
+		
+	}
 	@RequestMapping("/eliminaTreno")
 	public String eliminaTreno(@RequestParam("id") Integer id) {
 	    trenoService.delete(id);
@@ -300,5 +291,7 @@ public class TrenoController {
 		model.addAttribute("selectedFactory", factory);
 		return "06-crea-treno";
 	}
+	
+	
+	}
 
-}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="it">
   <head>
@@ -115,7 +116,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <!-- SELETTORE DELLA MARCA -->
       <p class="mt-5">Scegli la marca per il tuo nuovo treno:</p>
-      <form id="factoryForm">
+      <form:form id="factoryForm">
         <div class="form-check">
           <input
             class="form-check-input"
@@ -150,11 +151,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             />
           </label>
         </div>
-      </form>
+      </form:form>
 
       <!-- FRECCIAROSSA -->
       <div id="frForm" style="display: none">
-        <form method="POST" action="crea-treno-fr">
+        <form:form method="POST" action="crea-treno-fr" modelAttribute="treno">
           <div class="form-group">
             <p class="mt-3 text">
               Per poter costruire un treno, è necessario inserire una sigla.
@@ -320,12 +321,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <button type="submit" class="btn btn-primary mb-5">
             Crea il treno
           </button>
-        </form>
+        </form:form>
       </div>
 
       <!-- TRENORD -->
       <div id="tnForm" style="display: none">
-        <form method="POST" action="crea-treno-tn">
+        <form:form method="POST" action="crea-treno-tn" modelAttribute="treno" >
           <div class="form-group">
             <p class="mt-3 text">
               Per poter costruire un treno, è necessario inserire una sigla.
@@ -489,7 +490,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <button type="submit" class="btn btn-primary mb-5">
             Crea il treno
           </button>
-        </form>
+        </form:form>
       </div>
     </div>
 

@@ -38,23 +38,11 @@
 			<div class="collapse navbar-collapse justify-content-center"
 				id="navbarNav">
 				<ul class="navbar-nav align-items-center">
-					<li class="nav-item active mr-3"><a class="nav-link"
-						href="01-welcome">Welcome</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
+					<li class="nav-item active mr-3"><a class="nav-link" href="02-login">Login</a></li>
 					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
-					<li class="nav-item mr-3"><a class="nav-link"
-						href="06-crea-treno">Crea Treno</a></li>
-					<li class="nav-item">
-						<div class="input-group" style="width: 180px; position: relative;">
-							<input type="text" class="form-control" placeholder="Cerca treno"
-								aria-label="Cerca treno"
-								style="height: 25px; border-radius: 15px; padding-left: 25px;">
-							<div class="input-group-append"
-								style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;"></div>
-							<i class="ms-3 bi bi-search text-secondary"
-								style="margin-left: 5px; align-self: center;"></i>
-						</div>
-					</li>
+					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
+		
 				</ul>
 			</div>
 		</div>

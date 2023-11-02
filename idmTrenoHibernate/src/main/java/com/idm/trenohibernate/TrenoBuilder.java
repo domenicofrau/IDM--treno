@@ -3,12 +3,14 @@ package com.idm.trenohibernate;
 import java.util.function.IntPredicate;
 import com.idm.trenohibernate.exceptions.*;
 import com.idm.trenohibernate.service.TrenoService;
+
 public abstract class TrenoBuilder {
+	
 	TrenoService tService = new TrenoService();
+	
 	public Treno costruisciTreno(String sigla, String nome, String immagine) throws TrenoException {
 
 		if (!sigla.contains("H")) {
-
 			throw new LocomotivaException("La locomotiva è obbligatoria", sigla);
 		}
 
@@ -49,6 +51,7 @@ public abstract class TrenoBuilder {
 					"I vagoni sono incompatibili Presenza di Cargo e Ristorante insieme.", sigla, sigla.indexOf('R'),
 					sigla.indexOf('C'));
 		}
+		
 		if(tService.findByName(nome)!=null) {
 			throw new TrenoNameException("Nome del treno già esistente", nome);
 		}
@@ -61,6 +64,7 @@ public abstract class TrenoBuilder {
 		int countRistorante = 0;
 		int countCargo = 0;
 		int prezzoTotale = 0;
+		
 		for (int i = 0; i < sigla.length(); i++) {
 
 			char c = sigla.charAt(i);

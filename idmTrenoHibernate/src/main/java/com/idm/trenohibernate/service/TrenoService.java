@@ -66,6 +66,10 @@ public class TrenoService {
     public List<Treno> findByUtenteId(Integer utenteId) {
         return dao.findByUtenteId(utenteId);
     }
+    
+    public List<Treno> findByNameLike(String name){
+    	return null;
+    }
 
 
 }

@@ -34,8 +34,6 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        System.out.println("run.....");
 
 		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
@@ -67,6 +65,12 @@ public class Main {
 //		tService.update(t);
 //		uService.update(utenteTrovato1);
 //		uService.update(utenteTrovato2);
+		
+//		***************************** CRITERIA BUILDER  *****************************
+		
+		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
+//		tSvcC.findByNameLike("treno");
+		tSvcC.findTreni("p", null);
 		
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();

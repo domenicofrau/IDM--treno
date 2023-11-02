@@ -2,6 +2,8 @@ package com.idm.trenohibernate.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -9,6 +11,7 @@ import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.utils.HibernateUtil;
 
 public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibernateDAO {
+	
 
 	public Integer create(Treno bean) {
 		return super.create(bean);
@@ -50,4 +53,7 @@ public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibern
         session.close();
         return treni;
     }
+
+    
+    
 }
