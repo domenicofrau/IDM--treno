@@ -92,7 +92,7 @@
 									<img src="<c:url value='/resources/img/train.jpg'/>"
 										alt="Immagine Treno placeholder" class="img-fluid mb-3">
 								</c:if>
-								<img src="${ treni.immagine }" class="img-fluid mb-3">
+								<img src="${treni.immagine}" alt="Train image" class="img-fluid train-image mb-3">
 								<h4 class="font-weight-bold">NOME: ${ treni.nome }</h4>
 								<p>MARCA: ${ treni.marca }</p>
 								<p>PESO TOTALE DEL TRENO: ${ sommaPesi } tonnellate</p>

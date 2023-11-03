@@ -60,6 +60,8 @@ body {
 	font-size: 1.6rem;
 }
 
-.hidden {
-    visibility: hidden;
+.train-image {
+	height: 200px;
+	width: 100%;
+	object-fit: cover;
 }
