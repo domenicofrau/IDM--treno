@@ -31,37 +31,13 @@
 				</ul>
 			</div>
 
-		<!-- Menu al centro -->
-		<div class="collapse navbar-collapse justify-content-center"
-			id="navbarNav">
-			<ul class="navbar-nav align-items-center">
-				<li class="nav-item active mr-3"><a class="nav-link"
-					href="01-welcome">Welcome</a></li>
-				<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
-				<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
-				<li class="nav-item mr-3"><a class="nav-link"
-					href="06-crea-treno">Crea Treno</a></li>
-				<li class="nav-item">
-					<div class="input-group" style="width: 180px; position: relative;">
-						<input type="text" class="form-control" placeholder="Cerca treno"
-							aria-label="Cerca treno"
-							style="height: 25px; border-radius: 15px; padding-left: 25px;">
-						<div class="input-group-append"
-							style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;"></div>
-						<i class="ms-3 bi bi-search text-secondary"
-							style="margin-left: 5px; align-self: center;"></i>
-					</div>
-				</li>
-			</ul>
-		</div>
 
 		<!-- Link a destra -->
 		<div class="navbar-nav ml-auto" style="padding-left: 50px;">
 			<div class="nav-item d-flex align-items-center">
-				<a class="nav-link d-inline mr-1" href="04-profile">${utente.nome}
-					${utente.cognome}</a> <a class="nav-link d-inline mr-1"
-					href="04-profile">${utente.bitTrain}</a> <img
-					src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"
+				<a class="nav-link d-inline mr-1" href="04-profile">${utente.bitTrain}</a>
+				<img src="<c:url value='/resources/img/bitTrain.png'/>"
+					alt="bitTrain"
 					style="height: 20px; object-fit: cover; margin-right: 4px;">
 				<a href="04-profile"> <img
 					src="<c:url value='/resources/img/profile-test.jpg'/>"
@@ -70,13 +46,13 @@
 				</a>
 			</div>
 		</div>
-
 	</nav>
 
 
 
 	<div class="container mt-5">
 	
+		<!-- CRITERIA FORM DI RICERCA -->
 		<div class="row my-3 p-4 d-none" id="criteriaForm">
 			<form action="search" method="GET" class="form-inline">
  				 <div class="form-group">
@@ -84,14 +60,14 @@
    				 <input type="text" class="form-control mx-3" id="nome" name="nome" placeholder="Nome del treno">
    				 
    				 <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Marca:</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect01" name="marca">
-    <option selected>FrecciaRossa</option>
-    <option value="1">TreNord</option>
-  </select>
-</div>
+  					<div class="input-group-prepend">
+    					<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
+  					</div>
+  					<select class="custom-select" id="inputGroupSelect01" name="marca">
+   						 <option selected>FrecciaRossa</option>
+   						 <option value="1">TreNord</option>
+  					</select>
+					</div>
    				 
   				 <button type="submit" class="btn btn-dark mx-3">Submit</button>
  				 </div>
@@ -100,6 +76,7 @@
 			<i class="ms-3 bi bi-x fs-1" id="closeIcon"></i>
 			
 		</div>
+		
 		<div class="feed-section">
 
 
@@ -150,9 +127,8 @@
 
 	</div>
 
-	<script src="<c:url value='/resources/js/find.js'/>"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="<c:url value='/resources/js/find.js'/>"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

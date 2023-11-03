@@ -8,18 +8,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>TrainBook - Profilo</title>
-<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>"
-	type="image/x-icon">
+<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>"  type="image/x-icon">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/01-welcome.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
 
 </head>
 <style>
@@ -83,23 +79,13 @@
 		<div class="collapse navbar-collapse justify-content-center"
 			id="navbarNav">
 			<ul class="navbar-nav align-items-center">
-				<li class="nav-item active mr-3"><a class="nav-link"
+				<li class="nav-item mr-3"><a class="nav-link"
 					href="01-welcome">Welcome</a></li>
 				<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
 				<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
 				<li class="nav-item mr-3"><a class="nav-link"
 					href="06-crea-treno">Crea Treno</a></li>
-				<li class="nav-item">
-					<div class="input-group" style="width: 180px; position: relative;">
-						<input type="text" class="form-control" placeholder="Cerca treno"
-							aria-label="Cerca treno"
-							style="height: 25px; border-radius: 15px; padding-left: 25px;">
-						<div class="input-group-append"
-							style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;"></div>
-						<i class="ms-3 bi bi-search text-secondary"
-							style="margin-left: 5px; align-self: center;"></i>
-					</div>
-				</li>
+				<li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>	
 			</ul>
 		</div>
 
@@ -121,6 +107,32 @@
 	</nav>
 
 	<div class="container mt-5">
+	
+		<!-- CRITERIA FORM DI RICERCA -->
+		<div class="row my-3 p-4 d-none" id="criteriaForm">
+			<form action="search" method="GET" class="form-inline">
+ 				 <div class="form-group">
+    			<label for="nome">Nome del treno: </label>
+   				 <input type="text" class="form-control mx-3" id="nome" name="nome" placeholder="Nome del treno">
+   				 
+   				 <div class="input-group mb-3">
+  					<div class="input-group-prepend">
+    					<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
+  					</div>
+  					<select class="custom-select" id="inputGroupSelect01" name="marca">
+   						 <option selected>FrecciaRossa</option>
+   						 <option value="1">TreNord</option>
+  					</select>
+					</div>
+   				 
+  				 <button type="submit" class="btn btn-dark mx-3">Submit</button>
+ 				 </div>
+ 				 
+			</form>
+			<i class="ms-3 bi bi-x fs-1" id="closeIcon"></i>
+			
+		</div>
+	
 		<div class="row">
 			<!-- Sezione Immagine Profilo -->
 			<div class="col-md-5 text-center">
@@ -129,7 +141,7 @@
 						alt="Immagine Profilo" class="img-fluid">
 					<div class="edit-overlay">Modifica</div>
 				</div>
-				<h3 class="mt-3">${utente.nome}${utente.cognome}</h3>
+				<h3 class="mt-3">${utente.nome} ${utente.cognome}</h3>
 				<p>${utente.email}</p>
 				<p>
 					saldo BitTrain: <b>${utente.bitTrain} </b><img
@@ -233,15 +245,11 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-	<script>
-		document.getElementById('confirmDelete').addEventListener('click',
-				function() {
-					document.getElementById('deleteForm').submit();
-				});
-	</script>
+	
+<script src="<c:url value='/resources/js/find.js'/>"></script>
+<script src="<c:url value='/resources/js/modale.js'/>"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 

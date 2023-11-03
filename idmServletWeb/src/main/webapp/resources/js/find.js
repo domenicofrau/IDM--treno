@@ -1,5 +1,3 @@
-console.log("test")
-
 let search = document.getElementById("criteriaForm")
 let searchIcon = document.getElementById("searchIcon");
 let closeIcon = document.getElementById("closeIcon");

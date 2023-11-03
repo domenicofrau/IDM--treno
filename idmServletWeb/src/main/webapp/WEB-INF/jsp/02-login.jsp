@@ -6,40 +6,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>TrainBook</title>
-<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>"
-	type="image/x-icon">
+<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>" type="image/x-icon">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/01-welcome.css'/>">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
 </head>
 
 <body>
 
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	
+			<a class="navbar-brand" href="01-welcome" style="padding-right: 50px;">
+			<img src="<c:url value='/resources/img/logo_nav.png'/>" alt=""
+			height="30" style="vertical-align: middle; margin: 0 10px;">
+			</a>
 
 			<!-- Menu al centro -->
 			<div class="collapse navbar-collapse justify-content-center"
 				id="navbarNav">
 				<ul class="navbar-nav align-items-center">
 					<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
-					<li class="nav-item active mr-3"><a class="nav-link" href="02-login">Login</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
-		
+					<li class="nav-item active mr-3"><a class="nav-link" href="02-login">Login</a></li>	
 				</ul>
 			</div>
-		</div>
 
 	</nav>
 
@@ -82,6 +73,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="<c:url value='/resources/js/02-login.js'/>"></script>
+	
+<script src="<c:url value='/resources/js/login.js'/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

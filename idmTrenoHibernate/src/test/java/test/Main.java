@@ -40,18 +40,18 @@ public class Main {
 		UtenteBuilder u = new UtenteBuilder();
 		UtenteService uService = new UtenteService();
 //		Utente utenteTrovato1 = uService.findByEmail("sonogianni@daje.com");
-		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
+//		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
 		String immagine = "https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
 //		Treno t =tService.find(2);
 
 		
-		tService.delete(2356);
+//		tService.delete(2356);
 
 //		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
-//		Utente utente = u.creaUtente("Compratore", "Collezionista", "pastella@ciaociao.com", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
+		Utente utente = u.creaUtente("Compratore", "Collezionista", "pastella@ciaociao.com", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
 
 //		Treno t =tService.findByName("carlo");
-//		uService.crea(utente);
+		uService.crea(utente);
 //		t.setUtente(t, utenteTrovato1);
 //		uService.update(utenteTrovato1);
 //		tService.update(t);
@@ -70,7 +70,7 @@ public class Main {
 		
 		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
 //		tSvcC.findByNameLike("treno");
-		tSvcC.findTreni("p", null);
+//		tSvcC.findTreni("p", null);
 		
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
