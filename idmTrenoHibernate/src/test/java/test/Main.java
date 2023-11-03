@@ -34,8 +34,6 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        System.out.println("run.....");
 
 		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);

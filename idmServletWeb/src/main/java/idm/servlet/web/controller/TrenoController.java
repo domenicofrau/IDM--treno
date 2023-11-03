@@ -51,8 +51,6 @@ public class TrenoController {
 	@Autowired
 	UtenteService utenteService;
 
-	@Autowired
-	UtenteService utenteService;
 
 	@Autowired
 	ConcreteBuilder concreteBuilder;
@@ -232,6 +230,7 @@ public class TrenoController {
 		}
 		model.addAttribute("controller", this);
 		return "trovaTreno";
+	}
 	@RequestMapping("/eliminaTreno")
 	public String eliminaTreno(@RequestParam("id") Integer id) {
 	    trenoService.delete(id);
