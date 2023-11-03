@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,15 +14,14 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>"/>
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>"/>
 	</head>
-   <body>
-   
+   	<body>
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		   <a class="navbar-brand" href="01-welcome">
-		      <img src="<c:url value='/resources/img/logo_nav.png'/>" alt="" class="logo-nav"/>
+		      <img class="logo-nav" src="<c:url value='/resources/img/logo_nav.png'/>" alt="" />
 		   </a>
-		   <!-- Center -->
-		   <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+		   <!-- centro -->
+		   <div id="navbarNav" class="collapse navbar-collapse justify-content-center" >
 		      <ul class="navbar-nav align-items-center">
 		         <li class="nav-item active mr-3">
 		            <a class="nav-link" href="01-welcome">Welcome</a>
@@ -33,9 +32,7 @@
 		      </ul>
 		   </div>
 		</nav>
-
-      
-      <!-- HERO -->
+      	<!-- HERO -->
 		<div class="container mt-5">
 		   <div class="row">
 		      <div class="col-12 col-md-6 p-3">
@@ -46,10 +43,9 @@
 		            con il resto del mondo. Esplora le creazioni degli altri utenti e
 		            lasciati ispirare!
 		         </p>
-		         <!-- Button container -->
 		         <div class="d-flex justify-content-between">
-		            <a href="02-login" class="btn btn-primary mt-4">Login</a>
-		            <a href="02-login" class="btn btn-outline-dark mt-4">Registrati</a>
+		            <a class="btn btn-primary mt-4" href="02-login">Login</a>
+		            <a class="btn btn-outline-dark mt-4" href="02-login">Registrati</a>
 		         </div>
 		      </div>
 		      <div class="col-12 col-md-6 my-3">
@@ -57,6 +53,5 @@
 		      </div>
 		   </div>
 		</div>
-      
-   </body>
+   	</body>
 </html>

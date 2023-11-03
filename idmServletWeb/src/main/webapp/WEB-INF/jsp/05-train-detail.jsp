@@ -6,11 +6,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>TrainBook - Dettaglio</title>
 		<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>"  type="image/x-icon">
-		
 		<!-- Bootstrap CSS -->
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-		
 		<!-- Custom CSS -->
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
@@ -18,59 +16,56 @@
 	</head>
 	
 	<body>
-	
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="01-welcome" style="padding-right: 50px;">
-				<img src="<c:url value='/resources/img/logo_nav.png'/>" alt="" height="30" style="vertical-align: middle; margin: 0 10px;">
+			<a class="navbar-brand" href="03-home">
+				<img class="logo-nav" src="<c:url value='/resources/img/logo_nav.png'/>" alt=""/>
 			</a>
-	
 			<!-- centro -->
-			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+			<div id="navbarNav" class="collapse navbar-collapse justify-content-center">
 				<ul class="navbar-nav align-items-center">
-					<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+					<c:if test="${empty loggedInUser.nome}">
+						<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
+						<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+					</c:if>
 					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
 					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
-					<li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>			
+					<li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>                  
 				</ul>
 			</div>
-	
 			<!-- destra -->
-			<div class="navbar-nav ml-auto" style="padding-left: 50px;">
+			<div class="navbar-nav ml-auto navbar-nav-adjust">
 				<div class="nav-item d-flex align-items-center">
-					<a class="nav-link d-inline mr-1" href="04-profile">${utente.bitTrain}</a>
-						<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" style="height: 20px; object-fit: cover; margin-right: 4px;">
-					<a href="04-profile"> 
-						<img src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
+					<b>${loggedInUser.nome}</b>
+					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
+					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
+					<a href="04-profile">
+						<img class="profile-image" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo">
 					</a>
 				</div>
 			</div>
 		</nav>
-		
 		<div class="container my-3">
-			
 			<!-- CRITERIA FORM DI RICERCA -->
-			<div class="row my-3 p-4 d-none" id="criteriaForm">
-				<form action="search" method="GET" class="form-inline">
-	 				 <div class="form-group">
-		    			 <label for="nome">Nome del treno: </label>
-		   				 <input type="text" class="form-control mx-3" id="nome" name="nome" placeholder="Nome del treno">
+			<div id="criteriaForm" class="row my-3 p-4 d-none">
+				<form class="form-inline" action="search" method="GET">
+	 				<div class="form-group">
+		    			<label for="nome">Nome del treno: </label>
+		   				 <input id="nome" class="form-control mx-3" type="text" name="nome" placeholder="Nome del treno">
 		   				 <div class="input-group mb-3">
 		  					<div class="input-group-prepend">
 		    					<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 		  					</div>
-		  					<select class="custom-select" id="inputGroupSelect01" name="marca">
+		  					<select id="inputGroupSelect01" class="custom-select" name="marca">
 		   						 <option selected>FrecciaRossa</option>
 		   						 <option value="1">TreNord</option>
 		  					</select>
 						 </div>
-		  				 <button type="submit" class="btn btn-dark mx-3">Submit</button>
+		  				 <button class="btn btn-dark mx-3" type="submit">Submit</button>
 	 				 </div>
 				</form>
-				<i class="ms-3 bi bi-x fs-1" id="closeIcon"></i>
+				<i id="closeIcon" class="ms-3 bi bi-x fs-1"></i>
 			</div>
-			
 		</div>
 	
 		<c:if test="${not empty errore}">
