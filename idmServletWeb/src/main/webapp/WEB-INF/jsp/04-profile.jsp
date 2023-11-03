@@ -75,25 +75,28 @@
 				<img src="<c:url value='/resources/img/logo_nav.png'/>" alt="" height="30" style="vertical-align: middle; margin: 0 10px;">
 			</a>
 	
-			<!-- centro -->
-			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-				<ul class="navbar-nav align-items-center">
-					<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
-					<li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>	
-				</ul>
-			</div>
+		   <!-- centro -->
+		   <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+		      <ul class="navbar-nav align-items-center">
+		         <c:if test="${empty loggedInUser.nome}">
+		            <!-- Questi link saranno visualizzati solo se loggedInUser.nome è null -->
+		            <li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
+		            <li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+		         </c:if>
+		         <li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
+		         <li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
+		         <li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>                  
+		      </ul>
+		   </div>
 	
 			<!-- destra -->
-			<div class="navbar-nav ml-auto" style="padding-left: 50px;">
+			<div class="navbar-nav ml-auto navbar-nav-adjust">
 				<div class="nav-item d-flex align-items-center">
-				<b>${loggedInUser.nome}</b>
-					<a class="nav-link d-inline mr-1" href="04-profile">${utente.bitTrain}</a>
-					<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" style="height: 20px; object-fit: cover; margin-right: 4px;">
-					<a href="04-profile"> 
-						<img src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
+					<b>${loggedInUser.nome}</b>
+					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
+					<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" class="nav-item-icon">
+					<a href="04-profile">
+						<img src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo" class="profile-image">
 					</a>
 				</div>
 			</div>
@@ -135,6 +138,9 @@
 						<b>${loggedInUser.bitTrain} </b>
 						<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" style="height: 20px; object-fit: cover; margin-right: 4px;">
 					</p>
+					<form id="logOut" method="" action="">
+						<input type="button" value="Logout" class="btn btn-danger"/>
+					</form>
 				</div>
 	
 				<!-- SEZIONE TRENI -->
@@ -177,7 +183,7 @@
 											</a>
 	
 											<form id="deleteForm" method="post" action="/idmServletWeb/eliminaTreno">
-												<input type="hidden" name="id" value="${treni.id}" /><input type="button" value="Elimina" class="btn btn-danger" data-toggle="modal" data-target="#confirmModal" />
+												<input type="hidden" name="id" value="${treni.id}" /><input type="button" value="Elimina" class="btn btn-dark" data-toggle="modal" data-target="#confirmModal" />
 											</form>
 	
 											<!-- MODALE -->
@@ -199,7 +205,7 @@
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-															<button type="button" class="btn btn-danger" id="confirmDelete">Vendi</button>
+															<button type="button" class="btn btn-dark" id="confirmDelete">Vendi</button>
 														</div>
 													</div>
 												</div>

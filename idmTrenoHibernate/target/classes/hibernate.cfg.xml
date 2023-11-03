@@ -10,7 +10,7 @@
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/trenohibernate</property>
 		<property name="connection.username">postgres</property>
-		<property name="connection.password">Renoir</property>
+		<property name="connection.password">root</property>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
 		<!-- Impostazione per la creazione automatica delle tabelle -->
