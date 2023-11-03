@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1" %> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib prefix="form"
-uri="http://www.springframework.org/tags/form" %>
+uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -75,11 +75,11 @@ uri="http://www.springframework.org/tags/form" %>
           <!-- LOGIN -->
           <div id="loginForm">
             <h2>Login</h2>
-            <form action="doLogin" method="post" class="form-group">
+            <form:form action="doLogin" method="POST" class="form-group" modelAttribute="utente">
               <input
                 type="text"
-                name="username"
-                placeholder="Nome utente"
+                name="email"
+                placeholder="Email"
                 class="form-control mb-2"
                 required
               />
@@ -97,7 +97,7 @@ uri="http://www.springframework.org/tags/form" %>
                 Non sei ancora registrato?
                 <a href="#" onclick="showRegisterForm()">Registrati qui</a>
               </p>
-            </form>
+            </form:form>
           </div>
 
           <!-- REGISTRAZIONE -->

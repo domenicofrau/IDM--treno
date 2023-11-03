@@ -89,6 +89,7 @@
 			<!-- destra -->
 			<div class="navbar-nav ml-auto" style="padding-left: 50px;">
 				<div class="nav-item d-flex align-items-center">
+				<b>${loggedInUser.nome}</b>
 					<a class="nav-link d-inline mr-1" href="04-profile">${utente.bitTrain}</a>
 					<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" style="height: 20px; object-fit: cover; margin-right: 4px;">
 					<a href="04-profile"> 
@@ -128,10 +129,10 @@
 						<img src="<c:url value='/resources/img/profile-test.jpg'/>" alt="Immagine Profilo" class="img-fluid">
 						<div class="edit-overlay">Modifica</div>
 					</div>
-					<h3 class="mt-3">${utente.nome} ${utente.cognome}</h3>
-					<p>${utente.email}</p>
+					<h3 class="mt-3">${loggedInUser.nome} ${loggedInUser.cognome}</h3>
+					<p>${loggedInUser.email}</p>
 					<p> saldo BitTrain: 
-						<b>${utente.bitTrain} </b>
+						<b>${loggedInUser.bitTrain} </b>
 						<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" style="height: 20px; object-fit: cover; margin-right: 4px;">
 					</p>
 				</div>

@@ -36,7 +36,8 @@
 			<!-- destra -->
 			<div class="navbar-nav ml-auto" style="padding-left: 50px;">
 				<div class="nav-item d-flex align-items-center">
-					<a class="nav-link d-inline mr-1" href="04-profile">${utente.bitTrain}</a>
+				<b>${loggedInUser.nome}</b>
+					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 						<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" style="height: 20px; object-fit: cover; margin-right: 4px;">
 					<a href="04-profile"> 
 						<img src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">

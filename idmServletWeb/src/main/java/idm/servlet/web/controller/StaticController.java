@@ -28,14 +28,7 @@ public class StaticController {
 	UtenteService utenteService;
 	
 	@GetMapping("/01-welcome")
-	public String welcome(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
-		UtenteBean loggedInUser = (UtenteBean) session.getAttribute("loggedInUser");
-		 if (loggedInUser != null) {
-	            model.addAttribute("loggedInUser", loggedInUser);
-	        } else {
-	            model.addAttribute("errorMessage", "User not logged in");
-	        }
+	public String welcome(Model model) {
 		return "01-welcome";
 	}
 
@@ -45,11 +38,9 @@ public class StaticController {
 	}
 	
 	@GetMapping("/03-home")
-	public String home(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
-		UtenteBean loggedInUser = (UtenteBean) session.getAttribute("loggedInUser");
-		Utente utente = utenteService.findByEmail(loggedInUser.getEmail());
-		model.addAttribute("utente", utente);
+	public String home(Model model) {
+
+
 		List<Treno> treni = trenoService.findAll();
 		
 		if (treni.size() != 0) {
@@ -61,10 +52,12 @@ public class StaticController {
 	}
 	
 	@GetMapping("/04-profile")
-	public String profile(Model model) {
-		Utente utente = utenteService.find(2096);
-		model.addAttribute("utente", utente);
-		List<Treno> treni = trenoService.findByUtenteId(2096);
+	public String profile(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Utente u= (Utente) session.getAttribute("loggedInUser");
+	
+		model.addAttribute("utente", u);
+		List<Treno> treni = trenoService.findByUtenteId(u.getId());
 
 		Collections.reverse(treni);
 

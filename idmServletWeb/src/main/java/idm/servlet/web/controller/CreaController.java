@@ -2,6 +2,9 @@ package idm.servlet.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -40,17 +43,17 @@ public class CreaController {
 	UtenteService utenteService;
 	
 	@PostMapping("/crea-treno-fr")
-	public String addFR(@ModelAttribute("treno") TrenoBean treno, Model model) {
+	public String addFR(@ModelAttribute("treno") TrenoBean treno,HttpServletRequest request, Model model) {
 		System.out.println("creata:" + treno.getSigla());
 		String sigla = treno.getSigla();
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
 		String regione = treno.getRegione();
-		List<Utente> listaUtenti= utenteService.findAll();
-		
+		HttpSession session = request.getSession();
+		Utente u= (Utente) session.getAttribute("loggedInUser");
 		try {		
 			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regione, frFactory);
-			Utente u=(listaUtenti.get(0));
+			
 			t.setUtente(u);
 			trenoService.crea(t);
 
@@ -71,17 +74,18 @@ public class CreaController {
 	}
 
 	@PostMapping("/crea-treno-tn")
-	public String addTN(@ModelAttribute("treno") TrenoBean treno, Model model) {
+	public String addTN(@ModelAttribute("treno") TrenoBean treno,HttpServletRequest request, Model model) {
 		System.out.println("creata:" + treno.getSigla());
 		String sigla = treno.getSigla();
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
 		String regione = treno.getRegione();
 		
-		List<Utente> listaUtenti= utenteService.findAll();
+		HttpSession session = request.getSession();
+		Utente u= (Utente) session.getAttribute("loggedInUser");
 		try {			
 			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine.replace(",", ""), regione, tnFactory);
-			Utente u=(listaUtenti.get(0));
+			
 			t.setUtente(u);
 			trenoService.crea(t);
 
