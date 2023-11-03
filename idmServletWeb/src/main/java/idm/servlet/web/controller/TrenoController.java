@@ -54,6 +54,9 @@ public class TrenoController {
 	@Autowired
 	ConcreteBuilder concreteBuilder;
 	
+	@Autowired
+	UtenteService utenteService;
+	
 
 	@GetMapping("/cancella")
 	public String cancellaTreno(Model model) {
@@ -76,10 +79,11 @@ public class TrenoController {
 		String sigla = treno.getSigla();
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
+		String regione = treno.getRegione();
 		List<Utente> listaUtenti= utenteService.findAll();
 		
 		try {		
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, frFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, regione, frFactory);
 			Utente u=(listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
@@ -96,19 +100,21 @@ public class TrenoController {
 		model.addAttribute("siglaTreno", treno.getSigla());
 		model.addAttribute("nomeTreno", treno.getNomeTreno());
 		model.addAttribute("urlImmagine", treno.getUrlImmagine());
-		return "viewTreno";
+		model.addAttribute("regione", treno.getRegione());
+		return "redirect:/03-home";
 	}
 
 	@PostMapping("/crea-treno-tn")
 	public String addTN(@ModelAttribute("treno") TrenoBean treno, Model model) {
 		System.out.println("creata:" + treno.getSigla());
-		String sigla=treno.getSigla();
-		String nome= treno.getNomeTreno();
+		String sigla = treno.getSigla();
+		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
+		String regione = treno.getRegione();
 		
 		List<Utente> listaUtenti= utenteService.findAll();
 		try {			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, tnFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, regione, tnFactory);
 			Utente u=(listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
@@ -124,8 +130,9 @@ public class TrenoController {
 		
 		model.addAttribute("siglaTreno", treno.getSigla());
 		model.addAttribute("nomeTreno", treno.getNomeTreno());
-		model.addAttribute("urlImmagine", treno.getUrlImmagine());		
-		return "viewTreno";
+		model.addAttribute("urlImmagine", treno.getUrlImmagine());
+		model.addAttribute("regione", treno.getRegione());
+		return "redirect:/03-home";
 	}
 
 	@GetMapping("/cerca-treno")
