@@ -34,22 +34,22 @@ public class Main {
 		System.out.println("run.....");
 
 		VagoneFactory f = new TNVagoneFactory();
-		TrenoBuilder b = new ConcreteBuilder(f);
+//		TrenoBuilder b = new ConcreteBuilder(f);
 		TrenoService tService = new TrenoService();
 
 		UtenteBuilder u = new UtenteBuilder();
 		UtenteService uService = new UtenteService();
 //		Utente utenteTrovato1 = uService.findByEmail("sonogianni@daje.com");
-		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
-		String immagine = "https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
+//		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
+//		String immagine = "https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
 //		Treno t =tService.find(2);
 
 		
-		tService.delete(2356);
+//		tService.delete(2356);
 
 //		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
-//		Utente utente = u.creaUtente("Compratore", "Collezionista", "pastella@ciaociao.com", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
-
+		Utente utente = u.creaUtente("Compratore", "Collezionista", "ciao", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
+		uService.crea(utente);
 //		Treno t =tService.findByName("carlo");
 //		uService.crea(utente);
 //		t.setUtente(t, utenteTrovato1);

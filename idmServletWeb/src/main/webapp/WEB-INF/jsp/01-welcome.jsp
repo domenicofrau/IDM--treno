@@ -44,6 +44,7 @@
 		<div class="row">
 			<div class="col-12 col-md-6 p-3">
 				<h1 class="mainTitle">Benvenuto su TrainBook!</h1>
+				<p>${loggedInUser.nome}</p>
 				<p class="mainPara">TrainSocial � il primo social network dedicato agli
 				appassionati di treni. Qui puoi creare il tuo treno personalizzato e
 				condividerlo con il resto del mondo. Esplora le creazioni degli altri

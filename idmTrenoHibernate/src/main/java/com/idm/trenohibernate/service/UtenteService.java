@@ -1,5 +1,7 @@
 package com.idm.trenohibernate.service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Utente;
@@ -8,6 +10,17 @@ import com.idm.trenohibernate.exceptions.UtenteException;
 
 @Component
 public class UtenteService {
+
+	@SuppressWarnings("unused")
+		private static String HashPassword(String password) throws NoSuchAlgorithmException {
+	        MessageDigest md = MessageDigest.getInstance("SHA-256");
+	        byte[] hashBytes = md.digest(password.getBytes());
+	        StringBuilder sb = new StringBuilder();
+	        for (byte b : hashBytes) {
+	            sb.append(String.format("%02x", b));
+	        }
+	        return sb.toString();
+	    }
 
 	private UtenteDAO dao = new UtenteDAOImpl();
 
@@ -61,8 +74,16 @@ public class UtenteService {
 		System.out.println("Eliminato l'utente con id: " + id);
 	}
 	
-	public Boolean login(String email, String password) throws UtenteException {
-		return dao.login(email, password);
+	public boolean login(String email, String password) throws UtenteException {
+		
+		try {
+			String hashed= HashPassword(password);
+			return dao.login(email, hashed);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return true;
+		
 	}
 	
 }

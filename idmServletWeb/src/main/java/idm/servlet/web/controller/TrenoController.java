@@ -1,8 +1,13 @@
 package idm.servlet.web.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,6 +26,7 @@ import com.idm.trenohibernate.PasseggeriBusiness;
 import com.idm.trenohibernate.Ristorante;
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Utente;
+import com.idm.trenohibernate.UtenteBuilder;
 import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.TrenoException;
@@ -28,18 +34,14 @@ import com.idm.trenohibernate.exceptions.UtenteException;
 import com.idm.trenohibernate.service.TrenoService;
 import com.idm.trenohibernate.service.TrenoServiceCriteria;
 import com.idm.trenohibernate.service.UtenteService;
+import com.idm.trenohibernate.utils.HibernateUtil;
 
-import idm.servlet.bean.SiglaTreno;
 import idm.servlet.bean.TrenoBean;
-import idm.servlet.bean.Email;
-import idm.servlet.bean.NomeTreno;
-import idm.servlet.bean.Password;
-import idm.servlet.bean.Regione;
-import idm.servlet.bean.UrlImmagine;
+import idm.servlet.bean.UtenteBean;
 
+@SuppressWarnings("unused")
 @Controller
 public class TrenoController {
-
 	@Autowired
 	@Qualifier("FRVagoneFactory")
 	VagoneFactory frFactory;
@@ -50,13 +52,13 @@ public class TrenoController {
 
 	@Autowired
 	TrenoService trenoService;
-
+	@Autowired
+	UtenteBuilder utenteBuilder;
 	@Autowired
 	ConcreteBuilder concreteBuilder;
-	
+
 	@Autowired
 	UtenteService utenteService;
-	
 
 	@GetMapping("/cancella")
 	public String cancellaTreno(Model model) {
@@ -80,11 +82,11 @@ public class TrenoController {
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
 		String regione = treno.getRegione();
-		List<Utente> listaUtenti= utenteService.findAll();
-		
-		try {		
+		List<Utente> listaUtenti = utenteService.findAll();
+
+		try {
 			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, regione, frFactory);
-			Utente u=(listaUtenti.get(0));
+			Utente u = (listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
 
@@ -111,11 +113,11 @@ public class TrenoController {
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
 		String regione = treno.getRegione();
-		
-		List<Utente> listaUtenti= utenteService.findAll();
-		try {			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine, regione, tnFactory);
-			Utente u=(listaUtenti.get(0));
+
+		List<Utente> listaUtenti = utenteService.findAll();
+		try {
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine, regione, tnFactory);
+			Utente u = (listaUtenti.get(0));
 			t.setUtente(u);
 			trenoService.crea(t);
 
@@ -127,7 +129,7 @@ public class TrenoController {
 		} catch (TrenoException e) {
 			e.printStackTrace();
 		}
-		
+
 		model.addAttribute("siglaTreno", treno.getSigla());
 		model.addAttribute("nomeTreno", treno.getNomeTreno());
 		model.addAttribute("urlImmagine", treno.getUrlImmagine());
@@ -264,7 +266,14 @@ public class TrenoController {
 	}
 
 	@GetMapping("/01-welcome")
-	public String welcome(Model model) {
+	public String welcome(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Object loggedInUser = session.getAttribute("loggedInUser");
+		 if (loggedInUser != null) {
+	            model.addAttribute("loggedInUser", loggedInUser);
+	        } else {
+	            model.addAttribute("errorMessage", "User not logged in");
+	        }
 		return "01-welcome";
 	}
 
@@ -272,20 +281,6 @@ public class TrenoController {
 	public String login(Model model) {
 		return "02-login";
 	}
-
-	// CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
-	@GetMapping("/10-log-in")
-	public String login(@ModelAttribute("email") Email email, @ModelAttribute("password") Password password,
-			Model model) {
-
-		try {
-			utenteService.login(email.getEmail(), password.getPassword());
-		} catch (UtenteException e) {
-			e.printStackTrace();
-		}
-		return "10-login";
-	}
-	// FINE CONTROLLER LOGINN
 
 	@GetMapping("/03-home")
 	public String home(Model model) {
@@ -321,7 +316,38 @@ public class TrenoController {
 		model.addAttribute("selectedFactory", factory);
 		return "06-crea-treno";
 	}
-	
-	
+
+	@PostMapping("doRegister")
+	public String addUtente(@ModelAttribute("utente") UtenteBean utente, Model model) {
+		String nomeUtente = utente.getNome();
+		String cognomeUtente = utente.getCognome();
+		String emailUtente = utente.getEmail();
+		String passwordUtente = utente.getPassword();
+		String immagine = utente.getProfilePic();
+		try {
+			Utente u = utenteBuilder.creaUtente(nomeUtente, cognomeUtente, emailUtente, passwordUtente,
+					immagine.replace(",", ""));
+			utenteService.crea(u);
+		} catch (UtenteException e) {
+			e.printStackTrace();
+		}
+		return "redirect:/utente-creato";
 	}
 
+	// CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
+	@PostMapping("/doLogin")
+	public String login(@ModelAttribute("utente") Utente utente, Model model, HttpSession session) {
+		try {
+			if (utenteService.login(utente.getEmail(), utente.getPassword())) {
+				Utente u = utenteService.findByEmail(utente.getEmail());
+				System.out.println("benvenuto");
+				session.setAttribute("loggedInUser", u);
+				return "redirect:/03-home";
+			}
+		} catch (UtenteException e) {
+			e.printStackTrace();
+		}
+		System.out.println("qualcosa è andato storto");
+		return "pagina-errore-login";
+	}
+}
