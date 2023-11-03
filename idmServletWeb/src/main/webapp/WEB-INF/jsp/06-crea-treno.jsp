@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -69,6 +70,92 @@
 
 	<div class="container mt-3">
 		<h3>Crea il tuo treno</h3>
+      <!-- SELETTORE DELLA MARCA -->
+      <p class="mt-5">Scegli la marca per il tuo nuovo treno:</p>
+      <form:form id="factoryForm">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="factory"
+            id="fr"
+            value="fr"
+            onchange="showForm()"
+          />
+          <label class="form-check-label" for="fr"
+            ><img
+              src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png"
+              alt="FrecciaRossa"
+              style="height: 17px; width: auto; margin-right: 5px"
+            />
+          </label>
+        </div>
+        <div class="form-check mt-2">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="factory"
+            id="tn"
+            value="tn"
+            onchange="showForm()"
+          />
+          <label class="form-check-label" for="tn"
+            ><img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png"
+              alt="TreNord"
+              style="height: 10px; width: auto; margin-right: 5px"
+            />
+          </label>
+        </div>
+      </form:form>
+
+      <!-- FRECCIAROSSA -->
+      <div id="frForm" style="display: none">
+        <form:form method="POST" action="crea-treno-fr" modelAttribute="treno">
+          <div class="form-group">
+            <p class="mt-3 text">
+              Per poter costruire un treno, è necessario inserire una sigla.
+              <br />
+              Tale sigla deve essere composta esclusivamente di lettere che
+              indicano il tipo di vagone che si vorrebbe creare:
+            </p>
+            <ul class="text">
+              <li>
+                <strong>H</strong> - Locomotiva (obbligatorio come primo vagone)
+              </li>
+              <li><strong>P</strong> - Passeggeri</li>
+              <li><strong>B</strong> - Passeggeri business</li>
+              <li><strong>R</strong> - Ristorante</li>
+              <li><strong>C</strong> - Cargo</li>
+            </ul>
+            <label for="siglaFR">Sigla:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="siglaFR"
+              name="sigla"
+              placeholder="esempio: HPPPRP"
+              required
+              pattern="[HPBRC]+|[hpbrc]+"
+              title="ono ammessi solo i caratteri H, P, B, R, C."
+            />
+            <div class="invalid-feedback">
+              La sigla deve iniziare con la lettera H.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nomeTrenoFR">Nome:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nomeTrenoFR"
+              name="nomeTreno"
+              placeholder="assegna un nome a questo treno"
+              required
+              minlength="3"
+              maxlength="25"
+            />
+          </div>
 
 		<!-- SELETTORE DELLA MARCA -->
 		<p class="mt-5">Scegli la marca per il tuo nuovo treno:</p>
@@ -213,6 +300,59 @@
 						</div>
 					</div>
 				</div>
+          <button type="submit" class="btn btn-primary mb-5">
+            Crea il treno
+          </button>
+        </form:form>
+      </div>
+
+      <!-- TRENORD -->
+      <div id="tnForm" style="display: none">
+        <form:form method="POST" action="crea-treno-tn" modelAttribute="treno" >
+          <div class="form-group">
+            <p class="mt-3 text">
+              Per poter costruire un treno, è necessario inserire una sigla.
+              <br />
+              Tale sigla deve essere composta esclusivamente di lettere che
+              indicano il tipo di vagone che si vorrebbe creare:
+            </p>
+            <ul class="text">
+              <li>
+                <strong>H</strong> - Locomotiva (obbligatorio come primo vagone)
+              </li>
+              <li><strong>P</strong> - Passeggeri</li>
+              <li><strong>B</strong> - Passeggeri business</li>
+              <li><strong>R</strong> - Ristorante</li>
+              <li><strong>C</strong> - Cargo</li>
+            </ul>
+            <label for="siglaTN">Sigla:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="siglaTN"
+              name="sigla"
+              placeholder="esempio: HPPPRP"
+              required
+              pattern="[HPBRC]+|[hpbrc]+"
+              title="Sono ammessi solo i caratteri H, P, B, R, C."
+            />
+            <div class="invalid-feedback">
+              La sigla deve iniziare con la lettera H.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nomeTrenoTN">Nome:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nomeTrenoTN"
+              name="nomeTreno"
+              placeholder="assegna un nome a questo treno"
+              required
+              minlength="3"
+              maxlength="25"
+            />
+          </div>
 
 				<button id="creaTreno_fr" type="submit" class="btn btn-primary mb-5">Crea il
 					treno</button>
@@ -303,6 +443,40 @@
 									</select>
 								</div>
 							</div>
+            <div id="customForm_tn" class="row" style="display: block">
+              <div class="row">
+                <!-- Colonna sinistra: input URL -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="urlImage_tn">Url dell'immagine:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="urlImage_tn"
+                      name="urlImmagine"
+                      placeholder="inserire qui l'url dell'immagine che si vuole usare"
+                      oninput="updateCustomPreview('tn')"
+                    />
+                  </div>
+                </div>
+                <!-- Colonna destra: anteprima -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Anteprima:</label>
+                    <div id="preview_custom_tn" style="height: 100px">
+                      <!-- Qui verrà visualizzata l'anteprima -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary mb-5">
+            Crea il treno
+          </button>
+        </form:form>
+      </div>
+    </div>
 
 							<!-- Colonna destra: anteprima -->
 							<div class="col-md-6">

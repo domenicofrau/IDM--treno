@@ -1,10 +1,21 @@
 console.log("test")
 
-let search = document.getElementById("search")
+let search = document.getElementById("criteriaForm")
 let searchIcon = document.getElementById("searchIcon");
+let closeIcon = document.getElementById("closeIcon");
+let visible = false;
 
 searchIcon.addEventListener("click", () => {
 	
-	console.log(search.value);
-	window.location.href = "http://localhost:8080/idmServletWeb/cerca-treno-nome?nome=" + search.value;
+	if(!visible){
+	search.classList.remove("d-none");	
+	} else {
+		search.classList.add("d-none");
+	}
+	visible = !visible;	
+})
+
+closeIcon.addEventListener("click", () => {
+	search.classList.add("d-none");		
+	visible = false;	
 })

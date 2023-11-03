@@ -25,47 +25,16 @@
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-		<a class="navbar-brand" href="01-welcome" style="padding-right: 50px;">
-			<img src="<c:url value='/resources/img/logo_nav.png'/>" alt=""
-			height="30" style="vertical-align: middle; margin: 0 10px;">
-		</a>
-
-		<!-- Menu al centro -->
-		<div class="collapse navbar-collapse justify-content-center"
-			id="navbarNav">
-			<ul class="navbar-nav align-items-center">
-				<li class="nav-item active mr-3"><a class="nav-link"
-					href="01-welcome">Welcome</a></li>
-				<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
-				<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
-				<li class="nav-item mr-3"><a class="nav-link"
-					href="06-crea-treno">Crea Treno</a></li>
-				<li class="nav-item">
-					<div class="input-group" style="width: 180px; position: relative;">
-						<input type="text" class="form-control" placeholder="Cerca treno"
-							aria-label="Cerca treno"
-							style="height: 25px; border-radius: 15px; padding-left: 25px;">
-						<div class="input-group-append"
-							style="position: absolute; left: 5px; top: 0; height: 100%; display: flex; align-items: center;"></div>
-						<i class="ms-3 bi bi-search text-secondary"
-							style="margin-left: 5px; align-self: center;"></i>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-		<!-- Link a destra -->
-		<div class="navbar-nav ml-auto" style="padding-left: 50px;">
-			<div class="nav-item d-flex align-items-center">
-				<a class="nav-link d-inline mr-1"
-					href="04-profile">${utente.bitTrain}</a> <img
-					src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"
-					style="height: 20px; object-fit: cover; margin-right: 4px;">
-				<a href="04-profile"> <img
-					src="<c:url value='/resources/img/profile-test.jpg'/>"
-					alt="profilo" class="rounded-circle"
-					style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
-				</a>
+			<!-- Menu al centro -->
+			<div class="collapse navbar-collapse justify-content-center"
+				id="navbarNav">
+				<ul class="navbar-nav align-items-center">
+					<li class="nav-item active mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
+	
+				</ul>
 			</div>
 		</div>
 
@@ -75,7 +44,7 @@
 		<div class="row">
 			<div class="col-12 col-md-6 p-3">
 				<h1 class="mainTitle">Benvenuto su TrainBook!</h1>
-				<p class="mainPara">TrainSocial è il primo social network dedicato agli
+				<p class="mainPara">TrainSocial ï¿½ il primo social network dedicato agli
 				appassionati di treni. Qui puoi creare il tuo treno personalizzato e
 				condividerlo con il resto del mondo. Esplora le creazioni degli altri
 				utenti e lasciati ispirare!</p>

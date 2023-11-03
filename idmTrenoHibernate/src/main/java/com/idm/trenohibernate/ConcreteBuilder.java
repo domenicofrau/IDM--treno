@@ -47,10 +47,10 @@ public class ConcreteBuilder extends TrenoBuilder {
 
 	@Override
 	protected String impostaMarca() {
-		if (factory.getClass().getSimpleName().equals("TNVagoneFactory")) {
+		if(factory.getClass().getSimpleName().equals("TNVagoneFactory")) {
 			System.out.println(factory.getClass().getSimpleName());
 			return "TreNord";
-		} else
+		}else if(factory.getClass().getSimpleName().equals("FRVagoneFactory"))
 			System.out.println(factory.getClass().getSimpleName());
 		return "FrecciaRossa";
 	}

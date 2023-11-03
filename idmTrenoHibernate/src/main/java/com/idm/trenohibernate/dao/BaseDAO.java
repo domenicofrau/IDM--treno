@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 public abstract class BaseDAO<T> {
+	
 	protected static SessionFactory factory;
 
 	static {
@@ -155,6 +156,7 @@ public abstract class BaseDAO<T> {
 	    }
 	    return bean;
 	}
+	
 	public List<T> findAll(Class<T> clazz) {
 		Session session = factory.openSession();
 		Transaction tx = null;

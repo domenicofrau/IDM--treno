@@ -65,7 +65,13 @@ public class Main {
 //		tService.update(t);
 //		uService.update(utenteTrovato1);
 //		uService.update(utenteTrovato2);
-
+		
+//		***************************** CRITERIA BUILDER  *****************************
+		
+		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
+//		tSvcC.findByNameLike("treno");
+		tSvcC.findTreni("p", null);
+		
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
 		}

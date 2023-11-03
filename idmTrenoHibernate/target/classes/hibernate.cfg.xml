@@ -15,6 +15,9 @@
 
 		<!-- Impostazione per la creazione automatica delle tabelle -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- Configurazione della sessione corrente -->
+		<property name="hibernate.current_session_context_class">thread</property>
 
 		<!-- File di Mappatura -->
 		<mapping resource="treno.hbm.xml" />

@@ -6,15 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Feed - TrainBook</title>
-<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>"
-	type="image/x-icon">
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/01-welcome.css'/>">
+<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>" type="image/x-icon">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
 </head>
 <body>
 	<!-- NAVBAR -->
@@ -24,6 +19,17 @@
 			<img src="<c:url value='/resources/img/logo_nav.png'/>" alt=""
 			height="30" style="vertical-align: middle; margin: 0 10px;">
 		</a>
+			<!-- Menu al centro -->
+			<div class="collapse navbar-collapse justify-content-center"
+				id="navbarNav">
+				<ul class="navbar-nav align-items-center">
+					<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
+					<li class="nav-item mr-3 active"><a class="nav-link" href="03-home">Home</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
+					<li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>					
+				</ul>
+			</div>
 
 		<!-- Menu al centro -->
 		<div class="collapse navbar-collapse justify-content-center"
@@ -70,11 +76,40 @@
 
 
 	<div class="container mt-5">
+	
+		<div class="row my-3 p-4 d-none" id="criteriaForm">
+			<form action="search" method="GET" class="form-inline">
+ 				 <div class="form-group">
+    			<label for="nome">Nome del treno: </label>
+   				 <input type="text" class="form-control mx-3" id="nome" name="nome" placeholder="Nome del treno">
+   				 
+   				 <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Marca:</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01" name="marca">
+    <option selected>FrecciaRossa</option>
+    <option value="1">TreNord</option>
+  </select>
+</div>
+   				 
+  				 <button type="submit" class="btn btn-dark mx-3">Submit</button>
+ 				 </div>
+ 				 
+			</form>
+			<i class="ms-3 bi bi-x fs-1" id="closeIcon"></i>
+			
+		</div>
 		<div class="feed-section">
 
 
 			<h2 class="my-3 text-center font-weight-bold">Treni caricati da
 				altri utenti</h2>
+				
+			<c:if test="${ empty treni }">
+					<h2 class="my-3 text-center font-weight-bold">Non ci sono treni da vedere al momento</h2>		
+					<a class="nav-link" href="06-crea-treno">Creane uno tu!</a>	
+			</c:if>
 
 			<div class="train-cards row mt-4">
 
