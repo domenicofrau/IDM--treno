@@ -1,8 +1,11 @@
 package com.idm.trenohibernate;
 
+import org.springframework.stereotype.Component;
+
 import com.idm.trenohibernate.exceptions.*;
 import com.idm.trenohibernate.service.*;
 
+@Component
 public class UtenteBuilder {
 	
 	UtenteService uService = new UtenteService(); 

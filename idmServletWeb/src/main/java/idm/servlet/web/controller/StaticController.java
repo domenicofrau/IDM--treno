@@ -3,6 +3,9 @@ package idm.servlet.web.controller;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,8 @@ import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.service.TrenoService;
 import com.idm.trenohibernate.service.UtenteService;
+
+import idm.servlet.bean.UtenteBean;
 
 @Controller
 public class StaticController {
@@ -23,7 +28,14 @@ public class StaticController {
 	UtenteService utenteService;
 	
 	@GetMapping("/01-welcome")
-	public String welcome(Model model) {
+	public String welcome(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		UtenteBean loggedInUser = (UtenteBean) session.getAttribute("loggedInUser");
+		 if (loggedInUser != null) {
+	            model.addAttribute("loggedInUser", loggedInUser);
+	        } else {
+	            model.addAttribute("errorMessage", "User not logged in");
+	        }
 		return "01-welcome";
 	}
 
@@ -33,8 +45,10 @@ public class StaticController {
 	}
 	
 	@GetMapping("/03-home")
-	public String home(Model model) {
-		Utente utente = utenteService.find(249);
+	public String home(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		UtenteBean loggedInUser = (UtenteBean) session.getAttribute("loggedInUser");
+		Utente utente = utenteService.findByEmail(loggedInUser.getEmail());
 		model.addAttribute("utente", utente);
 		List<Treno> treni = trenoService.findAll();
 		
@@ -48,9 +62,9 @@ public class StaticController {
 	
 	@GetMapping("/04-profile")
 	public String profile(Model model) {
-		Utente utente = utenteService.find(249);
+		Utente utente = utenteService.find(2096);
 		model.addAttribute("utente", utente);
-		List<Treno> treni = trenoService.findByUtenteId(249);
+		List<Treno> treni = trenoService.findByUtenteId(2096);
 
 		Collections.reverse(treni);
 
@@ -71,3 +85,4 @@ public class StaticController {
 	}
 
 }
+
