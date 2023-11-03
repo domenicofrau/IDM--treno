@@ -9,7 +9,11 @@
 <link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>" type="image/x-icon">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
+
 </head>
 <body>
 	<!-- NAVBAR -->

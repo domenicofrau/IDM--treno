@@ -13,7 +13,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 <!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
 
 </head>
 <body>
@@ -41,7 +43,7 @@
 		<div class="row">
 			<div class="col-12 col-md-6 p-3">
 				<h1 class="mainTitle">Benvenuto su TrainBook!</h1>
-				<p class="mainPara">TrainSocial ï¿½ il primo social network dedicato agli
+				<p class="mainPara">TrainBook è il primo social network dedicato agli
 				appassionati di treni. Qui puoi creare il tuo treno personalizzato e
 				condividerlo con il resto del mondo. Esplora le creazioni degli altri
 				utenti e lasciati ispirare!</p>
@@ -50,8 +52,7 @@
 			</div>
 
 			<div class="col-12 col-md-6 my-3">
-				<img class="mt-5" src="<c:url value='/resources/img/trainbg.png'/>"
-					width="500px" />
+				<img class="mt-5" src="<c:url value='/resources/img/trainbg.png'/>" width="500px" />
 			</div>
 		</div>
 
