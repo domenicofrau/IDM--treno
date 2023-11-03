@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +23,12 @@
 
 </head>
 <style>
+.train-image {
+	height: 150px;
+	width: 100%;
+	object-fit: cover;
+}
+
 .profile-picture {
 	position: relative;
 	width: 150px;
@@ -98,10 +106,9 @@
 		<!-- Link a destra -->
 		<div class="navbar-nav ml-auto" style="padding-left: 50px;">
 			<div class="nav-item d-flex align-items-center">
-				<a class="nav-link d-inline mr-1" href="04-profile">${utente.nome}
-					${utente.cognome}</a> <a class="nav-link d-inline mr-1"
-					href="04-profile">${utente.bitTrain}</a> <img
-					src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"
+				<a class="nav-link d-inline mr-1" href="04-profile">${utente.bitTrain}</a>
+				<img src="<c:url value='/resources/img/bitTrain.png'/>"
+					alt="bitTrain"
 					style="height: 20px; object-fit: cover; margin-right: 4px;">
 				<a href="04-profile"> <img
 					src="<c:url value='/resources/img/profile-test.jpg'/>"
@@ -125,7 +132,7 @@
 				<h3 class="mt-3">${utente.nome}${utente.cognome}</h3>
 				<p>${utente.email}</p>
 				<p>
-					saldo BitTrain: <b> 7k </b><img
+					saldo BitTrain: <b>${utente.bitTrain} </b><img
 						src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"
 						style="height: 20px; object-fit: cover; margin-right: 4px;">
 				</p>
@@ -136,22 +143,26 @@
 			<div class="col-md-7">
 				<h2>I Tuoi Treni</h2>
 				<div class="row mt-5">
-
+					<c:if test="${empty treni}">
+						<div><h6 class="pl-3 text-secondary">Non ci sono treni da mostrare, creane uno o aggiungilo dalla home</h6></div>
+					</c:if>
 					<c:forEach var="treni" items="${ treni }">
 						<!-- Primo Treno -->
 						<div class="col-md-6">
 							<div class="card mb-4">
 								<div class="card-body">
-									<h5 class="card-title">${treni.nome}</h5>
+									<h5 class="card-title text-truncate">
+										<b>${treni.nome}</b>
+									</h5>
 									<c:choose>
-										<c:when test="${treni.marca == 'FRVagoneFactory'}">
+										<c:when test="${treni.marca == 'FrecciaRossa'}">
 											<img
 												src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png"
 												alt="FrecciaRossa"
 												style="height: 17px; width: auto; margin-right: 5px;"
 												class="mb-2">
 										</c:when>
-										<c:when test="${treni.marca == 'TNVagoneFactory'}">
+										<c:when test="${treni.marca == 'TreNord'}">
 											<img
 												src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png"
 												alt="TreNord"
@@ -162,42 +173,53 @@
 											<p class="card-text">${treni.marca}</p>
 										</c:otherwise>
 									</c:choose>
-									<img src="<c:url value='${treni.immagine}'/>" class="img-fluid">
-									<p class="mt-3 mb-5">Vagoni:</p>
+									<img src="${treni.immagine}" alt="Train image"
+										class="img-fluid train-image">
+									<p class="mt-3 mb-2">Vagoni: ${numeroVagoni}</p>
+									<p class="mb-2">Regione: ${treni.regione}</p>
+									<p class="mb-5">
+										<b> ${treni.prezzoTotale} </b><img
+											src="<c:url value='/resources/img/bitTrain.png'/>"
+											alt="bitTrain"
+											style="height: 20px; object-fit: cover; margin-right: 4px;">
+									</p>
 									<div class="d-flex justify-content-between">
 										<a href="cerca-treno?idTrenoStr=${ treni.id }"
 											class="btn btn-secondary"> <i class="bi bi-info-lg"></i>
-										</a> <a href="javascript:void(0)" class="btn btn-danger"
-											data-id="${treni.id}" onclick="showDeleteModal(this)"> <i
-											class="bi bi-trash3"></i> Vendi
 										</a>
 
-										<!-- Modale di conferma eliminazione -->
-										<div class="modal fade" id="confirmDeleteModal" tabindex="-1"
-											aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
+										<form id="deleteForm" method="post"
+											action="/idmServletWeb/eliminaTreno">
+											<input type="hidden" name="id" value="${treni.id}" /><input
+												type="button" value="Elimina" class="btn btn-danger"
+												data-toggle="modal" data-target="#confirmModal" />
+										</form>
+
+										<!-- Modale di conferma -->
+										<div class="modal fade" id="confirmModal" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="confirmDeleteModalLabel">Conferma</h5>
-														<button type="button" class="btn-close border-0 bg-white"
-															data-dismiss="modal" aria-label="Close"
+														<h5 class="modal-title" id="exampleModalLabel">Conferma</h5>
+														<button type="button" class="close" data-dismiss="modal"
 															aria-label="Close">
-															<i class="bi bi-x-lg"></i>
+															<span aria-hidden="true">&times;</span>
 														</button>
 													</div>
-													<div class="modal-body">Sei sicuro di voler vendere
-														questo treno?</div>
-													<p class="modal-body">
-														Saranno riaccreditati <b><c:out value="${treni.id}" /></b>
-														<img src="<c:url value='/resources/img/bitTrain.png'/>"
-															alt="bitTrain"
-															style="height: 20px; object-fit: cover; margin-right: 4px;">sul
-														tuo conto.
-													</p>
+													<div class="modal-body">Sei sicuro di voler
+														restituire il treno?</div>
+													<div class="modal-body">Verranno riaccreditati <b>${treni.prezzoTotale}</b> <img
+											src="<c:url value='/resources/img/bitTrain.png'/>"
+											alt="bitTrain"
+											style="height: 20px; object-fit: cover; margin-right: 4px;">sul
+														tuo conto BitTrain.</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
-															data-dismiss="modal" aria-label="Close">Annulla</button>
-														<a href="#" id="deleteButton" class="btn btn-danger">Vendi</a>
+															data-dismiss="modal">Annulla</button>
+														<button type="button" class="btn btn-danger"
+															id="confirmDelete">Vendi</button>
 													</div>
 												</div>
 											</div>
@@ -211,19 +233,15 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-		function showDeleteModal(element) {
-			var id = element.getAttribute('data-id');
-			var deleteButton = document.getElementById('deleteButton');
-			deleteButton.href = '/eliminaTreno?id=' + id;
-			$('#confirmDeleteModal').modal('show');
-		}
-	</script>
-
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+	<script>
+		document.getElementById('confirmDelete').addEventListener('click',
+				function() {
+					document.getElementById('deleteForm').submit();
+				});
+	</script>
 </body>
 </html>
 

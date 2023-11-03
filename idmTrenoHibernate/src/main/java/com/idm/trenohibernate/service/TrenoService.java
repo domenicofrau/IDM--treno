@@ -17,7 +17,7 @@ public class TrenoService {
 
 	public void crea(Treno treno) {
 		Integer id = dao.create(treno);
-		Utente utente = treno.getUtente(); // Ottieni l'utente associato al treno
+		Utente utente = treno.getUtente();
 		if (utente != null) {
 			System.out.println("Creato il treno con id: " + id + " assegnato all'utente " + utente.getId());
 		} else {
@@ -58,7 +58,7 @@ public class TrenoService {
 		return lista;
 	}
 
-	public void delete(Integer id) {
+	public void delete(int id) {
 		dao.deleteById(id);
 		System.out.println("Eliminato il treno con id: " + id);
 	}
@@ -66,6 +66,11 @@ public class TrenoService {
     public List<Treno> findByUtenteId(Integer utenteId) {
         return dao.findByUtenteId(utenteId);
     }
+    
+    public List<Treno> lunghezzaTrenoByIdUtente(Integer utenteId) {
+        return dao.findByUtenteId(utenteId);
+    }
+    
 
 
 }

@@ -20,5 +20,6 @@ public interface TrenoHibernateDAO {
 
 //	public void delete(Treno bean );
 //	public List<Treno> findByName(String name);
+	
 
 }

@@ -14,10 +14,10 @@ public class ConcreteBuilder extends TrenoBuilder {
 		this.factory = factory;
 	}
 
-	public Treno costruisciTreno(String sigla,String nome,String immagine, VagoneFactory factory)
+	public Treno costruisciTreno(String sigla, String nome, String immagine, String regione, VagoneFactory factory)
 			throws TrenoException {
 		this.factory = factory;
-		return super.costruisciTreno(sigla, nome,immagine);
+		return super.costruisciTreno(sigla, nome, immagine, regione);
 	}
 
 	@Override
@@ -47,11 +47,11 @@ public class ConcreteBuilder extends TrenoBuilder {
 
 	@Override
 	protected String impostaMarca() {
-		if(factory.getClass().getSimpleName()=="FRVagoneFactory") {
+		if(factory.getClass().getSimpleName().equals("TNVagoneFactory")) {
 			System.out.println(factory.getClass().getSimpleName());
 			return "TreNord";
-		}else 
+		}else if(factory.getClass().getSimpleName().equals("FRVagoneFactory"))
 			System.out.println(factory.getClass().getSimpleName());
-			return "FrecciaRossa";
-		} 
+		return "FrecciaRossa";
 	}
+}

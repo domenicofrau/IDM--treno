@@ -20,8 +20,7 @@ public class Main {
 //        }
 //        return sb.toString();
 //    }
-	public static void main(String[] args)
-			throws TrenoException, UtenteException{
+	public static void main(String[] args) throws TrenoException, UtenteException {
 //		String stringa="ciao";
 //		String check="ciao";
 //		try {
@@ -34,22 +33,23 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-
 		VagoneFactory f = new TNVagoneFactory();
 		TrenoBuilder b = new ConcreteBuilder(f);
 		TrenoService tService = new TrenoService();
-		
+
 		UtenteBuilder u = new UtenteBuilder();
 		UtenteService uService = new UtenteService();
 //		Utente utenteTrovato1 = uService.findByEmail("sonogianni@daje.com");
 		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
-		String immagine="https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
+		String immagine = "https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
 //		Treno t =tService.find(2);
+
 		
-		
-//		Treno t = b.costruisciTreno(sigla, nomeTreno, immagine);
+		tService.delete(2356);
+
+//		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
 //		Utente utente = u.creaUtente("Compratore", "Collezionista", "pastella@ciaociao.com", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
-		
+
 //		Treno t =tService.findByName("carlo");
 //		uService.crea(utente);
 //		t.setUtente(t, utenteTrovato1);
@@ -58,7 +58,7 @@ public class Main {
 //		String email="pastella@ciaociao.com";
 //		String password="password123";
 //		System.out.println(uService.login(email,password ));
-		
+
 //		t.vendiTreno(t, utenteTrovato1, utenteTrovato2);
 //		t.setUtente(t, utenteTrovato2);
 //		tService.crea(t);
@@ -66,11 +66,15 @@ public class Main {
 //		uService.update(utenteTrovato1);
 //		uService.update(utenteTrovato2);
 		
+//		***************************** CRITERIA BUILDER  *****************************
+		
+		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
+//		tSvcC.findByNameLike("treno");
+		tSvcC.findTreni("p", null);
+		
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
 		}
 	}
-		
-		
-		
+
 }
