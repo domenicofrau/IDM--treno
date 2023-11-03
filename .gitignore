@@ -33,3 +33,4 @@ target/
 
 .DS_Store
 idmTrenoHibernate/src/main/resources/hibernate.cfg.xml
+idmServletWeb/.classpath
