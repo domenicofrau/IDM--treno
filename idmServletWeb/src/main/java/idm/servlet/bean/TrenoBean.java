@@ -5,6 +5,17 @@ public class TrenoBean {
 	private String sigla;
 	private String nomeTreno;
 	private String urlImmagine;
+	private String regione;
+	
+	
+
+	public String getRegione() {
+		return regione;
+	}
+
+	public void setRegione(String regione) {
+		this.regione = regione;
+	}
 
 	public String getSigla() {
 		return sigla;
