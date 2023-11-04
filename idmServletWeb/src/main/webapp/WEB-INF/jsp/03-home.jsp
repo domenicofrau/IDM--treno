@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 			<a class="navbar-brand" href="03-home">
 				<img class="logo-nav" src="<c:url value='/resources/img/logo_nav.png'/>" alt=""/>
 			</a>
@@ -90,7 +90,7 @@
 										<img class="img-fluid mb-3"src="<c:url value='/resources/img/train.jpg'/>" alt="Immagine Treno placeholder">
 									</c:if>
 									<img class="img-fluid train-image mb-3" src="${treni.immagine}" alt="Train image">
-									<h4 class="font-weight-bold">${ treni.nome }</h4>
+									<h4 class="font-weight-bold text-truncate">${ treni.nome }</h4>
 									<p class="mt-3 card-text">MARCA:
 										<c:if test="${ treni.marca == 'FrecciaRossa' }">
 											<img class="logo-frecciarossa" src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa"/>

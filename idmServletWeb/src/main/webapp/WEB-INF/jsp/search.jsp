@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 			<a class="navbar-brand" href="03-home">
 				<img class="logo-nav" src="<c:url value='/resources/img/logo_nav.png'/>" alt=""/>
 			</a>

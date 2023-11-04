@@ -44,3 +44,21 @@
 .profile-picture:hover .edit-overlay {
 	opacity: 1;
 }
+
+#sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 150px;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+#non-sticky {
+  overflow-y: auto;
+}
+
+.img-flag {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}

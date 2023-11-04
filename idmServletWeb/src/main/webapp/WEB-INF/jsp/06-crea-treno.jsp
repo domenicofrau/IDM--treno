@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 			<a class="navbar-brand" href="01-welcome">
 			   <img src="<c:url value='/resources/img/logo_nav.png'/>" alt="" class="logo-nav"/>
 			</a>
@@ -92,21 +92,30 @@
 			<div id="frForm" class="hidden">
 				<form:form method="POST" action="crea-treno-fr" modelAttribute="treno">
 					<div class="form-group">
-						<p class="mt-3 text">
-							Per poter costruire un treno, è necessario inserire una sigla. <br />
-							Tale sigla deve essere composta esclusivamente di lettere che
-							indicano il tipo di vagone che si vorrebbe creare:
-						</p>
-						<ul class="text">
-							<li><strong>H</strong> - Locomotiva (obbligatorio come primo vagone)</li>
-							<li><strong>P</strong> - Passeggeri</li>
-							<li><strong>B</strong> - Passeggeri business</li>
-							<li><strong>R</strong> - Ristorante</li>
-							<li><strong>C</strong> - Cargo</li>
-						</ul>
-						<div class="form-row">
+						<!-- button collapse -->
+						<a class="btn btn-light my-4" data-toggle="collapse" href="#infoTrenoCollapse" role="button" aria-expanded="false" aria-controls="infoTrenoCollapse">
+						  Istruzioni per la costruzione del treno
+						</a>
+						<!-- collapse -->
+						<div class="collapse" id="infoTrenoCollapse">
+							<div class="card card-body">
+							<p class="mt-3 text">
+							  Per poter costruire un treno, è necessario inserire una sigla. <br />
+							  Tale sigla deve essere composta esclusivamente di lettere che
+							  indicano il tipo di vagone che si vorrebbe creare:
+							</p>
+							<ul class="text">
+								<li><strong>H</strong> - Locomotiva (obbligatorio come primo vagone)</li>
+								<li><strong>P</strong> - Passeggeri</li>
+								<li><strong>B</strong> - Passeggeri business</li>
+								<li><strong>R</strong> - Ristorante</li>
+								<li><strong>C</strong> - Cargo</li>
+							</ul>
+							</div>
+						</div>
+						<div class="form-row mt-2">
 							<div class="form-group col-md-6">
-								<label for="siglaFR">Sigla:</label> <input id="siglaFR" class="form-control" type="text" name="sigla" placeholder="esempio: HPPPRP" required pattern="[HPBRC]+|[hpbrc]+" title="Sono ammessi solo i caratteri H, P, B, R, C."/>
+								<label for="siglaFR">Sigla:</label> <input id="siglaFR" class="form-control" type="text" name="sigla" placeholder="esempio: HPPPRP" required pattern="[HPBRC]+|[hpbrc]+" title="Sono ammessi solo i caratteri H, P, B, R, C." oninput="this.value = this.value.toUpperCase()"/>
 								<div class="invalid-feedback">La sigla deve iniziare con la lettera H.</div>
 							</div>
 							<div class="form-group col-md-6">
@@ -174,22 +183,31 @@
 			<div id="tnForm" class="hidden">
 				<form:form method="POST" action="crea-treno-tn" modelAttribute="treno">
 					<div class="form-group">
-						<p class="mt-3 text">
-							Per poter costruire un treno, è necessario inserire una sigla. <br />
-							Tale sigla deve essere composta esclusivamente di lettere che
-							indicano il tipo di vagone che si vorrebbe creare:
-						</p>
-						<ul class="text">
-							<li><strong>H</strong> - Locomotiva (obbligatorio come primo vagone)</li>
-							<li><strong>P</strong> - Passeggeri</li>
-							<li><strong>B</strong> - Passeggeri business</li>
-							<li><strong>R</strong> - Ristorante</li>
-							<li><strong>C</strong> - Cargo</li>
-						</ul>
-						<div class="form-row">
+						<!-- button collapse -->
+						<a class="btn btn-light my-4" data-toggle="collapse" href="#infoTrenoCollapse" role="button" aria-expanded="false" aria-controls="infoTrenoCollapse">
+						  Istruzioni per la costruzione del treno
+						</a>
+						<!-- collapse -->
+						<div class="collapse" id="infoTrenoCollapse">
+							<div class="card card-body">
+							<p class="mt-3 text">
+							  Per poter costruire un treno, è necessario inserire una sigla. <br />
+							  Tale sigla deve essere composta esclusivamente di lettere che
+							  indicano il tipo di vagone che si vorrebbe creare:
+							</p>
+							<ul class="text">
+								<li><strong>H</strong> - Locomotiva (obbligatorio come primo vagone)</li>
+								<li><strong>P</strong> - Passeggeri</li>
+								<li><strong>B</strong> - Passeggeri business</li>
+								<li><strong>R</strong> - Ristorante</li>
+								<li><strong>C</strong> - Cargo</li>
+							</ul>
+							</div>
+						</div>
+						<div class="form-row mt-2">
 							<div class="form-group col-md-6">
 								<label for="siglaTN">Sigla:</label> 
-								<input id="siglaTN" class="form-control" type="text" name="sigla" placeholder="esempio: HPPPRP" required pattern="[HPBRC]+|[hpbrc]+" title="Sono ammessi solo i caratteri H, P, B, R, C."/>
+								<input id="siglaTN" class="form-control" type="text" name="sigla" placeholder="esempio: HPPPRP" required pattern="[HPBRC]+|[hpbrc]+" title="Sono ammessi solo i caratteri H, P, B, R, C." oninput="this.value = this.value.toUpperCase()"/>
 								<div class="invalid-feedback">La sigla deve iniziare con la lettera H.</div>
 							</div>
 							<div class="form-group col-md-6">

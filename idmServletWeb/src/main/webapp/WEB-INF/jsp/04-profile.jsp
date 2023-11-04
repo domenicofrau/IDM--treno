@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 			<a class="navbar-brand" href="03-home">
 				<img class="logo-nav" src="<c:url value='/resources/img/logo_nav.png'/>" alt=""/>
 			</a>
@@ -73,13 +73,14 @@
 			</div>
 			<!-- SEZIONE PROFILO -->
 			<div class="row">
-				<div class="col-md-5 text-center">
+				<div id="sticky" class="col-md-5 text-center">
 					<div class="profile-picture d-inline-block">
 						<img class="img-fluid" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="Immagine Profilo">
 						<div class="edit-overlay">Modifica</div>
 					</div>
 					<h3 class="mt-3">${loggedInUser.nome} ${loggedInUser.cognome}</h3>
-					<p>${loggedInUser.email}</p>
+					<h6>${loggedInUser.email}</h6>
+					<img class="rounded-circle img-flag mb-3" src="<c:url value='/resources/img/flag.png'/>" alt="">
 					<p class="saldo-bittrain">saldo BitTrain: 
 						<b>${loggedInUser.bitTrain} </b>
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
@@ -89,7 +90,7 @@
 					</form>
 				</div>
 				<!-- SEZIONE TRENI -->
-				<div class="col-md-7">
+				<div id="non-sticky" class="col-md-7">
 					<h2>I Tuoi Treni</h2>
 					<div class="row mt-5">
 						<c:if test="${empty treni}">
@@ -106,10 +107,10 @@
 						                </h5>
 						                <c:choose>
 						                    <c:when test="${treni.marca == 'FrecciaRossa'}">
-						                        <img src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa" class="frecciarossa-logo mb-2">
+						                        <img class="logo-frecciarossa mb-2" src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa">
 						                    </c:when>
 						                    <c:when test="${treni.marca == 'TreNord'}">
-						                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png" alt="TreNord" class="trenord-logo mb-2">
+						                        <img class="logo-trenord mb-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png" alt="TreNord">
 						                    </c:when>
 						                    <c:otherwise>
 						                        <p class="card-text">${treni.marca}</p>
