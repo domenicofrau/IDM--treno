@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			button.innerText = 'Crea il treno';
 		} else {
 			var prezzo = calcolaPrezzo_fr(sigla);
-			button.innerText = 'Crea il treno (' + prezzo + ' BitTrain)';
+			button.innerHTML = 'Crea il treno (' + prezzo + ' <img class="bit-train-icon" src="/resources/img/bitTrain.png"/>)';
 		}
 	});
 
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			button.innerText = 'Crea il treno';
 		} else {
 			var prezzo = calcolaPrezzo_tn(sigla);
-			button.innerText = 'Crea il treno (' + prezzo + ' BitTrain)';
+			button.innerHTML = 'Crea il treno (' + prezzo + ' <img class="bit-train-icon" src="/resources/img/bitTrain.png"/>)';
 		}
 	});
 

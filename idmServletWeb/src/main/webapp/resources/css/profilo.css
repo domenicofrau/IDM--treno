@@ -44,21 +44,3 @@
 .profile-picture:hover .edit-overlay {
 	opacity: 1;
 }
-
-.bit-train-icon {
-	height: 20px;
-	object-fit: cover;
-	margin-right: 4px;
-}
-
-.frecciarossa-logo {
-    height: 17px;
-    width: auto;
-    margin-right: 5px;
-}
-
-.trenord-logo {
-    height: 10px;
-    width: auto;
-    margin-right: 5px;
-}

@@ -122,14 +122,12 @@
 											<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" >
 										</p>
 										<div class="d-flex justify-content-between">
-											<a class="btn btn-secondary" href="cerca-treno?idTrenoStr=${ treni.id }"> 
-												<i class="bi bi-info-lg"></i>
-											</a>
-											<a class="btn btn-secondary" href="cerca-treno?idTrenoStr=${ treni.id }"> 
+											<a class="btn btn-light btn-outline-primary" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>
+											<a class="btn btn-light btn-outline-dark" href="cerca-treno?idTrenoStr=${ treni.id }"> 
 												<i class="bi bi-pencil-square"></i>
 											</a>
 											<form id="deleteForm" method="post" action="/idmServletWeb/eliminaTreno">
-												<input type="hidden" name="id" value="${treni.id}" /><input class="btn btn-dark" type="button" value="Elimina" data-toggle="modal" data-target="#confirmModal"/>
+												<input type="hidden" name="id" value="${treni.id}" /><input class="btn btn-light btn-outline-danger" type="button" value="Elimina" data-toggle="modal" data-target="#confirmModal"/>
 											</form>
 											<!-- modale -->
 											<div id="confirmModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,9 +143,9 @@
 														<div class="modal-body">Verranno riaccreditati <b>${treni.prezzoTotale}</b> 
 															<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">sul tuo conto BitTrain.
 														</div>
-														<div class="modal-footer">
-															<button class="btn btn-secondary" type="button" data-dismiss="modal">Annulla</button>
-															<button id="confirmDelete" class="btn btn-dark" type="button">Vendi</button>
+														<div class="modal-footer d-flex justify-content-between">
+															<button class="btn btn-light btn-outline-dark" type="button" data-dismiss="modal">Annulla</button>
+															<button id="confirmDelete" class="btn btn-light btn-outline-success" type="button">Vendi</button>
 														</div>
 													</div>
 												</div>
