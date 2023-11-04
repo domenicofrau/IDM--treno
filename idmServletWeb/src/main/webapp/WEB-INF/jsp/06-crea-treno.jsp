@@ -260,6 +260,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<!-- Custom JS -->
+		<script type="text/javascript">var contextPath = "<%=request.getContextPath()%>";</script>
 		<script src="<c:url value='/resources/js/calcolaPrezzo.js'/>"></script>
 		<script src="<c:url value='/resources/js/selectFactory.js'/>"></script>
 		<script src="<c:url value='/resources/js/imagePreview.js'/>"></script>
