@@ -10,6 +10,7 @@
 	height: 150px;
 	border-radius: 50%;
 	overflow: hidden;
+	cursor: pointer !important;
 }
 
 .profile-picture img {
@@ -21,7 +22,6 @@
 
 .profile-picture:hover img {
 	opacity: 0.3;
-	cursor: pointer;
 }
 
 .edit-overlay {

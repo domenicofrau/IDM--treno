@@ -6,3 +6,40 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
+
+.main-content {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 50px auto;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.main-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.train-image {
+	height: 200px;
+	width: 100%;
+	object-fit: cover;
+}
+
+.logo-frecciarossa {
+	height: 17px;
+	width: auto;
+	margin-right: 5px;
+}
+
+.logo-trenord {
+	height: 10px;
+	width: auto;
+	margin-right: 5px;
+}

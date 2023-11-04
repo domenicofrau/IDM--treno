@@ -13,8 +13,8 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/criteriaForm.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/profilo.css'/>">
-		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
 	</head>
 	<body>
 		<!-- NAVBAR -->
@@ -31,13 +31,13 @@
 					</c:if>
 					<li class="nav-item mr-3"><a class="nav-link" href="03-home">Home</a></li>
 					<li class="nav-item mr-3"><a class="nav-link" href="06-crea-treno">Crea Treno</a></li>
-					<li class="nav-item mr-3" id="searchIcon"><i class="ms-3 bi bi-search text-secondary"></i></li>                  
+					<li id="searchIcon" class="nav-item mr-3"><i class="ms-3 bi bi-search text-secondary"></i></li>                  
 				</ul>
 			</div>
 			<!-- destra -->
 			<div class="navbar-nav ml-auto navbar-nav-adjust">
 				<div class="nav-item d-flex align-items-center">
-					<b>${loggedInUser.nome}</b>
+					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.nome}</a>
 					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					<a href="04-profile">
@@ -48,24 +48,28 @@
 		</nav>
 		<div class="container mt-5">
 			<!-- CRITERIA FORM DI RICERCA -->
-			<div id="criteriaForm" class="row my-3 p-4 d-none">
-				<form class="form-inline" action="search" method="GET">
-	 				<div class="form-group">
-		    			<label for="nome">Nome del treno: </label>
-		   				 <input id="nome" class="form-control mx-3" type="text" name="nome" placeholder="Nome del treno">
-		   				 <div class="input-group mb-3">
-		  					<div class="input-group-prepend">
-		    					<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
-		  					</div>
-		  					<select id="inputGroupSelect01" class="custom-select" name="marca">
-		   						 <option selected>FrecciaRossa</option>
-		   						 <option value="1">TreNord</option>
-		  					</select>
-						 </div>
-		  				 <button class="btn btn-dark mx-3" type="submit">Submit</button>
-	 				 </div>
+			<div id="criteriaForm" class="container my-3 p-4 d-none">
+				<form action="search" method="GET">
+					<div class="form-row">
+						<div class="col-md-8">
+							<input id="nome" class="form-control" type="text" name="nome" placeholder="Cerca...">
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
+								</div>
+								<select id="inputGroupSelect01" class="custom-select" name="marca">
+									<option selected>FrecciaRossa</option>
+									<option value="1">TreNord</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-1 d-flex justify-content-end">
+							<button class="btn btn-dark" type="submit">Cerca</button>
+						</div>
+					</div>
 				</form>
-				<i id="closeIcon" class="ms-3 bi bi-x fs-1"></i>
 			</div>
 			<!-- SEZIONE PROFILO -->
 			<div class="row">
@@ -81,7 +85,7 @@
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					</p>
 					<form id="logOut" class="mt-5" method="" action="">
-						<input type="button" value="Logout" class="btn btn-danger"/>
+						<input class="btn btn-danger" type="button" value="Logout" />
 					</form>
 				</div>
 				<!-- SEZIONE TRENI -->
@@ -112,15 +116,17 @@
 						                    </c:otherwise>
 						                </c:choose>
 										<img class="img-fluid train-image" src="${treni.immagine}" alt="Train image">
-										<p class="mt-3 mb-2">Vagoni: ${numeroVagoni}</p>
-										<p class="mb-2">Regione: ${treni.regione}</p>
+										<p class="mt-3 mb-2">Regione: ${treni.regione}</p>
 										<p class="mb-5">
 											<b> ${treni.prezzoTotale} </b>
-											<img src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" class="bit-train-icon">
+											<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain" >
 										</p>
 										<div class="d-flex justify-content-between">
 											<a class="btn btn-secondary" href="cerca-treno?idTrenoStr=${ treni.id }"> 
 												<i class="bi bi-info-lg"></i>
+											</a>
+											<a class="btn btn-secondary" href="cerca-treno?idTrenoStr=${ treni.id }"> 
+												<i class="bi bi-pencil-square"></i>
 											</a>
 											<form id="deleteForm" method="post" action="/idmServletWeb/eliminaTreno">
 												<input type="hidden" name="id" value="${treni.id}" /><input class="btn btn-dark" type="button" value="Elimina" data-toggle="modal" data-target="#confirmModal"/>
@@ -130,7 +136,7 @@
 												<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLabel">Conferma</h5>
+															<h5 id="exampleModalLabel" class="modal-title">Conferma</h5>
 															<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>

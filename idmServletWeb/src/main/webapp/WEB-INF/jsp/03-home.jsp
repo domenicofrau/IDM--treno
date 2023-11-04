@@ -11,8 +11,8 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 		<!-- Custom CSS -->
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>">
-		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/criteriaForm.css'/>">
 	</head>
 	<body>
 		<!-- NAVBAR -->
@@ -35,7 +35,7 @@
 			<!-- destra -->
 		   	<div class="navbar-nav ml-auto navbar-nav-adjust">
 				<div class="nav-item d-flex align-items-center">
-					<b>${loggedInUser.nome}</b>
+					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.nome}</a>
 					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					<a href="04-profile">
@@ -46,31 +46,39 @@
 		</nav>
 		<div class="container mt-5">
 			<!-- CRITERIA FORM DI RICERCA -->
-			<div id="criteriaForm" class="row my-3 p-4 d-none">
-				<form class="form-inline" action="search" method="GET">
-	 				 <div class="form-group">
-	    				<label for="nome">Nome del treno: </label>
-	   				 	<input id="nome" class="form-control mx-3" type="text" name="nome" placeholder="Nome del treno">
-	   				 	<div class="input-group mb-3">
-	  						<div class="input-group-prepend">
-	    						<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
-	  						</div>
-	  						<select id="inputGroupSelect01" class="custom-select" name="marca">
-	   							<option selected>FrecciaRossa</option>
-	   							<option value="1">TreNord</option>
-	  						</select>
+			<div id="criteriaForm" class="container my-3 p-4 d-none">
+				<form action="search" method="GET">
+					<div class="form-row">
+						<div class="col-md-8">
+							<input id="nome" class="form-control" type="text" name="nome" placeholder="Cerca...">
 						</div>
-	  				 	<button class="btn btn-dark mx-3" type="submit">Submit</button>
-	 				 </div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
+								</div>
+								<select id="inputGroupSelect01" class="custom-select" name="marca">
+									<option selected>FrecciaRossa</option>
+									<option value="1">TreNord</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-1 d-flex justify-content-end">
+							<button class="btn btn-dark" type="submit">Cerca</button>
+						</div>
+					</div>
 				</form>
-				<i id="closeIcon" class="ms-3 bi bi-x fs-1"></i>
 			</div>
 			<!-- FEED -->
 			<div class="feed-section">
-				<h2 class="my-3 text-center font-weight-bold">Treni caricati da altri utenti</h2>
+				<c:if test="${ not empty treni }">
+					<h2 class="my-3 text-center font-weight-bold">Treni caricati da altri utenti</h2>
+				</c:if>
 				<c:if test="${ empty treni }">
-					<h2 class="my-3 text-center font-weight-bold">Non ci sono treni da vedere al momento</h2>		
-					<a class="nav-link" href="06-crea-treno">Creane uno tu!</a>	
+					<div class="text-center">
+						<h2 class="my-3 text-secondary font-weight-bold">Non ci sono treni da vedere al momento</h2>
+						<a class="nav-link" href="06-crea-treno">Creane uno tu!</a>
+					</div>
 				</c:if>
 				<div class="train-cards row mt-4">
 					<c:forEach var="treni" items="${ treni }">
@@ -86,7 +94,14 @@
 									</c:if>
 									<img class="img-fluid train-image mb-3" src="${treni.immagine}" alt="Train image">
 									<h4 class="font-weight-bold">NOME: ${ treni.nome }</h4>
-									<p>MARCA: ${ treni.marca }</p>
+									<p class="card-text"><b>MARCA:</b> 
+										<c:if test="${ treno.marca == 'FrecciaRossa' }">
+											<img src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa" class="logo-frecciarossa"/>
+										</c:if>
+										<c:if test="${ treno.marca == 'TreNord' }">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png" alt="TreNord" class="logo-trenord"/>
+										</c:if>								
+									</p>
 									<p>PESO TOTALE DEL TRENO: ${ sommaPesi } tonnellate</p>
 									<p>AUTORE: ${treni.utente.nome } ${treni.utente.cognome }</p>
 									<c:set var="trenoID" value="${ treni.id }" />

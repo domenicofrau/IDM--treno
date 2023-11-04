@@ -13,13 +13,13 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>"/>
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>"/>
-		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>"/>
+		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/login.css'/>"/>
 	</head>
 	<body>
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="01-welcome">
-				<img src="<c:url value='/resources/img/logo_nav.png'/>" alt="" class="logo-nav"/>
+				<img class="logo-nav" src="<c:url value='/resources/img/logo_nav.png'/>" alt=""/>
 			</a>
 			<!-- Center -->
 			<div id="navbarNav" class="collapse navbar-collapse justify-content-center">
@@ -36,21 +36,21 @@
 				<div class="col-md-6">
 					<!-- LOGIN -->
 					<div id="loginForm">
-						<h2>Login</h2>
+						<h2 class="mb-4">Login</h2>
 						<form:form class="form-group" action="doLogin" method="POST" modelAttribute="utente">
-							<input class="form-control mb-2" type="text" name="email" placeholder="Email" required/>
-							<input class="form-control mb-2" type="password" name="password" placeholder="Password" required />
-							<button class="btn btn-primary btn-block" type="submit">Accedi</button>
-							<p class="mt-2">Non sei ancora registrato?<a href="" onclick="showRegisterForm()">Registrati qui</a></p>
+							<input class="form-control mb-4" type="text" name="email" placeholder="Email" required/>
+							<input class="form-control mb-5" type="password" name="password" placeholder="Password" required />
+							<button class="btn btn-primary btn-block mb-2" type="submit">Accedi</button>
+							<p class="mt-2">Non sei ancora registrato? <a href="" onclick="showRegisterForm()">Registrati qui</a></p>
 						</form:form>
 					</div>
 					<!-- REGISTRAZIONE -->
 					<div id="registerForm" style="display: none">
-						<h2>Registrazione</h2>
+						<h2 class="mb-4">Registrazione</h2>
 						<form action="doRegister" method="post" class="form-group">
-							<input class="form-control mb-2" type="text" name="username" placeholder="Nome utente" required />
-							<input class="form-control mb-2" type="password" name="password" placeholder="Password" required />
-							<input class="form-control mb-2" type="email" name="email" placeholder="Email" required />
+							<input class="form-control mb-3" type="text" name="username" placeholder="Nome utente" required />
+							<input class="form-control mb-3" type="password" name="password" placeholder="Password" required />
+							<input class="form-control mb-3" type="email" name="email" placeholder="Email" required />
 							<button class="btn btn-success btn-block" type="submit">Registra</button>
 						</form>
 						<button class="btn btn-secondary btn-block mt-2" onclick="showLoginForm()">Indietro</button>

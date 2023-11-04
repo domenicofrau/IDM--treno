@@ -12,7 +12,7 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>"/>
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>"/>
-		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/01-welcome.css'/>"/>
+		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/hero.css'/>"/>
 	</head>
    	<body>
 		<!-- NAVBAR -->
@@ -37,7 +37,7 @@
 		   <div class="row">
 		      <div class="col-12 col-md-6 p-3">
 		         <h1 class="mainTitle">Benvenuto su TrainBook!</h1>
-		         <p class="mainPara">
+		         <p class="mainSubTitle">
 		            TrainBook è il primo social network dedicato agli appassionati di
 		            treni. Qui puoi creare il tuo treno personalizzato e condividerlo
 		            con il resto del mondo. Esplora le creazioni degli altri utenti e

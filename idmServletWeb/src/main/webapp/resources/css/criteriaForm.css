@@ -1,0 +1,16 @@
+#searchIcon:hover {
+	cursor: pointer !important;
+}
+
+#criteriaForm {
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+#closeIcon:hover {
+	cursor: pointer !important;
+}
+
+.input-group {
+	margin-bottom: 0 !important;
+}
