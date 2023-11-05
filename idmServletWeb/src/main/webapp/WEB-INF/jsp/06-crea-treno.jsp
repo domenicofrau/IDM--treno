@@ -274,7 +274,8 @@ body {
 			<!-- destra -->
 			<div class="navbar-nav ml-auto navbar-nav-adjust">
 				<div class="nav-item d-flex align-items-center">
-					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.nome}</a>
+					<a class="nav-link d-inline mr-1" href="04-profile" >${loggedInUser.nome}</a>
+					<p id="saldo" style="display:none">${loggedInUser.bitTrain}</p>
 					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					<a href="04-profile">
