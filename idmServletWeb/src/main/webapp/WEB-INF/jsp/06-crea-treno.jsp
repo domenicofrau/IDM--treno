@@ -116,7 +116,9 @@
 						<div class="form-row mt-2">
 							<div class="form-group col-md-6">
 								<label for="siglaFR">Sigla:</label> <input id="siglaFR" class="form-control" type="text" name="sigla" placeholder="esempio: HPPPRP" required pattern="[HPBRC]+|[hpbrc]+" title="Sono ammessi solo i caratteri H, P, B, R, C." oninput="this.value = this.value.toUpperCase()"/>
-								<div class="invalid-feedback">La sigla deve iniziare con la lettera H.</div>
+							    <div id="feedbackStartsWithHFR" class="invalid-feedback" style="display:none;">Il treno deve avere come primo vagone una locomotiva (H).</div>
+								<div id="feedbackNeedsRFR" class="invalid-feedback" style="display:none;">Se è presente un vagone passeggeri (P), è necessaria anche un vagone ristorante (R).</div>
+								<div id="feedbackNotAllowedC" class="invalid-feedback" style="display:none;">I vagoni cargo (C), non possono essere inseriti in un treno passeggeri.</div>
 							</div>
 							<div class="form-group col-md-6">
 								<label for="regione_fr">Regione:</label> <select id="regione_fr" class="form-control" name="regione" required></select>
@@ -208,7 +210,9 @@
 							<div class="form-group col-md-6">
 								<label for="siglaTN">Sigla:</label> 
 								<input id="siglaTN" class="form-control" type="text" name="sigla" placeholder="esempio: HPPPRP" required pattern="[HPBRC]+|[hpbrc]+" title="Sono ammessi solo i caratteri H, P, B, R, C." oninput="this.value = this.value.toUpperCase()"/>
-								<div class="invalid-feedback">La sigla deve iniziare con la lettera H.</div>
+							    <div id="feedbackStartsWithHTN" class="invalid-feedback" style="display:none;">Il treno deve avere come primo vagone una locomotiva (H).</div>
+ 								<div id="feedbackNeedsRTN" class="invalid-feedback" style="display:none;">Se è presente un vagone passeggeri (P), è necessaria anche un vagone ristorante (R).</div>
+  								<div id="feedbackNotAllowedC" class="invalid-feedback" style="display:none;">I vagoni cargo (C), non possono essere inseriti in un treno passeggeri.</div>
 							</div>
 							<div class="form-group col-md-6">
 								<label for="regione_tn">Regione:</label><select id="regione_tn" class="form-control" name="regione" required></select>
@@ -280,9 +284,9 @@
 		<!-- Custom JS -->
 		<script type="text/javascript">var contextPath = "<%=request.getContextPath()%>";</script>
 		<script src="<c:url value='/resources/js/calcolaPrezzo.js'/>"></script>
+		<script src="<c:url value='/resources/js/checkSigla.js'/>"></script>
 		<script src="<c:url value='/resources/js/selectFactory.js'/>"></script>
 		<script src="<c:url value='/resources/js/imagePreview.js'/>"></script>
-		<script src="<c:url value='/resources/js/checkSigla.js'/>"></script>
 		<script src="<c:url value='/resources/js/regioni.js'/>"></script>
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
 	

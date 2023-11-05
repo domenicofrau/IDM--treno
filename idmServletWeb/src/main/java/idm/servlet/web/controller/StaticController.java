@@ -78,6 +78,11 @@ public class StaticController {
 		model.addAttribute("selectedFactory", factory);
 		return "06-crea-treno";
 	}
+	
+	@GetMapping("/07-about")
+	public String about(Model model) {
+		return "07-about";
+	}
 
 }
 

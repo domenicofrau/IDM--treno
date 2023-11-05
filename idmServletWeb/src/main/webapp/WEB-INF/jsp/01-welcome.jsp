@@ -22,14 +22,17 @@
 		   </a>
 		   <!-- centro -->
 		   <div id="navbarNav" class="collapse navbar-collapse justify-content-center" >
-		      <ul class="navbar-nav align-items-center">
-		         <li class="nav-item active mr-3">
-		            <a class="nav-link" href="01-welcome">Welcome</a>
-		         </li>
-		         <li class="nav-item mr-3">
-		            <a class="nav-link" href="02-login">Login</a>
-		         </li>
-		      </ul>
+		      	<ul class="navbar-nav align-items-center">
+			         <li class="nav-item active mr-3">
+			            <a class="nav-link" href="01-welcome">Welcome</a>
+			         </li>
+			         <li class="nav-item mr-3">
+			            <a class="nav-link" href="02-login">Login</a>
+			         </li>
+			         <li class="nav-item mr-3">
+			            <a class="nav-link" href="07-about">About</a>
+			         </li>
+		      	</ul>
 		   </div>
 		</nav>
       	<!-- HERO -->
@@ -52,6 +55,6 @@
 		         <img class="img-fluid mt-5" src="<c:url value='/resources/img/trainbg.png'/>" alt="Train Background"/>
 		      </div>
 		   </div>
-		</div>
+		</div>		
    	</body>
 </html>
