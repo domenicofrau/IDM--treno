@@ -1,13 +1,18 @@
-# IDM TRENO 🚂
+# TrainBook 🚂
 
-Benvenuti nel repository di "IDM TRENO", un progetto innovativo sviluppato utilizzando le competenze e le tecnologie acquisite durante la IDM Academy 16. Il nostro team ha lavorato sodo per creare un'applicazione che permette la "creazione" di treni tramite l'inserimento di una stringa composta.
+Benvenuti nel repository di "IDM TRENO", un progetto sviluppato utilizzando le competenze e le tecnologie acquisite durante la IDM Academy 16. Il nostro team ha lavorato sodo per creare un'applicazione che permette la "creazione" di treni tramite l'inserimento di una stringa composta.
 
-## Tecnologie Utilizzate 💻
+## Tecnologie 💡
 
-- Java
-- Spring
-- Hibernate
-- SQL
+Abbiamo costruito TrainBook utilizzando le seguenti tecnologie:
+
+- **Java v.17**: Per il backend con implementazioni di design pattern come il Builder e l’Abstract Factory.
+- **Spring MVC**: Per la gestione delle dipendenze e l'infrastruttura del server.
+- **Hibernate**: Per la gestione e la persistenza dei dati tramite JPA.
+- **MySQL/PostgreSQL**: Per la gestione di un database solido e affidabile.
+- **HTML5 e CSS3**: Per creare una struttura web di base.
+- **Bootstrap**: Per il design responsivo e le componenti stilistiche.
+- **JavaScript e JSP con tag JSTL**: Per la logica lato client e una presentazione dinamica dei dati.
 
 ## Come Funziona 🧩
 
@@ -15,10 +20,19 @@ L'applicazione permette di creare due marche di treni inserendo una stringa comp
 
 - `H` per il vagone locomotiva
 - `P` per il vagone passeggeri
+- `B` per il vagone passeggeri business
 - `R` per il vagone ristorante
 - `C` per il vagone cargo
 
 Ogni carattere rappresenta un tipo specifico di vagone e l'utente può combinare questi caratteri per "costruire" il proprio treno personalizzato.
+
+## Caratteristiche Principali ✨
+
+Gli utenti di TrainBook possono:
+
+- Creare composizioni di treni personalizzate con una stringa di caratteri che rappresentano diversi tipi di vagoni.
+- Usare la valuta virtuale `bitTrain` per acquistare composizioni altrui e vendere le proprie.
+- Interagire con un marketplace dinamico e un feed che mostra le creazioni degli utenti.
 
 ## Team di Sviluppo 🤝
 
@@ -26,4 +40,4 @@ Ogni carattere rappresenta un tipo specifico di vagone e l'utente può combinare
 - Alessandro Bellante
 - Domenico Frau
 
-Grazie per aver visitato il nostro repository! Speriamo che il nostro progetto possa essere d'ispirazione per i vostri futuri progetti. Buona codifica! 🎉
+Grazie per aver visitato il nostro repository! Buona codifica! 🎉
