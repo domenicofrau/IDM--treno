@@ -1,6 +1,6 @@
 # TrainBook 🚂
 
-Benvenuti nel repository di "IDM TRENO", un progetto sviluppato utilizzando le competenze e le tecnologie acquisite durante la IDM Academy 16. Il nostro team ha lavorato sodo per creare un'applicazione che permette la "creazione" di treni tramite l'inserimento di una stringa composta.
+Benvenuti nel repository di "TrainBook", un progetto sviluppato utilizzando le competenze e le tecnologie acquisite durante la IDM Academy 16. Il nostro team ha lavorato sodo per creare un'applicazione che permette la "creazione" di treni tramite l'inserimento di una stringa composta.
 
 ## Tecnologie 💡
 
