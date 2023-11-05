@@ -279,16 +279,18 @@ body {
 							<input class="form-control mb-4" type="text" name="email" placeholder="Email" required/>
 							<input class="form-control mb-5" type="password" name="password" placeholder="Password" required />
 							<button class="btn btn-primary btn-block mb-2" type="submit">Accedi</button>
-							<p class="mt-2">Non sei ancora registrato? <a href="" onclick="showRegisterForm()">Registrati qui</a></p>
+							<p class="mt-2">Non sei ancora registrato? <a class="text-primary" onclick="showRegisterForm()">Registrati qui</a></p>
 						</form:form>
 					</div>
 					<!-- REGISTRAZIONE -->
 					<div id="registerForm" style="display: none">
 						<h2 class="mb-4">Registrazione</h2>
-						<form action="doRegister" method="post" class="form-group">
-							<input class="form-control mb-3" type="text" name="username" placeholder="Nome utente" required />
-							<input class="form-control mb-3" type="password" name="password" placeholder="Password" required />
+						<form action="doRegister" method="POST" class="form-group" modelAttribute="utente">
+							<input class="form-control mb-3" type="text" name="nome" placeholder="Nome" required />
+							<input class="form-control mb-3" type="text" name="cognome" placeholder="Cognome" required />
 							<input class="form-control mb-3" type="email" name="email" placeholder="Email" required />
+							<input class="form-control mb-3" type="password" name="password" placeholder="Password" required />
+							<input class="form-control mb-3" type="text" name=profilePic placeholder="Aggiungi url per la tua immagine profilo" required />
 							<button class="btn btn-success btn-block" type="submit">Registra</button>
 						</form>
 						<button class="btn btn-secondary btn-block mt-2" onclick="showLoginForm()">Indietro</button>

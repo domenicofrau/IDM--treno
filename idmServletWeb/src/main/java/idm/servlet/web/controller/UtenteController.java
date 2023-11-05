@@ -37,7 +37,7 @@ public class UtenteController {
 		} catch (UtenteException e) {
 			e.printStackTrace();
 		}
-		return "redirect:/utente-creato";
+		return "redirect:/02-login";
 	}
 
 	// CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
