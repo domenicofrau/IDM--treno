@@ -49,7 +49,7 @@ public class Main {
 
 //		t.vendiTreno(t, utenteTrovato1, utenteTrovato2);
 //		t.setUtente(t, utenteTrovato2);
-		tService.crea(t);
+//		tService.crea(t);
 //		tService.update(t);
 //		uService.update(utenteTrovato1);
 //		uService.update(utenteTrovato2);
