@@ -69,8 +69,6 @@ public class StaticController {
 		model.addAttribute("utente", u);
 		List<Treno> treni = trenoService.findByUtenteId(u.getId());
 
-		Collections.reverse(treni);
-
 		model.addAttribute("treni", treni);
 
 		return "04-profile";

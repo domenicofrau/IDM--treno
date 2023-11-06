@@ -78,38 +78,49 @@
 					</div>
 				</c:if>
 				<div class="train-cards row mt-4">
-					<c:forEach var="treni" items="${ treni }">
-						<c:set var="sommaPesi" value="0" />
-						<c:forEach var="vagone" items="${treni.vagoni}">
-							<c:set var="sommaPesi" value="${sommaPesi + vagone.peso}" />
-						</c:forEach>
-						<div class="col-md-6">
-							<div class="card mb-4">
-								<div class="card-body">
-									<c:if test="${ empty treni.immagine }">
-										<img class="img-fluid mb-3"src="<c:url value='/resources/img/train.jpg'/>" alt="Immagine Treno placeholder">
+				    <c:forEach var="treni" items="${ treni }">
+				        <c:set var="sommaPesi" value="0" />
+				        <c:forEach var="vagone" items="${treni.vagoni}">
+				            <c:set var="sommaPesi" value="${sommaPesi + vagone.peso}" />
+				        </c:forEach>
+				        <div class="col-md-6">
+				            <div class="card mb-4">
+				                <div class="card-body">
+				                    <c:if test="${ empty treni.immagine }">
+				                        <img class="img-fluid mb-3" src="<c:url value='/resources/img/train.jpg'/>" alt="Immagine Treno placeholder">
+				                    </c:if>
+				                    <img class="img-fluid train-image mb-3" src="${treni.immagine}" alt="Train image">
+				                    
+				                    <!-- Inserimento del segnalibro "in vendita" -->
+				                    <c:set var="inVenditaAsBoolean" value="${Boolean.parseBoolean(treni.inVendita)}" />
+									<c:if test="${inVenditaAsBoolean}">
+									    <div class="ribbon-wrapper-green">
+									        <div class="ribbon-green">IN VENDITA</div>
+									    </div>
 									</c:if>
-									<img class="img-fluid train-image mb-3" src="${treni.immagine}" alt="Train image">
-									<h4 class="font-weight-bold text-truncate">${ treni.nome }</h4>
-									<p class="mt-3 card-text">MARCA:
-										<c:if test="${ treni.marca == 'FrecciaRossa' }">
-											<img class="logo-frecciarossa" src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa"/>
-										</c:if>
-										<c:if test="${ treni.marca == 'TreNord' }">
-											<img class="logo-trenord" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png" alt="TreNord"/>
-										</c:if>								
-									</p>
-									<p>PESO: ${ sommaPesi } tonnellate</p>
-									<p>AUTORE: ${treni.utente.nome } ${treni.utente.cognome }</p>
-									<c:set var="trenoID" value="${ treni.id }" />
-									<div class="d-flex justify-content-between">
-									  	<a class="btn btn-light btn-outline-primary mt-4" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>
-									  	<button class="btn btn-light btn-outline-success mt-4">Compra</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
+				                    
+				                    <h4 class="font-weight-bold text-truncate">${ treni.nome }</h4>
+				                    <p class="mt-3 card-text">MARCA:
+				                        <c:if test="${ treni.marca == 'FrecciaRossa' }">
+				                            <img class="logo-frecciarossa" src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa"/>
+				                        </c:if>
+				                        <c:if test="${ treni.marca == 'TreNord' }">
+				                            <img class="logo-trenord" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png" alt="TreNord"/>
+				                        </c:if>                             
+				                    </p>
+				                    <p>PESO: ${ sommaPesi } tonnellate</p>
+				                    <p>AUTORE: ${treni.utente.nome } ${treni.utente.cognome }</p>
+				                    <c:set var="trenoID" value="${ treni.id }" />
+				                   	<div class="d-flex justify-content-between">
+							            <a class="btn btn-light btn-outline-primary mt-4" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>
+						                <c:if test="${treni.inVendita && !loggedInUser.nome.equals(treni.utente.nome)}">
+						                    <button class="btn btn-light btn-outline-success mt-4">Compra per ${ treni.prezzoTotale } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>"></button>
+						                </c:if>
+								    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </c:forEach>
 				</div>
 			</div>
 		</div>

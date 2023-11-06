@@ -54,7 +54,7 @@ public class CreaController {
 		HttpSession session = request.getSession();
 		Utente u= (Utente) session.getAttribute("loggedInUser");
 		try {		
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regione, inVendita, frFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regione, frFactory);
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
@@ -84,7 +84,7 @@ public class CreaController {
 		HttpSession session = request.getSession();
 		Utente u= (Utente) session.getAttribute("loggedInUser");
 		try {			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine.replace(",", ""), regione, inVendita, tnFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine.replace(",", ""), regione, tnFactory);
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);

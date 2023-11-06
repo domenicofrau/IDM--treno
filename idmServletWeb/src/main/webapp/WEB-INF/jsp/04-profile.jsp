@@ -102,17 +102,17 @@
 						    <div class="col-md-6">
 						        <div class="card mb-4">
 						            <div class="card-body">
-<form id="formStatoVendita" action="cambiaStato" method="POST">
-    <input type="hidden" name="idTreno" value="${treni.id}" />
-    <div class="btn-group" role="group">
-        <label class="btn btn-light scelta-vendita">
-            <input type="radio" name="inVendita" value="true" ${treni.inVendita ? 'checked' : ''} onchange="submitForm()"> In Vendita
-        </label>
-        <label class="btn btn-light scelta-vendita">
-            <input type="radio" name="inVendita" value="false" ${!treni.inVendita ? 'checked' : ''} onchange="submitForm()"> Non in Vendita
-        </label>
-    </div>
-</form>
+										<form id="formStatoVendita${treni.id}" action="cambiaStato" method="POST">
+										    <input type="hidden" name="idTreno" value="${treni.id}" />
+										    <div class="btn-group" role="group">
+										        <label class="btn btn-light scelta-vendita">
+										            <input type="radio" name="inVendita" value="true" ${treni.inVendita ? 'checked' : ''} onchange="submitForm('${treni.id}')"> In Vendita
+										        </label>
+										        <label class="btn btn-light scelta-vendita">
+										            <input type="radio" name="inVendita" value="false" ${!treni.inVendita ? 'checked' : ''} onchange="submitForm('${treni.id}')"> Non in Vendita
+										        </label>
+										    </div>
+										</form>
 						                <h5 class="card-title text-truncate">
 						                    <b>${treni.nome}</b>
 						                </h5>
@@ -142,7 +142,7 @@
 												<input type="hidden" name="id" value="${treni.id}" /><input class="btn btn-light btn-outline-danger" type="button" value="Elimina" data-toggle="modal" data-target="#confirmModal"/>
 											</form>
 											<!-- modale -->
-											<div id="confirmModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div id="confirmModal${treni.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 												<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
@@ -177,10 +177,5 @@
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
 		<script src="<c:url value='/resources/js/modale.js'/>"></script>
-		<script>
-function submitForm() {
-    document.getElementById('formStatoVendita').submit();
-}
-</script>
 	</body>
 </html>
