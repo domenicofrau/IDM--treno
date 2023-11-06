@@ -1,13 +1,11 @@
 package idm.servlet.bean;
 
 public class TrenoBean {
-	
+
 	private String sigla;
 	private String nomeTreno;
 	private String urlImmagine;
 	private String regione;
-	
-	
 
 	public String getRegione() {
 		return regione;
@@ -40,7 +38,5 @@ public class TrenoBean {
 	public void setUrlImmagine(String urlImmagine) {
 		this.urlImmagine = urlImmagine;
 	}
-	
-	
 
 }

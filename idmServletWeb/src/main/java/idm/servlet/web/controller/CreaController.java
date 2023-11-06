@@ -57,10 +57,6 @@ public class CreaController {
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
-
-			int bitTrain = u.getbitTrain();
-			int prezzoTotale = t.getPrezzoTotale();
-			u.setbitTrain(bitTrain - prezzoTotale);
 			utenteService.update(u);
 
 		} catch (TrenoException e) {
@@ -89,10 +85,6 @@ public class CreaController {
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
-
-			int bitTrain = u.getbitTrain();
-			int prezzoTotale = t.getPrezzoTotale();
-			u.setbitTrain(bitTrain - prezzoTotale);
 			utenteService.update(u);
 
 		} catch (TrenoException e) {

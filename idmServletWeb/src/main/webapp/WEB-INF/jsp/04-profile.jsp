@@ -102,6 +102,14 @@
 						    <div class="col-md-6">
 						        <div class="card mb-4">
 						            <div class="card-body">
+									    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+									        <label class="btn btn-light scelta-vendita">
+									             <input id="option1_${treni.id}" type="radio" name="options_${treni.id}" checked> In Vendita
+									        </label>
+									        <label class="btn btn-light scelta-vendita">
+									            <input id="option2_${treni.id}" type="radio" name="options_${treni.id}"> Non in Vendita
+									        </label>
+									    </div>
 						                <h5 class="card-title text-truncate">
 						                    <b>${treni.nome}</b>
 						                </h5>

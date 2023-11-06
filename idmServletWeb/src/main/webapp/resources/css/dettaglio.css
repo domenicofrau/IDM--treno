@@ -1,0 +1,13 @@
+.category-details {
+	display: none;
+}
+
+.navbar-nav-details {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
+
+.nav-link {
+	cursor: pointer;
+}

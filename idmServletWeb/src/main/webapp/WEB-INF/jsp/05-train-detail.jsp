@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/reset.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/criteriaForm.css'/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/dettaglio.css'/>">
 	</head>
 	<body>
 		<!-- NAVBAR -->
@@ -69,6 +70,7 @@
 					</div>
 				</form>
 			</div>
+						
 			<c:if test="${not empty errore}">
 				<div style="color: red;">
 					<h3>${errore}</h3>
@@ -105,105 +107,128 @@
 								<p class="card-text"><b>AUTORE:</b> ${ treno.utente.nome } ${ treno.utente.cognome }</p>
 								<p class="card-text"><b>PREZZO TOTALE:</b> ${ sommaPrezzi } bitTrain</p>
 								<p class="card-text"><b>PESO TOTALE:</b> ${ sommaPesi } tonnellate</p>
-								<p class="card-text"><b>SIGLA:</b> sigla</p>
 							</div>
 							<div class="card-body">
-								<h3 class="card-title">
-									<b>Dettaglio vagoni:</b>
-								</h3>
-								<div class="row">
-									<div class="col-12">
-										<p class="card-text font-weight-bold h4 my-2">LOCOMOTIVE:</p>
+								<nav class="navbar navbar-expand-lg navbar-light bg-light">
+									<div class="container-fluid">
+										<div class="collapse navbar-collapse" id="navbarNav">
+											<ul class="navbar-nav-details mx-auto">
+												<li class="nav-item">
+													<a class="nav-link" onclick="showDetails('locomotive')">Locomotive</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" onclick="showDetails('passeggeri')">Passeggeri</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" onclick="showDetails('business')">Business</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" onclick="showDetails('ristoranti')">Ristoranti</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" onclick="showDetails('cargo')">Cargo</a>
+												</li>
+											</ul>
+										</div>
 									</div>
-									<c:forEach var="locomotiva" items="${ locomotive }">
-										<div class="col-12 col-md-6">
-											<div class="card mb-4">
-												<div class="card-body">
-													<p><b>PESO:</b> ${ locomotiva.peso } tonnellate</p>
-													<p><b>PREZZO:</b> ${ locomotiva.prezzo } bitTrain</p>
-													<p><b>LUNGHEZZA:</b> ${ locomotiva.lunghezza } metri</p>
-													<p><b>PESO TRAINABILE:</b> ${ locomotiva.pesoTrainabile } tonnellate</p>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-									<c:if test="${ not empty passeggeri}">
-										<div class="col-12">
-											<p class="card-text font-weight-bold h4 my-2">VAGONI PASSEGGERI:</p>
-										</div>
-										<c:forEach var="passeggeri" items="${ passeggeri }">
-											<div class="col-12 col-md-6">
-												<div class="card mb-4">
+								</nav>
+								
+								<div id="locomotive-details" class="category-details">
+									<div class="row">
+										<c:forEach var="locomotiva" items="${locomotive}">
+											<div class="col-12 col-md-6 my-2">
+												<div class="card">
 													<div class="card-body">
-														<p><b>PESO:</b> ${ passeggeri.peso } tonnellate</p>
-														<p><b>PREZZO:</b> ${ passeggeri.prezzo } bitTrain</p>
-														<p><b>LUNGHEZZA:</b> ${ passeggeri.lunghezza } metri</p>
-														<p><b>POSTI A SEDERE:</b> ${ passeggeri.postiNormali }</p>
-														<p><b>POSTI PER DISABILI:</b> ${ passeggeri.postiDisabili }</p>
-														<p><b>POSTI TOTALI A SEDERE:</b> ${ passeggeri.postiNormali + passeggeri.postiDisabili }</p>
-														<p><b>PRESENZA SERVIZI:</b> ${ passeggeri.servizi }</p>
+														<p><b>PESO:</b> ${ locomotiva.peso } tonnellate</p>
+														<p><b>PREZZO:</b> ${ locomotiva.prezzo } bitTrain</p>
+														<p><b>LUNGHEZZA:</b> ${ locomotiva.lunghezza } metri</p>
+														<p><b>PESO TRAINABILE:</b> ${ locomotiva.pesoTrainabile } tonnellate</p>
 													</div>
 												</div>
 											</div>
 										</c:forEach>
-									</c:if>
-									<c:if test="${ not empty passeggeriB}">
-										<div class="col-12">
-											<p class="card-text font-weight-bold h4 my-2">VAGONI PASSEGGERI BUSINESS:</p>
-										</div>
-										<c:forEach var="passeggeriB" items="${ passeggeriB }">
-											<div class="col-12 col-md-6">
-												<div class="card mb-4">
-													<div class="card-body">
-														<p><b>PESO:</b> ${ passeggeriB.peso } tonnellate</p>
-														<p><b>PREZZO:</b> ${ passeggeriB.prezzo } bitTrain</p>
-														<p><b>LUNGHEZZA:</b> ${ passeggeriB.lunghezza } metri</p>
-														<p><b>POSTI A SEDERE:</b> ${ passeggeriB.postiNormali }</p>
-														<p><b>POSTI PER DISABILI:</b> ${ passeggeriB.postiDisabili }</p>
-														<p><b>POSTI TOTALI A SEDERE:</b> ${ passeggeriB.postiNormali + passeggeriB.postiDisabili }</p>
-														<p><b>PRESENZA SERVIZI:</b> ${ passeggeriB.servizi }</p>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</c:if>
-									<c:if test="${ not empty ristoranti}">
-										<div class="col-12">
-											<p class="card-text font-weight-bold h4 my-2">VAGONI RISTORANTE:</p>
-										</div>
-										<c:forEach var="ristorante" items="${ ristoranti }">
-											<div class="col-12 col-md-6">
-												<div class="card mb-4">
-													<div class="card-body">
-														<p><b>PESO:</b> ${ ristorante.peso } tonnellate</p>
-														<p><b>PREZZO:</b> ${ ristorante.prezzo } bitTrain</p>
-														<p><b>LUNGHEZZA:</b> ${ ristorante.lunghezza } metri</p>
-														<p><b>NUMERO TAVOLI:</b> ${ ristorante.tavoli }</p>
-														<p><b>POSTI TOTALI A SEDERE:</b> ${ ristorante.tavoli * 4 }</p>
-														<p><b>PRESENZA SERVIZI:</b> ${ ristorante.servizi }</p>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</c:if>
-									<c:if test="${ not empty cargo}">
-										<div class="col-12">
-											<p class="card-text font-weight-bold h4 my-2">VAGONI CARGO:</p>
-										</div>
-										<c:forEach var="cargo" items="${ cargo }">
-											<div class="col-12 col-md-6">
-												<div class="card mb-4">
-													<div class="card-body">
-														<p><b>PESO:</b> ${ cargo.peso } tonnellate</p>
-														<p><b>PREZZO:</b> ${ cargo.prezzo } bitTrain</p>
-														<p><b>LUNGHEZZA:</b> ${ cargo.lunghezza } metri</p>
-														<p><b>TIPO DI MERCE TRASPORTATA:</b> ${ cargo.tipoMerce }</p>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</c:if>
+									</div>
 								</div>
+								<c:if test="${not empty passeggeri}">
+									<div id="passeggeri-details" class="category-details">
+										<div class="row">
+											<c:forEach var="passeggeri" items="${passeggeri}" varStatus="status">
+												<div class="col-12 col-md-6 my-2">
+													<div class="card">
+														<div class="card-body">
+															<p><b>PESO:</b> ${ passeggeri.peso } tonnellate</p>
+															<p><b>PREZZO:</b> ${ passeggeri.prezzo } bitTrain</p>
+															<p><b>LUNGHEZZA:</b> ${ passeggeri.lunghezza } metri</p>
+															<p><b>POSTI A SEDERE:</b> ${ passeggeri.postiNormali }</p>
+															<p><b>POSTI PER DISABILI:</b> ${ passeggeri.postiDisabili }</p>
+															<p><b>POSTI TOTALI A SEDERE:</b> ${ passeggeri.postiNormali + passeggeri.postiDisabili }</p>
+															<p><b>PRESENZA SERVIZI:</b> ${ passeggeri.servizi }</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</c:if>
+								<c:if test="${ not empty passeggeriB}">
+									<div id="business-details" class="category-details">
+										<div class="row">
+											<c:forEach var="passeggeriB" items="${ passeggeriB }">
+												<div class="col-12 col-md-6 my-2"">
+													<div class="card">
+														<div class="card-body">
+															<p><b>PESO:</b> ${ passeggeriB.peso } tonnellate</p>
+															<p><b>PREZZO:</b> ${ passeggeriB.prezzo } bitTrain</p>
+															<p><b>LUNGHEZZA:</b> ${ passeggeriB.lunghezza } metri</p>
+															<p><b>POSTI A SEDERE:</b> ${ passeggeriB.postiNormali }</p>
+															<p><b>POSTI PER DISABILI:</b> ${ passeggeriB.postiDisabili }</p>
+															<p><b>POSTI TOTALI A SEDERE:</b> ${ passeggeriB.postiNormali + passeggeriB.postiDisabili }</p>
+															<p><b>PRESENZA SERVIZI:</b> ${ passeggeriB.servizi }</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</c:if>
+								<c:if test="${ not empty ristoranti}">
+									<div id="ristoranti-details" class="category-details">
+										<div class="row">
+											<c:forEach var="ristorante" items="${ ristoranti }">
+												<div class="col-12 col-md-6 my-2"">
+													<div class="card">
+														<div class="card-body">
+															<p><b>PESO:</b> ${ ristorante.peso } tonnellate</p>
+															<p><b>PREZZO:</b> ${ ristorante.prezzo } bitTrain</p>
+															<p><b>LUNGHEZZA:</b> ${ ristorante.lunghezza } metri</p>
+															<p><b>NUMERO TAVOLI:</b> ${ ristorante.tavoli }</p>
+															<p><b>POSTI TOTALI A SEDERE:</b> ${ ristorante.tavoli * 4 }</p>
+															<p><b>PRESENZA SERVIZI:</b> ${ ristorante.servizi }</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</c:if>
+								<c:if test="${ not empty cargo}">
+									<div id="cargo-details" class="category-details">
+										<div class="row">
+											<c:forEach var="cargo" items="${ cargo }">
+												<div class="col-12 col-md-6 my-2"">
+													<div class="card">
+														<div class="card-body">
+															<p><b>PESO:</b> ${ cargo.peso } tonnellate</p>
+															<p><b>PREZZO:</b> ${ cargo.prezzo } bitTrain</p>
+															<p><b>LUNGHEZZA:</b> ${ cargo.lunghezza } metri</p>
+															<p><b>TIPO DI MERCE TRASPORTATA:</b> ${ cargo.tipoMerce }</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -213,8 +238,20 @@
 		<!-- Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<!-- Bootstrap JS -->
+		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
+		
+		<script>
+		function hideAllDetails() {
+			  document.querySelectorAll('.category-details').forEach((detail) => {
+			    detail.style.display = 'none';
+			  });
+			}
 
+			function showDetails(categoryId) {
+			  hideAllDetails();
+			  document.getElementById(categoryId + '-details').style.display = 'block';
+			}
+		</script>
 	</body>
 </html>
