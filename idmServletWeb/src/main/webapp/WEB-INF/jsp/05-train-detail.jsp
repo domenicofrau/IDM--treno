@@ -85,7 +85,6 @@
 				<c:forEach var="vagone" items="${treno.vagoni}">
 					<c:set var="sommaPrezzi" value="${sommaPesi + vagone.prezzo}" />
 				</c:forEach>
-				<h3 class="mainTitle text-center my-3">${ treno.nome }</h3>
 				<div class="row justify-content-center">
 					<div class="col-8">
 						<div class="card mb-3">
@@ -93,9 +92,9 @@
 								<img src="<c:url value='/resources/img/train.jpg'/>"
 									alt="Immagine Treno placeholder" class="img-fluid mb-3">
 							</c:if>
-							<img src="${ treno.immagine }" class="img-fluid mb-3">
+							<img class="img-train" src="${ treno.immagine }" class="img-fluid mb-3">
 							<div class="card-body">
-								<h3 class="card-title"><b>NOME:</b> ${ treno.nome }</h3>
+								<h3 class="card-title mt-3 mb-4"><b>NOME:</b> ${ treno.nome }</h3>
 								<p class="card-text"><b>MARCA:</b> 
 									<c:if test="${ treno.marca == 'FrecciaRossa' }">
 										<img src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa" class="logo-frecciarossa"/>
@@ -105,29 +104,37 @@
 									</c:if>								
 								</p>
 								<p class="card-text"><b>AUTORE:</b> ${ treno.utente.nome } ${ treno.utente.cognome }</p>
-								<p class="card-text"><b>PREZZO TOTALE:</b> ${ sommaPrezzi } bitTrain</p>
+								<p class="card-text"><b>PREZZO TOTALE:</b> ${ sommaPrezzi } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 								<p class="card-text"><b>PESO TOTALE:</b> ${ sommaPesi } tonnellate</p>
 							</div>
 							<div class="card-body">
 								<nav class="navbar navbar-expand-lg navbar-light bg-light">
 									<div class="container-fluid">
 										<div class="collapse navbar-collapse" id="navbarNav">
-											<ul class="navbar-nav-details mx-auto">
+											<ul class="navbar-nav mx-auto justify-content-center">
 												<li class="nav-item">
-													<a class="nav-link" onclick="showDetails('locomotive')">Locomotive</a>
+													<a class="nav-link" onclick="showDetails('locomotive', this)">Locomotive</a>
 												</li>
-												<li class="nav-item">
-													<a class="nav-link" onclick="showDetails('passeggeri')">Passeggeri</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link" onclick="showDetails('business')">Business</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link" onclick="showDetails('ristoranti')">Ristoranti</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link" onclick="showDetails('cargo')">Cargo</a>
-												</li>
+												<c:if test="${not empty passeggeri}">
+													<li class="nav-item">
+														<a class="nav-link" onclick="showDetails('passeggeri', this)">Passeggeri</a>
+													</li>
+												</c:if>
+												<c:if test="${ not empty passeggeriB}">
+													<li class="nav-item">
+														<a class="nav-link" onclick="showDetails('business', this)">Business</a>
+													</li>
+												</c:if>
+												<c:if test="${ not empty ristoranti}">
+													<li class="nav-item">
+														<a class="nav-link" onclick="showDetails('ristoranti', this)">Ristoranti</a>
+													</li>
+												</c:if>
+												<c:if test="${ not empty cargo}">
+													<li class="nav-item">
+														<a class="nav-link" onclick="showDetails('cargo', this)">Cargo</a>
+													</li>
+												</c:if>
 											</ul>
 										</div>
 									</div>
@@ -140,7 +147,7 @@
 												<div class="card">
 													<div class="card-body">
 														<p><b>PESO:</b> ${ locomotiva.peso } tonnellate</p>
-														<p><b>PREZZO:</b> ${ locomotiva.prezzo } bitTrain</p>
+														<p><b>PREZZO:</b> ${ locomotiva.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 														<p><b>LUNGHEZZA:</b> ${ locomotiva.lunghezza } metri</p>
 														<p><b>PESO TRAINABILE:</b> ${ locomotiva.pesoTrainabile } tonnellate</p>
 													</div>
@@ -157,7 +164,7 @@
 													<div class="card">
 														<div class="card-body">
 															<p><b>PESO:</b> ${ passeggeri.peso } tonnellate</p>
-															<p><b>PREZZO:</b> ${ passeggeri.prezzo } bitTrain</p>
+															<p><b>PREZZO:</b> ${ passeggeri.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 															<p><b>LUNGHEZZA:</b> ${ passeggeri.lunghezza } metri</p>
 															<p><b>POSTI A SEDERE:</b> ${ passeggeri.postiNormali }</p>
 															<p><b>POSTI PER DISABILI:</b> ${ passeggeri.postiDisabili }</p>
@@ -178,7 +185,7 @@
 													<div class="card">
 														<div class="card-body">
 															<p><b>PESO:</b> ${ passeggeriB.peso } tonnellate</p>
-															<p><b>PREZZO:</b> ${ passeggeriB.prezzo } bitTrain</p>
+															<p><b>PREZZO:</b> ${ passeggeriB.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 															<p><b>LUNGHEZZA:</b> ${ passeggeriB.lunghezza } metri</p>
 															<p><b>POSTI A SEDERE:</b> ${ passeggeriB.postiNormali }</p>
 															<p><b>POSTI PER DISABILI:</b> ${ passeggeriB.postiDisabili }</p>
@@ -199,7 +206,7 @@
 													<div class="card">
 														<div class="card-body">
 															<p><b>PESO:</b> ${ ristorante.peso } tonnellate</p>
-															<p><b>PREZZO:</b> ${ ristorante.prezzo } bitTrain</p>
+															<p><b>PREZZO:</b> ${ ristorante.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 															<p><b>LUNGHEZZA:</b> ${ ristorante.lunghezza } metri</p>
 															<p><b>NUMERO TAVOLI:</b> ${ ristorante.tavoli }</p>
 															<p><b>POSTI TOTALI A SEDERE:</b> ${ ristorante.tavoli * 4 }</p>
@@ -219,9 +226,9 @@
 													<div class="card">
 														<div class="card-body">
 															<p><b>PESO:</b> ${ cargo.peso } tonnellate</p>
-															<p><b>PREZZO:</b> ${ cargo.prezzo } bitTrain</p>
+															<p><b>PREZZO:</b> ${ cargo.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 															<p><b>LUNGHEZZA:</b> ${ cargo.lunghezza } metri</p>
-															<p><b>TIPO DI MERCE TRASPORTATA:</b> ${ cargo.tipoMerce }</p>
+															<p><b>MERCE:</b> ${ cargo.tipoMerce }</p>
 														</div>
 													</div>
 												</div>
@@ -240,18 +247,6 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
-		
-		<script>
-		function hideAllDetails() {
-			  document.querySelectorAll('.category-details').forEach((detail) => {
-			    detail.style.display = 'none';
-			  });
-			}
-
-			function showDetails(categoryId) {
-			  hideAllDetails();
-			  document.getElementById(categoryId + '-details').style.display = 'block';
-			}
-		</script>
+		<script src="<c:url value='/resources/js/dettaglio.js'/>"></script>
 	</body>
 </html>

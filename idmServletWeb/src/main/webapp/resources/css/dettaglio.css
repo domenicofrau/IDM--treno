@@ -5,9 +5,22 @@
 .navbar-nav-details {
 	display: flex;
 	width: 100%;
-	justify-content: space-around;
 }
 
 .nav-link {
 	cursor: pointer;
+}
+
+.navbar-nav-details li::marker {
+    content: none;
+}
+
+.active{
+	color: black;
+}
+
+.img-train{
+	height: 300px;
+	width: 100%;
+	object-fit: cover;
 }

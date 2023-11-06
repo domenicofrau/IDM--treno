@@ -51,7 +51,7 @@
 					<div id="registerForm" style="display: none">
 						<h2 class="mb-4">Registrazione</h2>
 						<form action="doRegister" method="POST" class="form-group" modelAttribute="utente">
-							<img id="profilePicPreview" class="profile-pic-preview mb-4" src="<c:url value='/resources/img/standard-user.png'/>" alt="Anteprima Immagine Profilo" data-default-src="<c:url value='/resources/img/standard-user.png'/>" onerror="this.onerror=null; this.src=this.getAttribute('data-default-src');">
+							<img id="profilePicPreview" class="profile-pic-preview mb-4" src="<c:url value='/resources/img/standard-user.png'/>" alt="Anteprima" data-default-src="<c:url value='/resources/img/standard-user.png'/>" onerror="this.onerror=null; this.src=this.getAttribute('data-default-src');">
 							<input class="form-control mb-4" type="text" name="nome" placeholder="Nome" required />
 							<input class="form-control mb-4" type="text" name="cognome" placeholder="Cognome" required />
 							<input class="form-control mb-4" type="email" name="email" placeholder="Email" required />
