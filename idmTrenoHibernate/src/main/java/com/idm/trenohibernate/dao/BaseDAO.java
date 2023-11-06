@@ -102,6 +102,7 @@ public abstract class BaseDAO<T> {
 		try {
 			tx = session.beginTransaction();
 
+			
 			bean = (Bean) session.get(classe, id);
 
 			tx.commit();

@@ -144,5 +144,12 @@ public class Treno implements Bean {
 		this.prezzoTotale = prezzoTotale;
 		
 	}
-
+	public void ricalcolaPrezzo() {
+		int prezzo=0;
+		for(Vagone vagone:this.getVagoni()) {
+			prezzo+=vagone.getPrezzo();
+		}
+		setPrezzoTotale(prezzo);
+		;
+	}
 }

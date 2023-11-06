@@ -18,10 +18,15 @@ import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 import com.idm.trenohibernate.exceptions.TrenoException;
+import com.idm.trenohibernate.exceptions.UtenteException;
 import com.idm.trenohibernate.service.TrenoService;
 import com.idm.trenohibernate.service.UtenteService;
 
 import idm.servlet.bean.TrenoBean;
+
+
+
+
 
 @Controller
 public class CreaController {
@@ -57,11 +62,8 @@ public class CreaController {
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
-
-			int bitTrain = u.getbitTrain();
-			int prezzoTotale = t.getPrezzoTotale();
-			u.setbitTrain(bitTrain - prezzoTotale);
 			utenteService.update(u);
+			System.err.println("sono crea");
 
 		} catch (TrenoException e) {
 			e.printStackTrace();
@@ -89,10 +91,6 @@ public class CreaController {
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
-
-			int bitTrain = u.getbitTrain();
-			int prezzoTotale = t.getPrezzoTotale();
-			u.setbitTrain(bitTrain - prezzoTotale);
 			utenteService.update(u);
 
 		} catch (TrenoException e) {
@@ -105,5 +103,35 @@ public class CreaController {
 		model.addAttribute("regione", treno.getRegione());
 		return "redirect:/03-home";
 	}
-
+//	
+//	@PostMapping("/aggiungi-vPasseggeri")
+//	public String addPasseggeri(@ModelAttribute("treno") TrenoBean treno, Model model)throws UtenteException, TrenoException {
+//		Treno t = trenoService.findByName(treno.getNomeTreno());
+//			concreteBuilder.addVagonePasseggeri(t);
+//		return "redirect:/03-home";
+//	}
+//	@PostMapping("/aggiungi-vBusiness")
+//	public String addBusiness(@ModelAttribute("treno") TrenoBean treno, Model model)throws UtenteException, TrenoException {
+//		Treno t = trenoService.findByName(treno.getNomeTreno());
+//			concreteBuilder.addVagonePasseggeriBusiness(t);
+//		return "redirect:/03-home";
+//	}
+//	@PostMapping("/aggiungi-vLocomotiva")
+//	public String addLocomotiva(@ModelAttribute("treno") TrenoBean treno, Model model)throws UtenteException, TrenoException {
+//		Treno t = trenoService.findByName(treno.getNomeTreno());
+//			concreteBuilder.addVagoneLocomotiva(t);
+//		return "redirect:/03-home";
+//	}
+//	@PostMapping("/aggiungi-vCargo")
+//	public String addCargo(@ModelAttribute("treno") TrenoBean treno, Model model)throws UtenteException, TrenoException {
+//		Treno t = trenoService.findByName(treno.getNomeTreno());
+//			concreteBuilder.addVagoneCargo(t);
+//		return "redirect:/03-home";
+//	}
+//	@PostMapping("/aggiungi-vRistorante")
+//	public String addRistorante(@ModelAttribute("treno") TrenoBean treno, Model model)throws UtenteException, TrenoException {
+//		Treno t = trenoService.findByName(treno.getNomeTreno());
+//			concreteBuilder.addVagoneRistorante(t);
+//		return "redirect:/03-home";
+//	}
 }

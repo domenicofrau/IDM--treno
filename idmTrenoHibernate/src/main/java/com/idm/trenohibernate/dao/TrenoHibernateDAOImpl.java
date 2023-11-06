@@ -53,6 +53,7 @@ public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibern
         session.close();
         return treni;
     }
+    
 
     
     
