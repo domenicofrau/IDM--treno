@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.dao.*;
+import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 
 @Component
 public class TrenoService {
@@ -71,4 +72,7 @@ public class TrenoService {
         return dao.findByUtenteId(utenteId);
     }
 
+    public void vendiTreno(Treno treno, Utente venditore, Utente compratore) throws SaldoNonSufficenteException {
+    	dao.vendiTreno(treno, venditore, compratore);
+    }
 }

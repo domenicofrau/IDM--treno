@@ -69,22 +69,6 @@ public class Treno implements Bean {
 		this.utente = utente;
 	}
 
-	public void vendiTreno(Treno treno, Utente venditore, Utente compratore) throws SaldoNonSufficenteException {
-		List<Vagone> listaVagoni = treno.getVagoni();
-		int prezzoTreno = 0;
-		for (Vagone vagone : listaVagoni) {
-			prezzoTreno += vagone.getPrezzo();
-		}
-		if (compratore.getbitTrain() - prezzoTreno < 0) {
-			throw new SaldoNonSufficenteException("Saldo non ufficente, il  tuo saldo è: " + compratore.getbitTrain()
-					+ ", sono necessari: " + prezzoTreno);
-
-		}
-		compratore.setbitTrain(compratore.getbitTrain() - prezzoTreno);
-		venditore.setbitTrain(venditore.getbitTrain() + prezzoTreno);
-		this.utente = compratore;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

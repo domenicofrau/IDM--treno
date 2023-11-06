@@ -1,9 +1,13 @@
 package com.idm.trenohibernate.dao;
 
 import java.util.List;
+
+import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Utente;
+import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.exceptions.EmailErrataException;
 import com.idm.trenohibernate.exceptions.PasswordErrataException;
+import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 import com.idm.trenohibernate.exceptions.UtenteException;
 
 public class UtenteDAOImpl extends BaseDAO<Utente> implements UtenteDAO {
@@ -58,4 +62,5 @@ public class UtenteDAOImpl extends BaseDAO<Utente> implements UtenteDAO {
 			}else throw new PasswordErrataException("Password Errata!!");
 		}throw new EmailErrataException("Email errata!!");
 	}
+
 }

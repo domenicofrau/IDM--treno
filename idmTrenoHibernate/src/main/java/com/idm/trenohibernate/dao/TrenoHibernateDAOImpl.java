@@ -8,6 +8,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.Utente;
+import com.idm.trenohibernate.Vagone;
+import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 import com.idm.trenohibernate.utils.HibernateUtil;
 
 public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibernateDAO {
@@ -54,6 +57,23 @@ public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibern
         return treni;
     }
 
-    
-    
+    @Override
+	public void vendiTreno(Treno treno, Utente venditore, Utente compratore) throws SaldoNonSufficenteException {
+		List<Vagone> listaVagoni = treno.getVagoni();
+		int prezzoTreno = 0;
+		for (Vagone vagone : listaVagoni) {
+			prezzoTreno += vagone.getPrezzo();
+		}
+		if (compratore.getbitTrain() - prezzoTreno < 0) {
+			throw new SaldoNonSufficenteException("Saldo non ufficente, il  tuo saldo è: " + compratore.getbitTrain()
+					+ ", sono necessari: " + prezzoTreno);
+
+		}
+		
+		treno.setInVendita(false);
+		compratore.setbitTrain(compratore.getbitTrain() - prezzoTreno);
+		venditore.setbitTrain(venditore.getbitTrain() + prezzoTreno);
+		treno.setUtente(compratore);
+		super.update(treno);
+	}
 }

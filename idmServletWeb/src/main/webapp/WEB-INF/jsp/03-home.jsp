@@ -113,9 +113,12 @@
 				                    <c:set var="trenoID" value="${ treni.id }" />
 				                   	<div class="d-flex justify-content-between">
 							            <a class="btn btn-light btn-outline-primary mt-4" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>
-						                <c:if test="${treni.inVendita && !loggedInUser.nome.equals(treni.utente.nome)}">
-						                    <button class="btn btn-light btn-outline-success mt-4">Compra per ${ treni.prezzoTotale } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>"></button>
-						                </c:if>
+										<c:if test="${treni.inVendita && !loggedInUser.nome.equals(treni.utente.nome)}">
+										    <form action="${pageContext.request.contextPath}/compraTreno" method="POST">
+										        <input type="hidden" name="id" value="${treni.id}"/>
+										        <button type="submit" class="btn btn-light btn-outline-success mt-4">Compra per ${treni.prezzoTotale} <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>"></button>
+										    </form>
+										</c:if>
 								    </div>
 				                </div>
 				            </div>

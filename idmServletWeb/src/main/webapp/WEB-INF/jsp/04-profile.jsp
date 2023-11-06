@@ -139,7 +139,7 @@
 												<i class="bi bi-pencil-square"></i>
 											</a>
 											<form id="deleteForm" method="post" action="/idmServletWeb/eliminaTreno">
-												<input type="hidden" name="id" value="${treni.id}" /><input class="btn btn-light btn-outline-danger" type="button" value="Elimina" data-toggle="modal" data-target="#confirmModal"/>
+												<input type="hidden" name="id" value="${treni.id}" /><input class="btn btn-light btn-outline-danger" type="button" value="Elimina" data-toggle="modal" data-target="#confirmModal${treni.id}"/>
 											</form>
 											<!-- modale -->
 											<div id="confirmModal${treni.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
