@@ -58,14 +58,24 @@
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
 								<select id="inputGroupSelect01" class="custom-select" name="marca">
-									<option selected>FrecciaRossa</option>
-									<option value="1">TreNord</option>
+									<option value="tutte">Tutte</option>
+									<option value="FrecciaRossa">FrecciaRossa</option>
+									<option value="TreNord">TreNord</option>  
 								</select>
 							</div>
 						</div>
 						<div class="col-md-1 d-flex justify-content-end">
 							<button class="btn btn-dark" type="submit">Cerca</button>
 						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+								<label for="regione">Regione:</label> 
+								<select id="regione" class="form-control" name="regione">
+								<option value="tutte">Tutte</option>
+								</select>
+							</div>
+						
 					</div>
 				</form>
 			</div>
@@ -118,5 +128,6 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
+		<script src="<c:url value='/resources/js/regioni.js'/>"></script>
 	</body>
 </html>

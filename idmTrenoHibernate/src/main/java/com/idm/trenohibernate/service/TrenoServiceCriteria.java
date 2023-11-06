@@ -29,9 +29,9 @@ public class TrenoServiceCriteria {
 		return treni;
 	}
 	
-	public List<Treno> findTreni(String nome, String marca) {
+	public List<Treno> findTreni(String nome, String marca, String regione) {
 		
-		List<Treno> treni = criteriaDAO.findTreno(nome, marca);
+		List<Treno> treni = criteriaDAO.findTreno(nome, marca, regione);
 		
 		if(treni.size() != 0) {
 			System.out.println("Ho trovato i seguenti treni con un nome simile a " + nome + " :");
@@ -39,7 +39,7 @@ public class TrenoServiceCriteria {
 			System.out.println(t);
 			}
 		} else {
-			System.out.println("Non esistono treni con un nome simile a " + nome);
+			System.out.println("Non esistono treni con un nome simile a " + nome + " e marca " + marca);
 		}
 		return treni;
 	}

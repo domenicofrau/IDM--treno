@@ -49,9 +49,9 @@ public class Main {
 
 //		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
 		Utente utente = u.creaUtente("Compratore", "Collezionista", "ciao", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
-		uService.crea(utente);
+//		uService.crea(utente);
 //		Treno t =tService.findByName("carlo");
-		uService.crea(utente);
+//		uService.crea(utente);
 //		t.setUtente(t, utenteTrovato1);
 //		uService.update(utenteTrovato1);
 //		tService.update(t);
@@ -69,8 +69,8 @@ public class Main {
 //		***************************** CRITERIA BUILDER  *****************************
 		
 		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
-//		tSvcC.findByNameLike("treno");
-//		tSvcC.findTreni("p", null);
+//		tSvcC.findByNameLike("tre");
+//		tSvcC.findTreni("Tommy", "TreNord");
 		
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();

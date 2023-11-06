@@ -23,7 +23,7 @@ public class TrenoCriteriaDAO {
 
 	public List<Treno> findByNameLike(String name) {
 
-		try (Session session = sessionFactory.getCurrentSession()) {
+		    Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
 
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -31,24 +31,19 @@ public class TrenoCriteriaDAO {
 
 			Root<Treno> root = criteriaQuery.from(Treno.class);
 
-			Predicate namePredicate = criteriaBuilder.like(root.get(("nome").toLowerCase()),
-					"%" + name.toLowerCase() + "%");
+			Predicate namePredicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("nome")), "%" + name.toLowerCase() + "%");
 			criteriaQuery.where(namePredicate);
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
 
 			List<Treno> treni = query.getResultList();
 
 			return treni;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 
 	}
 
-	public List<Treno> findTreno(String nome, String marca) {
+	public List<Treno> findTreno(String nome, String marca, String regione) {
 
-		try (Session session = sessionFactory.getCurrentSession()) {
+			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
 
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -56,30 +51,29 @@ public class TrenoCriteriaDAO {
 
 			Root<Treno> root = criteriaQuery.from(Treno.class);
 
-			Predicate namePredicate = criteriaBuilder.like(root.get(("nome").toLowerCase()),
-					"%" + nome.toLowerCase() + "%");
+			Predicate namePredicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("nome")), "%" + nome.toLowerCase() + "%");
 			Predicate marcaPredicate = criteriaBuilder.equal(root.get("marca"), marca);
+			Predicate regionePredicate = criteriaBuilder.equal(root.get("regione"), regione);
 
-			Predicate finalPredicate;
+			Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate);
 
-			if (nome != null && marca != null) {
+			if (marca.equals("tutte")) {
+				finalPredicate = namePredicate;
+				System.out.println(nome + " " + marca);
+			} 
+			
+			if (regione.equals("tutte")) {
 				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate);
-			} else {
-				finalPredicate = criteriaBuilder.or(namePredicate, marcaPredicate);
-			}
+				System.out.println(nome + " " + marca);
+			} 
 
 			criteriaQuery.where(finalPredicate);
 
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
-			List<Treno> result = query.getResultList();
-
-			if (result.isEmpty()) {
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+			List<Treno> treni = query.getResultList();
+			System.out.println(treni.size());
+			return treni;
+			
 	}
 
 //		public List<Treno> findByMarca(String marca){

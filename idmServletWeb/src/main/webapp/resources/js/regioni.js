@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			const selectFr = document.getElementById('regione_fr');
 			const selectTn = document.getElementById('regione_tn');
-
+			const selectAll = document.getElementById('regione');
+			
 			regioniOrdinate.forEach(regione => {
+				if(selectFr && selectTn){
 				const optionFr = document.createElement('option');
 				optionFr.value = regione;
 				optionFr.text = regione;
@@ -23,6 +25,15 @@ document.addEventListener("DOMContentLoaded", function() {
 				optionTn.value = regione;
 				optionTn.text = regione;
 				selectTn.appendChild(optionTn);
+				}
+				
+				if(selectAll){
+				const optionAll = document.createElement('option');
+				optionAll.value = regione;
+				optionAll.text = regione;
+				selectAll.appendChild(optionAll);	
+				}
+				
 			});
 		})
 		.catch(error => console.log('Errore durante il recupero delle regioni: ' + error));

@@ -58,10 +58,10 @@
 								<div class="input-group-prepend">
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
-								<select id="inputGroupSelect01" class="custom-select" name="marca">
+	<!--  							<select id="inputGroupSelect01" class="custom-select" name="marca">
 									<option selected>FrecciaRossa</option>
 									<option value="1">TreNord</option>
-								</select>
+								</select> -->
 							</div>
 						</div>
 						<div class="col-md-1 d-flex justify-content-end">

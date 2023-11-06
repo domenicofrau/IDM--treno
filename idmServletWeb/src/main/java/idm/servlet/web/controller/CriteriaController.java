@@ -24,8 +24,8 @@ public class CriteriaController {
 	TrenoServiceCriteria tSvcC;
 	
 	@GetMapping("/search")
-	public String criteria(String nome, Model model) {
-		List<Treno> treni = tSvcC.findByNameLike(nome);
+	public String criteria(String nome, String marca, String regione, Model model) {
+		List<Treno> treni = tSvcC.findTreni(nome, marca, regione);
 		model.addAttribute("criteria", treni);
 		return "search";
 	}
