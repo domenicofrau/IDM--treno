@@ -23,15 +23,15 @@
 			<!-- centro -->
 			<div id="navbarNav" class="collapse navbar-collapse justify-content-center" >
 				<ul class="navbar-nav align-items-center">
-					<li class="nav-item active mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
+					<li class="nav-item mr-3"><a class="nav-link" href="01-welcome">Welcome</a></li>
 					<li class="nav-item mr-3"><a class="nav-link" href="02-login">Login</a></li>
-					<li class="nav-item mr-3"><a class="nav-link" href="07-about">About</a></li>
+					<li class="nav-item active mr-3"><a class="nav-link" href="07-about">About</a></li>
 					</ul>
 			</div>
 		</nav>
 		<!-- IDEATORI -->
 		<div class="container mt-5">
-	  		<h2 class="text-center mb-4">Ideatori del progetto</h2>
+	  		<h2 class="text-center mb-4">Team di Sviluppo</h2>
 	  		<div class="row">
 		    	<!-- davide -->
 		    	<div class="col-sm-4">
