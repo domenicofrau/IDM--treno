@@ -26,9 +26,11 @@
 			<div id="navbarNav" class="collapse navbar-collapse justify-content-center">
 				<ul class="navbar-nav align-items-center">
 					<li class="nav-item mr-3">
-					<a class="nav-link" href="01-welcome">Welcome</a></li>
+						<a class="nav-link" href="01-welcome">Welcome</a></li>
 					<li class="nav-item mr-3 active">
-					<a class="nav-link" href="02-login">Login</a></li>
+						<a class="nav-link" href="02-login">Login</a></li>
+					<li class="nav-item mr-3">
+			            <a class="nav-link" href="07-about">About</a></li>
 				</ul>
 			</div>
 		</nav>

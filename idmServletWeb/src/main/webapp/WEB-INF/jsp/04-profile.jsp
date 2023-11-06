@@ -124,7 +124,7 @@
 										</p>
 										<div class="d-flex justify-content-between">
 											<a class="btn btn-light btn-outline-primary" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>
-											<a class="btn btn-light btn-outline-dark" href="cerca-treno?idTrenoStr=${ treni.id }"> 
+											<a class="btn btn-light btn-outline-dark" href="modifica-treno?idTrenoStr=${ treni.id }"> 
 												<i class="bi bi-pencil-square"></i>
 											</a>
 											<form id="deleteForm" method="post" action="/idmServletWeb/eliminaTreno">
