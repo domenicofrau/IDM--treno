@@ -63,7 +63,7 @@ public class UtenteController {
 		
 		session.invalidate();
 		System.out.println("Logout effettuato correttamente");
-		return "redirect:/logout";
+		return "redirect:/01-welcome";
 	}
 
 }
