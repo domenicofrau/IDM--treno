@@ -23,7 +23,7 @@ public class TrenoCriteriaDAO {
 
 	public List<Treno> findByNameLike(String name) {
 
-		try (Session session = sessionFactory.getCurrentSession()) {
+		    Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
 
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -31,76 +31,98 @@ public class TrenoCriteriaDAO {
 
 			Root<Treno> root = criteriaQuery.from(Treno.class);
 
-			Predicate namePredicate = criteriaBuilder.like(root.get(("nome").toLowerCase()),
-					"%" + name.toLowerCase() + "%");
+			Predicate namePredicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("nome")), "%" + name.toLowerCase() + "%");
 			criteriaQuery.where(namePredicate);
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
 
 			List<Treno> treni = query.getResultList();
 
 			return treni;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 
 	}
 
-	public List<Treno> findTreno(String nome, String marca) {
+	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax) {
+		
+			String allValue = "tutte";
+			if(prezzoMin < 0) {
+				prezzoMin = 0;
+			} else if(prezzoMin > 3000) {
+				prezzoMin = 3000;
+			}
+			if(prezzoMax < 0) {
+				prezzoMax = 0;
+			} else if(prezzoMax > 3000) {
+				prezzoMax = 3000;
+			}
+			
+			if(nome == null) {
+				nome = "";
+			}
 
-		try (Session session = sessionFactory.getCurrentSession()) {
+			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
-
+			
+			try {
 			CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 			CriteriaQuery<Treno> criteriaQuery = criteriaBuilder.createQuery(Treno.class);
 
 			Root<Treno> root = criteriaQuery.from(Treno.class);
 
-			Predicate namePredicate = criteriaBuilder.like(root.get(("nome").toLowerCase()),
-					"%" + nome.toLowerCase() + "%");
+			Predicate namePredicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("nome")), "%" + nome.toLowerCase() + "%");
 			Predicate marcaPredicate = criteriaBuilder.equal(root.get("marca"), marca);
+			Predicate regionePredicate = criteriaBuilder.equal(root.get("regione"), regione);
+			Predicate prezzoPredicate = criteriaBuilder.between(root.get("prezzoTotale"), prezzoMin, prezzoMax);
+			
+			Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate);
 
-			Predicate finalPredicate;
-
-			if (nome != null && marca != null) {
-				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate);
-			} else {
-				finalPredicate = criteriaBuilder.or(namePredicate, marcaPredicate);
-			}
-
+			if (marca.equals(allValue)) {
+				finalPredicate = criteriaBuilder.and(namePredicate, regionePredicate, prezzoPredicate);
+				System.out.println(nome + " " + marca);
+			} 
+			
+			if (regione.equals(allValue)) {
+				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, prezzoPredicate);
+				System.out.println(nome + " " + marca);
+			} 
+			if (regione.equals(allValue) && marca.equals(allValue)) {
+				finalPredicate = criteriaBuilder.and(namePredicate, prezzoPredicate);
+				System.out.println(nome + " " + marca);
+			} 
+			System.out.println(nome + " " + marca + " " + regione + " " + prezzoMin + " " + prezzoMax);
 			criteriaQuery.where(finalPredicate);
 
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
-			List<Treno> result = query.getResultList();
-
-			if (result.isEmpty()) {
-				return null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+			List<Treno> treni = query.getResultList();
+			System.out.println(treni.size());
+			return treni;
+			} catch (Exception e) {
+		        tx.rollback();
+		        throw e;
+		    } finally {
+		        tx.commit();
+		    }
+			
 	}
 
-//		public List<Treno> findByMarca(String marca){
-//		
-//		Session session = sessionFactory.getCurrentSession();
-//		Transaction tx = session.beginTransaction();
-//	
-//		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-//		CriteriaQuery<Treno> criteriaQuery = criteriaBuilde)r.createQuery(Treno.class);
-//		
-//		Root<Treno> root = criteriaQuery.from(Treno.class);
-//		
-//		Predicate namePredicate = criteriaBuilder.like(root.get(("nome")), "%" + marca + "%");
-//		criteriaQuery.where(namePredicate);
-//		TypedQuery<Treno> query = session.createQuery(criteriaQuery);
-//		
-//		List<Treno> treni = query.getResultList();
-//		
-//		session.close();
-//		
-//		return treni;
-//	}
+		public List<Treno> findByPrezzo(int prezzoMin, int prezzoMax){
+		
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+	
+		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		CriteriaQuery<Treno> criteriaQuery = criteriaBuilder.createQuery(Treno.class);
+		
+		Root<Treno> root = criteriaQuery.from(Treno.class);
+		
+		Predicate prezzoPredicate = criteriaBuilder.between(root.get("prezzoTotale"), prezzoMin, prezzoMax);
+		criteriaQuery.where(prezzoPredicate);
+		TypedQuery<Treno> query = session.createQuery(criteriaQuery);
+		
+		List<Treno> treni = query.getResultList();
+		
+		session.close();
+		
+		return treni;
+	}
 
 }

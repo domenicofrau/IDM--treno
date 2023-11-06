@@ -12,8 +12,3 @@ searchIcon.addEventListener("click", () => {
 	}
 	visible = !visible;	
 })
-
-closeIcon.addEventListener("click", () => {
-	search.classList.add("d-none");		
-	visible = false;	
-})

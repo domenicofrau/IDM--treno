@@ -23,27 +23,24 @@ public class CriteriaController {
 	@Autowired
 	TrenoServiceCriteria tSvcC;
 	
+//	@GetMapping("/search")
+//	public String criteria(String nome, String marca, String regione, int prezzoMin, int prezzoMax, Model model) {
+//		List<Treno> treni = tSvcC.findTreni(nome, marca, regione, prezzoMin, prezzoMax);
+//		model.addAttribute("criteria", treni);
+//		return "search";
+//	}
+	
 	@GetMapping("/search")
-	public String criteria(String nome, Model model) {
-		List<Treno> treni = tSvcC.findByNameLike(nome);
+	public String cerca(@ModelAttribute("treno") TrenoFilter treno, Model model) {
+		String nome = treno.getNomeLike();
+		String marca = treno.getMarca();
+		String regione = treno.getRegione();
+		int prezzoMin = treno.getPrezzoMin();
+		int prezzoMax = treno.getPrezzoMax();
+
+		List<Treno> treni = tSvcC.findTreni(nome, marca, regione, prezzoMin, prezzoMax);
 		model.addAttribute("criteria", treni);
 		return "search";
 	}
-	
-//	@GetMapping("/search")
-//	public String cerca(@ModelAttribute("treno") TrenoFilter treno, Model model) {
-//		String nome= treno.getNomeLike();
-//		String marca = treno.getMarca();
-//
-//		trenoService.crea(t);
-//		} catch (TrenoException  e) {
-//			e.printStackTrace();
-//		}
-//		
-//		model.addAttribute("siglaTreno", treno.getSigla());
-//		model.addAttribute("nomeTreno", treno.getNomeTreno());
-//		model.addAttribute("urlImmagine", treno.getUrlImmagine());		
-//		return "viewTreno";
-//	}
 
 }

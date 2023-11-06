@@ -29,17 +29,34 @@ public class TrenoServiceCriteria {
 		return treni;
 	}
 	
-	public List<Treno> findTreni(String nome, String marca) {
+	public List<Treno> findTreni(String nome, String marca, String regione, int prezzoMin, int prezzoMax) {
 		
-		List<Treno> treni = criteriaDAO.findTreno(nome, marca);
+		List<Treno> treni = criteriaDAO.findTreno(nome, marca, regione, prezzoMin, prezzoMax);
 		
 		if(treni.size() != 0) {
-			System.out.println("Ho trovato i seguenti treni con un nome simile a " + nome + " :");
+			System.out.println("Ho trovato i seguenti treni con un nome simile a " + nome + ", marca " + marca + " , regione " + regione
+			 + " compreso tra " + prezzoMin + " e " + prezzoMax);
 			for (Treno t : treni) {
 			System.out.println(t);
 			}
 		} else {
-			System.out.println("Non esistono treni con un nome simile a " + nome);
+			System.out.println(nome);
+			System.out.println("Non esistono treni con questi parametri");
+		}
+		return treni;
+	}
+	
+	public List<Treno> findTreniPrezzo(int minPeso, int maxPeso){
+		
+		List<Treno> treni = criteriaDAO.findByPrezzo(minPeso, maxPeso);
+		
+		if(treni.size() != 0) {
+			System.out.println("Ho trovato i seguenti treni");
+			for (Treno t : treni) {
+			System.out.println(t);
+			}
+		} else {
+			System.out.println("Non esistono treni");
 		}
 		return treni;
 	}

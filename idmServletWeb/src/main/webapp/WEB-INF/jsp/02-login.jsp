@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1" />
-		<title>TrainBook - Login</title>
+		<title>TrainBook -</title>
 		<link rel="icon" href="<c:url value='/resources/img/favicon.ico'/>" type="image/x-icon"/>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
