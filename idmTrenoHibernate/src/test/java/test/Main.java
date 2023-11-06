@@ -71,7 +71,8 @@ public class Main {
 		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
 //		tSvcC.findByNameLike("tre");
 //		tSvcC.findTreni("Tommy", "TreNord");
-		
+//		tSvcC.findTreniPrezzo(510, 510);
+		tSvcC.findTreni("tommy", "TreNord", "Umbria", 0, 2000);
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
 		}
