@@ -54,6 +54,7 @@
 							<img id="profilePicPreview" class="profile-pic-preview mb-4" src="<c:url value='/resources/img/standard-user.png'/>" alt="Anteprima" data-default-src="<c:url value='/resources/img/standard-user.png'/>" onerror="this.onerror=null; this.src=this.getAttribute('data-default-src');">
 							<input class="form-control mb-4" type="text" name="nome" placeholder="Nome" required />
 							<input class="form-control mb-4" type="text" name="cognome" placeholder="Cognome" required />
+							<select id="nazione" class="form-control mb-4" name="nazionalità" required></select>
 							<input class="form-control mb-4" type="email" name="email" placeholder="Email" required />
 							<input class="form-control mb-4" type="password" name="password" placeholder="Password" required />
 							<input class="form-control mb-5" type="text" name="profilePic" placeholder="Aggiungi url per la tua immagine profilo" oninput="updateProfilePicPreview()" required />
@@ -71,5 +72,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/login.js'/>"></script>
+		<script src="<c:url value='/resources/js/nazionalit.js'/>"></script>
 	</body>
 </html>
