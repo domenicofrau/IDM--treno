@@ -1,12 +1,21 @@
+
 document.addEventListener('DOMContentLoaded', function() {
 	document.getElementById('siglaFR').addEventListener('input', function() {
 		var sigla = document.getElementById('siglaFR').value;
 		var button = document.getElementById('creaTreno_fr');
+		var saldo= parseFloat(document.getElementById('saldo').textContent);
+		
 		if (sigla === '') {
 			button.innerText = 'Crea il treno';
 		} else {
+			
 			var prezzo = calcolaPrezzo_fr(sigla);
-			button.innerText = 'Crea il treno (' + prezzo + ' BitTrain)';
+			var prezzo2= parseFloat(prezzo);
+			if(saldo<prezzo2){
+				button.innerHTML='Saldo non sufficente';
+				button.disabled = true;
+			}else
+			button.innerHTML = 'Crea il treno (' + prezzo + ' <img class="bit-train-icon" src="' + contextPath + '/resources/img/bitTrain.png"/>)';
 		}
 	});
 
@@ -43,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			button.innerText = 'Crea il treno';
 		} else {
 			var prezzo = calcolaPrezzo_tn(sigla);
-			button.innerText = 'Crea il treno (' + prezzo + ' BitTrain)';
+			button.innerHTML = 'Crea il treno (' + prezzo + ' <img class="bit-train-icon" src="' + contextPath + '/resources/img/bitTrain.png"/>)';
 		}
 	});
 

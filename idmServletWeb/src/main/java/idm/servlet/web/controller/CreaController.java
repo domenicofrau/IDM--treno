@@ -16,6 +16,7 @@ import com.idm.trenohibernate.ConcreteBuilder;
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.VagoneFactory;
+import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 import com.idm.trenohibernate.exceptions.TrenoException;
 import com.idm.trenohibernate.service.TrenoService;
 import com.idm.trenohibernate.service.UtenteService;
@@ -43,7 +44,7 @@ public class CreaController {
 	UtenteService utenteService;
 	
 	@PostMapping("/crea-treno-fr")
-	public String addFR(@ModelAttribute("treno") TrenoBean treno,HttpServletRequest request, Model model) {
+	public String addFR(@ModelAttribute("treno") TrenoBean treno,HttpServletRequest request, Model model) throws SaldoNonSufficenteException {
 		System.out.println("creata:" + treno.getSigla());
 		String sigla = treno.getSigla();
 		String nome = treno.getNomeTreno();
@@ -54,7 +55,7 @@ public class CreaController {
 		try {		
 			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regione, frFactory);
 			
-			t.setUtente(u);
+			t.setUtente(t, u);
 			trenoService.crea(t);
 
 			int bitTrain = u.getbitTrain();
@@ -74,7 +75,7 @@ public class CreaController {
 	}
 
 	@PostMapping("/crea-treno-tn")
-	public String addTN(@ModelAttribute("treno") TrenoBean treno,HttpServletRequest request, Model model) {
+	public String addTN(@ModelAttribute("treno") TrenoBean treno,HttpServletRequest request, Model model) throws SaldoNonSufficenteException {
 		System.out.println("creata:" + treno.getSigla());
 		String sigla = treno.getSigla();
 		String nome = treno.getNomeTreno();
@@ -86,7 +87,7 @@ public class CreaController {
 		try {			
 			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine.replace(",", ""), regione, tnFactory);
 			
-			t.setUtente(u);
+			t.setUtente(t, u);
 			trenoService.crea(t);
 
 			int bitTrain = u.getbitTrain();

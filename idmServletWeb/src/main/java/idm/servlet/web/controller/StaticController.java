@@ -43,6 +43,8 @@ public class StaticController {
 
 		List<Treno> treni = trenoService.findAll();
 		
+		Collections.reverse(treni);
+		
 		if (treni.size() != 0) {
 			model.addAttribute("treni", treni);
 		} else {
