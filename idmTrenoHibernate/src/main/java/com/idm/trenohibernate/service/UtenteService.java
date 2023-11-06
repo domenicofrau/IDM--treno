@@ -3,11 +3,14 @@ package com.idm.trenohibernate.service;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.dao.*;
 import com.idm.trenohibernate.exceptions.UtenteException;
-
+@Transactional
 @Component
 public class UtenteService {
 
@@ -28,6 +31,7 @@ public class UtenteService {
 		Integer id = dao.create(utente);
 		System.out.println("Creato l'utente con id: " + id);
 	}
+	
 
 	public void update(Utente utente) {
 		dao.update(utente);

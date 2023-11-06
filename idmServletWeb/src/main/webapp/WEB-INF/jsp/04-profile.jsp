@@ -85,8 +85,8 @@
 						<b>${loggedInUser.bitTrain} </b>
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					</p>
-					<form id="logOut" class="mt-5" method="" action="">
-						<input class="btn btn-danger" type="button" value="Logout" />
+					<form id="logOut" class="mt-5" method="GET" action="doLogout">
+						<button class="btn btn-danger" type="submit" >Logout</button>
 					</form>
 				</div>
 				<!-- SEZIONE TRENI -->

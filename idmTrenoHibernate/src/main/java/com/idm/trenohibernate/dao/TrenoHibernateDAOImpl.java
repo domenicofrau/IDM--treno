@@ -56,6 +56,7 @@ public class TrenoHibernateDAOImpl extends BaseDAO<Treno> implements TrenoHibern
         session.close();
         return treni;
     }
+    
 
     @Override
 	public void vendiTreno(Treno treno, Utente venditore, Utente compratore) throws SaldoNonSufficenteException {

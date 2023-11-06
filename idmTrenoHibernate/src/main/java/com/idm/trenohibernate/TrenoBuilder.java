@@ -3,10 +3,13 @@ package com.idm.trenohibernate;
 import java.util.function.IntPredicate;
 import com.idm.trenohibernate.exceptions.*;
 import com.idm.trenohibernate.service.TrenoService;
-
+import com.idm.trenohibernate.service.UtenteService;
+import com.idm.trenohibernate.service.VagoneService;
 public abstract class TrenoBuilder {
 	
 	TrenoService tService = new TrenoService();
+	UtenteService uService= new UtenteService();
+	VagoneService vService = new VagoneService();
 	public Treno costruisciTreno(String sigla, String nome, String immagine, String regione) throws TrenoException {
 
 		if (!sigla.contains("H")) {
@@ -161,6 +164,147 @@ public abstract class TrenoBuilder {
 						+ contaVagoniBusiness + " Vagoni business";
 			}
 		return message;
+	}
+	
+	public Treno addVagonePasseggeri(Treno treno) throws TrenoException, UtenteException {
+		Treno t = tService.find(treno.getId());
+		Utente u=t.getUtente();
+		Vagone v = costruisciPasseggeri();
+		
+		int prezzo= v.getPrezzo();
+		int pesoVagone = v.getPeso();
+		int pesoMassimo = costruisciLocomotiva().getPesoTrainabile();
+		int pesoAttuale=t.getPeso();
+		int pesoTotale=pesoAttuale+pesoVagone;
+		
+		if(pesoTotale>pesoMassimo) {
+			throw new MaxWeightException("Peso massimo raggiunto. Il peso massimo è: "
+					+ pesoMassimo + ", " + "il tuo peso con l`aggiunzione del vagone passeggeri sarebbe: " + pesoTotale + "." , "fallito");
+		
+		}
+		else
+		if(u.getbitTrain()-prezzo<0) {
+			throw new SaldoNonSufficenteException("Saldo non sufficente");
+		}else
+		u.setbitTrain(u.getbitTrain()-prezzo);
+		vService.aggiungiVagone(v, t);
+		t.ricalcolaPrezzo();
+		tService.update(t);
+		uService.update(u);
+		t.toString();
+		return t;
+	}
+	public Treno addVagonePasseggeriBusiness(Treno treno) throws TrenoException, UtenteException {
+		Treno t = tService.find(treno.getId());
+		Utente u=t.getUtente();
+		Vagone v = costruisciPasseggeriBusiness();
+		
+		int prezzo= v.getPrezzo();
+		int pesoVagone = v.getPeso();
+		int pesoMassimo = costruisciLocomotiva().getPesoTrainabile();
+		int pesoAttuale=t.getPeso();
+		int pesoTotale=pesoAttuale+pesoVagone;
+		
+		if(pesoTotale>pesoMassimo) {
+			throw new MaxWeightException("Peso massimo raggiunto. Il peso massimo è: "
+					+ pesoMassimo + ", " + "il tuo peso con l`aggiunzione del vagone passeggeri sarebbe: " + pesoTotale + "." , "fallito");
+			
+		}
+		else
+			if(u.getbitTrain()-prezzo<0) {
+				throw new SaldoNonSufficenteException("Saldo non sufficente");
+			}else
+				u.setbitTrain(u.getbitTrain()-prezzo);
+		vService.aggiungiVagone(v, t);
+		t.ricalcolaPrezzo();
+		tService.update(t);
+		uService.update(u);
+		t.toString();
+		return t;
+	}
+	public Treno addVagoneLocomotiva(Treno treno) throws TrenoException, UtenteException {
+		Treno t = tService.find(treno.getId());
+		Utente u=t.getUtente();
+		Vagone v = costruisciLocomotiva();
+		
+		int prezzo= v.getPrezzo();
+		int pesoVagone = v.getPeso();
+		int pesoMassimo = costruisciLocomotiva().getPesoTrainabile();
+		int pesoAttuale=t.getPeso();
+		int pesoTotale=pesoAttuale+pesoVagone;
+		
+		if(pesoTotale>pesoMassimo) {
+			throw new MaxWeightException("Peso massimo raggiunto. Il peso massimo è: "
+					+ pesoMassimo + ", " + "il tuo peso con l`aggiunzione del vagone passeggeri sarebbe: " + pesoTotale + "." , "fallito");
+			
+		}
+		else
+			if(u.getbitTrain()-prezzo<0) {
+				throw new SaldoNonSufficenteException("Saldo non sufficente");
+			}else
+				u.setbitTrain(u.getbitTrain()-prezzo);
+		vService.aggiungiVagone(v, t);
+		t.ricalcolaPrezzo();
+		tService.update(t);
+		uService.update(u);
+		t.toString();
+		return t;
+	}
+	public Treno addVagoneRistorante(Treno treno) throws TrenoException, UtenteException {
+		Treno t = tService.find(treno.getId());
+		Utente u=t.getUtente();
+		Vagone v = costruisciRistorante();
+		
+		int prezzo= v.getPrezzo();
+		int pesoVagone = v.getPeso();
+		int pesoMassimo = costruisciLocomotiva().getPesoTrainabile();
+		int pesoAttuale=t.getPeso();
+		int pesoTotale=pesoAttuale+pesoVagone;
+		
+		if(pesoTotale>pesoMassimo) {
+			throw new MaxWeightException("Peso massimo raggiunto. Il peso massimo è: "
+					+ pesoMassimo + ", " + "il tuo peso con l`aggiunzione del vagone passeggeri sarebbe: " + pesoTotale + "." , "fallito");
+			
+		}
+		else
+			if(u.getbitTrain()-prezzo<0) {
+				throw new SaldoNonSufficenteException("Saldo non sufficente");
+			}else
+				u.setbitTrain(u.getbitTrain()-prezzo);
+		vService.aggiungiVagone(v, t);
+		t.ricalcolaPrezzo();
+		tService.update(t);
+		uService.update(u);
+		t.toString();
+		return t;
+	}
+	public Treno addVagoneCargo(Treno treno) throws TrenoException, UtenteException {
+		Treno t = tService.find(treno.getId());
+		Utente u=t.getUtente();
+		Vagone v = costruisciCargo();
+		
+		int prezzo= v.getPrezzo();
+		int pesoVagone = v.getPeso();
+		int pesoMassimo = costruisciLocomotiva().getPesoTrainabile();
+		int pesoAttuale=t.getPeso();
+		int pesoTotale=pesoAttuale+pesoVagone;
+		
+		if(pesoTotale>pesoMassimo) {
+			throw new MaxWeightException("Peso massimo raggiunto. Il peso massimo è: "
+					+ pesoMassimo + ", " + "il tuo peso con l`aggiunzione del vagone passeggeri sarebbe: " + pesoTotale + "." , "fallito");
+			
+		}
+		else
+			if(u.getbitTrain()-prezzo<0) {
+				throw new SaldoNonSufficenteException("Saldo non sufficente");
+			}else
+				u.setbitTrain(u.getbitTrain()-prezzo);
+		vService.aggiungiVagone(v, t);
+		t.ricalcolaPrezzo();
+		tService.update(t);
+		uService.update(u);
+		t.toString();
+		return t;
 	}
 
 	protected abstract String impostaMarca();

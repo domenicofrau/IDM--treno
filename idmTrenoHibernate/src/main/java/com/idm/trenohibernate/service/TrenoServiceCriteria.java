@@ -23,6 +23,7 @@ public class TrenoServiceCriteria {
 			for (Treno t : treni) {
 			System.out.println(t);
 			}
+			
 		} else {
 			System.out.println("Non esistono treni con un nome simile a " + nome);
 		}
@@ -60,6 +61,7 @@ public class TrenoServiceCriteria {
 		}
 		return treni;
 	}
+
 	
 
 }
