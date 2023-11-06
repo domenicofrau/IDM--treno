@@ -70,7 +70,5 @@ public class TrenoService {
     public List<Treno> lunghezzaTrenoByIdUtente(Integer utenteId) {
         return dao.findByUtenteId(utenteId);
     }
-    
-
 
 }

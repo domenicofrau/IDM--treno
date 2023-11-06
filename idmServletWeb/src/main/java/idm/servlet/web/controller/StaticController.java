@@ -64,7 +64,8 @@ public class StaticController {
 	public String profile(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		Utente u= (Utente) session.getAttribute("loggedInUser");
-	
+		
+		
 		model.addAttribute("utente", u);
 		List<Treno> treni = trenoService.findByUtenteId(u.getId());
 

@@ -15,6 +15,7 @@
 		<property name="immagine" column="immagine" type="string" />
 		<property name="regione" column="regione" type="string" />
 		<property name="prezzoTotale" column="prezzo" type="integer" />
+		<property name="inVendita" column="in_vendita" type="boolean" />
 		
 		<list name="vagoni" cascade="all" lazy="false">
 			<key column="treno_id" />

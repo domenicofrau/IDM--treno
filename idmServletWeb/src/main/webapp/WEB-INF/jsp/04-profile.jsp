@@ -102,14 +102,17 @@
 						    <div class="col-md-6">
 						        <div class="card mb-4">
 						            <div class="card-body">
-									    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-									        <label class="btn btn-light scelta-vendita">
-									             <input id="option1_${treni.id}" type="radio" name="options_${treni.id}" checked> In Vendita
-									        </label>
-									        <label class="btn btn-light scelta-vendita">
-									            <input id="option2_${treni.id}" type="radio" name="options_${treni.id}"> Non in Vendita
-									        </label>
-									    </div>
+<form id="formStatoVendita" action="cambiaStato" method="POST">
+    <input type="hidden" name="idTreno" value="${treni.id}" />
+    <div class="btn-group" role="group">
+        <label class="btn btn-light scelta-vendita">
+            <input type="radio" name="inVendita" value="true" ${treni.inVendita ? 'checked' : ''} onchange="submitForm()"> In Vendita
+        </label>
+        <label class="btn btn-light scelta-vendita">
+            <input type="radio" name="inVendita" value="false" ${!treni.inVendita ? 'checked' : ''} onchange="submitForm()"> Non in Vendita
+        </label>
+    </div>
+</form>
 						                <h5 class="card-title text-truncate">
 						                    <b>${treni.nome}</b>
 						                </h5>
@@ -174,5 +177,10 @@
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
 		<script src="<c:url value='/resources/js/modale.js'/>"></script>
+		<script>
+function submitForm() {
+    document.getElementById('formStatoVendita').submit();
+}
+</script>
 	</body>
 </html>

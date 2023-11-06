@@ -118,6 +118,7 @@ public abstract class TrenoBuilder {
 		t.setImmagine(immagine);
 		t.setRegione(regione);
 		t.setPrezzoTotale(prezzoTotale);
+		t.setInVendita(false);
 
 		return t;
 	}

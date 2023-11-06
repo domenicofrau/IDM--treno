@@ -34,7 +34,7 @@ public class Main {
 		System.out.println("run.....");
 
 		VagoneFactory f = new TNVagoneFactory();
-//		TrenoBuilder b = new ConcreteBuilder(f);
+		TrenoBuilder b = new ConcreteBuilder(f);
 		TrenoService tService = new TrenoService();
 
 		UtenteBuilder u = new UtenteBuilder();
@@ -47,11 +47,11 @@ public class Main {
 		
 //		tService.delete(2356);
 
-//		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
-		Utente utente = u.creaUtente("Compratore", "Collezionista", "ciao", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
-		uService.crea(utente);
+		Treno t = b.costruisciTreno("HPPPPRPPPP", "cedtrtrtrttded", "ytrytytyt", "sardegna");
+//		Utente utente = u.creaUtente("Compratore", "Collezionista", "ciao", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
+//		uService.crea(utente);
 //		Treno t =tService.findByName("carlo");
-		uService.crea(utente);
+//		uService.crea(utente);
 //		t.setUtente(t, utenteTrovato1);
 //		uService.update(utenteTrovato1);
 //		tService.update(t);
@@ -61,7 +61,7 @@ public class Main {
 
 //		t.vendiTreno(t, utenteTrovato1, utenteTrovato2);
 //		t.setUtente(t, utenteTrovato2);
-//		tService.crea(t);
+		tService.crea(t);
 //		tService.update(t);
 //		uService.update(utenteTrovato1);
 //		uService.update(utenteTrovato2);

@@ -6,6 +6,7 @@ public class TrenoBean {
 	private String nomeTreno;
 	private String urlImmagine;
 	private String regione;
+	private boolean inVendita;
 
 	public String getRegione() {
 		return regione;
@@ -37,6 +38,14 @@ public class TrenoBean {
 
 	public void setUrlImmagine(String urlImmagine) {
 		this.urlImmagine = urlImmagine;
+	}
+
+	public boolean isInVendita() {
+		return inVendita;
+	}
+
+	public void setInVendita(boolean inVendita) {
+		this.inVendita = inVendita;
 	}
 
 }

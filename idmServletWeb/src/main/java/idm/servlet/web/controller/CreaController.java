@@ -50,10 +50,11 @@ public class CreaController {
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
 		String regione = treno.getRegione();
+		boolean inVendita = treno.isInVendita();
 		HttpSession session = request.getSession();
 		Utente u= (Utente) session.getAttribute("loggedInUser");
 		try {		
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regione, frFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome, immagine.replace(",", ""), regione, inVendita, frFactory);
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
@@ -67,6 +68,7 @@ public class CreaController {
 		model.addAttribute("nomeTreno", treno.getNomeTreno());
 		model.addAttribute("urlImmagine", treno.getUrlImmagine());
 		model.addAttribute("regione", treno.getRegione());
+		model.addAttribute("inVendita", treno.isInVendita());
 		return "redirect:/03-home";
 	}
 
@@ -77,11 +79,12 @@ public class CreaController {
 		String nome = treno.getNomeTreno();
 		String immagine = treno.getUrlImmagine();
 		String regione = treno.getRegione();
+		boolean inVendita = treno.isInVendita();
 		
 		HttpSession session = request.getSession();
 		Utente u= (Utente) session.getAttribute("loggedInUser");
 		try {			
-			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine.replace(",", ""), regione, tnFactory);
+			Treno t = concreteBuilder.costruisciTreno(sigla, nome,immagine.replace(",", ""), regione, inVendita, tnFactory);
 			
 			t.setUtente(t, u);
 			trenoService.crea(t);
@@ -95,6 +98,7 @@ public class CreaController {
 		model.addAttribute("nomeTreno", treno.getNomeTreno());
 		model.addAttribute("urlImmagine", treno.getUrlImmagine());
 		model.addAttribute("regione", treno.getRegione());
+		model.addAttribute("inVendita", treno.isInVendita());
 		return "redirect:/03-home";
 	}
 

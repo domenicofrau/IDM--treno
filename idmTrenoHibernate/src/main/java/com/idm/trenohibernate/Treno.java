@@ -16,8 +16,10 @@ public class Treno implements Bean {
 	private String immagine;
 	private String regione;
 	private int prezzoTotale;
+	private boolean inVendita;
 
 	public Treno() {
+		this.inVendita = true;
 	}
 
 	public int getId() {
@@ -143,6 +145,14 @@ public class Treno implements Bean {
 	public void setPrezzoTotale(int prezzoTotale) {
 		this.prezzoTotale = prezzoTotale;
 		
+	}
+
+	public boolean isInVendita() {
+		return inVendita;
+	}
+
+	public void setInVendita(boolean inVendita) {
+		this.inVendita = inVendita;
 	}
 
 }
