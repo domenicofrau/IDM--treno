@@ -1,5 +1,4 @@
 
-	var userBitTrain = 1;
 document.addEventListener('DOMContentLoaded', function() {
 	document.getElementById('siglaFR').addEventListener('input', function() {
 		var sigla = document.getElementById('siglaFR').value;
@@ -13,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			var prezzo = calcolaPrezzo_fr(sigla);
 			var prezzo2= parseFloat(prezzo);
 			if(saldo<prezzo2){
-				button.innerHTML='saldo non sufficente';
+				button.innerHTML='Saldo non sufficente';
 				button.disabled = true;
 			}else
 			button.innerHTML = 'Crea il treno (' + prezzo + ' <img class="bit-train-icon" src="' + contextPath + '/resources/img/bitTrain.png"/>)';
