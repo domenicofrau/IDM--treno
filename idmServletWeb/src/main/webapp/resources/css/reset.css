@@ -68,10 +68,10 @@ body {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     position: relative;
-    padding: 7px 0;
+    padding: 12px 0 3px 0;
     left: -5px;
     top: 15px;
     width: 120px;
-    background-color: #4CAF50;
+    background-color: rgb(68, 147, 78);
     box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
 }

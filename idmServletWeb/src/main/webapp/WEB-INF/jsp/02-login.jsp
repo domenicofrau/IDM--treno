@@ -44,7 +44,7 @@
 							<input class="form-control mb-4" type="text" name="email" placeholder="Email" required/>
 							<input class="form-control mb-5" type="password" name="password" placeholder="Password" required />
 							<button class="btn btn-primary btn-block mb-2" type="submit">Accedi</button>
-							<p class="mt-2">Non sei ancora registrato? <a class="text-primary registrati" onclick="showRegisterForm()">Registrati qui</a></p>
+							<p class="mt-2">Non sei ancora registrato? <a class="registrati text-primary registrati" onclick="showRegisterForm()">Registrati qui</a></p>
 						</form:form>
 					</div>
 					<!-- REGISTRAZIONE -->
