@@ -34,3 +34,13 @@
 .input-group button:hover {
 	background-color: #0056b3;
 }
+
+.profile-pic-preview {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

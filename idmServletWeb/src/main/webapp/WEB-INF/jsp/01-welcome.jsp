@@ -49,7 +49,7 @@
 		         </p>
 		         <div class="d-flex justify-content-between">
 		            <a class="btn btn-primary mt-4" href="02-login">Login</a>
-		            <a class="btn btn-outline-dark mt-4" href="02-login">Registrati</a>
+		            <a class="btn btn-outline-dark mt-4" href="02-login?show=register">Registrati</a>
 		         </div>
 		      </div>
 		      <div class="col-12 col-md-6 my-3">
