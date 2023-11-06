@@ -2,15 +2,13 @@ package com.idm.trenohibernate.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Treno;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.dao.*;
 import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 
-@Transactional
+
 @Component
 public class TrenoService {
 
@@ -31,7 +29,6 @@ public class TrenoService {
 	}
 
 	public void update(Treno treno) {
-		treno.ricalcolaPrezzo();
 		dao.update(treno);
 		System.out.println("modificato il treno con id: " + treno.getId());
 	}

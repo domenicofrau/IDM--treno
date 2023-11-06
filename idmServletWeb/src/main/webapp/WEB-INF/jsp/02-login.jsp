@@ -44,7 +44,7 @@
 							<input class="form-control mb-4" type="text" name="email" placeholder="Email" required/>
 							<input class="form-control mb-5" type="password" name="password" placeholder="Password" required />
 							<button class="btn btn-primary btn-block mb-2" type="submit">Accedi</button>
-							<p class="mt-2">Non sei ancora registrato? <a class="text-primary" onclick="showRegisterForm()">Registrati qui</a></p>
+							<p class="mt-2">Non sei ancora registrato? <a class="text-primary registrati" onclick="showRegisterForm()">Registrati qui</a></p>
 						</form:form>
 					</div>
 					<!-- REGISTRAZIONE -->
@@ -54,7 +54,7 @@
 							<img id="profilePicPreview" class="profile-pic-preview mb-4" src="<c:url value='/resources/img/standard-user.png'/>" alt="Anteprima" data-default-src="<c:url value='/resources/img/standard-user.png'/>" onerror="this.onerror=null; this.src=this.getAttribute('data-default-src');">
 							<input class="form-control mb-4" type="text" name="nome" placeholder="Nome" required />
 							<input class="form-control mb-4" type="text" name="cognome" placeholder="Cognome" required />
-							<select id="nazione" class="form-control mb-4" name="nazionalità" required></select>
+							<select id="nazione" class="form-control mb-4" name="nazione" required></select>
 							<input class="form-control mb-4" type="email" name="email" placeholder="Email" required />
 							<input class="form-control mb-4" type="password" name="password" placeholder="Password" required />
 							<input class="form-control mb-5" type="text" name="profilePic" placeholder="Aggiungi url per la tua immagine profilo" oninput="updateProfilePicPreview()" required />

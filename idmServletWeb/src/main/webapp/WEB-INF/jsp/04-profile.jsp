@@ -16,7 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/criteriaForm.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/profilo.css'/>">
 	</head>
-	<body>
+	<body data-nazione="${loggedInUser.nazione}">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 			<a class="navbar-brand" href="03-home">
@@ -41,7 +41,7 @@
 					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					<a href="04-profile">
-						<img class="profile-image" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo">
+			            <img class="profile-image" src="<c:url value='${loggedInUser.immagineProfilo}'/>">
 					</a>
 				</div>
 			</div>
@@ -75,12 +75,12 @@
 			<div class="row">
 				<div id="sticky" class="col-md-5 text-center">
 					<div class="profile-picture d-inline-block">
-						<img class="img-fluid" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="Immagine Profilo">
+						<img class="profile-image" src="<c:url value='${loggedInUser.immagineProfilo}'/>">
 						<div class="edit-overlay">Modifica</div>
 					</div>
 					<h3 class="mt-3">${loggedInUser.nome} ${loggedInUser.cognome}</h3>
 					<h6>${loggedInUser.email}</h6>
-					<img class="rounded-circle img-flag mb-3" src="<c:url value='/resources/img/flag.png'/>" alt="">
+					<img class="rounded-circle img-flag mb-3" src="">
 					<p class="saldo-bittrain">saldo BitTrain: 
 						<b>${loggedInUser.bitTrain} </b>
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
@@ -177,5 +177,6 @@
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
 		<script src="<c:url value='/resources/js/modale.js'/>"></script>
+		<script src="<c:url value='/resources/js/bandierina.js'/>"></script>
 	</body>
 </html>

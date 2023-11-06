@@ -22,7 +22,7 @@ public class UtenteBuilder {
 
 	UtenteService uService = new UtenteService();
 
-	public Utente creaUtente(String nome, String cognome, String email, String password, String profilePic)
+	public Utente creaUtente(String nome, String cognome, String email, String password, String profilePic, String nazione)
 			throws UtenteException {
 
 		if (uService.findByEmail(email) != null) {
@@ -36,6 +36,7 @@ public class UtenteBuilder {
 			u.setPassword(HashPassword(password));
 			u.setbitTrain(2000);
 			u.setImmagineProfilo(profilePic);
+			u.setNazione(nazione);
 			return u;
 		}
 		catch (NoSuchAlgorithmException e) {

@@ -31,9 +31,10 @@ public class UtenteController {
 		String emailUtente = utente.getEmail();
 		String passwordUtente = utente.getPassword();
 		String immagine = utente.getProfilePic();
+		String nazione = utente.getNazione();
 		try {
 			Utente u = utenteBuilder.creaUtente(nomeUtente, cognomeUtente, emailUtente, passwordUtente,
-					immagine.replace(",", ""));
+					immagine.replace(",", ""),nazione);
 			utenteService.crea(u);
 		} catch (UtenteException e) {
 			e.printStackTrace();

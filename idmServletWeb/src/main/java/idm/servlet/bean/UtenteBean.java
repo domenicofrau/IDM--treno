@@ -7,6 +7,7 @@ public class UtenteBean {
 	private String profilePic;
 	private String nome;
 	private String cognome;
+	private String nazione;
 
 	public String getEmail() {
 		return email;
@@ -47,5 +48,13 @@ public class UtenteBean {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
+	}
+
+	public String getNazione() {
+		return nazione;
+	}
+
+	public void setNazione(String nazione) {
+		this.nazione = nazione;
 	}
 }

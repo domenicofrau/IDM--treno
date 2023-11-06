@@ -39,7 +39,7 @@
 					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					<a href="04-profile">
-						<img class="profile-image" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo">
+						<img class="profile-image" src="<c:url value='${loggedInUser.immagineProfilo}'/>">
 					</a>
 				</div>
 			</div>

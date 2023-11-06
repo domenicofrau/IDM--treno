@@ -40,7 +40,7 @@
 					<a class="nav-link d-inline mr-1" href="04-profile">${loggedInUser.bitTrain}</a>
 					<img class="nav-item-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					<a href="04-profile">
-						<img class="profile-image" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="profilo">
+						<img class="profile-image" src="<c:url value='${loggedInUser.immagineProfilo}'/>">
 					</a>
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 									</c:if>
 				                    
 				                    <h4 class="font-weight-bold text-truncate">${ treni.nome }</h4>
-				                    <p class="mt-3 card-text">MARCA:
+				                    <p class="mt-3 card-text">Marca:
 				                        <c:if test="${ treni.marca == 'FrecciaRossa' }">
 				                            <img class="logo-frecciarossa" src="https://upload.wikimedia.org/wikipedia/it/4/4f/Treno_Frecciarossa_Logo.png" alt="FrecciaRossa"/>
 				                        </c:if>
@@ -126,8 +126,9 @@
 				                            <img class="logo-trenord" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Trenord_Logo.svg/2560px-Trenord_Logo.svg.png" alt="TreNord"/>
 				                        </c:if>                             
 				                    </p>
-				                    <p>PESO: ${ sommaPesi } tonnellate</p>
-				                    <p>AUTORE: ${treni.utente.nome } ${treni.utente.cognome }</p>
+				                    <p class="mt-3 mb-2">Peso: <b>${ sommaPesi } tonnellate</b></p>
+				                    <p class="mt-3 mb-2">Autore: <b>${treni.utente.nome } ${treni.utente.cognome }</b></p>
+				                    <p class="mt-3 mb-2">Regione: <b>${treni.regione}</b></p>
 				                    <c:set var="trenoID" value="${ treni.id }" />
 				                   	<div class="d-flex justify-content-between">
 							            <a class="btn btn-light btn-outline-primary mt-4" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>

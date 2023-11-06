@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {
         
         data.sort((a, b) => a.name.common.localeCompare(b.name.common));
 
-        data.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country.cca2;
-            option.textContent = country.name.common;
-            selectElement.appendChild(option);
-        });
+		data.forEach(country => {
+		    const option = document.createElement('option');
+		    option.value = country.name.common;
+		    option.textContent = country.name.common;
+		    selectElement.appendChild(option);
+		});
     })
     .catch(error => {
         console.error('There was an error fetching the country list:', error);

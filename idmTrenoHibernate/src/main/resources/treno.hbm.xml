@@ -24,7 +24,7 @@
 		</list>
 		<many-to-one name="utente"
 			class="com.idm.trenohibernate.Utente" column="utente_id"
-			cascade="all" lazy="false" />
+			cascade="save-update" lazy="false" />
 
 	</class>
 

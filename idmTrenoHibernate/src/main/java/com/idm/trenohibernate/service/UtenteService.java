@@ -4,13 +4,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Component;
 import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.dao.*;
 import com.idm.trenohibernate.exceptions.UtenteException;
-@Transactional
+
 @Component
 public class UtenteService {
 

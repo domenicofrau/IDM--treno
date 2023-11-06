@@ -17,12 +17,25 @@ public class Main {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		System.out.println("run.....");
 
-		VagoneFactory f = new TNVagoneFactory();
-		TrenoBuilder b = new ConcreteBuilder(f);
-		TrenoService tService = new TrenoService();
-
+//		C R E A Z I O N E   D I   U N   U T E N T E   E   P E R S I S T E N Z A -----------------------------------
 //		UtenteBuilder u = new UtenteBuilder();
 //		UtenteService uService = new UtenteService();
+//		Utente utente = u.creaUtente("Domenico", "Frau", "domenico.frau@outlook.com", "12345", "https://image.api.playstation.com/vulcan/img/rnd/202010/2621/H9v5o8vP6RKkQtR77LIGrGDE.png", "Italy");	
+//		uService.crea(utente);
+//		-----------------------------------------------------------------------------------------------------------
+
+//		C A N C E L L A Z I O N E   D I   U N   U T E N T E  ------------------------------------------------------
+//		UtenteService uService = new UtenteService();
+//		uService.delete(3090);
+//		-----------------------------------------------------------------------------------------------------------
+		
+		
+		
+		
+//		VagoneFactory f = new TNVagoneFactory();
+//		TrenoBuilder b = new ConcreteBuilder(f);
+//		TrenoService tService = new TrenoService();
+
 //		Utente u = uService.findByEmail("giacomo@giacomo");
 //		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
 //		String immagine = "https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
@@ -36,8 +49,7 @@ public class Main {
 //		tService.delete(2356);
 
 //		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
-//		Utente utente = u.creaUtente("Compratore", "Collezionista", "ciao", "password123", "https://tse1.mm.bing.net/th?id=OIP.4qz9OQ4Gwl5IPXwIzAa6pAHaEK&pid=Api&P=0&h=180");	
-//		uService.find(utente);
+		//		uService.find(utente);
 //		Treno t =tService.findByName("carlo");
 		
 //		t.setUtente(t, utenteTrovato1);
@@ -56,11 +68,11 @@ public class Main {
 		
 //		***************************** CRITERIA BUILDER  *****************************
 		
-		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
+//		TrenoServiceCriteria tSvcC = new TrenoServiceCriteria();
 //		tSvcC.findByNameLike("tre");
 //		tSvcC.findTreni("Tommy", "TreNord");
 //		tSvcC.findTreniPrezzo(510, 510);
-		tSvcC.findTreni("tommy", "TreNord", "Umbria", 0, 2000);
+//		tSvcC.findTreni("tommy", "TreNord", "Umbria", 0, 2000);
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
 		}
