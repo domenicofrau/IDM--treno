@@ -118,6 +118,7 @@
 				        <div class="col-md-6">
 				            <div class="card mb-4">
 				                <div class="card-body">
+					               	<p class="mb-3"><img class="profile-image-card ml-2 border border-secondary" src="<c:url value='${treni.utente.immagineProfilo}'/>"> <b>${treni.utente.nome } ${treni.utente.cognome }</b></p>
 				                    <c:if test="${ empty treni.immagine }">
 				                        <img class="img-fluid mb-3" src="<c:url value='/resources/img/train.jpg'/>" alt="Immagine Treno placeholder">
 				                    </c:if>
@@ -141,7 +142,7 @@
 				                        </c:if>                             
 				                    </p>
 				                    <p class="mt-3 mb-2">Peso: <b>${ sommaPesi } tonnellate</b></p>
-				                    <p class="mt-3 mb-2">Autore: <b>${treni.utente.nome } ${treni.utente.cognome }</b></p>
+				                    
 				                    <p class="mt-3 mb-2">Regione: <b>${treni.regione}</b></p>
 				                    <c:set var="trenoID" value="${ treni.id }" />
 				                   	<div class="d-flex justify-content-between">
