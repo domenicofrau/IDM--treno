@@ -34,7 +34,7 @@ public class UtenteBuilder {
 			u.setCognome(cognome);
 			u.setEmail(email);
 			u.setPassword(HashPassword(password));
-			u.setbitTrain(2000);
+			u.setbitTrain(5000);
 			u.setImmagineProfilo(profilePic);
 			u.setNazione(nazione);
 			return u;
