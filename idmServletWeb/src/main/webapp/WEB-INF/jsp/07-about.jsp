@@ -48,7 +48,7 @@
 			    <!-- alessandro -->
 			    <div class="col-sm-4">
 		      		<div class="card">
-			        	<img class="card-img-top rounded-circle mx-auto d-block mt-4" style="width: 40px; height: 40px; object-fit: cover;" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="Alessandro">
+			        	<img class="card-img-top rounded-circle mx-auto d-block mt-4" style="width: 40px; height: 40px; object-fit: cover;" src="<c:url value='/resources/img/ale.png'/>" alt="Alessandro">
 			        	<div class="card-body text-center">
 			          		<h5 class="card-title">Alessandro Bellante</h5>
 		          			<p class="card-text">alessandro@email.com</p>
@@ -64,8 +64,8 @@
 			        	<div class="card-body text-center">
 			          		<h5 class="card-title">Domenico Frau</h5>
 			          		<p class="card-text">domenico.frau@outlook.com</p>
-			          		<a href="https://github.com/domenicofrau" target="_blank" class="btn btn-light btn-outline-dark mr-2 mb-2 mt-3"><i class="bi bi-github"></i></a>
-			          		<a href="https://www.linkedin.com/in/domenicofrau/" target="_blank" class="btn btn-light btn-outline-dark ml-2 mb-2 mt-3"><i class="bi bi-linkedin"></i></a>
+			          		<a href="https://github.com/AleBellEpicode" target="_blank" class="btn btn-light btn-outline-dark mr-2 mb-2 mt-3"><i class="bi bi-github"></i></a>
+			          		<a href="https://www.linkedin.com/in/alessandro-bellante-886246243/" target="_blank" class="btn btn-light btn-outline-dark ml-2 mb-2 mt-3"><i class="bi bi-linkedin"></i></a>
 			        	</div>
 			      	</div>
 			    </div>

@@ -188,10 +188,8 @@ public abstract class TrenoBuilder {
 		}else
 		u.setbitTrain(u.getbitTrain()-prezzo);
 		vService.aggiungiVagone(v, t);
-		t.ricalcolaPrezzo();
-		tService.update(t);
 		uService.update(u);
-		t.toString();
+		
 		return t;
 	}
 	public Treno addVagonePasseggeriBusiness(Treno treno) throws TrenoException, UtenteException {
@@ -216,10 +214,7 @@ public abstract class TrenoBuilder {
 			}else
 				u.setbitTrain(u.getbitTrain()-prezzo);
 		vService.aggiungiVagone(v, t);
-		t.ricalcolaPrezzo();
-		tService.update(t);
 		uService.update(u);
-		t.toString();
 		return t;
 	}
 	public Treno addVagoneLocomotiva(Treno treno) throws TrenoException, UtenteException {
@@ -244,8 +239,6 @@ public abstract class TrenoBuilder {
 			}else
 				u.setbitTrain(u.getbitTrain()-prezzo);
 		vService.aggiungiVagone(v, t);
-		t.ricalcolaPrezzo();
-		tService.update(t);
 		uService.update(u);
 		t.toString();
 		return t;
@@ -272,10 +265,7 @@ public abstract class TrenoBuilder {
 			}else
 				u.setbitTrain(u.getbitTrain()-prezzo);
 		vService.aggiungiVagone(v, t);
-		t.ricalcolaPrezzo();
-		tService.update(t);
 		uService.update(u);
-		t.toString();
 		return t;
 	}
 	public Treno addVagoneCargo(Treno treno) throws TrenoException, UtenteException {
@@ -300,10 +290,8 @@ public abstract class TrenoBuilder {
 			}else
 				u.setbitTrain(u.getbitTrain()-prezzo);
 		vService.aggiungiVagone(v, t);
-		t.ricalcolaPrezzo();
-		tService.update(t);
 		uService.update(u);
-		t.toString();
+
 		return t;
 	}
 

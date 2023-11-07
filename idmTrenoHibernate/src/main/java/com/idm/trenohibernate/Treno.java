@@ -138,13 +138,16 @@ public class Treno implements Bean {
 	public void setInVendita(boolean inVendita) {
 		this.inVendita = inVendita;
 	}
-
-	public void ricalcolaPrezzo() {
+	public int ricalcolaPrezzo(List<Vagone>vagoni) {
 		int prezzo=0;
-		for(Vagone vagone:this.getVagoni()) {
+		for(Vagone vagone:vagoni) {
+			if(vagone!=null) {
+				prezzo+=0;
+			}
 			prezzo+=vagone.getPrezzo();
 		}
-		setPrezzoTotale(prezzo);
-		;
+		return prezzo;
+		
 	}
+
 }
