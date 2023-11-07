@@ -104,7 +104,7 @@
 									</c:if>								
 								</p>
 								<p class="card-text"><b>AUTORE:</b> ${ treno.utente.nome } ${ treno.utente.cognome }</p>
-								<p class="card-text"><b>PREZZO TOTALE:</b> ${ sommaPrezzi } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
+								<p class="card-text"><b>PREZZO TOTALE:</b> ${ treno.prezzoTotale } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 								<p class="card-text"><b>PESO TOTALE:</b> ${ sommaPesi } tonnellate</p>
 							</div>
 							<div class="card-body">
@@ -139,7 +139,6 @@
 										</div>
 									</div>
 								</nav>
-								
 								<div id="locomotive-details" class="category-details">
 									<div class="row">
 										<c:forEach var="locomotiva" items="${locomotive}">
