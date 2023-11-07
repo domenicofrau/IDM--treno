@@ -60,7 +60,7 @@ public class Main {
 //		tSvcC.findByNameLike("tre");
 //		tSvcC.findTreni("Tommy", "TreNord");
 //		tSvcC.findTreniPrezzo(510, 510);
-		tSvcC.findTreni("tommy", "TreNord", "Umbria", 0, 2000);
+		tSvcC.findTreni("tommy", "TreNord", "Umbria", 0, 2000, true);
 		if (sessionFactory != null) {
 			HibernateUtil.shutdown();
 		}

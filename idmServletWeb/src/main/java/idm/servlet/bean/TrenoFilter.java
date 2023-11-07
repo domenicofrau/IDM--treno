@@ -7,6 +7,7 @@ public class TrenoFilter {
 	private String regione;
 	private int prezzoMin;
 	private int prezzoMax;
+	private boolean inVendita;
 	
 	public String getNomeLike() {
 		return nomeLike;
@@ -38,7 +39,11 @@ public class TrenoFilter {
 	public void setPrezzoMax(int prezzoMax) {
 		this.prezzoMax = prezzoMax;
 	}
+	public boolean isInVendita() {
+		return inVendita;
+	}
+	public void setInVendita(boolean inVendita) {
+		this.inVendita = inVendita;
+	}
 	
-	
-
 }

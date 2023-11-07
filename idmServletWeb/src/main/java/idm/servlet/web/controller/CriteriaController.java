@@ -1,5 +1,6 @@
 package idm.servlet.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,23 @@ public class CriteriaController {
 		String regione = treno.getRegione();
 		int prezzoMin = treno.getPrezzoMin();
 		int prezzoMax = treno.getPrezzoMax();
+		boolean isInVendita = treno.isInVendita();
+		
+		model.addAttribute("nome", nome);
+		model.addAttribute("marca", marca);
+		model.addAttribute("regione", regione);
+		
+		List<Object> params = new ArrayList<>();
+		params.add(nome);
+		params.add(marca);
+		params.add(regione);
+		params.add(prezzoMin);
+		params.add(prezzoMax);
+		params.add(isInVendita);
+		
+		model.addAttribute("params", treno);
 
-		List<Treno> treni = tSvcC.findTreni(nome, marca, regione, prezzoMin, prezzoMax);
+		List<Treno> treni = tSvcC.findTreni(nome, marca, regione, prezzoMin, prezzoMax, isInVendita);
 		model.addAttribute("criteria", treni);
 		return "search";
 	}

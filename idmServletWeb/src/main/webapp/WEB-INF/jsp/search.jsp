@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -46,30 +47,77 @@
 			</div>
 		</nav>
 		<div class="container mt-5">
+			
 			<!-- CRITERIA FORM DI RICERCA -->
-			<div id="criteriaForm" class="container my-3 p-4 d-none">
-				<form action="search" method="GET">
+			<div id="criteriaForm" class="container my-3 p-4">
+				<form:form action="search" method="GET" modelAttribute="treno">
 					<div class="form-row">
 						<div class="col-md-8">
-							<input id="nome" class="form-control" type="text" name="nome" placeholder="Cerca...">
+							<input id="nome" class="form-control" type="text" name="nomeLike" placeholder="Cerca..." value="${ params.nomeLike }">
 						</div>
 						<div class="col-md-3">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
-	<!--  							<select id="inputGroupSelect01" class="custom-select" name="marca">
-									<option selected>FrecciaRossa</option>
-									<option value="1">TreNord</option>
-								</select> -->
+								<select id="inputGroupSelect01" class="custom-select" name="marca">
+									<option value="${ params.marca }">${ params.marca }</option>
+									<option value="tutte">Tutte</option>
+									<option value="FrecciaRossa">FrecciaRossa</option>
+									<option value="TreNord">TreNord</option>  
+								</select>
 							</div>
 						</div>
-						<div class="col-md-1 d-flex justify-content-end">
-							<button class="btn btn-dark" type="submit">Cerca</button>
-						</div>
 					</div>
-				</form>
+					<div class="form-row mt-3">
+						<div class="form-group col-md-6">
+								<label for="regione">Regione:</label> 
+								<select id="regione" class="form-control" name="regione">
+								<option value="${ params.regione }">${ params.regione }</option>
+								<option value="tutte">Tutte</option>
+								</select>
+						</div>
+						<div class="col-md-2">
+      						<label for="prezzoMin">Prezzo Minimo</label>
+      						<input type="number" class="form-control" name="prezzoMin" id="prezzoMin" min="0" max="3000" value="${ params.prezzoMin }" step="5">
+   						</div>
+						<div class="col-md-2">
+      						<label for="prezzoMax">Prezzo Massimo</label>
+      						<input type="number" class="form-control" name="prezzoMax" id="prezzoMax" min="0" max="3000" value="${ params.prezzoMax }" step="5">
+   						</div>  
+   						</div>
+   						<div class="row">
+   							
+   								<c:if test="${ params.inVendita == true }">
+   								<div class="form-check mx-3 mt-2">
+  								    <input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true" checked>
+  								    <label class="form-check-label" for="inVendita">In vendita</label>
+  								</div>
+  								 <div class="form-check mx-3 mt-2">
+ 							 		<input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false">
+ 							 		<label class="form-check-label" for="notInnVendita">Non in vendita</label>
+							    </div>	
+								</c:if>
+								
+								<c:if test="${ params.inVendita == false }">
+   								<div class="form-check mx-3 mt-2">
+  								    <input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true">
+  								    <label class="form-check-label" for="inVendita">In vendita</label>
+  								 </div>
+  								 <div class="form-check mx-3 mt-2">
+ 							 	   <input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false" checked>
+ 							 	   <label class="form-check-label" for="notInnVendita">Non in vendita</label>
+							    </div>	
+								</c:if>
+
+											
+							<div class="col p-0">
+						 	 <button class="btn btn-dark" type="submit">Cerca</button>
+							</div>
+   						</div>  						
+				</form:form>
 			</div>
+			
 			<div class="feed-section">
 				<h2 class="my-3 text-center font-weight-bold">Risultati della ricerca</h2>
 				<c:if test="${ empty criteria }">
@@ -107,6 +155,6 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
-		
+		<script src="<c:url value='/resources/js/regioni.js'/>"></script>
 	</body>
 </html>

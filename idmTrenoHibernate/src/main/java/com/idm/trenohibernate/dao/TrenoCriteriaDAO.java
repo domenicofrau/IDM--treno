@@ -41,7 +41,7 @@ public class TrenoCriteriaDAO {
 
 	}
 
-	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax) {
+	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean isInVendita) {
 		
 			String allValue = "tutte";
 			if(prezzoMin < 0) {
@@ -72,14 +72,14 @@ public class TrenoCriteriaDAO {
 			Predicate marcaPredicate = criteriaBuilder.equal(root.get("marca"), marca);
 			Predicate regionePredicate = criteriaBuilder.equal(root.get("regione"), regione);
 			Predicate prezzoPredicate = criteriaBuilder.between(root.get("prezzoTotale"), prezzoMin, prezzoMax);
+			Predicate inVenditaPredicate = criteriaBuilder.isTrue(root.get("inVendita"));
 			
 			Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate);
 
 			if (marca.equals(allValue)) {
 				finalPredicate = criteriaBuilder.and(namePredicate, regionePredicate, prezzoPredicate);
 				System.out.println(nome + " " + marca);
-			} 
-			
+			} 	
 			if (regione.equals(allValue)) {
 				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, prezzoPredicate);
 				System.out.println(nome + " " + marca);
@@ -88,7 +88,11 @@ public class TrenoCriteriaDAO {
 				finalPredicate = criteriaBuilder.and(namePredicate, prezzoPredicate);
 				System.out.println(nome + " " + marca);
 			} 
-			System.out.println(nome + " " + marca + " " + regione + " " + prezzoMin + " " + prezzoMax);
+			if (isInVendita == false) {
+				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate);
+				System.out.println(nome + " " + marca);
+			} 
+			System.out.println(nome + " " + marca + " " + regione + " " + prezzoMin + " " + prezzoMax + " " + isInVendita);
 			criteriaQuery.where(finalPredicate);
 
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);

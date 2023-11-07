@@ -30,13 +30,13 @@ public class TrenoServiceCriteria {
 		return treni;
 	}
 	
-	public List<Treno> findTreni(String nome, String marca, String regione, int prezzoMin, int prezzoMax) {
+	public List<Treno> findTreni(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean isInVendita) {
 		
-		List<Treno> treni = criteriaDAO.findTreno(nome, marca, regione, prezzoMin, prezzoMax);
+		List<Treno> treni = criteriaDAO.findTreno(nome, marca, regione, prezzoMin, prezzoMax, isInVendita);
 		
 		if(treni.size() != 0) {
 			System.out.println("Ho trovato i seguenti treni con un nome simile a " + nome + ", marca " + marca + " , regione " + regione
-			 + " compreso tra " + prezzoMin + " e " + prezzoMax);
+			 + " compreso tra " + prezzoMin + " e " + prezzoMax + " . Il treno è in vendita: " + isInVendita);
 			for (Treno t : treni) {
 			System.out.println(t);
 			}
