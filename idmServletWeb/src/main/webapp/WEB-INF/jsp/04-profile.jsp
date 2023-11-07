@@ -85,7 +85,10 @@
 						<b>${loggedInUser.bitTrain} </b>
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					</p>
-					<form id="logOut" class="mt-5" method="GET" action="doLogout">
+					<a class="btn btn-light btn-outline-dark mt-2" href=""> 
+						<i class="bi bi-pencil-square"></i>
+					</a>
+					<form id="logOut" class="mt-3" method="GET" action="doLogout">
 						<button class="btn btn-danger" type="submit" >Logout</button>
 					</form>
 				</div>
