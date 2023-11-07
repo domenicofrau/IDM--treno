@@ -109,8 +109,8 @@
 			<div class="row">
 				<div id="sticky" class="col-md-5 text-center">
 					<div class="profile-picture d-inline-block">
-						<img class="profile-image" src="<c:url value='${loggedInUser.immagineProfilo}'/>">
-						<div class="edit-overlay">Modifica</div>
+					    <img class="profile-image" src="<c:url value='${utente.immagineProfilo}'/>" alt="Profilo">
+					    <div class="edit-overlay" onclick="showModalPic()">Modifica</div>
 					</div>
 					<h3 class="mt-3">${loggedInUser.nome} ${loggedInUser.cognome}</h3>
 					<h6>${loggedInUser.email}</h6>
@@ -208,6 +208,33 @@
 				</div>
 			</div>
 		</div>
+		<!-- Modale per la modifica dell'immagine -->
+		<div class="modal" id="editImageModal" tabindex="-1" role="dialog">
+		    <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <h5 class="modal-title">Modifica Immagine Profilo</h5>
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                    <span aria-hidden="true">&times;</span>
+		                </button>
+		            </div>
+		            <div class="modal-body">
+		                <form id="imageForm" action="<c:url value='/salva-immagine-profilo'/>" method="POST">
+		                    <div class="form-group">
+		                        <label for="newImageUrl">Nuovo URL dell'immagine</label>
+		                        <input type="text" class="form-control" id="newImageUrl" name="profilePic" required>
+		                    </div>
+		                    <div class="form-group profile-picture d-flex mx-auto mt-5 mb-3">
+		                        <img id="previewImage"  src="#">
+		                    </div>
+		                    <div class="form-group text-right"> 
+		                        <button type="submit" class="btn btn-light btn-outline-success">Salva</button>
+		                    </div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
 		<!-- Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
@@ -215,5 +242,6 @@
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
 		<script src="<c:url value='/resources/js/modale.js'/>"></script>
 		<script src="<c:url value='/resources/js/bandierina.js'/>"></script>
+		<script src="<c:url value='/resources/js/cambiaImmagineProfilo.js'/>"></script>
 	</body>
 </html>

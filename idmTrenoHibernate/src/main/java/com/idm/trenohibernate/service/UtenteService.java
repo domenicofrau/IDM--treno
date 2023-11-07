@@ -88,4 +88,15 @@ public class UtenteService {
 		
 	}
 	
+	public void updateProfileImage(int userId, String urlImmagine) {
+	    Utente utente = dao.find(userId);
+	    if (utente != null) {
+	        utente.setImmagineProfilo(urlImmagine);
+	        dao.update(utente);
+	        System.out.println("Immagine profilo aggiornata per l'utente con id: " + userId);
+	    } else {
+	        System.out.println("Utente non trovato con id: " + userId);
+	    }
+	}
+	
 }
