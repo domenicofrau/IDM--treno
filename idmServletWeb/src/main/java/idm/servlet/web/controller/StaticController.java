@@ -143,6 +143,11 @@ public class StaticController {
 		model.addAttribute("controller", this);
 		return "08-modifica-treno";
 	}
+	
+	@GetMapping("/09-benvenuto")
+	public String benvenuto(Model model) {
+		return "09-benvenuto";
+	}
 //	@PostMapping("/modifica-treno1")
 //	public String modificaTreno(Treno treno ) {
 //		Treno t = trenoService.find(treno.getId());

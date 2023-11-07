@@ -36,7 +36,7 @@ public class Main {
 //		CANCELLAZIONE DI UN UTENTE  -------------------------------------------------------
 		
 //		UtenteService uService = new UtenteService();
-//		uService.delete(0000);
+//		uService.delete(3220);
 //		-----------------------------------------------------------------------------------
 		
 //		RICERCA DI UN UTENTE PER MAIL  ----------------------------------------------------

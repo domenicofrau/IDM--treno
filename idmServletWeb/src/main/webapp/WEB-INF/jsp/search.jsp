@@ -16,6 +16,9 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navbar.css'/>">
 		<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/criteriaForm.css'/>">
 	</head>
+		<c:if test="${empty loggedInUser.nome}">
+	    	<c:redirect url="01-welcome"/>
+		</c:if>
 	<body>
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">

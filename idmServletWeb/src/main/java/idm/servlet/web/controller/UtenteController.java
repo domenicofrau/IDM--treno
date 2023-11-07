@@ -25,7 +25,7 @@ public class UtenteController {
 	UtenteService utenteService;
 	
 	@PostMapping("doRegister")
-	public String addUtente(@ModelAttribute("utente") UtenteBean utente, Model model) {
+	public String addUtente(@ModelAttribute("utente") UtenteBean utente, Model model, HttpSession session) {
 		String nomeUtente = utente.getNome();
 		String cognomeUtente = utente.getCognome();
 		String emailUtente = utente.getEmail();
@@ -36,13 +36,13 @@ public class UtenteController {
 			Utente u = utenteBuilder.creaUtente(nomeUtente, cognomeUtente, emailUtente, passwordUtente,
 					immagine.replace(",", ""),nazione);
 			utenteService.crea(u);
+			session.setAttribute("loggedInUser", u);
 		} catch (UtenteException e) {
 			e.printStackTrace();
 		}
-		return "redirect:/02-login";
+		return "redirect:/09-benvenuto";
 	}
 
-	// CONTROLLER PRONTO PER OSPITARE LOGIN PAGE
 	@PostMapping("/doLogin")
 	public String login(@ModelAttribute("utente") Utente utente, Model model, HttpSession session) {
 		try {
