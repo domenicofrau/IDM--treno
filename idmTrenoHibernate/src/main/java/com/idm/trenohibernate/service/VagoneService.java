@@ -18,24 +18,13 @@ public class VagoneService {
 		vagone.setTreno(t);
 		Integer id = vDao.create(vagone);
 		t.getVagoni().add(vagone);
+		int prezzoTotale=t.ricalcolaPrezzo(t.getVagoni());
+		t.setPrezzoTotale(prezzoTotale);
+		tService.update(t);
 		System.out.println("Creato il vagone con id: " + id + " assegnato al treno " + vagone.getTreno().getId());
 	}
+	
 	public void rimuoviVagone(Integer id) {
-		
-		Vagone v=vDao.find(id) ;
-		System.out.println(v);
-		Treno t = v.getTreno();
-		
-		Utente u =t.getUtente();
-		System.out.println(v);
-		int refund= v.getPrezzo();
-		u.setbitTrain(u.getbitTrain()+refund);
-		vDao.delete(v);
-		
-		t.ricalcolaPrezzo();
-		tService.update(t);
-		uService.update(u);		
-		System.out.println("Vagone rimosso");
+		vDao.deleteById(id);
 	}
-
 }

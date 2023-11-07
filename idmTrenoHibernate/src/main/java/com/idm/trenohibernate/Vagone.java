@@ -1,6 +1,7 @@
 package com.idm.trenohibernate;
+import com.idm.trenohibernate.dao.Bean;
 
-public abstract class Vagone {
+public abstract class Vagone implements Bean{
 
 	private int id;
 	private int lunghezza;

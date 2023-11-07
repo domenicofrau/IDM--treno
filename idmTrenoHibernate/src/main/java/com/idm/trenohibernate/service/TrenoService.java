@@ -31,7 +31,6 @@ public class TrenoService {
 	}
 
 	public void update(Treno treno) {
-		treno.ricalcolaPrezzo();
 		dao.update(treno);
 		System.out.println("modificato il treno con id: " + treno.getId());
 	}

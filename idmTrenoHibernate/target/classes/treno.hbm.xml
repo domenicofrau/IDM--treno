@@ -17,14 +17,14 @@
 		<property name="prezzoTotale" column="prezzo" type="integer" />
 		<property name="inVendita" column="in_vendita" type="boolean" />
 		
-		<list name="vagoni" cascade="all" lazy="false">
+		<list name="vagoni" cascade="all-delete-orphan" lazy="false" fetch="join">
 			<key column="treno_id" />
 			<index column="posizione"></index>
 			<one-to-many class="com.idm.trenohibernate.Vagone" />
 		</list>
 		<many-to-one name="utente"
 			class="com.idm.trenohibernate.Utente" column="utente_id"
-			cascade="all" lazy="false" />
+			cascade="save-update" lazy="false" fetch="join"/>
 
 	</class>
 
