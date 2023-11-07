@@ -81,10 +81,7 @@
 				<c:forEach var="vagone" items="${treno.vagoni}">
 					<c:set var="sommaPesi" value="${sommaPesi + vagone.peso}" />
 				</c:forEach>
-				<c:set var="sommaPrezzi" value="0" />
-				<c:forEach var="vagone" items="${treno.vagoni}">
-					<c:set var="sommaPrezzi" value="${sommaPesi + vagone.prezzo}" />
-				</c:forEach>
+				<h3 class="mainTitle text-center my-3">${ treno.nome }</h3>
 				<div class="row justify-content-center">
 					<div class="col-8">
 						<div class="card mb-3">

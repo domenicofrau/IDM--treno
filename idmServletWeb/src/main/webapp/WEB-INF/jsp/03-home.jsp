@@ -81,10 +81,24 @@
       						<label for="prezzoMax">Prezzo Massimo</label>
       						<input type="number" class="form-control" name="prezzoMax" id="prezzoMax" min="0" max="3000" value="3000" step="5">
    						</div>  
-					</div>
-					<div class="col p-0">
-							<button class="btn btn-dark" type="submit">Cerca</button>
-					</div>
+   						</div>
+   						<div class="row">
+   							<div class="form-check mx-3 mt-2">
+  								<input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true" checked>
+  								<label class="form-check-label" for="inVendita">
+    						   	  In vendita
+ 							 	</label>
+							</div>
+							<div class="form-check mx-3 mt-2">
+ 							 	<input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false">
+ 							 	<label class="form-check-label" for="notInnVendita">
+ 							      Non in vendita
+ 								 </label>
+							</div>					
+							<div class="col p-0">
+						 	 <button class="btn btn-dark" type="submit" id="cercaCriteria">Cerca</button>
+							</div>
+   						</div>  						
 				</form:form>
 			</div>
 			<!-- FEED -->
