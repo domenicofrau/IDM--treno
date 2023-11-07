@@ -151,7 +151,7 @@
 																<span aria-hidden="true">&times;</span>
 															</button>
 														</div>
-														<div class="modal-body">Sei sicuro di voler restituire il treno?</div>
+														<div class="modal-body">Si vuole procedere con la restituzione del treno?</div>
 														<div class="modal-body">Verranno riaccreditati <b>${treni.prezzoTotale}</b> 
 															<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">sul tuo conto BitTrain.
 														</div>

@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
         const selectElement = document.getElementById('nazione');
         if (!selectElement) {
-            console.error("L'elemento select non è stato trovato nel DOM.");
             return;
         }
         
@@ -26,7 +25,5 @@ document.addEventListener("DOMContentLoaded", function() {
 		    selectElement.appendChild(option);
 		});
     })
-    .catch(error => {
-        console.error('There was an error fetching the country list:', error);
-    });
+    
 });

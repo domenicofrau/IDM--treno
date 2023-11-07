@@ -133,10 +133,9 @@
 				                   	<div class="d-flex justify-content-between">
 							            <a class="btn btn-light btn-outline-primary mt-4" href="cerca-treno?idTrenoStr=${ treni.id }">Dettagli</a>
 										<c:if test="${treni.inVendita && !loggedInUser.nome.equals(treni.utente.nome)}">
-										    <form action="${pageContext.request.contextPath}/compraTreno" method="POST">
-										        <input type="hidden" name="id" value="${treni.id}"/>
-										        <button type="submit" class="btn btn-light btn-outline-success mt-4">Compra per ${treni.prezzoTotale} <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>"></button>
-										    </form>
+					                        <button type="button" class="btn btn-light btn-outline-success mt-4" data-toggle="modal" data-target="#confermaAcquistoModal" data-id="${treni.id}">
+					                            Compra per ${treni.prezzoTotale} <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>">
+					                        </button>
 										</c:if>
 								    </div>
 				                </div>
@@ -146,11 +145,34 @@
 				</div>
 			</div>
 		</div>
+		<!-- Modale Bootstrap per la conferma dell'acquisto -->
+		<div class="modal fade" id="confermaAcquistoModal" tabindex="-1" role="dialog" aria-labelledby="confermaAcquistoModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		        	<div class="modal-header">
+		            	<h5 class="modal-title" id="confermaAcquistoModalLabel">Conferma</h5>
+		                <button class="close" type="button" data-dismiss="modal" aria-label="Chiudi">
+		                    <span aria-hidden="true">&times;</span>
+		                </button>
+		            </div>
+		            <div class="modal-body">Si vuole procedere con l'acquisto?</div>
+		            <div class="modal-footer d-flex justify-content-between">
+		            	<button type="button" class="btn btn-light btn-outline-dark" data-dismiss="modal">Annulla</button>
+		            	<button type="button" class="btn btn-light btn-outline-success" id="confermaAcquisto">Conferma</button>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- Form nascosto per l'acquisto -->
+		<form id="formAcquisto" action="${pageContext.request.contextPath}/compraTreno" method="POST" style="display: none;">
+		    <input type="hidden" name="id" value=""/>
+		</form>
 		<!-- Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<!-- Custom JS -->
 		<script src="<c:url value='/resources/js/find.js'/>"></script>
 		<script src="<c:url value='/resources/js/regioni.js'/>"></script>
+		<script src="<c:url value='/resources/js/modaleCompra.js'/>" defer></script>
 	</body>
 </html>

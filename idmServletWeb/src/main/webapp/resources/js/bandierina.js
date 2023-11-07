@@ -10,9 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const flagImageElement = document.querySelector('.img-flag');
         if(userCountry && userCountry.flags && userCountry.flags.png && flagImageElement) {
             flagImageElement.src = userCountry.flags.png;
-        } else {
-            console.log('Nessun URL valido per la bandiera trovato per il nome del paese:', userCountryName);
-        }
+        } 
     })
 
 });

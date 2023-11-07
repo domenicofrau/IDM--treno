@@ -15,30 +15,49 @@ public class Main {
 	public static void main(String[] args) throws TrenoException, UtenteException {
 
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		System.out.println("run.....");
+		System.out.println("running....................................");
 
 //		C R E A Z I O N E   D I   U N   U T E N T E   E   P E R S I S T E N Z A -----------------------------------
+		
 //		UtenteBuilder u = new UtenteBuilder();
 //		UtenteService uService = new UtenteService();
 //		Utente utente = u.creaUtente("Domenico", "Frau", "domenico.frau@outlook.com", "12345", "https://image.api.playstation.com/vulcan/img/rnd/202010/2621/H9v5o8vP6RKkQtR77LIGrGDE.png", "Italy");	
 //		uService.crea(utente);
-//		-----------------------------------------------------------------------------------------------------------
 
+		
 //		C A N C E L L A Z I O N E   D I   U N   U T E N T E  ------------------------------------------------------
+		
 //		UtenteService uService = new UtenteService();
-//		uService.delete(3090);
-//		-----------------------------------------------------------------------------------------------------------
+//		uService.delete(0000);
 		
 		
+//		R I C E R C A   D I   U N   U T E N T E  P E R  M A I L  --------------------------------------------------
 		
+//		UtenteService uService = new UtenteService();
+//		Utente u = uService.findByEmail("domenico.frau@outlook.com");
+		
+		
+//		C R E A Z I O N E   D I   U N   T R E N O   E   P E R S I S T E N Z A -------------------------------------
 		
 //		VagoneFactory f = new TNVagoneFactory();
 //		TrenoBuilder b = new ConcreteBuilder(f);
 //		TrenoService tService = new TrenoService();
+//		tService.crea(t);
+		
+		
+//		C A N C E L L A Z I O N E   D I   U N   T R E N O  --------------------------------------------------------
+//		TrenoService tService = new TrenoService();
+//		tService.delete(0000);
 
-//		Utente u = uService.findByEmail("giacomo@giacomo");
-//		Utente utenteTrovato2 = uService.findByEmail("ilCollezionista@nonlascionulla.com");
-//		String immagine = "https://mantovauno.it/wp-content/uploads/2020/07/ETR_500_Frecciarossa_at_platform_in_Milano_Centrale-e1520333682748.jpg";
+		
+		
+		
+		
+		
+		
+		
+		
+
 //		Treno t =tService.find(2);
 		
 //		Treno t = tService.findByName("qweasdadw");
@@ -46,7 +65,6 @@ public class Main {
 //		b.addVagonePasseggeriBusiness(t);
 //		va.rimuoviVagone(1018);
 //		tService.find(1017);
-//		tService.delete(2356);
 
 //		Treno t = b.costruisciTreno("HPPPPRPPPP", "ciaoaaa", "OK", "sardegna");
 		//		uService.find(utente);
@@ -61,7 +79,6 @@ public class Main {
 
 //		t.vendiTreno(t, utenteTrovato1, utenteTrovato2);
 //		t.setUtente(t, utenteTrovato2);
-//		tService.crea(t);
 //		tService.update(t);
 //		uService.update(utenteTrovato1);
 //		uService.update(utenteTrovato2);

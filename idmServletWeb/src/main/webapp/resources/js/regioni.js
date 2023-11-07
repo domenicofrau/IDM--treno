@@ -36,5 +36,4 @@ document.addEventListener("DOMContentLoaded", function() {
 				
 			});
 		})
-		.catch(error => console.log('Errore durante il recupero delle regioni: ' + error));
 });

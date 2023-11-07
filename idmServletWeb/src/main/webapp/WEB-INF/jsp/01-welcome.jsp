@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="ISO-8859-1" />
 		<title>TrainBook</title>
@@ -38,24 +37,24 @@
 		</nav>
       	<!-- HERO -->
 		<div class="container mt-5">
-		   <div class="row">
-		      <div class="col-12 col-md-6 p-3">
-		         <h1 class="mainTitle">Benvenuto su TrainBook!</h1>
-		         <p class="mainSubTitle">
-		            TrainBook è il primo social network dedicato agli appassionati di
-		            treni. Qui puoi creare il tuo treno personalizzato e condividerlo
-		            con il resto del mondo. Esplora le creazioni degli altri utenti e
-		            lasciati ispirare!
-		         </p>
-		         <div class="d-flex justify-content-between">
-		            <a class="btn btn-primary mt-4" href="02-login">Login</a>
-		            <a class="btn btn-outline-dark mt-4" href="02-login?show=register">Registrati</a>
-		         </div>
-		      </div>
-		      <div class="col-12 col-md-6 my-3">
-		         <img class="img-fluid mt-5" src="<c:url value='/resources/img/trainbg.png'/>" alt="Train Background"/>
-		      </div>
-		   </div>
+			<div class="row">
+		    	<div class="col-12 col-md-6 p-3">
+		      		<h1 class="mainTitle">Benvenuto su TrainBook!</h1>
+			         <p class="mainSubTitle">
+			            TrainBook è il primo social network dedicato agli appassionati di
+			            treni. Qui puoi creare il tuo treno personalizzato e condividerlo
+			            con il resto del mondo. Esplora le creazioni degli altri utenti e
+			            lasciati ispirare!
+			        </p>
+		      		<div class="d-flex justify-content-between">
+		            	<a class="btn btn-primary mt-4" href="02-login">Login</a>
+		            	<a class="btn btn-outline-dark mt-4" href="02-login?show=register">Registrati</a>
+		      		</div>
+		      	</div>
+		      	<div class="col-12 col-md-6 my-3">
+		      		<img class="img-fluid mt-5" src="<c:url value='/resources/img/trainbg.png'/>" alt="Train Background"/>
+		      	</div>
+		   	</div>
 		</div>		
    	</body>
 </html>
