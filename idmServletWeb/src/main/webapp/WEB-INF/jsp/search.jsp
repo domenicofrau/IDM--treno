@@ -60,11 +60,11 @@
 								<div class="input-group-prepend">
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
-								<select id="inputGroupSelect01" class="custom-select" name="marca">
+								<select id="selectMarca" class="custom-select" name="marca">
 									<option value="${ params.marca }">${ params.marca }</option>
-									<option value="tutte">Tutte</option>
-									<option value="FrecciaRossa">FrecciaRossa</option>
-									<option value="TreNord">TreNord</option>  
+									<option class="regione" value="tutte">Tutte</option>
+									<option class="regione" id="FrecciaRossa" value="FrecciaRossa">FrecciaRossa</option>
+									<option class="regione" value="TreNord">TreNord</option>  
 								</select>
 							</div>
 						</div>
@@ -135,7 +135,7 @@
 									<c:if test="${ empty treni.immagine }">
 										<img class="img-fluid mb-3" src="<c:url value='/resources/img/train.jpg'/>" alt="Immagine Treno placeholder">
 									</c:if>
-									<img class="img-fluid mb-3" src="${ treni.immagine }">
+									<img class="img-fluid mb-3 train-image" src="${ treni.immagine }">
 									<h4 class="font-weight-bold">NOME: ${ treni.nome }</h4>
 									<p>MARCA: ${ treni.marca }</p>
 									<p>PESO TOTALE DEL TRENO: ${ sommaPesi } tonnellate</p>

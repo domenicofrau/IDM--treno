@@ -96,7 +96,7 @@
  								 </label>
 							</div>					
 							<div class="col p-0">
-						 	 <button class="btn btn-dark" type="submit">Cerca</button>
+						 	 <button class="btn btn-dark" type="submit" id="cercaCriteria">Cerca</button>
 							</div>
    						</div>  						
 				</form:form>

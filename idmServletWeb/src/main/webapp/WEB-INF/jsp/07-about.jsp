@@ -36,12 +36,12 @@
 		    	<!-- davide -->
 		    	<div class="col-sm-4">
 		      		<div class="card">
-			        	<img class="card-img-top rounded-circle mx-auto d-block mt-4" style="width: 40px; height: 40px; object-fit: cover;" src="<c:url value='/resources/img/profile-test.jpg'/>" alt="Davide">
+			        	<img class="card-img-top rounded-circle mx-auto d-block mt-4" style="width: 40px; height: 40px; object-fit: cover;" src="<c:url value='/resources/img/davide.jpeg'/>" alt="Davide">
 			        	<div class="card-body text-center">
 			          		<h5 class="card-title">Davide Borotto Dalla Vecchia</h5>
-			          		<p class="card-text">davide@email.com</p>
-		          			<a href="<link_github_davide>" class="btn btn-light btn-outline-dark mr-2 mb-2 mt-3"><i class="bi bi-github"></i></a>
-	          				<a href="<link_linkedin_davide>" class="btn btn-light btn-outline-dark ml-2 mb-2 mt-3"><i class="bi bi-linkedin"></i></a>
+			          		<p class="card-text">borotto.davide@gmail.com</p>
+		          			<a href="https://github.com/Daviduxx" class="btn btn-light btn-outline-dark mr-2 mb-2 mt-3"><i class="bi bi-github"></i></a>
+	          				<a href="https://www.linkedin.com/in/davide-borotto-dalla-vecchia-5039b61b8/" class="btn btn-light btn-outline-dark ml-2 mb-2 mt-3"><i class="bi bi-linkedin"></i></a>
 		        		</div>
 			      	</div>
 			    </div>

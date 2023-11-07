@@ -12,3 +12,5 @@ searchIcon.addEventListener("click", () => {
 	}
 	visible = !visible;	
 })
+
+
