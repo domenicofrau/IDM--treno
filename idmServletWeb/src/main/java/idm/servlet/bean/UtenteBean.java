@@ -17,7 +17,6 @@ public class UtenteBean {
 		this.email = email;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}

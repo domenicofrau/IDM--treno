@@ -119,9 +119,9 @@
 						<b>${loggedInUser.bitTrain} </b>
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
 					</p>
-					<a class="btn btn-light btn-outline-dark mt-2" href=""> 
+					<button class="btn btn-light btn-outline-dark mt-2" onclick="showModalUser()"> 
 						<i class="bi bi-pencil-square"></i>
-					</a>
+					</button>
 					<form id="logOut" class="mt-3" method="GET" action="doLogout">
 					    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmModal">Logout</button>
 					</form>
@@ -250,6 +250,38 @@
 		                        <button type="submit" class="btn btn-light btn-outline-success">Salva</button>
 		                    </div>
 		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- Modale per la modifica dell'utente -->
+		<div class="modal" id="editUserModal" tabindex="-1" role="dialog">
+		    <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <h5 class="modal-title">Modifica Profilo</h5>
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                    <span aria-hidden="true">&times;</span>
+		                </button>
+		            </div>
+		            <div class="modal-body">
+		                <form:form id="userForm" action="modifica-profilo" method="POST" modelAttribute="profile">
+		                    <div class="form-group">
+		                        <label for="newImageUrl">Nome</label>
+		                        <input type="text" class="form-control" name="nome" value="${ loggedInUser.nome }" required>
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="newImageUrl">Cognome</label>
+		                        <input type="text" class="form-control" name="cognome" value="${ loggedInUser.cognome }" required>
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="newImageUrl">Email</label>
+		                        <input type="text" class="form-control" name="email" value="${ loggedInUser.email }" required>
+		                    </div>
+		                    <div class="form-group text-right"> 
+		                        <button type="submit" class="btn btn-light btn-outline-success">Salva</button>
+		                    </div>
+		                </form:form>
 		            </div>
 		        </div>
 		    </div>
