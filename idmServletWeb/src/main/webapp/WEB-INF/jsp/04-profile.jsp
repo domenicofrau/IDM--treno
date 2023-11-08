@@ -50,7 +50,7 @@
 			</div>
 		</nav>
 		<div class="container mt-5">
-					<!-- CRITERIA FORM DI RICERCA -->
+			<!-- CRITERIA FORM DI RICERCA -->
 			<div id="criteriaForm" class="container my-3 p-4 d-none">
 				<form:form action="search" method="GET" modelAttribute="treno">
 					<div class="form-row">
@@ -114,7 +114,7 @@
 					</div>
 					<h3 class="mt-3">${loggedInUser.nome} ${loggedInUser.cognome}</h3>
 					<h6>${loggedInUser.email}</h6>
-					<img class="rounded-circle img-flag mb-3" src="">
+					<img class="rounded-circle img-flag mb-3" src="" data-toggle="" data-placement="" title="">
 					<p class="saldo-bittrain">saldo BitTrain: 
 						<b>${loggedInUser.bitTrain} </b>
 						<img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain">
