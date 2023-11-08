@@ -123,8 +123,27 @@
 						<i class="bi bi-pencil-square"></i>
 					</a>
 					<form id="logOut" class="mt-3" method="GET" action="doLogout">
-						<button class="btn btn-danger" type="submit" >Logout</button>
+					    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmModal">Logout</button>
 					</form>
+				</div>
+				<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Conferma</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        Si è sicuri di voler uscire?
+				      </div>
+				      <div class="modal-footer d-flex justify-content-between">
+				        <button type="button" class="btn btn-light btn-outline-dark" data-dismiss="modal">Annulla</button>
+				        <button type="button" class="btn btn-danger" id="confirmLogout">Esci</button>
+				      </div>
+				    </div>
+				  </div>
 				</div>
 				<!-- SEZIONE TRENI -->
 				<div id="non-sticky" class="col-md-7">
@@ -243,5 +262,6 @@
 		<script src="<c:url value='/resources/js/modale.js'/>"></script>
 		<script src="<c:url value='/resources/js/bandierina.js'/>"></script>
 		<script src="<c:url value='/resources/js/cambiaImmagineProfilo.js'/>"></script>
+		<script src="<c:url value='/resources/js/confermaLogout.js'/>"></script>
 	</body>
 </html>
