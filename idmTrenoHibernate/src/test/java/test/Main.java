@@ -8,8 +8,7 @@ import com.idm.trenohibernate.dao.*;
 import com.idm.trenohibernate.utils.HibernateUtil;
 import com.idm.trenohibernate.service.*;
 import org.hibernate.SessionFactory;
-//import java.security.MessageDigest;
-//import java.security.NoSuchAlgorithmException;
+
 
 public class Main {
 	public static void main(String[] args) throws TrenoException, UtenteException {
@@ -29,14 +28,23 @@ public class Main {
 		
 //		UtenteBuilder u = new UtenteBuilder();
 //		UtenteService uService = new UtenteService();
-//		Utente utente = u.creaUtente("Domenico", "Frau", "domenico.frau@outlook.com", "12345", "https://image.api.playstation.com/vulcan/img/rnd/202010/2621/H9v5o8vP6RKkQtR77LIGrGDE.png", "Italy");	
+//		Utente utente = u.creaUtente("Domenico", "Frau", "domenico.frau@outlook.com", "12345", "https://media.licdn.com/dms/image/D4D03AQGbzQCFYWFHtw/profile-displayphoto-shrink_800_800/0/1683228288475?e=1704931200&v=beta&t=ZnRLaqxB07zp7YsM2gpM-8mvbdPU3ezNdH_JIBb0rlI", "Italy");	
 //		uService.crea(utente);
+//		
+//		Utente utente1 = u.creaUtente("Mario", "Rossi", "mario.rossi@gmail.com", "12345", "https://www.gamesvillage.it/wp-content/uploads/2023/04/Nintendo-Super-Mario-Run-Smartphone-9.jpg", "Italy");	
+//		uService.crea(utente1);
+//		
+//		Utente utente2 = u.creaUtente("Luigi", "Verdi", "luigi.verdi@gmail.com", "12345", "https://static.wikia.nocookie.net/newersupermariobroswii/images/c/ca/Luigi-png.png/revision/latest?cb=20210811194106", "Italy");	
+//		uService.crea(utente2);
+//		
+//		Utente utente3 = u.creaUtente("John", "Ruth", "jhon.ruth@gmail.com", "12345", "https://cdnb.artstation.com/p/assets/images/images/004/109/281/large/andrew-gray-john-ruth-the-hangman.jpg?1480438555", "United States");	
+//		uService.crea(utente3);
 //		-----------------------------------------------------------------------------------
 		
 //		CANCELLAZIONE DI UN UTENTE  -------------------------------------------------------
 		
 //		UtenteService uService = new UtenteService();
-//		uService.delete(3220);
+//		uService.delete(3273);
 //		-----------------------------------------------------------------------------------
 		
 //		RICERCA DI UN UTENTE PER MAIL  ----------------------------------------------------

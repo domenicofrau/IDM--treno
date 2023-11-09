@@ -13,23 +13,24 @@
 		<property name="connection.password">root</property>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
+		<!-- Configurazione del Database MYSQL -->
+<!-- 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property> -->
+<!-- 		<property name="connection.url">jdbc:mysql://localhost:3306/trenohibernate</property> -->
+<!-- 		<property name="connection.username">root</property> -->
+<!-- 		<property name="connection.password">root</property> -->
+<!-- 		<property name="dialect">org.hibernate.dialect.MariaDBDialect</property> -->
+		
 		<!-- Impostazione per la creazione automatica delle tabelle -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<!-- Configurazione della sessione corrente -->
 		<property name="hibernate.current_session_context_class">thread</property>
- <property name="show_sql">true</property> 
+ 		<property name="show_sql">true</property> 
 		<!-- File di Mappatura -->
 		<mapping resource="treno.hbm.xml" />
 		<mapping resource="vagone.hbm.xml" />
 		<mapping resource="utente.hbm.xml" />
 
-		<!-- Configurazione del Database MYSQL -->
-		<!-- <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property> -->
-		<!-- <property name="connection.url">jdbc:mysql://localhost:3306/trenohibernate</property> -->
-		<!-- <property name="connection.username">root</property> -->
-		<!-- <property name="connection.password">root</property> -->
-		<!-- <property name="dialect">org.hibernate.dialect.MariaDBDialect</property> -->
 
 		<!-- Configurazione per i log nella Console -->
 		<!-- <property name="show_sql">true</property> -->

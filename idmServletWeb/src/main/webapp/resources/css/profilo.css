@@ -49,8 +49,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 150px;
-  height: 100vh;
-  overflow-y: auto;
+  height: 50vh;
 }
 
 #non-sticky {

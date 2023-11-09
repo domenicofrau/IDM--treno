@@ -1,7 +1,5 @@
 package idm.servlet.web.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,15 +16,10 @@ import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.VagoneFactory;
 import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 import com.idm.trenohibernate.exceptions.TrenoException;
-import com.idm.trenohibernate.exceptions.UtenteException;
 import com.idm.trenohibernate.service.TrenoService;
 import com.idm.trenohibernate.service.UtenteService;
 
 import idm.servlet.bean.TrenoBean;
-
-
-
-
 
 @Controller
 public class CreaController {
@@ -107,6 +100,8 @@ public class CreaController {
 		model.addAttribute("inVendita", treno.isInVendita());
 		return "redirect:/03-home";
 	}
+	
+	
 //	
 //	@PostMapping("/aggiungi-vPasseggeri")
 //	public String addPasseggeri(@ModelAttribute("treno") TrenoBean treno, Model model)throws UtenteException, TrenoException {

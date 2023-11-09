@@ -1,6 +1,5 @@
 package idm.servlet.web.controller;
 
-import javax.persistence.metamodel.SetAttribute;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
