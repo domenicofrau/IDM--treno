@@ -1,5 +1,6 @@
 package com.idm.trenohibernate.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -21,23 +22,9 @@ public class TrenoCriteriaDAO {
 
 	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean isInVendita) {
+	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean inVendita) {
 		
-			String allValue = "tutte";
-			if(prezzoMin < 0) {
-				prezzoMin = 0;
-			} else if(prezzoMin > 3000) {
-				prezzoMin = 3000;
-			}
-			if(prezzoMax < 0) {
-				prezzoMax = 0;
-			} else if(prezzoMax > 3000) {
-				prezzoMax = 3000;
-			}
-			
-			if(nome == null) {
-				nome = "";
-			}
+			String allValue = "Tutte";	
 
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
@@ -53,30 +40,33 @@ public class TrenoCriteriaDAO {
 			Predicate regionePredicate = criteriaBuilder.equal(root.get("regione"), regione);
 			Predicate prezzoPredicate = criteriaBuilder.between(root.get("prezzoTotale"), prezzoMin, prezzoMax);
 			Predicate inVenditaPredicate = criteriaBuilder.isTrue(root.get("inVendita"));
+			Predicate notInVenditaPredicate = criteriaBuilder.isFalse(root.get("inVendita"));
 			
-			Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
-
-			if (marca.equals(allValue)) {
-				finalPredicate = criteriaBuilder.and(namePredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
+		//	Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			predicates.add(namePredicate);
+			predicates.add(prezzoPredicate);
+			
+			if (!allValue.equals(marca)){				
+				predicates.add(marcaPredicate);;
 			} 	
-			if (regione.equals(allValue)) {
-				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
+			if (!allValue.equals(regione)) {
+				predicates.add(regionePredicate);
+			} 		
+			if (inVendita) {
+				predicates.add(inVenditaPredicate);
 			} 
-			if (regione.equals(allValue) && marca.equals(allValue)) {
-				finalPredicate = criteriaBuilder.and(namePredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
+			if (!inVendita) {
+				predicates.add(notInVenditaPredicate);
 			} 
-			if (isInVendita == false) {
-				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
-			} 
-			System.out.println(nome + " " + marca + " " + regione + " " + prezzoMin + " " + prezzoMax + " " + isInVendita);
-			criteriaQuery.where(finalPredicate);
+	//		criteriaQuery.where(finalPredicate);
 
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
-			List<Treno> treni = query.getResultList();
+	//		List<Treno> treni = query.getResultList();
+			criteriaQuery.select(root)
+            .where(predicates.toArray(new Predicate[]{}));
+
+			List<Treno> treni = session.createQuery(criteriaQuery).getResultList();
 			System.out.println(treni.size());
 			return treni;
 			} catch (Exception e) {
