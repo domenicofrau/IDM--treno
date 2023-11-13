@@ -56,7 +56,7 @@
 				<form:form action="search" method="GET" modelAttribute="treno">
 					<div class="form-row">
 						<div class="col-md-8">
-							<input id="nome" class="form-control" type="text" name="nomeLike" placeholder="Cerca..." value="${ params.nomeLike }">
+							<input id="nome" class="form-control" type="text" name="nomeLike" placeholder="Cerca..." value="">
 						</div>
 						<div class="col-md-3">
 							<div class="input-group">
@@ -64,8 +64,7 @@
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
 								<select id="selectMarca" class="custom-select" name="marca">
-									<option value="${ params.marca }">${ params.marca }</option>
-									<option class="regione" value="tutte">Tutte</option>
+									<option class="regione" value="Tutte">Tutte</option>
 									<option class="regione" id="FrecciaRossa" value="FrecciaRossa">FrecciaRossa</option>
 									<option class="regione" value="TreNord">TreNord</option>  
 								</select>
@@ -76,22 +75,21 @@
 						<div class="form-group col-md-6">
 								<label for="regione">Regione:</label> 
 								<select id="regione" class="form-control" name="regione">
-								<option value="${ params.regione }">${ params.regione }</option>
 								<option value="tutte">Tutte</option>
 								</select>
 						</div>
 						<div class="col-md-2">
       						<label for="prezzoMin">Prezzo Minimo</label>
-      						<input type="number" class="form-control" name="prezzoMin" id="prezzoMin" min="0" max="3000" value="${ params.prezzoMin }" step="5">
+      						<input type="number" class="form-control" name="prezzoMin" id="prezzoMin" min="0" max="3000" value="0" step="5">
    						</div>
 						<div class="col-md-2">
       						<label for="prezzoMax">Prezzo Massimo</label>
-      						<input type="number" class="form-control" name="prezzoMax" id="prezzoMax" min="0" max="3000" value="${ params.prezzoMax }" step="5">
+      						<input type="number" class="form-control" name="prezzoMax" id="prezzoMax" min="0" max="3000" value="3000" step="5">
    						</div>  
    						</div>
    						<div class="row">
    							
-   								<c:if test="${ params.inVendita == true }">
+
    								<div class="form-check mx-3 mt-2">
   								    <input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true" checked>
   								    <label class="form-check-label" for="inVendita">In vendita</label>
@@ -100,19 +98,8 @@
  							 		<input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false">
  							 		<label class="form-check-label" for="notInnVendita">Non in vendita</label>
 							    </div>	
-								</c:if>
 								
-								<c:if test="${ params.inVendita == false }">
-   								<div class="form-check mx-3 mt-2">
-  								    <input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true">
-  								    <label class="form-check-label" for="inVendita">In vendita</label>
-  								 </div>
-  								 <div class="form-check mx-3 mt-2">
- 							 	   <input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false" checked>
- 							 	   <label class="form-check-label" for="notInnVendita">Non in vendita</label>
-							    </div>	
-								</c:if>
-
+								
 											
 							<div class="col p-0">
 						 	 <button class="btn btn-dark" type="submit">Cerca</button>

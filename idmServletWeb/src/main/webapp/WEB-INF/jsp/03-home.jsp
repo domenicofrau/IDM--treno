@@ -62,20 +62,20 @@
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
 								<select id="inputGroupSelect01" class="custom-select" name="marca">
-									<option value="tutte">Tutte</option>
+									<option value="Tutte">Tutte</option>
 									<option value="FrecciaRossa">FrecciaRossa</option>
 									<option value="TreNord">TreNord</option>  
 								</select>
 							</div>
 						</div>
 					</div>
-					<div class="form-row mt-3">
+		 			<div class="form-row mt-3">
 						<div class="form-group col-md-6">
 								<label for="regione">Regione:</label> 
 								<select id="regione" class="form-control" name="regione">
-								<option value="tutte">Tutte</option>
+								<option value="Tutte">Tutte</option>
 								</select>
-						</div>
+						</div> 
 						<div class="col-md-2">
       						<label for="prezzoMin">Prezzo Minimo</label>
       						<input type="number" class="form-control" name="prezzoMin" id="prezzoMin" min="0" max="3000" value="0" step="5">
@@ -97,7 +97,7 @@
  							 	<label class="form-check-label" for="notInnVendita">
  							      Non in vendita
  								 </label>
-							</div>					
+							</div>			 		
 							<div class="col p-0">
 						 	 <button class="btn btn-dark" type="submit" id="cercaCriteria">Cerca</button>
 							</div>

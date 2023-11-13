@@ -28,7 +28,7 @@ public class CriteriaController {
 		int prezzoMax = treno.getPrezzoMax();
 		boolean isInVendita = treno.isInVendita();
 		
-		model.addAttribute("params", treno);
+	//	model.addAttribute("params", treno);
 
 		List<Treno> treni = tSvcC.findTreni(nome, marca, regione, prezzoMin, prezzoMax, isInVendita);
 		model.addAttribute("criteria", treni);

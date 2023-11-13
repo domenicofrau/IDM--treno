@@ -131,7 +131,7 @@ public class Main {
 //		tSvcC.findByNameLike("tre");
 //		tSvcC.findTreni("Tommy", "TreNord");
 //		tSvcC.findTreniPrezzo(510, 510);
-//		tSvcC.findTreni("tommy", "TreNord", "Umbria", 0, 2000);
+//		tSvcC.findTreni("jerry", "TreNord", "Piemonte", 0, 2000, false);
 //		-----------------------------------------------------------------------------------
 
 		if (sessionFactory != null) {
