@@ -153,6 +153,7 @@
 														<p><b>PREZZO:</b> ${ locomotiva.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 														<p><b>LUNGHEZZA:</b> ${ locomotiva.lunghezza } metri</p>
 														<p><b>PESO TRAINABILE:</b> ${ locomotiva.pesoTrainabile } tonnellate</p>
+														<button id="confirmDelete_locomotiva" class="btn btn-light btn-outline-danger" type="button">Elimina</button>
 													</div>
 												</div>
 											</div>
@@ -183,6 +184,7 @@
 															<p><b>POSTI PER DISABILI:</b> ${ passeggeri.postiDisabili }</p>
 															<p><b>POSTI TOTALI A SEDERE:</b> ${ passeggeri.postiNormali + passeggeri.postiDisabili }</p>
 															<p><b>PRESENZA SERVIZI:</b> ${ passeggeri.servizi }</p>
+															<button id="confirmDelete_passeggeri" class="btn btn-light btn-outline-danger" type="button">Elimina</button>
 														</div>
 													</div>
 												</div>
@@ -214,6 +216,7 @@
 															<p><b>POSTI PER DISABILI:</b> ${ passeggeriB.postiDisabili }</p>
 															<p><b>POSTI TOTALI A SEDERE:</b> ${ passeggeriB.postiNormali + passeggeriB.postiDisabili }</p>
 															<p><b>PRESENZA SERVIZI:</b> ${ passeggeriB.servizi }</p>
+															<button id="confirmDelete_business" class="btn btn-light btn-outline-danger" type="button">Elimina</button>
 														</div>
 													</div>
 												</div>
@@ -244,6 +247,7 @@
 															<p><b>NUMERO TAVOLI:</b> ${ ristorante.tavoli }</p>
 															<p><b>POSTI TOTALI A SEDERE:</b> ${ ristorante.tavoli * 4 }</p>
 															<p><b>PRESENZA SERVIZI:</b> ${ ristorante.servizi }</p>
+															<button id="confirmDelete_ristoranti" class="btn btn-light btn-outline-danger" type="button">Elimina</button>
 														</div>
 													</div>
 												</div>
@@ -272,6 +276,7 @@
 															<p><b>PREZZO:</b> ${ cargo.prezzo } <img class="bit-train-icon" src="<c:url value='/resources/img/bitTrain.png'/>" alt="bitTrain"></p>
 															<p><b>LUNGHEZZA:</b> ${ cargo.lunghezza } metri</p>
 															<p><b>MERCE:</b> ${ cargo.tipoMerce }</p>
+															<button id="confirmDelete_cargo" class="btn btn-light btn-outline-danger" type="button">Elimina</button>
 														</div>
 													</div>
 												</div>
