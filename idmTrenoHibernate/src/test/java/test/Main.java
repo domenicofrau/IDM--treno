@@ -39,6 +39,9 @@ public class Main {
 //		
 //		Utente utente3 = u.creaUtente("John", "Ruth", "jhon.ruth@gmail.com", "12345", "https://cdnb.artstation.com/p/assets/images/images/004/109/281/large/andrew-gray-john-ruth-the-hangman.jpg?1480438555", "United States");	
 //		uService.crea(utente3);
+		
+//		Utente u1 = uService.find(57);
+		
 //		-----------------------------------------------------------------------------------
 		
 //		CANCELLAZIONE DI UN UTENTE  -------------------------------------------------------

@@ -65,3 +65,19 @@
 .scelta-vendita{
 	font-size: 0.95rem;
 }
+
+.profile-u{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	overflow: hidden;
+/*	cursor: pointer !important; */
+}
+
+.profile-u img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+/*	transition: opacity 0.3s ease-in-out; */
+}
