@@ -50,13 +50,14 @@
 				</div>
 			</div>
 		</nav>
+		
+		<!-- CRITERIA FORM DI RICERCA -->
 		<div class="container mt-3">
-			<!-- CRITERIA FORM DI RICERCA -->
 			<div id="criteriaForm" class="container my-3 p-4 d-none">
-				<form action="search" method="GET">
+				<form:form action="search" method="GET" modelAttribute="treno">
 					<div class="form-row">
 						<div class="col-md-8">
-							<input id="nome" class="form-control" type="text" name="nome" placeholder="Cerca...">
+							<input id="nome" class="form-control" type="text" name="nomeLike" placeholder="Cerca..." value="">
 						</div>
 						<div class="col-md-3">
 							<div class="input-group">
@@ -64,16 +65,47 @@
 									<label class="input-group-text" for="inputGroupSelect01">Marca:</label>
 								</div>
 								<select id="inputGroupSelect01" class="custom-select" name="marca">
-									<option selected>FrecciaRossa</option>
-									<option value="1">TreNord</option>
+									<option value="Tutte">Tutte</option>
+									<option value="FrecciaRossa">FrecciaRossa</option>
+									<option value="TreNord">TreNord</option>  
 								</select>
 							</div>
 						</div>
-						<div class="col-md-1 d-flex justify-content-end">
-							<button class="btn btn-dark" type="submit">Cerca</button>
-						</div>
 					</div>
-				</form>
+		 			<div class="form-row mt-3">
+						<div class="form-group col-md-6">
+								<label for="regione">Regione:</label> 
+								<select id="regione" class="form-control" name="regione">
+								<option value="Tutte">Tutte</option>
+								</select>
+						</div> 
+						<div class="col-md-2">
+      						<label for="prezzoMin">Prezzo Minimo</label>
+      						<input type="number" class="form-control" name="prezzoMin" id="prezzoMin" min="0" max="3000" value="0" step="5">
+   						</div>
+						<div class="col-md-2">
+      						<label for="prezzoMax">Prezzo Massimo</label>
+      						<input type="number" class="form-control" name="prezzoMax" id="prezzoMax" min="0" max="3000" value="3000" step="5">
+   						</div>  
+   						</div>
+   						<div class="row">
+   							<div class="form-check mx-3 mt-2">
+  								<input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true" checked>
+  								<label class="form-check-label" for="inVendita">
+    						   	  In vendita
+ 							 	</label>
+							</div>
+							<div class="form-check mx-3 mt-2">
+ 							 	<input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false">
+ 							 	<label class="form-check-label" for="notInnVendita">
+ 							      Non in vendita
+ 								 </label>
+							</div>			 		
+							<div class="col p-0">
+						 	 <button class="btn btn-dark" type="submit" id="cercaCriteria">Cerca</button>
+							</div>
+   						</div>  						
+				</form:form>
 			</div>
 			<h2 class="font-weight-bold">Crea il tuo treno</h2>
 			<!-- SELETTORE DELLA MARCA -->
