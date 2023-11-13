@@ -44,7 +44,7 @@ public class Main {
 //		CANCELLAZIONE DI UN UTENTE  -------------------------------------------------------
 		
 //		UtenteService uService = new UtenteService();
-//		uService.delete(3273);
+//		uService.delete(3433);
 //		-----------------------------------------------------------------------------------
 		
 //		RICERCA DI UN UTENTE PER MAIL  ----------------------------------------------------
@@ -72,7 +72,7 @@ public class Main {
 //		CANCELLAZIONE DI UN TRENO  --------------------------------------------------------
 
 //		TrenoService tService = new TrenoService();
-//		tService.delete(0000);
+//		tService.delete(3445);
 //		-----------------------------------------------------------------------------------
 		
 //		RICERCA DI UN TRENO PER NOME  -----------------------------------------------------

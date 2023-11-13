@@ -1,5 +1,6 @@
 package com.idm.trenohibernate.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -21,23 +22,9 @@ public class TrenoCriteriaDAO {
 
 	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean isInVendita) {
+	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean inVendita) {
 		
 			String allValue = "tutte";
-			if(prezzoMin < 0) {
-				prezzoMin = 0;
-			} else if(prezzoMin > 3000) {
-				prezzoMin = 3000;
-			}
-			if(prezzoMax < 0) {
-				prezzoMax = 0;
-			} else if(prezzoMax > 3000) {
-				prezzoMax = 3000;
-			}
-			
-			if(nome == null) {
-				nome = "";
-			}
 
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
@@ -49,36 +36,39 @@ public class TrenoCriteriaDAO {
 			Root<Treno> root = criteriaQuery.from(Treno.class);
 
 			Predicate namePredicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("nome")), "%" + nome.toLowerCase() + "%");
-			Predicate marcaPredicate = criteriaBuilder.equal(root.get("marca"), marca);
-			Predicate regionePredicate = criteriaBuilder.equal(root.get("regione"), regione);
-			Predicate prezzoPredicate = criteriaBuilder.between(root.get("prezzoTotale"), prezzoMin, prezzoMax);
-			Predicate inVenditaPredicate = criteriaBuilder.isTrue(root.get("inVendita"));
-			
-			Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
+            Predicate marcaPredicate = criteriaBuilder.equal(root.get("marca"), marca);
+            Predicate regionePredicate = criteriaBuilder.equal(root.get("regione"), regione);
+            Predicate prezzoPredicate = criteriaBuilder.between(root.get("prezzoTotale"), prezzoMin, prezzoMax);
+            Predicate inVenditaPredicate = criteriaBuilder.isTrue(root.get("inVendita"));
+            Predicate notInVenditaPredicate = criteriaBuilder.isFalse(root.get("inVendita"));
 
-			if (marca.equals(allValue)) {
-				finalPredicate = criteriaBuilder.and(namePredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
-			} 	
-			if (regione.equals(allValue)) {
-				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
-			} 
-			if (regione.equals(allValue) && marca.equals(allValue)) {
-				finalPredicate = criteriaBuilder.and(namePredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
-			} 
-			if (isInVendita == false) {
-				finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
-				System.out.println(nome + " " + marca);
-			} 
-			System.out.println(nome + " " + marca + " " + regione + " " + prezzoMin + " " + prezzoMax + " " + isInVendita);
-			criteriaQuery.where(finalPredicate);
+        //    Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
+            List<Predicate> predicates = new ArrayList<Predicate>();
+            predicates.add(namePredicate);
+            predicates.add(prezzoPredicate);
 
-			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
-			List<Treno> treni = query.getResultList();
-			System.out.println(treni.size());
-			return treni;
+            if (!allValue.equals(marca)){
+                predicates.add(marcaPredicate);;
+            }
+            if (!allValue.equals(regione)) {
+                predicates.add(regionePredicate);
+            }
+            if (inVendita) {
+                predicates.add(inVenditaPredicate);
+            } 
+            if (!inVendita) {
+                predicates.add(notInVenditaPredicate);
+            } 
+    //        criteriaQuery.where(finalPredicate);
+
+            TypedQuery<Treno> query = session.createQuery(criteriaQuery);
+    //        List<Treno> treni = query.getResultList();
+            criteriaQuery.select(root)
+            .where(predicates.toArray(new Predicate[]{}));
+
+            List<Treno> treni = session.createQuery(criteriaQuery).getResultList();
+            System.out.println(treni.size());
+            return treni;
 			} catch (Exception e) {
 		        tx.rollback();
 		        throw e;
