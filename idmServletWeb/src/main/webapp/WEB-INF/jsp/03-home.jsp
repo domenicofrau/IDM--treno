@@ -121,7 +121,12 @@
 				        <div class="col-md-6">
 				            <div class="card mb-4">
 				                <div class="card-body">
-					               	<p class="mb-3"><img class="profile-image-card ml-2 border border-secondary" src="<c:url value='${treni.utente.immagineProfilo}'/>"> <b>${treni.utente.nome } ${treni.utente.cognome }</b></p>
+					               	<p class="mb-3">
+					               	<a href="utente?id=${ treni.utente.id }">
+					               	<img class="profile-image-card ml-2" src="<c:url value='${treni.utente.immagineProfilo}'/>"> 					               	
+					               	</a> 
+					               	<a href="utente?id=${ treni.utente.id }" class="text-body" ><b>${treni.utente.nome } ${treni.utente.cognome }</b></a>				               	
+					               	</p>
 				                    <c:if test="${ empty treni.immagine }">
 				                        <img class="img-fluid mb-3" src="<c:url value='/resources/img/train.jpg'/>" alt="Immagine Treno placeholder">
 				                    </c:if>

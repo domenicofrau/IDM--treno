@@ -3,6 +3,8 @@ package idm.servlet.web.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +16,10 @@ import com.idm.trenohibernate.Passeggeri;
 import com.idm.trenohibernate.PasseggeriBusiness;
 import com.idm.trenohibernate.Ristorante;
 import com.idm.trenohibernate.Treno;
+import com.idm.trenohibernate.Utente;
 import com.idm.trenohibernate.Vagone;
 import com.idm.trenohibernate.service.TrenoService;
+import com.idm.trenohibernate.service.UtenteService;
 
 @Controller
 public class CercaController {
@@ -23,6 +27,8 @@ public class CercaController {
 	@Autowired
 	TrenoService trenoService;
 	
+	@Autowired
+	UtenteService uSvc;
 
 	@GetMapping("/cerca-treno")
 	public String cercaTreno(String idTrenoStr, Model model) {
@@ -127,6 +133,27 @@ public class CercaController {
 		}
 		model.addAttribute("controller", this);
 		return "05-train-detail";
+	}
+	
+	@GetMapping("utente")
+	public String cercaUtente(String id, Model model, HttpSession session) {
+		Integer idUtente = Integer.parseInt(id);
+		Utente u = uSvc.find(idUtente);
+		Utente loggedIn = (Utente) session.getAttribute("loggedInUser");
+		
+		if(loggedIn.getId() == u.getId()) {
+			return "redirect:/04-profile";
+		} else {
+		List<Treno> treni = trenoService.findByUtenteId(u.getId());
+
+		if(u != null && treni != null) {
+			model.addAttribute("utente", u);
+			model.addAttribute("treni", treni);
+		} else {
+			model.addAttribute("error", "Spiacenti, questo utente non esiste!");
+		}
+		return "utente";
+		}
 	}
 
 }
