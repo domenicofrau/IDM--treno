@@ -22,4 +22,9 @@ public class Cargo extends Vagone {
     public int compareTo(Vagone other) {
         return Integer.compare(this.getId(), other.getId());
     }
+	@Override
+	public String toString() {
+		return "Cargo [pesoTotale=" + pesoTotale + ", pesoMerce=" + pesoMerce + ", tipoMerce=" + tipoMerce
+				+ super.toString() + "]";
+	}
 }
