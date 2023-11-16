@@ -133,7 +133,7 @@ public class Treno implements Bean {
 
 	public void setPrezzoTotale(int prezzoTotale) {
 		this.prezzoTotale = prezzoTotale;
-		
+
 	}
 
 	public boolean isInVendita() {
@@ -145,7 +145,6 @@ public class Treno implements Bean {
 	}
 	public int ricalcolaPrezzo(List<Vagone>vagoni) {
 		int prezzo=0;
-		
 		List<Vagone> nonNullVagoni = vagoni.stream()
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
@@ -153,10 +152,10 @@ public class Treno implements Bean {
 			if(vagone!=null) {
 				prezzo+=0;
 			}
-			prezzo+=vagone.getPrezzo();
+			prezzo += vagone.getPrezzo();
 		}
 		return prezzo;
-		
+
 	}
 
 }
