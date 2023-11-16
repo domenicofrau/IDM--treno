@@ -63,9 +63,9 @@ public class Main {
 		
 //		CREAZIONE DI UN TRENO E PERSISTENZA  ----------------------------------------------
 		
-//		VagoneFactory f = new TNVagoneFactory();
-//		TrenoBuilder b = new ConcreteBuilder(f);
-//		TrenoService tService = new TrenoService();
+		VagoneFactory f = new TNVagoneFactory();
+		TrenoBuilder b = new ConcreteBuilder(f);
+		TrenoService tService = new TrenoService();
 //		tService.crea(t);
 //		-----------------------------------------------------------------------------------
 		
@@ -96,12 +96,12 @@ public class Main {
 		
 		
 //		XXXXXXXXXXXXXXXXXXXXXXXXXXX  ------------------------------------------------------
-		
+		VagoneService vService = new VagoneService();
 //		Treno t =tService.find(2);
-//		Treno t = tService.findByName("qweasdadw");
+//		Treno t = tService.findByName("Romi");
 //		Utente u = t.getUtente();
-//		b.addVagonePasseggeriBusiness(t);
-//		va.rimuoviVagone(1018);
+//		b.addVagonePasseggeri(t);
+//		vService.rimuoviVagone(1331);
 //		uService.find(utente);
 //		t.setUtente(t, utenteTrovato1);
 //		uService.update(utenteTrovato1);

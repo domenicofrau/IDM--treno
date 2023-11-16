@@ -127,12 +127,14 @@ public class StaticController {
 						PasseggeriBusiness passeggeriBusiness = (PasseggeriBusiness) vagone;
 						passeggeriVBusiness.add(passeggeriBusiness);
 					}
-					model.addAttribute("cargo", cargoV);
-					model.addAttribute("locomotive", locomotivaV);
-					model.addAttribute("ristoranti", ristoranteV);
-					model.addAttribute("passeggeri", passeggeriV);
-					model.addAttribute("passeggeriB", passeggeriVBusiness);
+					
 				}
+	//			model.asMap().clear();
+				model.addAttribute("cargo", cargoV);
+				model.addAttribute("locomotive", locomotivaV);
+				model.addAttribute("ristoranti", ristoranteV);
+				model.addAttribute("passeggeri", passeggeriV);
+				model.addAttribute("passeggeriB", passeggeriVBusiness);
 
 			} else {
 				model.addAttribute("errore", "Nessun treno trovato con l'ID specificato.");
@@ -153,6 +155,7 @@ public class StaticController {
 	public String develop(Model model) {
 		return "develop";
 	}
+
 	
 	
 //	@PostMapping("/modifica-treno1")
