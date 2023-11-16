@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -161,9 +163,11 @@
 										<div class="col-12 col-md-6 my-2">
 											<div class="card">
 												<div class="card-body d-flex justify-content-center align-items-center">
+												
 													<button class="add-vagone btn btn-light btn-outline-secondary my-3" type="button">
 														<i class="bi bi-plus"></i>
 													</button>
+													
 												</div>
 											</div>
 										</div>
@@ -191,9 +195,12 @@
 											<div class="col-12 col-md-6 my-2">
 												<div class="card">
 													<div class="card-body d-flex justify-content-center align-items-center">
-														<button class="add-vagone btn btn-light btn-outline-secondary my-3" type="button">
-															<i class="bi bi-plus"></i>
-														</button>
+													<form:form method="post" action="aggiungiPasseggeri" >
+												    <input class="form-control mb-4" type="text" name="nomeTreno" value="${treno.nome}" style="display: none" />
+												    <button class="add-vagone btn btn-light btn-outline-secondary my-3" type="submit">
+												        <i class="bi bi-plus"></i>
+												    </button>
+													</form:form>
 													</div>
 												</div>
 											</div>
@@ -222,9 +229,12 @@
 											<div class="col-12 col-md-6 my-2">
 												<div class="card">
 													<div class="card-body d-flex justify-content-center align-items-center">
-														<button class="add-vagone btn btn-light btn-outline-secondary my-3" type="button">
-															<i class="bi bi-plus"></i>
-														</button>
+														<form:form method="post" action="aggiungiBusiness" >
+												    <input class="form-control mb-4" type="text" name="nomeTreno" value="${treno.nome}" style="display: none" />
+												    <button class="add-vagone btn btn-light btn-outline-secondary my-3" type="submit">
+												        <i class="bi bi-plus"></i>
+												    </button>
+													</form:form>
 													</div>
 												</div>
 											</div>

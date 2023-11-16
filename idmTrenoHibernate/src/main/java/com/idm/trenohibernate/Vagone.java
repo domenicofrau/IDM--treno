@@ -1,7 +1,7 @@
 package com.idm.trenohibernate;
 import com.idm.trenohibernate.dao.Bean;
 
-public abstract class Vagone implements Bean{
+public abstract class Vagone implements Bean, Comparable <Vagone>{
 
 	private int id;
 	private int lunghezza;
@@ -9,6 +9,8 @@ public abstract class Vagone implements Bean{
 	private int prezzo;
 	private Treno treno;
 	private TipoVagone tipo;
+	private int posizione;
+	
 
 	public Vagone() {
 	}
@@ -71,6 +73,14 @@ public abstract class Vagone implements Bean{
 	@Override
 	public String toString() {
 		return "lunghezza=" + lunghezza + ", peso=" + peso + ", prezzo=" + prezzo;
+	}
+
+	public int getPosizione() {
+		return posizione;
+	}
+
+	public void setPosizione(int posizione) {
+		this.posizione = posizione;
 	}
 
 }

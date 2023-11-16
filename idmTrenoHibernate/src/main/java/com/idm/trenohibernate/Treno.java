@@ -5,6 +5,8 @@ import com.idm.trenohibernate.exceptions.SaldoNonSufficenteException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Treno implements Bean {
 
@@ -103,7 +105,10 @@ public class Treno implements Bean {
 	public int getPeso() {
 		List<Vagone> vagoni = getVagoni();
 		int pesoTotale = 0;
-		for (Vagone vagone : vagoni) {
+		List<Vagone> nonNullVagoni = this.getVagoni().stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+		for (Vagone vagone : nonNullVagoni) {
 			pesoTotale += vagone.getPeso();
 		}
 		return pesoTotale;
@@ -140,7 +145,11 @@ public class Treno implements Bean {
 	}
 	public int ricalcolaPrezzo(List<Vagone>vagoni) {
 		int prezzo=0;
-		for(Vagone vagone:vagoni) {
+		
+		List<Vagone> nonNullVagoni = vagoni.stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+		for(Vagone vagone:nonNullVagoni) {
 			if(vagone!=null) {
 				prezzo+=0;
 			}

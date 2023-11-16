@@ -58,4 +58,10 @@ public class Passeggeri extends Vagone {
 				+ postiTotali + ", servizi=" + servizi + " " + super.toString() + "]";
 	}
 
+	  @Override
+	    public int compareTo(Vagone other) {
+	        // Implement comparison logic based on your requirements
+	        // For example, compare by some property like ID or another field.
+	        return Integer.compare(this.getId(), other.getId());
+	    }
 }
