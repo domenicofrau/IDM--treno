@@ -8,6 +8,7 @@ public class TrenoBean {
 	private String regione;
 	private boolean inVendita;
 
+	
 	public String getRegione() {
 		return regione;
 	}
@@ -47,5 +48,9 @@ public class TrenoBean {
 	public void setInVendita(boolean inVendita) {
 		this.inVendita = inVendita;
 	}
+
+
+	
+	
 
 }

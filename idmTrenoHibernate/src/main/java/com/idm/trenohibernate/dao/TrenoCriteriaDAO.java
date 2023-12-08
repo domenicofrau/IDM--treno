@@ -22,7 +22,7 @@ public class TrenoCriteriaDAO {
 
 	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean inVendita) {
+	public List<Treno> findTreno(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean inVendita, boolean notInVendita) {
 		
 			String allValue = "Tutte";	
 
@@ -42,7 +42,6 @@ public class TrenoCriteriaDAO {
 			Predicate inVenditaPredicate = criteriaBuilder.isTrue(root.get("inVendita"));
 			Predicate notInVenditaPredicate = criteriaBuilder.isFalse(root.get("inVendita"));
 			
-		//	Predicate finalPredicate = criteriaBuilder.and(namePredicate, marcaPredicate, regionePredicate, prezzoPredicate, inVenditaPredicate);
 			List<Predicate> predicates = new ArrayList<Predicate>();
 			predicates.add(namePredicate);
 			predicates.add(prezzoPredicate);
@@ -56,24 +55,25 @@ public class TrenoCriteriaDAO {
 			if (inVendita) {
 				predicates.add(inVenditaPredicate);
 			} 
-			if (!inVendita) {
+			if (notInVendita) {
 				predicates.add(notInVenditaPredicate);
 			} 
-	//		criteriaQuery.where(finalPredicate);
+			if(inVendita && notInVendita) {
+				predicates.remove(inVenditaPredicate);
+				predicates.remove(notInVenditaPredicate);
+			}
 
 			TypedQuery<Treno> query = session.createQuery(criteriaQuery);
-	//		List<Treno> treni = query.getResultList();
 			criteriaQuery.select(root)
             .where(predicates.toArray(new Predicate[]{}));
 
 			List<Treno> treni = session.createQuery(criteriaQuery).getResultList();
 			System.out.println(treni.size());
+	        tx.commit();
 			return treni;
 			} catch (Exception e) {
 		        tx.rollback();
 		        throw e;
-		    } finally {
-		        tx.commit();
 		    }
 			
 	}

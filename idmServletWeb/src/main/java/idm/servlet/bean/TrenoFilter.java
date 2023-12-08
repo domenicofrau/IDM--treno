@@ -8,6 +8,7 @@ public class TrenoFilter {
 	private int prezzoMin;
 	private int prezzoMax;
 	private boolean inVendita;
+	private boolean notInVendita;
 	
 	public String getNomeLike() {
 		return nomeLike;
@@ -44,6 +45,13 @@ public class TrenoFilter {
 	}
 	public void setInVendita(boolean inVendita) {
 		this.inVendita = inVendita;
+	}
+	public boolean isNotInVendita() {
+		return notInVendita;
+	}
+
+	public void setNotInVendita(boolean notInVendita) {
+		this.notInVendita = notInVendita;
 	}
 	
 }

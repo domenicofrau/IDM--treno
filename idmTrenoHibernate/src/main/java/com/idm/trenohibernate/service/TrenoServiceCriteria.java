@@ -12,9 +12,9 @@ public class TrenoServiceCriteria {
 	
 	private TrenoCriteriaDAO criteriaDAO = new TrenoCriteriaDAO();
 	
-	public List<Treno> findTreni(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean inVendita) {
+	public List<Treno> findTreni(String nome, String marca, String regione, int prezzoMin, int prezzoMax, boolean inVendita, boolean notInVendita) {
 		
-		List<Treno> treni = criteriaDAO.findTreno(nome, marca, regione, prezzoMin, prezzoMax, inVendita);
+		List<Treno> treni = criteriaDAO.findTreno(nome, marca, regione, prezzoMin, prezzoMax, inVendita, notInVendita);
 		
 		if(treni.size() != 0) {
 			System.out.println("Ho trovato i seguenti treni con un nome simile a " + nome );

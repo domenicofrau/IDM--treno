@@ -90,17 +90,17 @@
    						</div>
    						<div class="row">
    							<div class="form-check mx-3 mt-2">
-  								<input class="form-check-input" type="radio" name="inVendita" id="inVendita" value="true" checked>
-  								<label class="form-check-label" for="inVendita">
-    						   	  In vendita
- 							 	</label>
+ 							 	 <input class="form-check-input" type="checkbox" name="inVendita" value="true" id="inVendita" checked>
+ 								 <label class="form-check-label" for="inVendita">
+ 								   In vendita
+ 								 </label>
 							</div>
 							<div class="form-check mx-3 mt-2">
- 							 	<input class="form-check-input" type="radio" name="inVendita" id="notInnVendita" value="false">
- 							 	<label class="form-check-label" for="notInnVendita">
- 							      Non in vendita
+ 								  <input class="form-check-input" type="checkbox" name="notInVendita" id="notInVendita" value="true" checked>
+  								 <label class="form-check-label" for="notInVendita">
+ 								  Non in vendita
  								 </label>
-							</div>			 		
+							</div>		 		
 							<div class="col p-0">
 						 	 <button class="btn btn-dark" type="submit" id="cercaCriteria">Cerca</button>
 							</div>
